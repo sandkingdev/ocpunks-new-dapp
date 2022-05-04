@@ -45,14 +45,14 @@ const Navbar = () => {
                   className="nft-nav-dropdown"
                 >
                   <NavDropdown.Item><Link to={routeNames.orcnft}>OrcpunksNFT</Link></NavDropdown.Item>
-                  <NavDropdown.Item href={routeNames.easternft}>EasterNFT</NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.easternft}>EasterNFT</Link></NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
                   title="SWAP"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item href={routeNames.buynft}>ZOG -&gt; NFT</NavDropdown.Item>
-                  <NavDropdown.Item href={routeNames.sellnft}>NFT -&gt; ZOG</NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.buynft}>ZOG -&gt; NFT</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.sellnft}>NFT -&gt; ZOG</Link></NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (
