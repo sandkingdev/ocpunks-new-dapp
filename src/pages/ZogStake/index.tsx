@@ -18,6 +18,8 @@ import {
   Query
 } from '@elrondnetwork/erdjs';
 
+import StakingModal from 'components/Modal';
+
 import './index.scss';
 
 const ZogStake = () => {
@@ -29,6 +31,9 @@ const ZogStake = () => {
   const [nftDatas, setNftDatas] = useState<any[]>([]);
   const [apy, setApy] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
+
+  const [modalShow, setModalShow] = useState(false);
+  const [actionType, setActionType] = useState(true); // stake
 
   return (
     <div className='container'>
@@ -123,6 +128,11 @@ const ZogStake = () => {
           </div>
         </div>
       </div>
+      <StakingModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        actionType={actionType}
+      />
     </div>
   );
 };

@@ -1,0 +1,154 @@
+.modal-pool-type {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.modal-pool-info {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+
+    color: gray;
+}
+
+.modal-switch {
+    display: flex;
+}
+
+.modal-apr {
+    align-self: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #333333;
+    margin-left: 12px;
+    margin-top: 7px;
+}
+
+.modal-unstake-amount {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+    margin-top: 25px;
+}
+
+.modal-action {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.ant-input-affix-wrapper{
+    background: #F6F6F6 !important;
+    border: 1px solid #021025 !important;
+    box-sizing: border-box !important;
+    border-radius: 5px !important;
+    height: 45px !important;
+}
+
+.ant-input {
+    background: #F6F6F6 !important;
+    font-size: 16px !important;
+}
+
+.modal-amount-max{
+    margin-top: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #51698D;
+    cursor: pointer;
+}
+
+.modal-staking-card-action-button {
+    width: 120px;
+    height: 45px;
+    border: 1px solid #304A71;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.modal-staking-card-action-button-stake {
+    background: #021025;
+    border: 0px solid;
+}
+
+.modal-staking-card-action-stake {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  
+    color: #FFFFFF;
+}
+
+.modal-staking-card-action-unstake {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  
+    color: #434343;
+}
+
+.modal-staking-card-action-button-unstake{
+    background: #E85E5E;
+    border: 1px solid #A30707;
+    margin-top: 18px;
+}
+
+.modal-staking-card-action-button-unstake-all {
+    margin-top: 18px;
+}
+
+.error-message{
+  margin-top: 0.2em;
+  color: red;
+  font-size: 14px;
+  font-family: 'Roboto';
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767.98px) {
+    .modal-switch {
+        margin-top: 15px;
+    }
+
+    .modal-staking-card-action-button-stake {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .modal-staking-card-action-button-unstake-unlock{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .modal-staking-card-action-button-unstake{
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .modal-staking-card-action-button-unstake-all {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
