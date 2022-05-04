@@ -35,6 +35,16 @@ const ZogStake = () => {
   const [modalShow, setModalShow] = useState(false);
   const [actionType, setActionType] = useState(true); // stake
 
+  const handleStake = () => {
+    setActionType(true); // stake
+    setModalShow(true);
+  };
+
+  const handleUnstake = () => {
+    setActionType(false); // unstake
+    setModalShow(true);
+  };
+
   return (
     <div className='container'>
       <div className='d-flex flex-fill container justify-content-center'>
@@ -93,12 +103,12 @@ const ZogStake = () => {
                   <div className='col-lg-4 col-md-4 col-sm-12'>
                     <div className='row'>
                       <div className='col-12'>
-                        <button className='stake-handle-button'>Stake</button>
+                        <button className='stake-handle-button' onClick={handleStake}>Stake</button>
                       </div>
                     </div>
                     <div className='row'>
                       <div className='col-12'>
-                        <button className='stake-handle-button'>UnStake</button>
+                        <button className='stake-handle-button' onClick={handleUnstake}>UnStake</button>
                       </div>
                     </div>
                   </div>

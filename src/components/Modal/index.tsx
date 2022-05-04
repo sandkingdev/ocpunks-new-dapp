@@ -116,8 +116,6 @@ function StakingModal(props: any) {
       onHide={props.onHide}
       centered
     >
-      <Modal.Header closeButton>
-      </Modal.Header>
       <Modal.Body>
         <>
           {props.actionType ? (
