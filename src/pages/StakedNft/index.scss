@@ -1,0 +1,23 @@
+@import '../../assets/sass/custom.scss';
+
+.rewards-amount {
+    color: white !important;
+    font-size: 24px;
+    font-weight: 500;
+    font-family:'Roboto', sans-serif !important;
+}
+
+.btn-claim {
+    border-radius: 8px !important;
+    background-color: #ba16b9 !important;
+    border-color: #ba16b9 !important;
+    width: 100px !important;
+    height: 40px;
+}
+
+@media (max-width: 767.98px) {
+    .btn-claim {
+        width: 80% !important;
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,13 @@
+@import '../../../assets/sass/custom.scss';
+
+.custom-footer-link {
+    color: $color-white-1 !important;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) { 
+    .custom-footer-link {
+        margin-top: 40px;
+    }
+}

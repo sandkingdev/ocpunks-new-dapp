@@ -1,0 +1,51 @@
+.ant-card {
+    border-radius: 10px !important;
+    cursor:auto;
+}
+
+.ant-card-cover {
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.nft-image {
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.ant-card-body {
+    padding: 10px !important;
+}
+
+.ant-card-meta-title{
+    color: black !important;
+    font-size: 20px;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 10px;
+}
+
+.ant-card-meta-description {
+    color: black !important;
+    font-size: 16px;
+    font-weight: 300;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 10px;
+}
+
+.btn-action {
+    border-radius: 8px !important;
+    background-color: #ba16b9 !important;
+    border-color: #ba16b9 !important;
+    width: 100% !important;
+    height: 40px;
+    margin-top: 25px !important;
+}
+
+@media (max-width: 767.98px) { 
+    .nft-card {
+        margin-top: 20px;
+        text-align: -webkit-center;
+    }
+    .ant-card {
+        width: 80% !important;
+    }
+}

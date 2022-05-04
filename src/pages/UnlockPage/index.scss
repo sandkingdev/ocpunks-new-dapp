@@ -1,0 +1,27 @@
+@import '../../assets/sass/custom.scss';
+
+.color-black {
+    color: $color-black-1;
+}
+
+.custom-unlock-card {
+    
+    .btn.btn-primary {
+        border-radius: 50px !important;
+        width: 150px;
+        height: 50px;
+        margin-top: 10px;
+        background-color: #ba16b9 !important;
+    }
+
+    .btn.btn-primary:hover {
+        background-color: hsla(0, 0%, 100%, 0.82) !important;
+        font-family: Inter, sans-serif;
+        color: #0d0d0d !important;
+        font-weight: 600;
+    }
+
+    .custom-unlock-button {
+        margin-top: 10px;
+    }
+}
