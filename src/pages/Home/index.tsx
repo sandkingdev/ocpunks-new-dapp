@@ -20,7 +20,7 @@ const Home = () => {
 
   const handleMint = () => {
     if(isLoggedIn) {
-      navigate(routeNames.mynft, { replace: true });
+      navigate(routeNames.stake, { replace: true });
     } else {
       navigate(routeNames.unlock, { replace: true });
     }

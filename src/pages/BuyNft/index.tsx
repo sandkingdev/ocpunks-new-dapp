@@ -21,7 +21,7 @@ import {
 
 import './index.scss';
 
-const MyNft = () => {
+const BuyNft = () => {
 
   const { address } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
@@ -102,4 +102,4 @@ const MyNft = () => {
   );
 };
 
-export default MyNft;
+export default BuyNft;

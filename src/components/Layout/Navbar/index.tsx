@@ -37,23 +37,22 @@ const Navbar = () => {
             </Link>
             {isLoggedIn ? (
               <>
-                <Link to={routeNames.mynft} aria-current='page' className='custom-link-button custom-nav-link'>
+                <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
                   $ZOG
                 </Link>
                 <NavDropdown
                   title="NFTs"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.orcnft}>OrcpunksNFT</Link></NavDropdown.Item>
+                  <NavDropdown.Item href={routeNames.easternft}>EasterNFT</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
                   title="SWAP"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item href="#action/3.1">ZOG -&gt; NFT</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">NFT -&gt; ZOG</NavDropdown.Item>
+                  <NavDropdown.Item href={routeNames.buynft}>ZOG -&gt; NFT</NavDropdown.Item>
+                  <NavDropdown.Item href={routeNames.sellnft}>NFT -&gt; ZOG</NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (

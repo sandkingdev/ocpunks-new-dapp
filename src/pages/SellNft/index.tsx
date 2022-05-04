@@ -26,7 +26,7 @@ import {
 
 import './index.scss';
 
-const StakedNft = () => {
+const SellNft = () => {
   const { address } = useGetAccountInfo();
   const { network } = useGetNetworkConfig();
   const { hasPendingTransactions } = useGetPendingTransactions();
@@ -148,4 +148,4 @@ const StakedNft = () => {
   );
 };
 
-export default StakedNft;
+export default SellNft;
