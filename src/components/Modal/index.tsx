@@ -157,8 +157,8 @@ function StakingModal(props: any) {
                   <span className='modal-staking-card-action-stake'>Stake</span>
                 </button>
               ) : (
-                <button className='modal-staking-card-action-button modal-staking-card-action-button-unstake-unlock' onClick={handleUnstake}>
-                  <span className='modal-staking-card-action-unstake'>Unstake</span>
+                <button className='modal-staking-card-action-button modal-staking-card-action-button-stake' onClick={handleUnstake}>
+                  <span className='modal-staking-card-action-stake'>Unstake</span>
                 </button>
               )}
             </div>
