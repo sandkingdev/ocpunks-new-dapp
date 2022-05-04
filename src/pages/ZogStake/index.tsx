@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import { contractAddress, gateway, TIMEOUT, NFT_TOKEN_ID } from 'config';
-import NftCard from 'components/NftCard';
 
 import {
   useGetAccountInfo,
@@ -31,72 +30,40 @@ const ZogStake = () => {
   const [apy, setApy] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get(`${gateway}/accounts/${address}/nfts?collection=${NFT_TOKEN_ID}`)
-      .then((res) => {
-        setNftDatas(res.data);
-      });
-  }, [hasPendingTransactions]);
-
-  useEffect(() => {
-    const query = new Query({
-      address: new Address(contractAddress),
-      func: new ContractFunction('getRewardApy')
-    });
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        if (encoded == undefined || encoded == '') {
-          setApy(0);
-        } else {
-          const decoded = Buffer.from(encoded, 'base64').toString('hex');
-          setApy(parseInt(decoded, 16) / 100);
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-  }, []);
-
-  useEffect(() => {
-    const query = new Query({
-      address: new Address(contractAddress),
-      func: new ContractFunction('getTotalSupply')
-    });
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        if (encoded == undefined || encoded == '') {
-          setStakedAmount(0);
-        } else {
-          const decoded = Buffer.from(encoded, 'base64').toString('hex');
-          setStakedAmount(parseInt(decoded, 16));
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-  }, [hasPendingTransactions]);
-
   return (
     <div className='container'>
-      <div className='row text-center'>
-        <div className='col-lg-12 col-md-12 col-sm-12'>
-          <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
-          <p className='staking-pool-info'>APR : {apy}%</p>
+      <div className='d-flex flex-fill container justify-content-center'>
+        <div className='row staking-status w-100'>
+          <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
+          <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+            <div className='row staking-status-body'>
+              <div className='col-6 staking-status-body-splite'>
+                <div className='staking-status-body-text'>
+                  <span>Total $ZOG Staked:</span>
+                  <br />
+                  <span className='staking-status-body-amount'>1000</span>
+                </div>
+              </div>
+              <div className='col-6'>
+                <div className='staking-status-body-text'>
+                  <span>Reward APR:</span>
+                  <br />
+                  <span className='staking-status-body-amount'>200%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
         </div>
       </div>
-      <div className='row mt-3'>
-        {nftDatas.map((item, key) => {
-          return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-            <NftCard item={item} type={true} />
-          </div>;
-        })}
+      <div className='container justify-content-center'>
+        <div className='row staking-container w-100'>
+          <div className='col-12'>
+            <div className='row staking-status-body'>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
