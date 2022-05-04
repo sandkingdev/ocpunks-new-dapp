@@ -73,3 +73,43 @@
     margin-top: 10%;
     color: black !important;
 }
+
+.staking-card-token {
+  display: grid !important;
+  text-align: left;
+  /* overflow-wrap: break-word; */
+}
+
+.staking-card-token-name {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 23px;
+  
+    color: #434343;
+    padding-top: 15px;
+}
+  
+.staking-card-token-amount {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 23px;
+  
+    color: #0F1926;
+    margin-top: 20px;
+    overflow-wrap: anywhere;
+    margin-bottom: 10px;
+}
+
+.stake-handle-button {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: #021025;
+    border: 0 solid;
+    color: white;
+}
