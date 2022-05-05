@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
 import NftCard from 'components/NftCard';
 
 import {
@@ -44,7 +44,7 @@ const OrcNft = () => {
 
   useEffect(() => {
     axios
-      .get(`${GATEWAY}/accounts/${address}/nfts?collection=${NFT_TOKEN_ID}`)
+      .get(`${GATEWAY}/accounts/${address}/nfts?collection=${ORC_NFT_TOKEN_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
@@ -121,7 +121,7 @@ const OrcNft = () => {
           // get NFT datas
           const nftData: any = [];
           axios
-            .get(`${GATEWAY}/accounts/${ORC_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${NFT_TOKEN_ID}`)
+            .get(`${GATEWAY}/accounts/${ORC_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${ORC_NFT_TOKEN_ID}`)
             .then((res) => {
               for (let i = 0; i < res.data.length; i++) {
                 const data = res.data[i];

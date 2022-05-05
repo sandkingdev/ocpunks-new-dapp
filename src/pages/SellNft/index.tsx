@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, TIMEOUT, NFT_TOKEN_ID } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, TIMEOUT, ORC_NFT_TOKEN_ID } from 'config';
 import NftCard from 'components/NftCard';
 
 import {
@@ -32,7 +32,7 @@ const SellNft = () => {
 
   useEffect(() => {
     axios
-      .get(`${GATEWAY}/accounts/${address}/nfts?collection=${NFT_TOKEN_ID}`)
+      .get(`${GATEWAY}/accounts/${address}/nfts?collection=${ORC_NFT_TOKEN_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
