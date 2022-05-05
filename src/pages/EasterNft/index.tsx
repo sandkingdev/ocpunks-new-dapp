@@ -197,7 +197,7 @@ const EasterNft = () => {
   return (
     <div className='container mb-5'>
       <Tabs defaultActiveKey={1} id="uncontrolled-tab-example" >
-        <Tab eventKey={1} title="My EsterNFTs" onClick={() => setStatus(!status)}>
+        <Tab eventKey={1} title="My EasterNFTs" onClick={() => setStatus(!status)}>
           <div className='nft-tab'>
             <div className='row text-center'>
               <div className='col-lg-12 col-md-12 col-sm-12'>
@@ -214,7 +214,7 @@ const EasterNft = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey={2} title="Staked EsterNFTs" className='nft-tab' onClick={() => setStatus(!status)}>
+        <Tab eventKey={2} title="Staked EasterNFTs" className='nft-tab' onClick={() => setStatus(!status)}>
           <div className='nft-tab'>
             <div className='row text-center mt-5'>
               <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(rewards)}</div>
