@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { contractAddress, gateway, TIMEOUT, NFT_TOKEN_ID } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, TIMEOUT, NFT_TOKEN_ID } from 'config';
 
 import {
   useGetAccountInfo,

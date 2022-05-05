@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NftCard from 'components/NftCard';
-import { contractAddress, gateway, NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
 
 import {
   useGetAccountInfo,
@@ -39,7 +39,7 @@ const BuyNft = () => {
     const nonces: any = [];
     // get staked NFTs from sc
     const query = new Query({
-      address: new Address(contractAddress),
+      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getBalance'),
       args: [new AddressValue(new Address(address))]
     });
@@ -60,7 +60,7 @@ const BuyNft = () => {
           // get NFT datas
           const nftData: any = [];
           axios
-            .get(`${gateway}/accounts/${contractAddress}/nfts?from=0&size=2000&collection=${NFT_TOKEN_ID}`)
+            .get(`${GATEWAY}/accounts/${ORC_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${NFT_TOKEN_ID}`)
             .then((res) => {
               for (let i = 0; i < res.data.length; i++) {
                 const data = res.data[i];
@@ -86,7 +86,7 @@ const BuyNft = () => {
 
   useEffect(() => {
     const query = new Query({
-      address: new Address(contractAddress),
+      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getCurrentReward'),
       args: [new AddressValue(new Address(address))]
     });

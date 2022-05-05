@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Card } from 'antd';
-import { contractAddress, gateway, NFT_TOKEN_ID } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, NFT_TOKEN_ID } from 'config';
 import 'antd/dist/antd.css';
 import './index.scss';
 
@@ -54,7 +54,7 @@ const NftCard = (props:any) => {
         BytesValue.fromUTF8(NFT_TOKEN_ID),
         new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
         new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
-        new AddressValue(new Address(contractAddress)),
+        new AddressValue(new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS)),
         BytesValue.fromUTF8('stake')
       ];
 
@@ -94,7 +94,7 @@ const NftCard = (props:any) => {
 
       const unstakeTransaction = {
         data: data.toString(),
-        receiver: contractAddress
+        receiver: ORC_NFT_STAKING_CONTRACT_ADDRESS
       };
 
       await refreshAccount();
