@@ -43,13 +43,15 @@ const OrcNft = () => {
   const [contractNftDatas, setContractNftDatas] = React.useState<any[]>([]);
   const [rewards, setRewards] = useState(0);
 
+  const [status, setStatus] = useState(true);
+
   useEffect(() => {
     axios
       .get(`${GATEWAY}/accounts/${address}/nfts?collection=${ORC_NFT_TOKEN_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
-  }, [hasPendingTransactions]);
+  }, [hasPendingTransactions, status]);
 
   useEffect(() => {
     const query = new Query({
@@ -93,7 +95,7 @@ const OrcNft = () => {
       .catch((err) => {
         console.error('Unable to call VM query', err);
       });
-  }, [hasPendingTransactions]);
+  }, [hasPendingTransactions, status]);
 
   // staked NFT
   useEffect(() => {
@@ -144,7 +146,7 @@ const OrcNft = () => {
       .catch((err) => {
         console.error('Unable to call VM query', err);
       });
-  }, [hasPendingTransactions]);
+  }, [hasPendingTransactions, status]);
 
   useEffect(() => {
     const query = new Query({
@@ -171,7 +173,7 @@ const OrcNft = () => {
       .catch((err) => {
         console.error('Unable to call VM query', err);
       });
-  }, [hasPendingTransactions]);
+  }, [hasPendingTransactions, status]);
 
   const handleClaim = async () => {
 
@@ -196,7 +198,7 @@ const OrcNft = () => {
   return (
     <div className='container mb-5'>
       <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-        <Tab eventKey={1} title="My Orcpunks">
+        <Tab eventKey={1} title="My Orcpunks" onClick={() => setStatus(!status)}>
           <div className='nft-tab'>
             <div className='row text-center'>
               <div className='col-lg-12 col-md-12 col-sm-12'>
@@ -213,7 +215,7 @@ const OrcNft = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab'>
+        <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab' onClick={() => setStatus(!status)}>
           <div className='nft-tab'>
             <div className='row text-center mt-5'>
               <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(rewards)}</div>
