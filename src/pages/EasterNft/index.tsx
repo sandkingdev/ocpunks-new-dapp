@@ -193,7 +193,7 @@ const EasterNft = () => {
   return (
     <div className='container'>
       <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-        <Tab eventKey={1} title="My Orcpunks">
+        <Tab eventKey={1} title="My EsterNFTs">
           <div className='nft-tab'>
             <div className='row text-center'>
               <div className='col-lg-12 col-md-12 col-sm-12'>
@@ -210,7 +210,7 @@ const EasterNft = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab'>
+        <Tab eventKey={2} title="Staked EsterNFTs" className='nft-tab'>
           <div className='nft-tab'>
             <div className='row text-center'>
               <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount'>Reward $ZOG : {formatNumbers(rewards)}</div>
