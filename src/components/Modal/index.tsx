@@ -181,7 +181,40 @@ function StakingModal(props: any) {
   };
 
   const handleUnstake = async () => {
-    //
+    let amount = Number(inputValue.toString().replace(/[ ,]/g, '').trim());
+    if (amount > stakedAmount || amount <= 0) {
+      console.log('unstake amount error');
+      return;
+    }
+
+    if (amount >= (Math.floor(stakedAmount * 100) / 100)) {
+      amount = stakedAmount;
+    }
+
+    const value = (new BigNumber(amount)).multipliedBy(1000000);
+
+    const args: TypedValue[] = [
+      new BigUIntValue(Balance.fromString(value.valueOf()).valueOf())
+    ];
+
+    const { argumentsString } = new ArgSerializer().valuesToString(args);
+    const data = new TransactionPayload(`unstakeAndClaim@${argumentsString}`);
+
+    const unstakeTransaction = {
+      data: data.toString(),
+      receiver: ZOG_STAKING_CONTRACT_ADDRESS
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: unstakeTransaction,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Unstake transaction',
+        errorMessage: 'An error has occured during Unstake',
+        successMessage: 'Unstake transaction successful'
+      },
+      redirectAfterSign: false
+    });
   };
 
   return (
@@ -190,6 +223,7 @@ function StakingModal(props: any) {
       onHide={props.onHide}
       centered
     >
+      <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
         <>
           {props.actionType ? (
