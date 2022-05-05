@@ -60,6 +60,10 @@ function StakingModal(props: any) {
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
+    props.onHide();
+  }, [balance]);
+  
+  useEffect(() => {
 
     if (props.actionType) {
       setInputValue('10,000');
