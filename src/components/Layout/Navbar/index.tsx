@@ -51,8 +51,8 @@ const Navbar = () => {
                   title="SWAP"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item><Link to={routeNames.buynft}>ZOG -&gt; NFT</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.sellnft}>NFT -&gt; ZOG</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.buynft}>Buy NFTs</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.sellnft}>Sell NFTs</Link></NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (
