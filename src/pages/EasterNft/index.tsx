@@ -212,8 +212,8 @@ const EasterNft = () => {
         </Tab>
         <Tab eventKey={2} title="Staked EsterNFTs" className='nft-tab'>
           <div className='nft-tab'>
-            <div className='row text-center'>
-              <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount'>Reward $ZOG : {formatNumbers(rewards)}</div>
+            <div className='row text-center mt-5'>
+              <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(rewards)}</div>
               <div className='col-lg-6 col-md-6 col-sm-12'>
                 <button className='btn btn-primary btn-claim' onClick={handleClaim}>Claim</button>
               </div>
