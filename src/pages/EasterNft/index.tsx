@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, EASTER_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
+import { EASTER_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, EASTER_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
 import NftCard from 'components/NftCard';
 
 import {
@@ -19,7 +19,8 @@ import {
   AddressValue,
   ContractFunction,
   ProxyProvider,
-  Query
+  Query,
+  GasLimit,
 } from '@elrondnetwork/erdjs';
 
 import {
@@ -52,7 +53,7 @@ const EasterNft = () => {
 
   useEffect(() => {
     const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
+      address: new Address(EASTER_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getRewardApy')
     });
     const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
@@ -74,7 +75,7 @@ const EasterNft = () => {
 
   useEffect(() => {
     const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
+      address: new Address(EASTER_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getTotalSupply')
     });
     const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
@@ -100,7 +101,7 @@ const EasterNft = () => {
     const nonces: any = [];
     // get staked NFTs from sc
     const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
+      address: new Address(EASTER_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getBalance'),
       args: [new AddressValue(new Address(address))]
     });
@@ -121,7 +122,7 @@ const EasterNft = () => {
           // get NFT datas
           const nftData: any = [];
           axios
-            .get(`${GATEWAY}/accounts/${ORC_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${EASTER_NFT_TOKEN_ID}`)
+            .get(`${GATEWAY}/accounts/${EASTER_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${EASTER_NFT_TOKEN_ID}`)
             .then((res) => {
               for (let i = 0; i < res.data.length; i++) {
                 const data = res.data[i];
@@ -147,7 +148,7 @@ const EasterNft = () => {
 
   useEffect(() => {
     const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
+      address: new Address(EASTER_NFT_STAKING_CONTRACT_ADDRESS),
       func: new ContractFunction('getCurrentReward'),
       args: [new AddressValue(new Address(address))]
     });
@@ -175,7 +176,8 @@ const EasterNft = () => {
 
     const reinvestTransaction = {
       data: 'claim',
-      receiver: ORC_NFT_STAKING_CONTRACT_ADDRESS
+      gasLimit: new GasLimit(6000000),
+      receiver: EASTER_NFT_STAKING_CONTRACT_ADDRESS
     };
 
     await refreshAccount();
@@ -191,7 +193,7 @@ const EasterNft = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container mb-5'>
       <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
         <Tab eventKey={1} title="My EsterNFTs">
           <div className='nft-tab'>
@@ -204,7 +206,7 @@ const EasterNft = () => {
             <div className='row mt-3'>
               {nftDatas.map((item, key) => {
                 return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={true} />
+                  <NftCard item={item} type={true} id={2} />
                 </div>;
               })}
             </div>
@@ -221,7 +223,7 @@ const EasterNft = () => {
             <div className='row mt-5'>
               {contractNftDatas.map((item, key) => {
                 return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={false} />
+                  <NftCard item={item} type={false} id={2} />
                 </div>;
               })}
             </div>

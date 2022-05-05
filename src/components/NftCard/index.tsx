@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Card } from 'antd';
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, EASTER_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, EASTER_NFT_TOKEN_ID } from 'config';
 import 'antd/dist/antd.css';
 import './index.scss';
 
@@ -40,21 +40,33 @@ const NftCard = (props:any) => {
   const { address } = useGetAccountInfo();
 
   const [type, setType] = useState(true);
+  const [id, setId] = useState(1);
 
   useEffect(() => {
     setType(props.type);
+    setId(props.id);
   }, []);
 
   const handleAction = async() => {
     if (type) {
       // stake
+      let contractAddress;
+      let nftTokenId = '';
+      if (id == 1) {
+        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = ORC_NFT_TOKEN_ID;
+      } else if(id ==2) {
+        contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = EASTER_NFT_TOKEN_ID;
+      }
+      
       const amount:any = 1;
       const nonce:any = props.item.nonce;
       const args: TypedValue[] = [
-        BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
+        BytesValue.fromUTF8(nftTokenId),
         new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
         new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
-        new AddressValue(new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS)),
+        new AddressValue(new Address(contractAddress)),
         BytesValue.fromUTF8('stake')
       ];
 
@@ -80,11 +92,21 @@ const NftCard = (props:any) => {
       
     } else {
       // unstake
+      let contractAddress;
+      let nftTokenId = '';
+      if (id == 1) {
+        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = ORC_NFT_TOKEN_ID;
+      } else if(id ==2) {
+        contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = EASTER_NFT_TOKEN_ID;
+      }
+
       const amount:any = 1;
       const nonce:any = props.item.nonce;
 
       const args: TypedValue[] = [
-        BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
+        BytesValue.fromUTF8(nftTokenId),
         new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
         new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf())
       ];
@@ -94,7 +116,8 @@ const NftCard = (props:any) => {
 
       const unstakeTransaction = {
         data: data.toString(),
-        receiver: ORC_NFT_STAKING_CONTRACT_ADDRESS
+        gasLimit: new GasLimit(6000000),
+        receiver: contractAddress
       };
 
       await refreshAccount();

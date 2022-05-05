@@ -19,7 +19,8 @@ import {
   AddressValue,
   ContractFunction,
   ProxyProvider,
-  Query
+  Query,
+  GasLimit,
 } from '@elrondnetwork/erdjs';
 
 import {
@@ -176,6 +177,7 @@ const OrcNft = () => {
 
     const reinvestTransaction = {
       data: 'claim',
+      gasLimit: new GasLimit(6000000),
       receiver: ORC_NFT_STAKING_CONTRACT_ADDRESS
     };
 
@@ -192,7 +194,7 @@ const OrcNft = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container mb-5'>
       <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
         <Tab eventKey={1} title="My Orcpunks">
           <div className='nft-tab'>
@@ -205,7 +207,7 @@ const OrcNft = () => {
             <div className='row mt-3'>
               {nftDatas.map((item, key) => {
                 return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={true} />
+                  <NftCard item={item} type={true} id={1} />
                 </div>;
               })}
             </div>
@@ -222,7 +224,7 @@ const OrcNft = () => {
             <div className='row mt-5'>
               {contractNftDatas.map((item, key) => {
                 return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={false} />
+                  <NftCard item={item} type={false} id={1}/>
                 </div>;
               })}
             </div>
