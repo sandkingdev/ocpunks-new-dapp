@@ -4,7 +4,7 @@ export const ORC_NFT_STAKING_CONTRACT_ADDRESS =
   'erd1qqqqqqqqqqqqqpgqlr8jdck0lyelwu66wgq2ttc9fs7gqw5f7lnq90fv53';
 export const NFT_TOKEN_ID = 'ORC-ef544d';
 
-export const ZOG_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqfsg9m2up8zjdldt7zns8h52ayjqmpyzk5zvs9yyq52';
+export const ZOG_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq0mhxq4tsmssljjzaav73hdjas043ys575zvs79z9pe';
 
 export const STAKE_TOKEN_ID = 'ZOG-481946';
 export const REWARD_TOKEN_DECIMAL = 6;

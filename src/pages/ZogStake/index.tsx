@@ -53,11 +53,36 @@ const ZogStake = () => {
   const isLoggedIn = Boolean(address);
 
   const [apy, setApy] = useState(0);
+  const [stakedTotalAmount, setStakedTotalAmount] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
   const [earnedAmount, setEarnedAmount] = useState(0);
 
   const [modalShow, setModalShow] = useState(false);
   const [actionType, setActionType] = useState(true); // stake
+
+  useEffect(() => {
+    const query = new Query({
+      address: new Address(ZOG_STAKING_CONTRACT_ADDRESS),
+      func: new ContractFunction('getTotalSupply')
+    });
+    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
+    proxy
+      .queryContract(query)
+      .then(({ returnData }) => {
+        const [encoded] = returnData;
+        let stakeAmount:any;
+        if (encoded == undefined || encoded == '') {
+          stakeAmount = 0;
+        } else {
+          const decoded = Buffer.from(encoded, 'base64').toString('hex');
+          stakeAmount = convertWeiToEgld(parseInt(decoded, 16), REWARD_TOKEN_DECIMAL);
+          setStakedTotalAmount(stakeAmount);
+        }
+      })
+      .catch((err) => {
+        console.error('Unable to call VM query', err);
+      });
+  }, [hasPendingTransactions]);
 
   useEffect(() => {
     const query = new Query({
@@ -195,14 +220,14 @@ const ZogStake = () => {
                 <div className='staking-status-body-text'>
                   <span>Total $ZOG Staked :</span>
                   <br />
-                  <span className='staking-status-body-amount'>1000</span>
+                  <span className='staking-status-body-amount'>{stakedTotalAmount}</span>
                 </div>
               </div>
               <div className='col-6'>
                 <div className='staking-status-body-text'>
                   <span>Reward APR :</span>
                   <br />
-                  <span className='staking-status-body-amount'>200%</span>
+                  <span className='staking-status-body-amount'>{apy}%</span>
                 </div>
               </div>
             </div>
