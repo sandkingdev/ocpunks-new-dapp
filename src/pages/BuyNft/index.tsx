@@ -110,34 +110,12 @@ const BuyNft = () => {
       });
   }, [hasPendingTransactions]);
 
-  const handleClaim = async () => {
-
-    const reinvestTransaction = {
-      data: 'claim',
-      receiver: contractAddress
-    };
-
-    await refreshAccount();
-    await sendTransactions({
-      transactions: reinvestTransaction,
-      transactionsDisplayInfo: {
-        processingMessage: 'Processing Claim transaction',
-        errorMessage: 'An error has occured during Claim',
-        successMessage: 'Claim transaction successful'
-      },
-      redirectAfterSign: false
-    });
-  };
-
   return (
-    <div className='container mt-5'>
+    <div className='container'>
       <div className='row text-center'>
-        <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount'>Reward $ZOG : {formatNumbers(rewards)}</div>
-        <div className='col-lg-6 col-md-6 col-sm-12'>
-          <button className='btn btn-primary btn-claim' onClick={handleClaim}>Claim</button>
-        </div>
+        <div className='col-12 rewards-amount'>NFT PRICE : {formatNumbers(rewards)}</div>
       </div>
-      <div className='row mt-5'>
+      <div className='row mt-3'>
         {nftDatas.map((item, key) => {
           return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
             <NftCard item={item} type={false} />

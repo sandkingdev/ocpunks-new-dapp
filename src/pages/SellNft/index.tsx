@@ -28,7 +28,6 @@ const SellNft = () => {
   const { network } = useGetNetworkConfig();
 
   const [nftDatas, setNftDatas] = useState<any[]>([]);
-  const [apy, setApy] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
 
   useEffect(() => {
@@ -38,28 +37,6 @@ const SellNft = () => {
         setNftDatas(res.data);
       });
   }, [hasPendingTransactions]);
-
-  useEffect(() => {
-    const query = new Query({
-      address: new Address(contractAddress),
-      func: new ContractFunction('getRewardApy')
-    });
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        if (encoded == undefined || encoded == '') {
-          setApy(0);
-        } else {
-          const decoded = Buffer.from(encoded, 'base64').toString('hex');
-          setApy(parseInt(decoded, 16) / 100);
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-  }, []);
 
   useEffect(() => {
     const query = new Query({
@@ -87,8 +64,7 @@ const SellNft = () => {
     <div className='container'>
       <div className='row text-center'>
         <div className='col-lg-12 col-md-12 col-sm-12'>
-          <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
-          <p className='staking-pool-info'>APR : {apy}%</p>
+          <p className='staking-pool-info'>NFT PRICE : {stakedAmount}</p>
         </div>
       </div>
       <div className='row mt-3'>
