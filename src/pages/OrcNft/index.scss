@@ -6,3 +6,27 @@
     font-weight: 500;
     font-family:'Roboto', sans-serif !important;
 }
+
+.nav-tabs {
+    border-bottom: 0px solid transparent !important;
+}
+
+.nav-link {
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nav-tabs .nav-link.active {
+    color: black !important;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: transparent !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.nft-tab {
+    margin-top: 30px;
+}

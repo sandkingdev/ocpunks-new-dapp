@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Tabs, Tab } from 'react-bootstrap';
 
-import { contractAddress, gateway, TIMEOUT, NFT_TOKEN_ID } from 'config';
+import { contractAddress, gateway, NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
 import NftCard from 'components/NftCard';
 
 import {
@@ -85,19 +86,30 @@ const OrcNft = () => {
 
   return (
     <div className='container'>
-      <div className='row text-center'>
-        <div className='col-lg-12 col-md-12 col-sm-12'>
-          <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
-          <p className='staking-pool-info'>APR : {apy}%</p>
-        </div>
-      </div>
-      <div className='row mt-3'>
-        {nftDatas.map((item, key) => {
-          return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-            <NftCard item={item} type={true} />
-          </div>;
-        })}
-      </div>
+      <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+        <Tab eventKey={1} title="My Orcpunks">
+          <div className='nft-tab'>
+            <div className='row text-center'>
+              <div className='col-lg-12 col-md-12 col-sm-12'>
+                <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
+                <p className='staking-pool-info'>APR : {apy}%</p>
+              </div>
+            </div>
+            <div className='row mt-3'>
+              {nftDatas.map((item, key) => {
+                return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
+                  <NftCard item={item} type={true} />
+                </div>;
+              })}
+            </div>
+          </div>
+        </Tab>
+        <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab'>
+          <div className='nft-tab'>
+            Tab 2 content
+          </div>
+        </Tab>
+      </Tabs>
     </div>
   );
 };
