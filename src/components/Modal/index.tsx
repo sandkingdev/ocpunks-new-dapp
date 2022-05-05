@@ -66,7 +66,7 @@ function StakingModal(props: any) {
     } else {
       setInputValue('0');
     }
-  }, []);
+  }, [props.show]);
 
   useEffect(() => {
     axios
@@ -143,7 +143,7 @@ function StakingModal(props: any) {
 
   const handleStake = async () => {
     let amount = Number(inputValue.toString().replace(/[ ,]/g, '').trim());
-    if (amount < 1000000 || amount > balance) {
+    if (amount < 10000 || amount > balance) {
       console.log('stake amount error');
       return;
     }
@@ -164,7 +164,7 @@ function StakingModal(props: any) {
     const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
     const tx = {
       receiver: ZOG_STAKING_CONTRACT_ADDRESS,
-      gasLimit: new GasLimit(10000000),
+      gasLimit: new GasLimit(6000000),
       data: data.toString(),
     };
     await refreshAccount();
