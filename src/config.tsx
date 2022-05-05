@@ -6,13 +6,13 @@ export const STAKE_TOKEN_ID = 'ZOG-481946';
 
 // OrcpunksNFT staking
 export const ORC_NFT_STAKING_CONTRACT_ADDRESS =
-  'erd1qqqqqqqqqqqqqpgqlr8jdck0lyelwu66wgq2ttc9fs7gqw5f7lnq90fv53';
-export const ORC_NFT_TOKEN_ID = 'ORC-ef544d';
+  'erd1qqqqqqqqqqqqqpgqzcu8k5dawkv2jewa74wwnap7x283fmy75zvsa6azf3';
+export const ORC_NFT_TOKEN_ID = 'ORC-0427ce';
 
 // EasterNFT staking
 export const EASTER_NFT_STAKING_CONTRACT_ADDRESS =
-  'erd1qqqqqqqqqqqqqpgqlr8jdck0lyelwu66wgq2ttc9fs7gqw5f7lnq90fv53';
-export const EASTER_NFT_TOKEN_ID = 'ORC-ef544d';
+  'erd1qqqqqqqqqqqqqpgqrler5y48pg9s6qkunxyq0azth85lvn3v5zvsr9404r';
+export const EASTER_NFT_TOKEN_ID = 'EAS-da9026';
 
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;

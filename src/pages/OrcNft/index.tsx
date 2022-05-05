@@ -163,6 +163,7 @@ const OrcNft = () => {
         } else {
           const decoded = Buffer.from(encoded, 'base64').toString('hex');
           const value = convertWeiToEgld(parseInt(decoded, 16), REWARD_TOKEN_DECIMAL);
+          console.log(value);
           setRewards(value);
         }
       })

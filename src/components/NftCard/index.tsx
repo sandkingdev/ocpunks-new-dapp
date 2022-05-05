@@ -112,13 +112,13 @@ const NftCard = (props:any) => {
 
   return (
     <div className='row'>
-      <div className='col-12 nft-card'>
+      <div className='col-12 nft-card mt-3'>
         <Card
           hoverable
           style={{ width: '100%', height: '100%' }}
           cover={<img alt="example" src={props.item.url} className='nft-image' />}
         >
-          <Meta title={props.item.name} description={props.item.collection} />
+          <Meta title={props.item.name} description={props.item.identifier} />
           {type ? (
             <button className='btn btn-primary btn-action' onClick={handleAction}>Stake</button>
           ) : (
