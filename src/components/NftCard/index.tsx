@@ -133,6 +133,14 @@ const NftCard = (props:any) => {
     }
   };
 
+  const handleSell = () => {
+    console.log('sell');
+  };
+
+  const handleBuy = () => {
+    console.log('buy');
+  };
+
   return (
     <div className='row'>
       <div className='col-12 nft-card mt-3'>
@@ -144,9 +152,9 @@ const NftCard = (props:any) => {
           <Meta title={props.item.name} description={props.item.identifier} />
           {id == 3 ? (
             type ? (
-              <button className='btn btn-primary btn-action' onClick={handleAction}>SELL</button>
+              <button className='btn btn-primary btn-action' onClick={handleSell}>SELL</button>
             ) : (
-              <button className='btn btn-primary btn-action' onClick={handleAction}>BUY</button>
+              <button className='btn btn-primary btn-action' onClick={handleBuy}>BUY</button>
             )
           ) : (
             type ? (

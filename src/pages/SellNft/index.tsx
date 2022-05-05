@@ -28,7 +28,6 @@ const SellNft = () => {
   const { network } = useGetNetworkConfig();
 
   const [nftDatas, setNftDatas] = useState<any[]>([]);
-  const [stakedAmount, setStakedAmount] = useState(0);
 
   useEffect(() => {
     axios
@@ -38,33 +37,11 @@ const SellNft = () => {
       });
   }, [hasPendingTransactions]);
 
-  useEffect(() => {
-    const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
-      func: new ContractFunction('getTotalSupply')
-    });
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        if (encoded == undefined || encoded == '') {
-          setStakedAmount(0);
-        } else {
-          const decoded = Buffer.from(encoded, 'base64').toString('hex');
-          setStakedAmount(parseInt(decoded, 16));
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-  }, [hasPendingTransactions]);
-
   return (
     <div className='container'>
       <div className='row text-center'>
         <div className='col-lg-12 col-md-12 col-sm-12'>
-          <p className='staking-pool-info'>NFT PRICE : {NFT_PRICE} $ZOG</p>
+          <p className='staking-pool-info'>NFT PRICE : 30,000 $ZOG</p>
         </div>
       </div>
       <div className='row mt-3'>
