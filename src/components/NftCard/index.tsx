@@ -1,6 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'antd';
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, EASTER_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, EASTER_NFT_TOKEN_ID } from 'config';
+import BigNumber from 'bignumber.js/bignumber.js';
+
+import {
+  ORC_NFT_STAKING_CONTRACT_ADDRESS,
+  EASTER_NFT_STAKING_CONTRACT_ADDRESS,
+  GATEWAY,
+  ORC_NFT_TOKEN_ID,
+  EASTER_NFT_TOKEN_ID,
+  SWAP_CONTRACT_ADDRESS,
+  STAKE_TOKEN_ID,
+  NFT_PRICE
+} from 'config';
+
 import 'antd/dist/antd.css';
 import './index.scss';
 
@@ -35,7 +47,7 @@ import {
 
 const { Meta } = Card;
 
-const NftCard = (props:any) => {
+const NftCard = (props: any) => {
 
   const { address } = useGetAccountInfo();
 
@@ -47,7 +59,7 @@ const NftCard = (props:any) => {
     setId(props.id);
   }, []);
 
-  const handleAction = async() => {
+  const handleAction = async () => {
     if (type) {
       // stake
       let contractAddress;
@@ -55,13 +67,13 @@ const NftCard = (props:any) => {
       if (id == 1) {
         contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = ORC_NFT_TOKEN_ID;
-      } else if(id ==2) {
+      } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
       }
-      
-      const amount:any = 1;
-      const nonce:any = props.item.nonce;
+
+      const amount: any = 1;
+      const nonce: any = props.item.nonce;
       const args: TypedValue[] = [
         BytesValue.fromUTF8(nftTokenId),
         new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
@@ -89,7 +101,7 @@ const NftCard = (props:any) => {
         },
         redirectAfterSign: false
       });
-      
+
     } else {
       // unstake
       let contractAddress;
@@ -97,13 +109,13 @@ const NftCard = (props:any) => {
       if (id == 1) {
         contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = ORC_NFT_TOKEN_ID;
-      } else if(id ==2) {
+      } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
       }
 
-      const amount:any = 1;
-      const nonce:any = props.item.nonce;
+      const amount: any = 1;
+      const nonce: any = props.item.nonce;
 
       const args: TypedValue[] = [
         BytesValue.fromUTF8(nftTokenId),
@@ -133,12 +145,72 @@ const NftCard = (props:any) => {
     }
   };
 
-  const handleSell = () => {
-    console.log('sell');
+  const handleSell = async () => {
+    const amount: any = 1;
+    const nonce: any = props.item.nonce;
+
+    const args: TypedValue[] = [
+      BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
+      new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
+      new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
+      new AddressValue(new Address(SWAP_CONTRACT_ADDRESS)),
+      BytesValue.fromUTF8('sellNft')
+    ];
+
+    const { argumentsString } = new ArgSerializer().valuesToString(args);
+    const data = new TransactionPayload(`ESDTNFTTransfer@${argumentsString}`);
+
+    const sellTransaction = {
+      data: data.toString(),
+      gasLimit: new GasLimit(6000000),
+      receiver: address
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: sellTransaction,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Sell transaction',
+        errorMessage: 'An error has occured during sell',
+        successMessage: 'Sell transaction successful'
+      },
+      redirectAfterSign: false
+    });
   };
 
-  const handleBuy = () => {
-    console.log('buy');
+  const handleBuy = async () => {
+    const amount: any = 1;
+    const nonce: any = props.item.nonce;
+
+    const value = (new BigNumber(NFT_PRICE)).multipliedBy(1000000);
+    const args: TypedValue[] = [
+      BytesValue.fromUTF8(STAKE_TOKEN_ID),
+      new BigUIntValue(Balance.fromString(value.valueOf()).valueOf()),
+      BytesValue.fromUTF8('buyNft'),
+      BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
+      new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
+      new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
+    ];
+
+    const { argumentsString } = new ArgSerializer().valuesToString(args);
+    const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
+    const tx = {
+      receiver: SWAP_CONTRACT_ADDRESS,
+      gasLimit: new GasLimit(6000000),
+      data: data.toString(),
+    };
+
+    await refreshAccount();
+
+    await sendTransactions({
+      transactions: tx,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Buy transaction',
+        errorMessage: 'An error has occured during buy',
+        successMessage: 'Buy transaction successful'
+      },
+      redirectAfterSign: false
+    });
   };
 
   return (

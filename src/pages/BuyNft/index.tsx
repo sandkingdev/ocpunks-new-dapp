@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NftCard from 'components/NftCard';
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT, NFT_PRICE } from 'config';
+import { SWAP_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT, NFT_PRICE } from 'config';
 
 import {
   useGetAccountInfo,
@@ -34,52 +34,11 @@ const BuyNft = () => {
   const [nftDatas, setNftDatas] = React.useState<any[]>([]);
 
   useEffect(() => {
-
-    const nonces: any = [];
-    // get staked NFTs from sc
-    const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
-      func: new ContractFunction('getBalance'),
-      args: [new AddressValue(new Address(address))]
-    });
-
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const len = returnData.length;
-        if (len > 0) {
-          const data = returnData;
-          for (let i = 0; i < len; i++) {
-            const decoded = Buffer.from(data[i], 'base64').toString('hex');
-            nonces.push(parseInt(decoded, 16));
-          }
-          
-          // get NFT datas
-          const nftData: any = [];
-          axios
-            .get(`${GATEWAY}/accounts/${ORC_NFT_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${ORC_NFT_TOKEN_ID}`)
-            .then((res) => {
-              for (let i = 0; i < res.data.length; i++) {
-                const data = res.data[i];
-                for (let j = 0; j < nonces.length; j++) {
-                  if (data.nonce == nonces[j]) {
-                    nftData.push(data);
-                    break;
-                  }
-                }
-              }
-
-              setNftDatas(nftData);
-            });
-        } else {
-          // No Data
-          setNftDatas([]);
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
+    // get NFT datas
+    axios
+      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts?from=0&size=2000&collection=${ORC_NFT_TOKEN_ID}`)
+      .then((res) => {
+        setNftDatas(res.data);
       });
   }, [hasPendingTransactions]);
 
