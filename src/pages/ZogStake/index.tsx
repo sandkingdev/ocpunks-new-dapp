@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BigNumber from 'bignumber.js/bignumber.js';
+import { routeNames } from 'routes';
 
 import { ZOG_STAKING_CONTRACT_ADDRESS, GATEWAY, TIMEOUT, STAKE_TOKEN_ID, REWARD_TOKEN_DECIMAL } from 'config';
 
@@ -43,6 +44,8 @@ import StakingModal from 'components/Modal';
 import './index.scss';
 
 const ZogStake = () => {
+
+  const navigate = useNavigate();
 
   const { address } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
@@ -167,6 +170,10 @@ const ZogStake = () => {
     });
   };
 
+  const goToLogin = () => {
+    navigate(routeNames.unlock, { replace: true });
+  };
+
   const handleStake = () => {
     setActionType(true); // stake
     setModalShow(true);
@@ -213,7 +220,7 @@ const ZogStake = () => {
                   <div className='col-lg-10 col-md-10 col-sm-12'>
                     <div className='staking-card-token'>
                       <span className='staking-card-token-name'>Staked $ZOG</span>
-                      <span className='staking-card-token-amount'>10000</span>
+                      <span className='staking-card-token-amount'>{stakedAmount}</span>
                     </div>
                   </div>
                 </div>
@@ -224,7 +231,7 @@ const ZogStake = () => {
                   <div className='col-lg-10 col-md-10 col-sm-12'>
                     <div className='staking-card-token'>
                       <span className='staking-card-token-name'>Earned $ZOG</span>
-                      <span className='staking-card-token-amount'>10000</span>
+                      <span className='staking-card-token-amount'>{earnedAmount}</span>
                     </div>
                   </div>
                 </div>
@@ -249,12 +256,12 @@ const ZogStake = () => {
                       <div className='col-lg-4 col-md-4 col-sm-12'>
                         <div className='row'>
                           <div className='col-12'>
-                            <button className='stake-handle-button'>Claim</button>
+                            <button className='stake-handle-button' onClick={handleClaim}>Claim</button>
                           </div>
                         </div>
                         <div className='row'>
                           <div className='col-12'>
-                            <button className='stake-handle-button'>Reinvest</button>
+                            <button className='stake-handle-button' onClick={handleReinvest}>Reinvest</button>
                           </div>
                         </div>
                       </div>
@@ -264,7 +271,7 @@ const ZogStake = () => {
                     <div className='row'>
                       <div className='col-lg-3 col-md-3 col-sm-12'></div>
                       <div className='col-lg-6 col-md-6 col-sm-12'>
-                        <button className='stake-handle-button'>Stake</button>
+                        <button className='stake-handle-button' onClick={handleStake}>Stake</button>
                       </div>
                       <div className='col-lg-3 col-md-3 col-sm-12'></div>
                     </div>
@@ -273,7 +280,7 @@ const ZogStake = () => {
                   <div className='row'>
                     <div className='col-lg-3 col-md-3 col-sm-12'></div>
                     <div className='col-lg-6 col-md-6 col-sm-12'>
-                      <button className='stake-handle-button'>Connect</button>
+                      <button className='stake-handle-button' onClick={goToLogin}>Connect</button>
                     </div>
                     <div className='col-lg-3 col-md-3 col-sm-12'></div>
                   </div>
