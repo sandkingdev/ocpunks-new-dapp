@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NftCard from 'components/NftCard';
-import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT } from 'config';
+import { ORC_NFT_STAKING_CONTRACT_ADDRESS, GATEWAY, ORC_NFT_TOKEN_ID, REWARD_TOKEN_DECIMAL, TIMEOUT, NFT_PRICE } from 'config';
 
 import {
   useGetAccountInfo,
@@ -32,7 +32,6 @@ const BuyNft = () => {
   const { hasPendingTransactions } = useGetPendingTransactions();
 
   const [nftDatas, setNftDatas] = React.useState<any[]>([]);
-  const [rewards, setRewards] = useState(0);
 
   useEffect(() => {
 
@@ -84,41 +83,15 @@ const BuyNft = () => {
       });
   }, [hasPendingTransactions]);
 
-  useEffect(() => {
-    const query = new Query({
-      address: new Address(ORC_NFT_STAKING_CONTRACT_ADDRESS),
-      func: new ContractFunction('getCurrentReward'),
-      args: [new AddressValue(new Address(address))]
-    });
-
-    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
-
-    proxy
-      .queryContract(query)
-      .then(({ returnData }) => {
-        const [encoded] = returnData;
-        if (encoded == undefined || encoded == '') {
-          setRewards(0);
-        } else {
-          const decoded = Buffer.from(encoded, 'base64').toString('hex');
-          const value = convertWeiToEgld(parseInt(decoded, 16), REWARD_TOKEN_DECIMAL);
-          setRewards(value);
-        }
-      })
-      .catch((err) => {
-        console.error('Unable to call VM query', err);
-      });
-  }, [hasPendingTransactions]);
-
   return (
     <div className='container'>
       <div className='row text-center'>
-        <div className='col-12 rewards-amount'>NFT PRICE : {formatNumbers(rewards)}</div>
+        <div className='col-12 rewards-amount'>NFT PRICE : {NFT_PRICE} $ZOG</div>
       </div>
       <div className='row mt-3'>
         {nftDatas.map((item, key) => {
           return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-            <NftCard item={item} type={false} />
+            <NftCard item={item} type={false} id={3} />
           </div>;
         })}
       </div>

@@ -142,10 +142,18 @@ const NftCard = (props:any) => {
           cover={<img alt="example" src={props.item.url} className='nft-image' />}
         >
           <Meta title={props.item.name} description={props.item.identifier} />
-          {type ? (
-            <button className='btn btn-primary btn-action' onClick={handleAction}>Stake</button>
+          {id == 3 ? (
+            type ? (
+              <button className='btn btn-primary btn-action' onClick={handleAction}>SELL</button>
+            ) : (
+              <button className='btn btn-primary btn-action' onClick={handleAction}>BUY</button>
+            )
           ) : (
-            <button className='btn btn-primary btn-action' onClick={handleAction}>Untake</button>
+            type ? (
+              <button className='btn btn-primary btn-action' onClick={handleAction}>Stake</button>
+            ) : (
+              <button className='btn btn-primary btn-action' onClick={handleAction}>Untake</button>
+            )
           )}
         </Card>
       </div>
