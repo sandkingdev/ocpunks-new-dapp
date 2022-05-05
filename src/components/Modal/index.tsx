@@ -202,6 +202,7 @@ function StakingModal(props: any) {
 
     const unstakeTransaction = {
       data: data.toString(),
+      gasLimit: new GasLimit(6000000),
       receiver: ZOG_STAKING_CONTRACT_ADDRESS
     };
 

@@ -161,6 +161,7 @@ const ZogStake = () => {
 
     const reinvestTransaction = {
       data: 'reinvest',
+      gasLimit: new GasLimit(6000000),
       receiver: ZOG_STAKING_CONTRACT_ADDRESS
     };
 
@@ -180,6 +181,7 @@ const ZogStake = () => {
 
     const harvestTransaction = {
       data: 'claim',
+      gasLimit: new GasLimit(6000000),
       receiver: ZOG_STAKING_CONTRACT_ADDRESS
     };
 
@@ -220,7 +222,7 @@ const ZogStake = () => {
                 <div className='staking-status-body-text'>
                   <span>Total $ZOG Staked :</span>
                   <br />
-                  <span className='staking-status-body-amount'>{stakedTotalAmount}</span>
+                  <span className='staking-status-body-amount'>{formatNumbers(stakedTotalAmount)}</span>
                 </div>
               </div>
               <div className='col-6'>
@@ -245,7 +247,7 @@ const ZogStake = () => {
                   <div className='col-lg-10 col-md-10 col-sm-12'>
                     <div className='staking-card-token'>
                       <span className='staking-card-token-name'>Staked $ZOG</span>
-                      <span className='staking-card-token-amount'>{stakedAmount}</span>
+                      <span className='staking-card-token-amount'>{formatNumbers(stakedAmount)}</span>
                     </div>
                   </div>
                 </div>
@@ -256,14 +258,14 @@ const ZogStake = () => {
                   <div className='col-lg-10 col-md-10 col-sm-12'>
                     <div className='staking-card-token'>
                       <span className='staking-card-token-name'>Earned $ZOG</span>
-                      <span className='staking-card-token-amount'>{earnedAmount}</span>
+                      <span className='staking-card-token-amount'>{formatNumbers(earnedAmount)}</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className='col-lg-6 col-md-6 col-sm-12' style={{ alignSelf: 'center' }}>
                 {isLoggedIn ? (
-                  earnedAmount > 0 ? (
+                  stakedAmount > 0 || earnedAmount > 0 ? (
                     <div className='row'>
                       <div className='col-lg-2 col-md-2 col-sm-12'></div>
                       <div className='col-lg-4 col-md-4 col-sm-12'>
