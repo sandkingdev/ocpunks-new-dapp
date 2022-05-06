@@ -16,9 +16,29 @@
     height: 40px;
 }
 
+.ant-pagination-item-ellipsis {
+    color: white !important;
+}
+
+.ant-pagination-item-active {
+    color: #ba16b9 !important;
+}
+
+.ant-pagination-options {
+    visibility: hidden;
+}
+
+.ant-pagination{
+    margin-left: 110px;
+}
+
 @media (max-width: 767.98px) {
     .btn-claim {
         width: 80% !important;
         margin-top: 20px;
+    }
+
+    .ant-pagination{
+        margin-left: 0px;
     }
 }

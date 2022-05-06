@@ -38,7 +38,7 @@ const SellNft = () => {
   }, [hasPendingTransactions]);
 
   return (
-    <div className='container'>
+    <div className='container mb-5'>
       <div className='row text-center'>
         <div className='col-lg-12 col-md-12 col-sm-12'>
           <p className='staking-pool-info'>NFT PRICE : 50,000 $ZOG</p>
