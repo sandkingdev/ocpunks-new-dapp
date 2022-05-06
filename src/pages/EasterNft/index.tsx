@@ -47,7 +47,7 @@ const EasterNft = () => {
 
   useEffect(() => {
     axios
-      .get(`${GATEWAY}/accounts/${address}/nfts?collection=${EASTER_NFT_TOKEN_ID}`)
+      .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=2000&collection=${EASTER_NFT_TOKEN_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
