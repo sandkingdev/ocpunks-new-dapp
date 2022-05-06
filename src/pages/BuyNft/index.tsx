@@ -45,7 +45,7 @@ const BuyNft = () => {
   return (
     <div className='container'>
       <div className='row text-center'>
-        <div className='col-12 rewards-amount'>NFT PRICE : 30,000 $ZOG</div>
+        <div className='col-12 rewards-amount'>NFT PRICE : 50,000 $ZOG</div>
       </div>
       <div className='row mt-3'>
         {nftDatas.map((item, key) => {

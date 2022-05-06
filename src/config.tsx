@@ -16,7 +16,7 @@ export const EASTER_NFT_TOKEN_ID = 'EAS-da9026';
 
 export const SWAP_CONTRACT_ADDRESS =
   'erd1qqqqqqqqqqqqqpgqj6csja68fagx5ggsl3kck39fuj3gqpsl5zvsay7nng';
-export const NFT_PRICE = 30000;
+export const NFT_PRICE = 50000;
 
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
