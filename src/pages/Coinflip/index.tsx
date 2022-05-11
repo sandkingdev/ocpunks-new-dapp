@@ -356,7 +356,7 @@ const Coinflip = () => {
           <Dropdown.Toggle className='token-id-toggle' id="token-id">
             {selectedTokenId && TOKENS[selectedTokenId] && (
               <>
-                <span>{TOKENS[selectedTokenId].ticker}</span>
+                <span>$ {TOKENS[selectedTokenId].ticker}</span>
                 {/* <img src={TOKENS[selectedTokenId].url} /> */}
               </>
             )}
