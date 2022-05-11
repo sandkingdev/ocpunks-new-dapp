@@ -83,13 +83,13 @@ export const TOKENS:any = {
         url: 'https://media.elrond.com/tokens/asset/ZOG-c66239/logo.svg',
         unit_price_in_usd: 0.00019,
     },
-    'LKMEX-aab910': {
-        identifier: 'LKMEX-aab910',
-        ticker: 'LKMEX',
-        decimals: 18,
-        url: 'https://media.elrond.com/tokens/asset/ZOG-c66239/logo.svg',
-        unit_price_in_usd: 0.00019,
-    },
+    // 'LKMEX-aab910': {
+    //     identifier: 'LKMEX-aab910',
+    //     ticker: 'LKMEX',
+    //     decimals: 18,
+    //     url: 'https://media.elrond.com/tokens/asset/ZOG-c66239/logo.svg',
+    //     unit_price_in_usd: 0.00019,
+    // },
 };
 
 
