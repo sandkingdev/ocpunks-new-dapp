@@ -51,6 +51,7 @@ import {
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
 import WinLogo from '../../assets/img/win.webp';
 import LoseLogo from '../../assets/img/lose.webp';
+import CoinLogo from '../../assets/img/coin.gif';
 
 import './index.scss';
 
@@ -300,7 +301,12 @@ const Coinflip = () => {
         </video>
       </div> */}
       <div className='row justify-content-center'>
-        <img src={WinLogo} className='project-logo'></img>
+        <img src={CoinLogo} className='project-logo'></img>
+        {/* {flipResult ? (
+          <img src={WinLogo} className='project-logo'></img>
+        ) : (
+          <img src={LoseLogo} className='project-logo'></img>
+        )} */}
       </div>
       <div className='row justify-content-center mt-3'>
         <p className='flip-type'>I choose</p>
