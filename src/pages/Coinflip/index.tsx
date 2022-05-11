@@ -218,7 +218,7 @@ const Coinflip = () => {
     })();
   }, [contractInteractor, hasPendingTransactions]);
 
-  function onTokenIdMenuSelect(token_id:any) {
+  function onTokenIdMenuSelect(token_id: any) {
     console.log('token_id', token_id);
     setSelectedTokenId(token_id);
   }
@@ -352,6 +352,26 @@ const Coinflip = () => {
       </div>
       <div className='row justify-content-center mt-3'>
         <p className='bet-type'>and I bet the</p>
+        <Dropdown onSelect={onTokenIdMenuSelect} drop='end'>
+          <Dropdown.Toggle className='token-id-toggle' id="token-id">
+            {selectedTokenId && TOKENS[selectedTokenId] && (
+              <>
+                <span>{TOKENS[selectedTokenId].ticker}</span>
+                {/* <img src={TOKENS[selectedTokenId].url} /> */}
+              </>
+            )}
+          </Dropdown.Toggle>
+          <Dropdown.Menu className='token-id-menu'>
+            {
+              flipPacks && Object.keys(flipPacks).map((key, index) => (
+                <Dropdown.Item eventKey={key} key={`token-id-menu-item-${key}`}>
+                  <span>{flipPacks[key].ticker}</span>
+                  {/* <img src={TOKENS[key].url} /> */}
+                </Dropdown.Item>
+              ))
+            }
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
       <div className='row'>
         <Container>

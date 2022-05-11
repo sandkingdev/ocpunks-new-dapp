@@ -127,6 +127,55 @@
     border-bottom: 1px solid rgba(91, 198, 206, 0.54);
 }
 
+.dropdown-menu {
+    min-width: inherit !important;
+}
+
+.token-id-toggle{
+    margin-left: 15px !important;
+    margin-top: 10px !important;
+    font-size: 20px !important;
+    font-weight: 300 !important;
+    background-color: #ba16b9 !important;
+    border: 0px solid !important;
+
+    &:focus {
+        border: 0px solid !important;
+    }
+
+    span {
+        font-family: 'Winterland' !important;
+    }
+}
+
+.token-id-menu {
+    background-color: rgba(29, 26, 29, 0.9) !important;
+    // font-family: $font-morris;
+    margin-top: -4px !important;
+    
+    .dropdown-item {
+        color: white !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background-color: #e9ecef44 !important;
+        }
+
+        span {
+            margin-right: 0.6rem;
+            // font-size: 1.2rem;
+            line-height: 24px;
+            height: 24px;
+            vertical-align: middle;
+            width: 60%;
+            font-family: 'Winterland' !important;
+        }
+    }
+}
+
 @media (max-width: 767.98px) {
     .head-container{
         text-align: center;
