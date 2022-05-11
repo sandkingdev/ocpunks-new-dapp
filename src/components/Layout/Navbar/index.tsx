@@ -40,7 +40,7 @@ const Navbar = () => {
                 <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
                   $ZOG
                 </Link>
-                <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
+                <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
                   Coinflip
                 </Link>
                 <NavDropdown
