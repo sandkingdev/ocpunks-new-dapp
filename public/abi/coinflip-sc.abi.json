@@ -1,0 +1,230 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.62.0-nightly",
+            "commitHash": "8bf93e9b6791acee3a594ed202fdfe45ad9952b5",
+            "commitDate": "2022-04-09",
+            "channel": "Nightly",
+            "short": "rustc 1.62.0-nightly (8bf93e9b6 2022-04-09)"
+        },
+        "contractCrate": {
+            "name": "coinflip-sc",
+            "version": "0.1.0"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.31.1"
+        }
+    },
+    "name": "OrcpunksCoinflip",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "treasury_wallet",
+                "type": "Address"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "withdrawFunds",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_token_id",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_amount",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "viewLastFlips",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "opt_number_of_flips_to_show",
+                    "type": "optional<u32>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<Flip>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "flip",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "flip_type",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getFlips",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<Flip>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getFlipPacks",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<multi<TokenIdentifier,FlipPack>>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "addFlipPacks",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "flip_packs",
+                    "type": "variadic<multi<TokenIdentifier,u32,u32,BigUint,BigUint,BigUint,BigUint,BigUint,BigUint>>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "removeFlipPacks",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "token_ids",
+                    "type": "variadic<TokenIdentifier>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "clearFlipPacks",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "getTreasuryWallet",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "setTreasuryWallet",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "treasury_wallet",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getTotalFlippedAmounts",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<multi<TokenIdentifier,BigUint>>",
+                    "multi_result": true
+                }
+            ]
+        }
+    ],
+    "hasCallback": false,
+    "types": {
+        "Flip": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "flip_type",
+                    "type": "u32"
+                },
+                {
+                    "name": "token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "success",
+                    "type": "bool"
+                },
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "u64"
+                }
+            ]
+        },
+        "FlipPack": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "lp_fee",
+                    "type": "u32"
+                },
+                {
+                    "name": "treasury_fee",
+                    "type": "u32"
+                },
+                {
+                    "name": "amounts",
+                    "type": "List<BigUint>"
+                }
+            ]
+        }
+    }
+}

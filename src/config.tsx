@@ -18,6 +18,14 @@ export const SWAP_CONTRACT_ADDRESS =
   'erd1qqqqqqqqqqqqqpgqkq9wkkzykg9qxt5y0uncrf7lfhx5ta2y7lnqcukq0l';
 export const NFT_PRICE = 50000;
 
+// CoinFlip
+export const FLIP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqnzvm3tw29dsftj8sywtfethvtn7eplh35zvs6aurtk';
+export const FLIP_CONTRACT_ABI_URL = '/abi/coinflip-sc.abi.json';
+export const FLIP_CONTRACT_NAME = 'OrcpunksCoinflip';
+export const FLIP_GAS_LIMIT = 6000000;
+
+export const FLIP_LAST_TX_SEARCH_COUNT = 3;
+
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
 
