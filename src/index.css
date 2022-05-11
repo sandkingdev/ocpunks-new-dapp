@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Winterland';
+  src: local('Winterland'), url(./assets/fonts/Winterland.otf) format('opentype');
+}
+
