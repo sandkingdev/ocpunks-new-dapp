@@ -13,20 +13,31 @@ import {
   AbiRegistry,
   SmartContractAbi,
   SmartContract,
+  Balance,
+  Interaction,
+  QueryResponseBundle,
   ProxyProvider,
-  TypedValue,
-  BytesValue,
-  BigUIntValue,
-  ArgSerializer,
   GasLimit,
-  OptionalValue,
+  ContractFunction,
   U32Value,
+  ArgSerializer
 } from '@elrondnetwork/erdjs';
 
 import {
   convertWeiToEgld,
   formatNumbers
 } from '../../utils/convert';
+
+import { sendQuery } from '../../utils/transaction';
+
+import {
+  FLIP_CONTRACT_ADDRESS,
+  FLIP_CONTRACT_ABI_URL,
+  FLIP_CONTRACT_NAME,
+  FLIP_GAS_LIMIT,
+  FLIP_LAST_TX_SEARCH_COUNT,
+  TIMEOUT,
+} from '../../config';
 
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
 import './index.scss';
@@ -37,6 +48,35 @@ const Coinflip = () => {
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const isLoggedIn = Boolean(address);
+  const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
+
+  // load smart contract abi and parse it to SmartContract object for tx
+  const [contractInteractor, setContractInteractor] = React.useState<any>(undefined);
+  React.useEffect(() => {
+    (async () => {
+      const nftAbiRegistry = await AbiRegistry.load({
+        urls: [FLIP_CONTRACT_ABI_URL],
+      });
+      const contract = new SmartContract({
+        address: new Address(FLIP_CONTRACT_ADDRESS),
+        abi: new SmartContractAbi(nftAbiRegistry, [FLIP_CONTRACT_NAME]),
+      });
+      setContractInteractor(contract);
+    })();
+  }, []); // [] makes useEffect run once
+
+  const [flipPacks, setFlipPacks] = React.useState<any>();
+  React.useEffect(() => {
+    (async () => {
+      if (!contractInteractor) return;
+      const interaction:Interaction = contractInteractor.contract.methods.getFlipPacks();
+
+      const res: QueryResponseBundle | undefined = await sendQuery(contractInteractor, proxy, interaction);
+      if (!res || !res.returnCode.isSuccess()) return;
+      const value = res.firstValue.valueOf();
+      
+    })();
+  }, [contractInteractor]);
 
   const [flipType, setFlipType] = useState(0);
   const [headStyle, setHeadStyle] = useState('choose-button select-type-button');
