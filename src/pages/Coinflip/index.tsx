@@ -64,7 +64,7 @@ function printNumber(v:any) {
   );
 }
 
-function printAddress(v:any, len = 20) {
+function printAddress(v:any, len = 10) {
   return v.substring(0, len);
 }
 
@@ -80,6 +80,17 @@ const Coinflip = () => {
   // modal
   const [flipResultModalShow, setFlipResultModalShow] = React.useState<boolean>(false);
   const [flipResult, setFlipResult] = React.useState<boolean>(false);
+
+  const [balance, setBalance] = React.useState<any>();
+  useEffect(() => {
+    axios
+      .get(`${GATEWAY}/accounts/${address}/tokens/${STAKE_TOKEN_ID}`)
+      .then((res) => {
+        const token = res.data;
+        const balance = token['balance'] / Math.pow(10, token['decimals']);
+        setBalance(balance);
+      });
+  }, [hasPendingTransactions]);
 
   // load smart contract abi and parse it to SmartContract object for tx
   const [contractInteractor, setContractInteractor] = React.useState<any>(undefined);
@@ -186,18 +197,7 @@ const Coinflip = () => {
         }
       }
     })();
-  }, [contractInteractor, hasPendingTransactions]);
-
-  const [balance, setBalance] = React.useState<any>();
-  useEffect(() => {
-    axios
-      .get(`${GATEWAY}/accounts/${address}/tokens/${STAKE_TOKEN_ID}`)
-      .then((res) => {
-        const token = res.data;
-        const balance = token['balance'] / Math.pow(10, token['decimals']);
-        setBalance(balance);
-      });
-  }, [hasPendingTransactions]);
+  }, [contractInteractor, hasPendingTransactions, balance]);
 
   const [selectedAmountId, setSelectedAmountId] = React.useState<number>(0);
   function onAmountButtonClick(e: any) {
@@ -341,27 +341,25 @@ const Coinflip = () => {
             </button>
           </div>
 
-          {/* <div className='fate-history-container'>
+          <div className='history-container'>
             {
-              flipTxs && flipTxs.map((v:any, index:any) => (
-                <Row className='fate-history-row' key={`flip-tx-row-${index}`}>
+              flipTxs.map((v:any, index:any) => (
+                <Row className='history-row' key={`flip-tx-row-${index}`}>
                   <Col
                     sm={12}
-                    className='fate-history-text'
+                    className='history-text'
                     key={`flip-tx-text-${index}`}
                   >
-                    {printAddress(v.user_address)}
-                    {'... '}
-                    <span className={v.success ? 'win' : 'lose'}>{v.success ? 'wisely earned' : 'sent to Hel'}</span>
+                    Wallet ({printAddress(v.user_address)}...) flipped 
                     {' '}
                     {printNumber(v.amount)}
-                    {' '}
-                    {v.ticker}
+                    {' '}ZOG and 
+                    <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
                   </Col>
                 </Row>
               ))
             }
-          </div> */}
+          </div>
         </Container>
       </div>
     </div>

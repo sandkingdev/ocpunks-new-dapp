@@ -67,6 +67,61 @@
     text-align: center;
 }
 
+.history-container {
+    font-size: 1.4rem;
+    font-family: 'Winterland';
+    text-align: center;
+
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+
+    .history-row {
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        border-top: 1px solid rgba(91, 198, 206, 0.54);
+        border-left: 1px solid rgba(91, 198, 206, 0.54);
+        border-right: 1px solid rgba(91, 198, 206, 0.54);
+        background-color: #C0C0C022;
+        padding: .4rem .8rem;
+
+        .history-text {
+            color: white;
+            .win {
+                color: #f4c430;
+            }
+            .lose {
+                color: #B22222;
+            }
+
+            .text2 {
+                font-size: 1.8rem;
+            }
+            .text3 {
+                font-size: 1.2rem;
+                color:#888a1a;
+            }
+        }
+
+        .history-tx {
+            a {
+                transition: all 0.2s ease-in;
+                cursor: pointer;
+
+                &:hover {
+                    color: rgba(91, 198, 206, 0.54);
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    border-bottom: 1px solid rgba(91, 198, 206, 0.54);
+}
+
 @media (max-width: 767.98px) {
     .head-container{
         text-align: center;
