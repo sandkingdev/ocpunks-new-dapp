@@ -81,7 +81,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 3rem;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
 
     .history-row {
         margin-left: auto !important;
@@ -125,6 +125,13 @@
     }
 
     border-bottom: 1px solid rgba(91, 198, 206, 0.54);
+}
+
+.fee-amount {
+    font-size: 1.4rem;
+    font-family: 'Winterland';
+    margin-bottom: 4rem;
+    color: white;
 }
 
 .dropdown-menu {

@@ -421,6 +421,10 @@ const Coinflip = () => {
               ))
             }
           </div>
+
+          <div className='row justify-content-center mt-3'>
+            <p className='fee-amount'>FEE : 10%</p>
+          </div>
         </Container>
       </div>
     </div>
