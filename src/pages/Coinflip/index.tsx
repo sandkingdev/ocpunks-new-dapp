@@ -262,27 +262,27 @@ const Coinflip = () => {
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(STAKE_TOKEN_ID),
-      new BigUIntValue(amountInWei),
+      new BigUIntValue(Balance.fromString(amountInWei.valueOf()).valueOf()),
       BytesValue.fromUTF8('flip'),
       new U32Value(flipType),
     ];
     const { argumentsString } = new ArgSerializer().valuesToString(args);
     const data = `ESDTTransfer@${argumentsString}`;
 
-    // const tx = {
-    //   receiver: FLIP_CONTRACT_ADDRESS,
-    //   gasLimit: new GasLimit(FLIP_GAS_LIMIT),
-    //   data: data,
-    // };
+    const tx = {
+      receiver: FLIP_CONTRACT_ADDRESS,
+      gasLimit: new GasLimit(FLIP_GAS_LIMIT),
+      data: data,
+    };
 
-    // await refreshAccount();
-    // const { sessionId } = await sendTransactions({
-    //   transactions: tx,
-    // });
+    await refreshAccount();
+    const { sessionId } = await sendTransactions({
+      transactions: tx,
+    });
 
-    // if (sessionId) {
-    //   setSessionId(parseInt(sessionId));
-    // }
+    if (sessionId) {
+      setSessionId(parseInt(sessionId));
+    }
   }
 
 
