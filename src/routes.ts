@@ -2,6 +2,7 @@ import { dAppName } from 'config';
 import withPageTitle from './components/PageTitle';
 import Home from './pages/Home';
 import ZogStake from './pages/ZogStake';
+import Coinflip from './pages/Coinflip';
 import OrcNft from './pages/OrcNft';
 import EasterNft from './pages/EasterNft';
 import BuyNft from './pages/BuyNft';
@@ -14,6 +15,7 @@ export const routeNames = {
   walletconnect: '/walletconnect',
   home: '/',
   stake: '/stake',
+  coinflip: '/coinflip',
   orcnft: '/orcnft',
   easternft: '/easternft',
   buynft: '/buynft',
@@ -30,6 +32,11 @@ const routes: Array<any> = [
     path: routeNames.stake,
     title: 'Stake $ZOG',
     component: ZogStake
+  },
+  {
+    path: routeNames.coinflip,
+    title: 'Coinflip $ZOG',
+    component: Coinflip
   },
   {
     path: routeNames.orcnft,
