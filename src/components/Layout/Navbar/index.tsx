@@ -41,7 +41,7 @@ const Navbar = () => {
                   $ZOG
                 </Link>
                 <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
-                  Coinflip
+                  Zorgflip
                 </Link>
                 <NavDropdown
                   title="NFTs"

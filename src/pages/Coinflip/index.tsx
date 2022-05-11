@@ -49,6 +49,9 @@ import {
 } from '../../config';
 
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
+import WinLogo from '../../assets/img/win.webp';
+import LoseLogo from '../../assets/img/lose.webp';
+
 import './index.scss';
 
 function printNumber(v:any) {
@@ -296,6 +299,9 @@ const Coinflip = () => {
           />
         </video>
       </div> */}
+      <div className='row justify-content-center'>
+        <img src={WinLogo} className='project-logo'></img>
+      </div>
       <div className='row justify-content-center mt-3'>
         <p className='flip-type'>I choose</p>
       </div>
@@ -353,7 +359,7 @@ const Coinflip = () => {
                     Wallet ({printAddress(v.user_address)}...) flipped 
                     {' '}
                     {printNumber(v.amount)}
-                    {' '}ZOG and 
+                    {' '}$ZOG and 
                     <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
                   </Col>
                 </Row>
