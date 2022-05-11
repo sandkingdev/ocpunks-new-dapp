@@ -322,7 +322,7 @@ const Coinflip = () => {
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
       </div>
       <div className='row justify-content-center mt-3'>
-        <p className='bet-type'>and I bet</p>
+        <p className='bet-type'>and I bet the</p>
       </div>
       <div className='row'>
         <Container>
@@ -362,8 +362,8 @@ const Coinflip = () => {
                     className='history-text'
                     key={`flip-tx-text-${index}`}
                   >
-                    Wallet ({printAddress(v.user_address)}...) flipped 
-                    {' '}
+                    Wallet ({printAddress(v.user_address)}...)
+                    {v.success ? ' flipped ' : ' rolled '}
                     {printNumber(v.amount)}
                     {' '}$ZOG and 
                     <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
