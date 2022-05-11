@@ -210,7 +210,7 @@ const Coinflip = () => {
     let flipButtonDisabled = true;
     let flipButtonText = '-';
     if (!isLoggedIn) {
-      flipButtonText = 'Connect Your Wallet';
+      flipButtonText = 'Connect Wallet';
     } else {
       try {
         console.log('selectedAmountId', selectedAmountId);
@@ -218,7 +218,7 @@ const Coinflip = () => {
         console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]);
         if (balance >= flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]) {
           flipButtonDisabled = false;
-          flipButtonText = 'Bet';
+          flipButtonText = 'Bet Now';
         } else {
           flipButtonText = 'Not Enough Balance';
         }
@@ -257,6 +257,9 @@ const Coinflip = () => {
     const amount = flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId];
     const amountInWei: any = convertEsdtToWei(amount, REWARD_TOKEN_DECIMAL);
 
+    console.log('flip_amount: ', amountInWei);
+    console.log('flip_type: ', flipType);
+
     const args: TypedValue[] = [
       BytesValue.fromUTF8(STAKE_TOKEN_ID),
       new BigUIntValue(amountInWei),
@@ -266,20 +269,20 @@ const Coinflip = () => {
     const { argumentsString } = new ArgSerializer().valuesToString(args);
     const data = `ESDTTransfer@${argumentsString}`;
 
-    const tx = {
-      receiver: FLIP_CONTRACT_ADDRESS,
-      gasLimit: new GasLimit(FLIP_GAS_LIMIT),
-      data: data,
-    };
+    // const tx = {
+    //   receiver: FLIP_CONTRACT_ADDRESS,
+    //   gasLimit: new GasLimit(FLIP_GAS_LIMIT),
+    //   data: data,
+    // };
 
-    await refreshAccount();
-    const { sessionId } = await sendTransactions({
-      transactions: tx,
-    });
+    // await refreshAccount();
+    // const { sessionId } = await sendTransactions({
+    //   transactions: tx,
+    // });
 
-    if (sessionId) {
-      setSessionId(parseInt(sessionId));
-    }
+    // if (sessionId) {
+    //   setSessionId(parseInt(sessionId));
+    // }
   }
 
 
@@ -330,7 +333,7 @@ const Coinflip = () => {
 
           <div className='row justify-content-center mt-3'>
             <button
-              className='choose-button'
+              className='flip-button'
               onClick={flip}
               disabled={flipButtonDisabled}
             >

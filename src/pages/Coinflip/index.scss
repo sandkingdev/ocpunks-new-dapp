@@ -18,12 +18,18 @@
     border: 0px;
 }
 
-.choose-button:hover{
+.flip-button {
     padding: 10px 20px;
     font-size: 20px;
     font-family: 'Winterland';
     font-weight: 300;
-    width: 150px;
+    width: 200px;
+    color: black;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.flip-button:hover{
     background-color: #ba16b9 !important;
     color: white;
     border-radius: 5px;
