@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Dropdown, Form, Table } from 'react-bootstrap';
+import axios from 'axios';
 
 import {
   refreshAccount,
@@ -21,11 +22,15 @@ import {
   ContractFunction,
   U32Value,
   ArgSerializer,
-  OptionalValue
+  OptionalValue,
+  TypedValue,
+  BytesValue,
+  BigUIntValue,
 } from '@elrondnetwork/erdjs';
 
 import {
   convertWeiToEgld,
+  convertEsdtToWei,
   formatNumbers
 } from '../../utils/convert';
 
@@ -40,6 +45,7 @@ import {
   TIMEOUT,
   REWARD_TOKEN_DECIMAL,
   STAKE_TOKEN_ID,
+  GATEWAY,
 } from '../../config';
 
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
@@ -142,23 +148,94 @@ const Coinflip = () => {
     })();
   }, [contractInteractor, hasPendingTransactions]);
 
+  const [balance, setBalance] = React.useState<any>();
+  useEffect(() => {
+    axios
+      .get(`${GATEWAY}/accounts/${address}/tokens/${STAKE_TOKEN_ID}`)
+      .then((res) => {
+        const token = res.data;
+        const balance = token['balance'] / Math.pow(10, token['decimals']);
+        setBalance(balance);
+      });
+  }, [hasPendingTransactions]);
+
+  const [selectedAmountId, setSelectedAmountId] = React.useState<number>(0);
+  function onAmountButtonClick(e: any) {
+    setSelectedAmountId(e.currentTarget.value);
+  }
+
+  const [flipButtonDisabled, setFlipButtonDisabled] = React.useState<boolean>(true);
+  const [flipButtonText, setFlipButtonText] = React.useState<string>('-');
+  React.useEffect(() => {
+    let flipButtonDisabled = true;
+    let flipButtonText = '-';
+    if (!isLoggedIn) {
+      flipButtonText = 'Connect Your Wallet';
+    } else {
+      console.log('selectedAmountId', selectedAmountId);
+      console.log('selectedTokenBalance', balance);
+      console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]);
+      if (balance >= flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]) {
+        flipButtonDisabled = false;
+        flipButtonText = 'Bet';
+      } else {
+        flipButtonText = 'Not Enough Balance';
+      }
+    }
+
+    setFlipButtonDisabled(flipButtonDisabled);
+    setFlipButtonText(flipButtonText);
+  }, [isLoggedIn, selectedAmountId, balance]);
+
+
   const [flipType, setFlipType] = useState(0);
   const [headStyle, setHeadStyle] = useState('choose-button select-type-button');
   const [tailStyle, setTailStyle] = useState('choose-button ');
 
   const handleFlipType = (type: any) => {
-    if (type === 0) {
+    if (type === 1) {
       // head
       setHeadStyle('choose-button select-type-button');
       setTailStyle('choose-button');
-      setFlipType(0);
-    } else if (type === 1) {
+      setFlipType(1);
+    } else if (type === 0) {
       // tail
       setHeadStyle('choose-button');
       setTailStyle('choose-button select-type-button');
-      setFlipType(1);
+      setFlipType(0);
     }
   };
+
+  async function flip() {
+    if (!address) return;
+
+    const amount = flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId];
+    const amountInWei:any = convertEsdtToWei(amount, REWARD_TOKEN_DECIMAL);
+
+    const args: TypedValue[] = [
+      BytesValue.fromUTF8(STAKE_TOKEN_ID),
+      new BigUIntValue(amountInWei),
+      BytesValue.fromUTF8('flip'),
+      new U32Value(flipType),
+    ];
+    const { argumentsString } = new ArgSerializer().valuesToString(args);
+    const data = `ESDTTransfer@${argumentsString}`;
+
+    const tx = {
+      receiver: FLIP_CONTRACT_ADDRESS,
+      gasLimit: new GasLimit(FLIP_GAS_LIMIT),
+      data: data,
+    };
+
+    await refreshAccount();
+    const { sessionId } = await sendTransactions({
+      transactions: tx,
+    });
+
+    if (sessionId) {
+      setSessionId(parseInt(sessionId));
+    }
+  }
 
 
   return (
@@ -177,10 +254,10 @@ const Coinflip = () => {
       <div className='row'>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12 head-container'>
-          <button className={headStyle} onClick={() => handleFlipType(0)}>HEADS</button>
+          <button className={headStyle} onClick={() => handleFlipType(1)}>HEADS</button>
         </div>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12 tail-container'>
-          <button className={tailStyle} onClick={() => handleFlipType(1)}>TAILS</button>
+          <button className={tailStyle} onClick={() => handleFlipType(0)}>TAILS</button>
         </div>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
       </div>

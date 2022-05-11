@@ -17,3 +17,8 @@ export const formatNumbers = (v:any, precision = 2) => {
     const number = Math.floor(v * factor) / factor;
     return new Intl.NumberFormat('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(number);
 };
+
+export const convertEsdtToWei = (v: number, decimals = 18) => {
+    const factor = Math.pow(10, decimals);
+    return (new BigNumber(v)).multipliedBy(factor);
+};
