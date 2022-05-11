@@ -48,6 +48,10 @@ import {
   GATEWAY,
 } from '../../config';
 
+import {
+  TOKENS
+} from 'data';
+
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
 import WinLogo from '../../assets/img/win.webp';
 import LoseLogo from '../../assets/img/lose.webp';
@@ -136,7 +140,7 @@ const Coinflip = () => {
 
         const flipPack = {
           token_id,
-          ticker: token_id,
+          ticker: TOKENS[token_id].ticker,
           fee,
           amounts,
         };
