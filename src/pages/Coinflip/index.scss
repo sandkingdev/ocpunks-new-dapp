@@ -18,6 +18,18 @@
     border: 0px;
 }
 
+.choose-button:hover{
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Winterland';
+    font-weight: 300;
+    width: 150px;
+    background-color: #ba16b9 !important;
+    color: white;
+    border-radius: 5px;
+    border: 0px;
+}
+
 .select-type-button{
     padding: 10px 20px;
     font-size: 20px;
@@ -38,6 +50,17 @@
     color: white;
 }
 
+.amount-contanier {
+    max-width: 500px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    margin-bottom: 2rem;
+}
+
+.amount-button{
+    text-align: center;
+}
+
 @media (max-width: 767.98px) {
     .head-container{
         text-align: center;
@@ -48,5 +71,8 @@
     }
     .bet-type{
         margin-top: 20px;
+    }
+    .amount-button {
+        text-align: center;
     }
 }

@@ -60,8 +60,6 @@ function printNumber(v:any) {
   return (
       <>
           <span className='text2'>{integral.toLocaleString()}</span>
-          .
-          <span className='text3'>{fractional}</span>
       </>
   );
 }
@@ -311,34 +309,34 @@ const Coinflip = () => {
       <div className='row justify-content-center mt-3'>
         <p className='bet-type'>and I bet</p>
       </div>
-      <div className='row mt-1'>
+      <div className='row'>
         <Container>
-          <Row>
+          <Row className='amount-contanier'>
             {
               flipPacks && flipPacks[STAKE_TOKEN_ID].amounts.map((v:any, index:any) => (
-                <Col xs={6} key={`token-amount-col-${index}`}>
+                <Col xs={6} key={`token-amount-col-${index}`} className='amount-button mt-2'>
                   <button
                     className={index == selectedAmountId ? 'choose-button select-type-button' : 'choose-button'}
                     key={`token-amount-${index}`}
                     value={index}
                     onClick={onAmountButtonClick}
                   >
-                    {printNumber(v)}ZOG
+                    {printNumber(v)} ZOG
                   </button>
                 </Col>
               ))
             }
           </Row>
 
-          {/* <div>
+          <div className='row justify-content-center mt-3'>
             <button
-              className='fate-flip-button gradient-button'
+              className='choose-button'
               onClick={flip}
               disabled={flipButtonDisabled}
             >
               {flipButtonText}
             </button>
-          </div> */}
+          </div>
 
           {/* <div className='fate-history-container'>
             {
