@@ -95,6 +95,9 @@ const Coinflip = () => {
         </div>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
       </div>
+      <div className='row justify-content-center mt-3'>
+        <p className='bet-type'>and I bet</p>
+      </div>
     </div>
   );
 };
