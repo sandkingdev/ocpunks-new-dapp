@@ -59,20 +59,20 @@ import CoinLogo from '../../assets/img/coin.gif';
 
 import './index.scss';
 
-function printNumber(v:any) {
+function printNumber(v: any) {
   const integral = Math.floor(v);
   let fractional = Math.floor((v - integral) * 100).toString();
   if (fractional.length == 1) fractional = '0' + fractional;
   else if (fractional.length == 0) fractional = '00';
 
   return (
-      <>
-          <span className='text2'>{integral.toLocaleString()}</span>
-      </>
+    <>
+      <span className='text2'>{integral.toLocaleString()}</span>
+    </>
   );
 }
 
-function printAddress(v:any, len = 10) {
+function printAddress(v: any, len = 10) {
   return v.substring(0, len);
 }
 
@@ -135,7 +135,7 @@ const Coinflip = () => {
 
         const amounts = [];
         for (const amount of item.amounts) {
-          amounts.push(convertWeiToEgld(amount, REWARD_TOKEN_DECIMAL));
+          amounts.push(convertWeiToEgld(amount, TOKENS[token_id].decimals));
         }
 
         const flipPack = {
@@ -147,6 +147,16 @@ const Coinflip = () => {
 
         flipPacks[flipPack.token_id] = flipPack;
       }
+
+      // ids = ids.sort();
+      // const newFlipPacks = {};
+      // const EGLD_ID = 'EGLD';
+      // newFlipPacks[EGLD_ID] = flipPacks[EGLD_ID];
+      // for (const id of ids) {
+      //   if (id != EGLD_ID) {
+      //     newFlipPacks[id] = flipPacks[id];
+      //   }
+      // }
 
       setFlipPacks(flipPacks);
       console.log('Items: ', flipPacks);
@@ -169,8 +179,8 @@ const Coinflip = () => {
       const flipTxs = [];
       for (const item of items) {
         const token_id = item.token_id.toString();
-        const ticker = STAKE_TOKEN_ID;
-        const amount = convertWeiToEgld(item.amount, REWARD_TOKEN_DECIMAL);
+        const ticker = TOKENS[token_id].ticker;
+        const amount = convertWeiToEgld(item.amount, TOKENS[token_id].decimals);
         const user_address = item.user_address.toString();
         const timestamp = new Date(item.timestamp.toNumber() * 1000);
         const success = item.success;
@@ -205,7 +215,23 @@ const Coinflip = () => {
         }
       }
     })();
-  }, [contractInteractor, hasPendingTransactions, balance]);
+  }, [contractInteractor, hasPendingTransactions]);
+
+  const [selectedTokenId, setSelectedTokenId] = React.useState<string | undefined>();
+  function onTokenIdMenuSelect(token_id:any) {
+    console.log('token_id', token_id);
+    setSelectedTokenId(token_id);
+  }
+
+  // if flipPacks are changed, select the first tokens as selectedTokenId
+  React.useEffect(() => {
+    if (flipPacks) {
+      for (const [key, value] of Object.entries(flipPacks)) {
+        setSelectedTokenId(key);
+        return;
+      }
+    }
+  }, [flipPacks]);
 
   const [selectedAmountId, setSelectedAmountId] = React.useState<number>(0);
   function onAmountButtonClick(e: any) {
@@ -332,7 +358,7 @@ const Coinflip = () => {
         <Container>
           <Row className='amount-contanier'>
             {
-              flipPacks && flipPacks[STAKE_TOKEN_ID].amounts.map((v:any, index:any) => (
+              flipPacks && flipPacks[STAKE_TOKEN_ID].amounts.map((v: any, index: any) => (
                 <Col xs={6} key={`token-amount-col-${index}`} className='amount-button mt-2'>
                   <button
                     className={index == selectedAmountId ? 'choose-button select-type-button' : 'choose-button'}
@@ -359,7 +385,7 @@ const Coinflip = () => {
 
           <div className='history-container'>
             {
-              flipTxs && flipTxs.map((v:any, index:any) => (
+              flipTxs && flipTxs.map((v: any, index: any) => (
                 <Row className='history-row' key={`flip-tx-row-${index}`}>
                   <Col
                     sm={12}
@@ -369,7 +395,7 @@ const Coinflip = () => {
                     Wallet ({printAddress(v.user_address)}...)
                     {v.success ? ' flipped ' : ' rolled '}
                     {printNumber(v.amount)}
-                    {' '}$ZOG and 
+                    {' '}$ZOG and
                     <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
                   </Col>
                 </Row>
