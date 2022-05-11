@@ -51,6 +51,26 @@ import {
 // import {ZogIcon} from '../../assets/movie/animation.mp4';
 import './index.scss';
 
+function printNumber(v:any) {
+  const integral = Math.floor(v);
+  let fractional = Math.floor((v - integral) * 100).toString();
+  if (fractional.length == 1) fractional = '0' + fractional;
+  else if (fractional.length == 0) fractional = '00';
+
+  return (
+      <>
+          <span className='text2'>{integral.toLocaleString()}</span>
+          .
+          <span className='text3'>{fractional}</span>
+      </>
+  );
+}
+
+function printAddress(v:any, len = 20) {
+  return v.substring(0, len);
+}
+
+
 const Coinflip = () => {
 
   const { address } = useGetAccountInfo();
@@ -204,7 +224,7 @@ const Coinflip = () => {
         } else {
           flipButtonText = 'Not Enough Balance';
         }
-      } catch(e:any) {
+      } catch (e: any) {
         console.log(e);
       }
     }
@@ -290,6 +310,58 @@ const Coinflip = () => {
       </div>
       <div className='row justify-content-center mt-3'>
         <p className='bet-type'>and I bet</p>
+      </div>
+      <div className='row mt-1'>
+        <Container>
+          <Row>
+            {
+              flipPacks && flipPacks[STAKE_TOKEN_ID].amounts.map((v:any, index:any) => (
+                <Col xs={6} key={`token-amount-col-${index}`}>
+                  <button
+                    className={index == selectedAmountId ? 'choose-button select-type-button' : 'choose-button'}
+                    key={`token-amount-${index}`}
+                    value={index}
+                    onClick={onAmountButtonClick}
+                  >
+                    {printNumber(v)}ZOG
+                  </button>
+                </Col>
+              ))
+            }
+          </Row>
+
+          {/* <div>
+            <button
+              className='fate-flip-button gradient-button'
+              onClick={flip}
+              disabled={flipButtonDisabled}
+            >
+              {flipButtonText}
+            </button>
+          </div> */}
+
+          {/* <div className='fate-history-container'>
+            {
+              flipTxs && flipTxs.map((v:any, index:any) => (
+                <Row className='fate-history-row' key={`flip-tx-row-${index}`}>
+                  <Col
+                    sm={12}
+                    className='fate-history-text'
+                    key={`flip-tx-text-${index}`}
+                  >
+                    {printAddress(v.user_address)}
+                    {'... '}
+                    <span className={v.success ? 'win' : 'lose'}>{v.success ? 'wisely earned' : 'sent to Hel'}</span>
+                    {' '}
+                    {printNumber(v.amount)}
+                    {' '}
+                    {v.ticker}
+                  </Col>
+                </Row>
+              ))
+            }
+          </div> */}
+        </Container>
       </div>
     </div>
   );
