@@ -160,7 +160,7 @@ const Coinflip = () => {
       // }
 
       setFlipPacks(flipPacks);
-      console.log('Items: ', flipPacks);
+      // console.log('Items: ', flipPacks);
 
     })();
   }, [contractInteractor]);
@@ -175,7 +175,7 @@ const Coinflip = () => {
 
       if (!res || !res.returnCode.isSuccess()) return;
       const items = res.firstValue?.valueOf();
-      console.log('viewLastFlips', items);
+      // console.log('viewLastFlips', items);
 
       const flipTxs = [];
       for (const item of items) {
@@ -197,7 +197,7 @@ const Coinflip = () => {
 
         flipTxs.push(flipTx);
       }
-      console.log('flipTxs', flipTxs);
+      // console.log('flipTxs', flipTxs);
       setFlipTxs(flipTxs);
 
       // check for result of last flip tx
@@ -219,7 +219,7 @@ const Coinflip = () => {
   }, [contractInteractor, hasPendingTransactions]);
 
   function onTokenIdMenuSelect(token_id: any) {
-    console.log('token_id', token_id);
+    // console.log('token_id', token_id);
     setSelectedTokenId(token_id);
   }
 
@@ -247,10 +247,10 @@ const Coinflip = () => {
       flipButtonText = 'Connect Wallet';
     } else if (selectedTokenId) {
       try {
-        console.log('selectedTokenId', selectedTokenId);
-        console.log('selectedAmountId', selectedAmountId);
-        console.log('selectedTokenBalance', balance);
-        console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[selectedTokenId].amounts[selectedAmountId]);
+        // console.log('selectedTokenId', selectedTokenId);
+        // console.log('selectedAmountId', selectedAmountId);
+        // console.log('selectedTokenBalance', balance);
+        // console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[selectedTokenId].amounts[selectedAmountId]);
         if (balance >= flipPacks[selectedTokenId].amounts[selectedAmountId]) {
           flipButtonDisabled = false;
           flipButtonText = 'Bet Now';
@@ -261,7 +261,7 @@ const Coinflip = () => {
         console.log(e);
       }
     }
-    console.log(flipButtonText);
+    // console.log(flipButtonText);
 
     setFlipButtonDisabled(flipButtonDisabled);
     setFlipButtonText(flipButtonText);
