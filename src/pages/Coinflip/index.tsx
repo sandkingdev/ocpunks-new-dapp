@@ -78,8 +78,8 @@ const Coinflip = () => {
   const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
 
   // modal
-  const [flipResultModalShow, setFlipResultModalShow] = React.useState<boolean>(false);
-  const [flipResult, setFlipResult] = React.useState<boolean>(false);
+  // const [flipResultModalShow, setFlipResultModalShow] = React.useState<boolean>(false);
+  const [flipResult, setFlipResult] = React.useState<boolean>(true);
 
   const [balance, setBalance] = React.useState<any>();
   useEffect(() => {
@@ -189,7 +189,7 @@ const Coinflip = () => {
 
           if (flipTx.user_address == address) {
             setFlipResult(flipTx.success);
-            setFlipResultModalShow(true);
+            // setFlipResultModalShow(true);
 
             setSessionId(0);
             return;
@@ -343,7 +343,7 @@ const Coinflip = () => {
 
           <div className='history-container'>
             {
-              flipTxs.map((v:any, index:any) => (
+              flipTxs && flipTxs.map((v:any, index:any) => (
                 <Row className='history-row' key={`flip-tx-row-${index}`}>
                   <Col
                     sm={12}
