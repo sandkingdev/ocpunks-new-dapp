@@ -89,8 +89,30 @@ const Coinflip = () => {
       if (!res || !res.returnCode.isSuccess()) return;
       const items = res.firstValue?.valueOf();
 
-      setFlipPacks(items);
-      console.log('Items: ', items);
+      const flipPacks: any = {};
+      for (const [_, item] of items) {
+        const token_id = item.token_id.toString();
+        const lp_fee = item.lp_fee.toNumber();
+        const treasury_fee = item.treasury_fee.toNumber();
+        const fee = (lp_fee + treasury_fee) / 100;
+
+        const amounts = [];
+        for (const amount of item.amounts) {
+          amounts.push(convertWeiToEgld(amount, REWARD_TOKEN_DECIMAL));
+        }
+
+        const flipPack = {
+          token_id,
+          ticker: token_id,
+          fee,
+          amounts,
+        };
+
+        flipPacks[flipPack.token_id] = flipPack;
+      }
+
+      setFlipPacks(flipPacks);
+      console.log('Items: ', flipPacks);
 
     })();
   }, [contractInteractor]);
@@ -172,20 +194,25 @@ const Coinflip = () => {
     if (!isLoggedIn) {
       flipButtonText = 'Connect Your Wallet';
     } else {
-      console.log('selectedAmountId', selectedAmountId);
-      console.log('selectedTokenBalance', balance);
-      console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]);
-      if (balance >= flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]) {
-        flipButtonDisabled = false;
-        flipButtonText = 'Bet';
-      } else {
-        flipButtonText = 'Not Enough Balance';
+      try {
+        console.log('selectedAmountId', selectedAmountId);
+        console.log('selectedTokenBalance', balance);
+        console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]);
+        if (balance >= flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]) {
+          flipButtonDisabled = false;
+          flipButtonText = 'Bet';
+        } else {
+          flipButtonText = 'Not Enough Balance';
+        }
+      } catch(e:any) {
+        console.log(e);
       }
     }
+    console.log(flipButtonText);
 
     setFlipButtonDisabled(flipButtonDisabled);
     setFlipButtonText(flipButtonText);
-  }, [isLoggedIn, selectedAmountId, balance]);
+  }, [isLoggedIn, selectedAmountId, balance, flipPacks]);
 
 
   const [flipType, setFlipType] = useState(0);
@@ -210,7 +237,7 @@ const Coinflip = () => {
     if (!address) return;
 
     const amount = flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId];
-    const amountInWei:any = convertEsdtToWei(amount, REWARD_TOKEN_DECIMAL);
+    const amountInWei: any = convertEsdtToWei(amount, REWARD_TOKEN_DECIMAL);
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(STAKE_TOKEN_ID),

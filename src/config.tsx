@@ -2,7 +2,7 @@ export const dAppName = 'NFT Staking';
 
 // ZOG staking
 export const ZOG_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqan35jlf5tq8a4m7hjjxn3twqv4dscfgd7lnqqdcva7';
-export const STAKE_TOKEN_ID = 'ZOG-c66239';
+export const STAKE_TOKEN_ID = 'ZOG-481946';
 
 // OrcpunksNFT staking
 export const ORC_NFT_STAKING_CONTRACT_ADDRESS =
@@ -19,7 +19,7 @@ export const SWAP_CONTRACT_ADDRESS =
 export const NFT_PRICE = 50000;
 
 // CoinFlip
-export const FLIP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqnzvm3tw29dsftj8sywtfethvtn7eplh35zvs6aurtk';
+export const FLIP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqrzdlhzmesk9k527y658u8jrke5kn777e5zvss6j40p';
 export const FLIP_CONTRACT_ABI_URL = '/abi/coinflip-sc.abi.json';
 export const FLIP_CONTRACT_NAME = 'OrcpunksCoinflip';
 export const FLIP_GAS_LIMIT = 6000000;
