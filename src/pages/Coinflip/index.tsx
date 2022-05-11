@@ -88,17 +88,18 @@ const Coinflip = () => {
   // modal
   // const [flipResultModalShow, setFlipResultModalShow] = React.useState<boolean>(false);
   const [flipResult, setFlipResult] = React.useState<boolean>(true);
+  const [selectedTokenId, setSelectedTokenId] = React.useState<string>();
 
   const [balance, setBalance] = React.useState<any>();
   useEffect(() => {
     axios
-      .get(`${GATEWAY}/accounts/${address}/tokens/${STAKE_TOKEN_ID}`)
+      .get(`${GATEWAY}/accounts/${address}/tokens/${selectedTokenId}`)
       .then((res) => {
         const token = res.data;
         const balance = token['balance'] / Math.pow(10, token['decimals']);
         setBalance(balance);
       });
-  }, [hasPendingTransactions]);
+  }, [selectedTokenId, hasPendingTransactions]);
 
   // load smart contract abi and parse it to SmartContract object for tx
   const [contractInteractor, setContractInteractor] = React.useState<any>(undefined);
@@ -217,7 +218,6 @@ const Coinflip = () => {
     })();
   }, [contractInteractor, hasPendingTransactions]);
 
-  const [selectedTokenId, setSelectedTokenId] = React.useState<string | undefined>();
   function onTokenIdMenuSelect(token_id:any) {
     console.log('token_id', token_id);
     setSelectedTokenId(token_id);
@@ -245,12 +245,13 @@ const Coinflip = () => {
     let flipButtonText = '-';
     if (!isLoggedIn) {
       flipButtonText = 'Connect Wallet';
-    } else {
+    } else if (selectedTokenId) {
       try {
+        console.log('selectedTokenId', selectedTokenId);
         console.log('selectedAmountId', selectedAmountId);
         console.log('selectedTokenBalance', balance);
-        console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]);
-        if (balance >= flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId]) {
+        console.log('flipPacks[selectedTokenId].amounts[selectedAmountId]', flipPacks[selectedTokenId].amounts[selectedAmountId]);
+        if (balance >= flipPacks[selectedTokenId].amounts[selectedAmountId]) {
           flipButtonDisabled = false;
           flipButtonText = 'Bet Now';
         } else {
@@ -264,7 +265,7 @@ const Coinflip = () => {
 
     setFlipButtonDisabled(flipButtonDisabled);
     setFlipButtonText(flipButtonText);
-  }, [isLoggedIn, selectedAmountId, balance, flipPacks]);
+  }, [isLoggedIn, selectedTokenId, selectedAmountId, balance, flipPacks]);
 
 
   const [flipType, setFlipType] = useState(0);
@@ -287,15 +288,13 @@ const Coinflip = () => {
 
   async function flip() {
     if (!address) return;
+    if (!selectedTokenId) return;
 
-    const amount = flipPacks[STAKE_TOKEN_ID].amounts[selectedAmountId];
-    const amountInWei: any = convertEsdtToWei(amount, REWARD_TOKEN_DECIMAL);
-
-    console.log('flip_amount: ', amountInWei);
-    console.log('flip_type: ', flipType);
+    const amount = flipPacks[selectedTokenId].amounts[selectedAmountId];
+    const amountInWei: any = convertEsdtToWei(amount, TOKENS[selectedTokenId].decimals);
 
     const args: TypedValue[] = [
-      BytesValue.fromUTF8(STAKE_TOKEN_ID),
+      BytesValue.fromUTF8(selectedTokenId),
       new BigUIntValue(Balance.fromString(amountInWei.valueOf()).valueOf()),
       BytesValue.fromUTF8('flip'),
       new U32Value(flipType),
@@ -326,7 +325,7 @@ const Coinflip = () => {
         <video loop autoPlay>
           <source
             src='../../assets/movie/animation.mp4'
-            type="video/mp4"
+            type='video/mp4'
           />
         </video>
       </div> */}
@@ -358,7 +357,7 @@ const Coinflip = () => {
         <Container>
           <Row className='amount-contanier'>
             {
-              flipPacks && flipPacks[STAKE_TOKEN_ID].amounts.map((v: any, index: any) => (
+              flipPacks && selectedTokenId && flipPacks[selectedTokenId].amounts.map((v: any, index: any) => (
                 <Col xs={6} key={`token-amount-col-${index}`} className='amount-button mt-2'>
                   <button
                     className={index == selectedAmountId ? 'choose-button select-type-button' : 'choose-button'}
@@ -366,7 +365,7 @@ const Coinflip = () => {
                     value={index}
                     onClick={onAmountButtonClick}
                   >
-                    {printNumber(v)} ZOG
+                    {printNumber(v)}{' '}{flipPacks[selectedTokenId].ticker}
                   </button>
                 </Col>
               ))
@@ -395,7 +394,7 @@ const Coinflip = () => {
                     Wallet ({printAddress(v.user_address)}...)
                     {v.success ? ' flipped ' : ' rolled '}
                     {printNumber(v.amount)}
-                    {' '}$ZOG and
+                    {' '}${v.ticker} and
                     <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
                   </Col>
                 </Row>

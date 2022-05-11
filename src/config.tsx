@@ -2,7 +2,7 @@ export const dAppName = 'NFT Staking';
 
 // ZOG staking
 export const ZOG_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqan35jlf5tq8a4m7hjjxn3twqv4dscfgd7lnqqdcva7';
-export const STAKE_TOKEN_ID = 'ZOG-481946';
+export const STAKE_TOKEN_ID = 'ZOG-c66239';
 
 // OrcpunksNFT staking
 export const ORC_NFT_STAKING_CONTRACT_ADDRESS =
