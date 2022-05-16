@@ -60,6 +60,20 @@ const ZogStake = () => {
   const [modalShow, setModalShow] = useState(false);
   const [actionType, setActionType] = useState(true); // stake
 
+  const [balance, setBalance] = useState('');
+
+  useEffect(() => {
+    axios
+      .get(`${GATEWAY}/accounts/${address}/tokens/${STAKE_TOKEN_ID}`)
+      .then((res) => {
+        const token = res.data;
+        const balance = token['balance'] / Math.pow(10, token['decimals']);
+        const formatedNumber = formatNumbers(balance);
+        setBalance(formatedNumber);
+      });
+  }, [hasPendingTransactions]);
+
+
   useEffect(() => {
     const query = new Query({
       address: new Address(ZOG_STAKING_CONTRACT_ADDRESS),
@@ -235,6 +249,13 @@ const ZogStake = () => {
             </div>
           </div>
           <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
+        </div>
+      </div>
+      <div className='container'>
+        <div className='row zog-header'>
+          <div className='col-12'>
+            <span className='zog-balance'>Balance : {balance} $ZOG</span>
+          </div>
         </div>
       </div>
       <div className='container justify-content-center ml-3'>
