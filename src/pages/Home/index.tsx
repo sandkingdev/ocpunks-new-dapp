@@ -14,6 +14,10 @@ import { routeNames } from 'routes';
 
 import './index.scss';
 
+import OrcpunksNFT from '../../assets/img/nfts/1.gif';
+import OlympNFT from '../../assets/img/nfts/2.gif';
+import EasterNFT from '../../assets/img/nfts/3.gif';
+
 const { Step } = Steps;
 
 const Home = () => {
@@ -49,11 +53,24 @@ const Home = () => {
           <Col lg={12} md={12} sm={12}>
             <h1 className='custom-nft-mint-text-header'>NFTs</h1>
           </Col>
-          <Col lg={4} md={4} sm={12}>
-            <div></div>
+        </Row>
+        <Row>
+          <Col lg={4} md={4} sm={12} className='nft-image'>
+            <div>
+              <img src={OrcpunksNFT} width='250px'></img>
+              <h3>Orcpunks NFT</h3>
+            </div>
           </Col>
-          <Col lg={4} md={4} sm={12}></Col>
-          <Col lg={4} md={4} sm={12}></Col>
+          <Col lg={4} md={4} sm={12} className='nft-image'>
+            <div>
+              <img src={OlympNFT} width='250px'></img>
+            </div>
+          </Col>
+          <Col lg={4} md={4} sm={12} className='nft-image'>
+            <div>
+              <img src={EasterNFT} width='250px'></img>
+            </div>
+          </Col>
         </Row>
         <Row className='mt-5'>
           <Col lg={12} md={12} sm={12} className='mt-5'>
@@ -72,9 +89,6 @@ const Home = () => {
         <Row className='mt-5'>
           <Col lg={12} md={12} sm={12} className='mt-5'>
             <h1 className='custom-nft-mint-text-header'>Team</h1>
-          </Col>
-          <Col lg={12} md={12} sm={12} className='mt-5'>
-            
           </Col>
         </Row>
       </Container>
