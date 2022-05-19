@@ -57,7 +57,7 @@ const Home = () => {
         <Row>
           <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <a href='https://trust.market/collection/ORC-ef544d'>
+              <a href='https://trust.market/collection/ORC-ef544d' target='blank'>
                 <img src={OrcpunksNFT} width='250px' className='nft-image'></img>
               </a>
               <h3 className='nft-text'>Orcpunks NFT</h3>
