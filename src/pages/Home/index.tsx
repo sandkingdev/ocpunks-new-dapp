@@ -90,11 +90,11 @@ const Home = () => {
             </Steps>
           </Col>
         </Row>
-        <Row className='mt-5'>
+        {/* <Row className='mt-5'>
           <Col lg={12} md={12} sm={12} className='mt-5'>
             <h1 className='custom-nft-mint-text-header'>Team</h1>
           </Col>
-        </Row>
+        </Row> */}
         <Row className='mt-5 mb-5'>
           <Col lg={12} md={12} sm={12}>
 
