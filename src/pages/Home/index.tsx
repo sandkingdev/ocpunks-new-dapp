@@ -55,20 +55,22 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <Col lg={4} md={4} sm={12} className='nft-image'>
+          <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <img src={OrcpunksNFT} width='250px'></img>
-              <h3>Orcpunks NFT</h3>
+              <img src={OrcpunksNFT} width='250px' className='nft-image'></img>
+              <h3 className='nft-text'>Orcpunks NFT</h3>
             </div>
           </Col>
-          <Col lg={4} md={4} sm={12} className='nft-image'>
+          <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <img src={OlympNFT} width='250px'></img>
+              <img src={OlympNFT} width='250px' className='nft-image'></img>
+              <h3 className='nft-text'>OlympORC</h3>
             </div>
           </Col>
-          <Col lg={4} md={4} sm={12} className='nft-image'>
+          <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <img src={EasterNFT} width='250px'></img>
+              <img src={EasterNFT} width='250px' className='nft-image'></img>
+              <h3 className='nft-text'>EasterORC</h3>
             </div>
           </Col>
         </Row>
