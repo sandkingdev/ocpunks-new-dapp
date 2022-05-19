@@ -7,6 +7,7 @@ import OrcNft from './pages/OrcNft';
 import EasterNft from './pages/EasterNft';
 import BuyNft from './pages/BuyNft';
 import SellNft from './pages/SellNft';
+import Breeding from './pages/Breeding';
 
 
 export const routeNames = {
@@ -20,6 +21,7 @@ export const routeNames = {
   easternft: '/easternft',
   buynft: '/buynft',
   sellnft: '/sellnft',
+  breeding: '/breeding',
 };
 
 const routes: Array<any> = [
@@ -57,6 +59,11 @@ const routes: Array<any> = [
     path: routeNames.sellnft,
     title: 'Sell Nft',
     component: SellNft
+  },
+  {
+    path: routeNames.breeding,
+    title: 'NFT Breeding',
+    component: Breeding
   },
 ];
 
