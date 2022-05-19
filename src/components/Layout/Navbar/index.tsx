@@ -43,6 +43,9 @@ const Navbar = () => {
                 <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
                   Zorgflip
                 </Link>
+                <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
+                  NFT Breeding
+                </Link>
                 <NavDropdown
                   title="NFTs"
                   className="nft-nav-dropdown"
