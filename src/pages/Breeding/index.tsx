@@ -32,7 +32,7 @@ const Breeding = () => {
       <Container className='custom-presale-container'>
         <Row>
           <Col lg={12} md={12} sm={12}>
-            <h1 className='custom-nft-mint-text-header'>COMING SOON!!!</h1>
+            <h1 className='custom-nft-mint-text-header'>COMING SOON !!!</h1>
           </Col>
         </Row>
       </Container>

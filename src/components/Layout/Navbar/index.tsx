@@ -35,17 +35,18 @@ const Navbar = () => {
             <Link to={routeNames.home} aria-current='page' className='custom-link-button custom-nav-link'>
               Home
             </Link>
+            <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
+              $ZOG
+            </Link>
+            <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
+              Zorgflip
+            </Link>
+            <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
+              NFT Breeding
+            </Link>
             {isLoggedIn ? (
               <>
-                <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
-                  $ZOG
-                </Link>
-                <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
-                  Zorgflip
-                </Link>
-                <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
-                  NFT Breeding
-                </Link>
+
                 <NavDropdown
                   title="NFTs"
                   className="nft-nav-dropdown"
