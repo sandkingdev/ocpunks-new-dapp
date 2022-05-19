@@ -58,7 +58,8 @@ const Home = () => {
           <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
               <a href='https://trust.market/collection/ORC-ef544d'>
-              <img src={OrcpunksNFT} width='250px' className='nft-image'></img></a>
+                <img src={OrcpunksNFT} width='250px' className='nft-image'></img>
+              </a>
               <h3 className='nft-text'>Orcpunks NFT</h3>
             </div>
           </Col>
@@ -96,7 +97,7 @@ const Home = () => {
         </Row>
         <Row className='mt-5 mb-5'>
           <Col lg={12} md={12} sm={12}>
-            
+
           </Col>
         </Row>
       </Container>
