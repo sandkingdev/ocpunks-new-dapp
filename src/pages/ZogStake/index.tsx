@@ -60,7 +60,7 @@ const ZogStake = () => {
   const [modalShow, setModalShow] = useState(false);
   const [actionType, setActionType] = useState(true); // stake
 
-  const [balance, setBalance] = useState('');
+  const [balance, setBalance] = useState('0');
 
   useEffect(() => {
     axios
