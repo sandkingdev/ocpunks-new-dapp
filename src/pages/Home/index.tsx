@@ -103,6 +103,7 @@ const Home = () => {
         <Row className='mb-5'>
           <Col lg={3} md={3} sm={12}>
             <img src={CEOImage} width='250px' className='team-image'></img>
+            {/* <h3 className='team-text'>aaaaaaaaaaaaa</h3> */}
             <h3 className='team-text'>CEO</h3>
           </Col>
           <Col lg={3} md={3} sm={12}>
