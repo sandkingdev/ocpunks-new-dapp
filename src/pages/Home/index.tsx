@@ -17,6 +17,10 @@ import './index.scss';
 import OrcpunksNFT from '../../assets/img/nfts/1.gif';
 import OlympNFT from '../../assets/img/nfts/2.gif';
 import EasterNFT from '../../assets/img/nfts/3.gif';
+import CEOImage from '../../assets/img/team/CEO.png';
+import ManagerImage from '../../assets/img/team/Discord Manager.png';
+import GraphicsImage from '../../assets/img/team/Graphics.png';
+import DeveloperImage from '../../assets/img/team/Developer.png';
 
 const { Step } = Steps;
 
@@ -91,14 +95,14 @@ const Home = () => {
             </Steps>
           </Col>
         </Row>
-        {/* <Row className='mt-5'>
+        <Row className='mt-5'>
           <Col lg={12} md={12} sm={12} className='mt-5'>
             <h1 className='custom-nft-mint-text-header'>Team</h1>
           </Col>
-        </Row> */}
-        <Row className='mt-5 mb-5'>
-          <Col lg={12} md={12} sm={12}>
-
+        </Row>
+        <Row className='mb-5'>
+          <Col lg={3} md={3} sm={12}>
+            <img src={OrcpunksNFT} width='250px' className='nft-image'></img>
           </Col>
         </Row>
       </Container>
