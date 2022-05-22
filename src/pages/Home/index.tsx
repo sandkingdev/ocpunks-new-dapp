@@ -46,7 +46,12 @@ const Home = () => {
   return (
     <>
       <Container className='custom-presale-container'>
-        <Row>
+        <Row className='mt-5'>
+          <Col lg={12} md={12} sm={12} className='export-logo'>
+            <img src={ExportLogo} className='export-logo-image'></img>
+          </Col>
+        </Row>
+        <Row className='mt-5'>
           <Col lg={12} md={12} sm={12}>
             <h1 className='custom-nft-mint-text-header'>Orcpunks NFTs have many goals, the first one is to reward holders.<br />Staking is now live!!!</h1>
           </Col>
@@ -58,11 +63,6 @@ const Home = () => {
             <a href='https://www.trust.market/buy/Orcpunks/Orcpunks' target='blank'>
               <Button className='custom-nft-mint-buttons'>Mint NOW</Button>
             </a>
-          </Col>
-        </Row>
-        <Row className='mt-5'>
-          <Col lg={12} md={12} sm={12} className='export-logo'>
-            <img src={ExportLogo} className='export-logo-image'></img>
           </Col>
         </Row>
         <Row className='mt-5'>
