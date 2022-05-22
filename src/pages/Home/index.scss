@@ -104,6 +104,14 @@
     margin-top: 30px;
 }
 
+.export-logo {
+    text-align: center;
+}
+
+.market-logo {
+    text-align: center;
+}
+
 .nft-image {
     border-radius: 20px;
 }
@@ -155,6 +163,10 @@
 
     .custom-nft-mint-buttons{
         margin-left: 0rem !important;
+    }
+
+    .export-logo-image{
+        width: 250px !important;
     }
 }
 

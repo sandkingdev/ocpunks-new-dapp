@@ -14,6 +14,10 @@ import { routeNames } from 'routes';
 
 import './index.scss';
 
+import ExportLogo from '../../assets/img/orcpunks export.png';
+import TrustMarketLogo from '../../assets/img/icon/trust market.png';
+import IsengardLogo from '../../assets/img/icon/isengard.png';
+import DeadrareLogo from '../../assets/img/icon/deadrare.png';
 import OrcpunksNFT from '../../assets/img/nfts/1.gif';
 import OlympNFT from '../../assets/img/nfts/2.gif';
 import EasterNFT from '../../assets/img/nfts/3.gif';
@@ -57,6 +61,11 @@ const Home = () => {
           </Col>
         </Row>
         <Row className='mt-5'>
+          <Col lg={12} md={12} sm={12} className='export-logo'>
+            <img src={ExportLogo} className='export-logo-image'></img>
+          </Col>
+        </Row>
+        <Row className='mt-5'>
           <Col lg={12} md={12} sm={12}>
             <h1 className='custom-nft-mint-text-header'>NFTs</h1>
           </Col>
@@ -88,7 +97,20 @@ const Home = () => {
           </Col>
         </Row>
         <Row className='mt-5'>
-          <Col lg={12} md={12} sm={12} className='mt-5'>
+          <Col lg={12} md={12} sm={12} className='market-logo'>
+            <a href='https://trust.market/collection/ORC-ef544d' target='blank'>
+              <img src={TrustMarketLogo} width='150px' className='nft-image'></img>
+            </a>
+            <a href='https://isengard.market/collection/ORC-ef544d' target='blank'>
+              <img src={IsengardLogo} width='150px' className='nft-image'></img>
+            </a>
+            <a href='https://deadrare.io/collection/ORC-ef544d' target='blank'>
+              <img src={DeadrareLogo} width='150px' className='nft-image'></img>
+            </a>
+          </Col>
+        </Row>
+        <Row className='mt-5'>
+          <Col lg={12} md={12} sm={12}>
             <h1 className='custom-nft-mint-text-header'>Roadmap</h1>
           </Col>
           <Col lg={12} md={12} sm={12} className='mt-5'>
