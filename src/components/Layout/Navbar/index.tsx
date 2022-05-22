@@ -65,6 +65,9 @@ const Navbar = () => {
             ) : (
               <></>
             )}
+            <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link'>
+              Whitepaper
+            </a>
             {/* {isLoggedIn ? (
               <>
                 <Link to={routeNames.mynft} aria-current='page' className='custom-link-button custom-nav-link'>
