@@ -35,6 +35,34 @@
     text-align: center;
     margin-top: 3rem;
 }
+.custom-nft-stake-buttons {
+    padding: 12px 20px !important;
+    border-radius: 30px !important;
+    background-color: #ba16b9 !important;
+    transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease !important;
+    color: #fff !important;
+    line-height: 26px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    text-transform: none;
+    font-size: 16px !important;
+    width: 140px;
+    height: 50px;
+    border: 0px solid !important;
+    margin-bottom: 2rem;
+}
+
+.custom-nft-stake-buttons:hover {
+    background-color: hsla(0, 0%, 100%, 0.82) !important;
+    font-family: Inter, sans-serif;
+    color: #0d0d0d !important;
+    font-weight: 600;
+}
+
+.custom-nft-stake-buttons:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 .custom-nft-mint-buttons {
     padding: 12px 20px !important;
@@ -50,7 +78,8 @@
     width: 140px;
     height: 50px;
     border: 0px solid !important;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem !important;
+    margin-left: 3rem;
 }
 
 .custom-nft-mint-buttons:hover {
@@ -122,6 +151,10 @@
 
     .custom-nft-mint-text-description {
         font-size: 1.3rem;
+    }
+
+    .custom-nft-mint-buttons{
+        margin-left: 0rem !important;
     }
 }
 

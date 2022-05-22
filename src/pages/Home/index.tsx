@@ -50,7 +50,10 @@ const Home = () => {
             <h5 className='custom-nft-mint-text-description'>ZorgCoin is a unique multipurpose token, that will have a broad usage in the Orcverse, from buying NFT, merch, games, as a ingame currency, 3D models for board games. MINT AND EARN</h5>
           </Col>
           <Col lg={12} md={12} sm={12} className='custom-nft-mint-button-container'>
-            <Button className='custom-nft-mint-buttons' onClick={handleMint}>Stake NOW</Button>
+            <Button className='custom-nft-stake-buttons' onClick={handleMint}>Stake NOW</Button>
+            <a href='https://www.trust.market/buy/Orcpunks/Orcpunks' target='blank'>
+              <Button className='custom-nft-mint-buttons'>Mint NOW</Button>
+            </a>
           </Col>
         </Row>
         <Row className='mt-5'>
@@ -69,13 +72,17 @@ const Home = () => {
           </Col>
           <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <img src={OlympNFT} width='250px' className='nft-image'></img>
+              <a href='https://trust.market/collection/OLPORC-63baf5' target='blank'>
+                <img src={OlympNFT} width='250px' className='nft-image'></img>
+              </a>
               <h3 className='nft-text'>OlympORC</h3>
             </div>
           </Col>
           <Col lg={4} md={4} sm={12} className='nft-image-container'>
             <div>
-              <img src={EasterNFT} width='250px' className='nft-image'></img>
+              <a href='https://trust.market/buy/Orcpunks/EasterOrc' target='blank'>
+                <img src={EasterNFT} width='250px' className='nft-image'></img>
+              </a>
               <h3 className='nft-text'>EasterORC</h3>
             </div>
           </Col>
