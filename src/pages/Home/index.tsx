@@ -119,8 +119,8 @@ const Home = () => {
               <Step title="Q2 2022" description="We begin a presale of our crypto ZorgCoin $ZOG and create Staking website and Swap." />
               <Step title="Q3 2022" description="The third mint will be a special ORCPUNKS DIGITAL art collection that is made by one of our talented female artist." />
               <Step title="Q4 2022" description="The fourth mint will be a collection of concept art for a game we started to work on, a FANTASY STEAMPUNK GAME with the main focus on orcs, details will not be disclosed for now" />
-              <Step title="Q5 2022" description="The fifth mint will contain a huge collection of hi-res 3D models for our future game with a unique feature; all models will be 3D printable for collectors and for a tabletop version of our ORCPUNKS GAME." />
-              <Step title="Q6 2022" description="Coming Soon ..." />
+              <Step title="Q1 2023" description="The fifth mint will contain a huge collection of hi-res 3D models for our future game with a unique feature; all models will be 3D printable for collectors and for a tabletop version of our ORCPUNKS GAME." />
+              <Step title="Q2 2023" description="Coming Soon ..." />
             </Steps>
           </Col>
         </Row>
