@@ -103,19 +103,22 @@ const Home = () => {
         <Row className='mb-5'>
           <Col lg={3} md={3} sm={12}>
             <img src={CEOImage} width='250px' className='team-image'></img>
-            {/* <h3 className='team-text'>aaaaaaaaaaaaa</h3> */}
+            <h3 className='team-text'>Peter Rapavý</h3>
             <h3 className='team-text'>CEO</h3>
           </Col>
           <Col lg={3} md={3} sm={12}>
             <img src={ManagerImage} width='250px' className='team-image'></img>
+            <h3 className='team-text'>Tomáš Fedorko</h3>
             <h3 className='team-text'>Discord Manager</h3>
           </Col>
           <Col lg={3} md={3} sm={12}>
             <img src={GraphicsImage} width='250px' className='team-image'></img>
+            <h3 className='team-text'>Andrej Bennár</h3>
             <h3 className='team-text'>Artist</h3>
           </Col>
           <Col lg={3} md={3} sm={12}>
             <img src={DeveloperImage} width='250px' height='250px' className='team-image'></img>
+            <h3 className='team-text'>James Kato</h3>
             <h3 className='team-text'>Developer</h3>
           </Col>
         </Row>
