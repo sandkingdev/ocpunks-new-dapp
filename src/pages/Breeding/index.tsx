@@ -118,6 +118,8 @@ const Breeding = () => {
   }, []); // [] makes useEffect run once
 
   const [breedingStatus, setBreedingStatus] = React.useState<any>();
+  const [contractMaleNft, setContractMaleNft] = React.useState<any>();
+  const [contractFemaleNft, setContractFemaleNft] = React.useState<any>();
   React.useEffect(() => {
     (async () => {
       if (!contractInteractor) return;
@@ -131,6 +133,26 @@ const Breeding = () => {
       console.log(items);
       setBreedingStatus(items);
 
+      if (items.breeding_status) {
+        const maleNonce = parseInt(items.male_nft_nonce.toNumber(), 16);
+        console.log('nonce: ', maleNonce);
+        const femaleNonce = parseInt(items.female_nft_nonce.toNumber(), 16);
+        console.log('nonce: ', femaleNonce);
+
+        axios
+          .get(`${GATEWAY}/accounts/${BREEDING_CONTRACT_ADDRESS}/nfts/${MALE_COLLECTION_ID}-${maleNonce}`)
+          .then((res) => {
+            setContractMaleNft(res.data);
+            console.log(res.data);
+          });
+
+        axios
+          .get(`${GATEWAY}/accounts/${BREEDING_CONTRACT_ADDRESS}/nfts/${FEMALE_COLLECTION_ID}-${femaleNonce}`)
+          .then((res) => {
+            setContractFemaleNft(res.data);
+            console.log(res.data);
+          });
+      }
     })();
   }, [contractInteractor, address, hasPendingTransactions]);
 
@@ -144,7 +166,7 @@ const Breeding = () => {
     setSelectedFemaleNftIndex(parseInt(value.value));
   };
 
-  const startBreeding = async() => {
+  const startBreeding = async () => {
     if (maleNfts.length > 0 && femaleNfts.length > 0) {
       const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
       const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
@@ -190,6 +212,25 @@ const Breeding = () => {
         redirectAfterSign: false
       });
     }
+  };
+
+  const handleEndBreeding = async() => {
+    const endBreedingTransaction = {
+      data: 'endBreeding',
+      gasLimit: new GasLimit(10000000),
+      receiver: BREEDING_CONTRACT_ADDRESS
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: endBreedingTransaction,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing the Breeding transaction',
+        errorMessage: 'An error has occured during the Breeding',
+        successMessage: 'Breeding transaction successful'
+      },
+      redirectAfterSign: false
+    });
   };
 
   interface Props {
@@ -244,27 +285,34 @@ const Breeding = () => {
           <Col lg={4} md={4} sm={12}>
             <div className='nft-male-collection'>
               <h3 className='nft-type'>Male ({MALE_COLLECTION_ID})</h3>
-              {maleNfts.length > 0 ? (
+              {isLoggedIn && breedingStatus?.breeding_status ? (
                 <>
-                  <Select
-                    className='nft-selector'
-                    labelInValue
-                    defaultValue={{ value: maleNfts[0]?.identifier, label: maleNfts[0]?.identifier }}
-                    onChange={handleChangeMaleNft}
-                  >
-                    {maleNfts.map((item, key) => {
-                      return <Option value={key} key={key}>{item.identifier}</Option>;
-                    })}
-                  </Select>
-                  <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
+                  <h2>{contractMaleNft?.identifier}</h2>
+                  <img src={contractMaleNft?.url} className='nft-image'></img>
                 </>
               ) : (
-                <div>
-                  <p className='nft-not-found-text'>No MaleNFTs</p>
-                  <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
-                    <button className='nft-not-found-mint-button'>Mint Now</button>
-                  </a>
-                </div>
+                maleNfts.length > 0 ? (
+                  <>
+                    <Select
+                      className='nft-selector'
+                      labelInValue
+                      defaultValue={{ value: maleNfts[0]?.identifier, label: maleNfts[0]?.identifier }}
+                      onChange={handleChangeMaleNft}
+                    >
+                      {maleNfts.map((item, key) => {
+                        return <Option value={key} key={key}>{item.identifier}</Option>;
+                      })}
+                    </Select>
+                    <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
+                  </>
+                ) : (
+                  <div>
+                    <p className='nft-not-found-text'>No MaleNFTs</p>
+                    <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
+                      <button className='nft-not-found-mint-button'>Mint Now</button>
+                    </a>
+                  </div>
+                )
               )}
             </div>
           </Col>
@@ -274,27 +322,34 @@ const Breeding = () => {
           <Col lg={4} md={4} sm={12}>
             <div className='nft-female-collection'>
               <h3 className='nft-type'>Female ({FEMALE_COLLECTION_ID})</h3>
-              {femaleNfts.length > 0 ? (
+              {isLoggedIn && breedingStatus?.breeding_status ? (
                 <>
-                  <Select
-                    className='nft-selector'
-                    labelInValue
-                    defaultValue={{ value: femaleNfts[0]?.identifier, label: femaleNfts[0]?.identifier }}
-                    onChange={handleChangeFemaleNft}
-                  >
-                    {femaleNfts.map((item, key) => {
-                      return <Option value={key} key={key}>{item.identifier}</Option>;
-                    })}
-                  </Select>
-                  <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
+                  <h2>{contractFemaleNft?.identifier}</h2>
+                  <img src={contractFemaleNft?.url} className='nft-image'></img>
                 </>
               ) : (
-                <div>
-                  <p className='nft-not-found-text'>No FemaleNFTs</p>
-                  <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
-                    <button className='nft-not-found-mint-button'>Mint Now</button>
-                  </a>
-                </div>
+                femaleNfts.length > 0 ? (
+                  <>
+                    <Select
+                      className='nft-selector'
+                      labelInValue
+                      defaultValue={{ value: femaleNfts[0]?.identifier, label: femaleNfts[0]?.identifier }}
+                      onChange={handleChangeFemaleNft}
+                    >
+                      {femaleNfts.map((item, key) => {
+                        return <Option value={key} key={key}>{item.identifier}</Option>;
+                      })}
+                    </Select>
+                    <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
+                  </>
+                ) : (
+                  <div>
+                    <p className='nft-not-found-text'>No FemaleNFTs</p>
+                    <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
+                      <button className='nft-not-found-mint-button'>Mint Now</button>
+                    </a>
+                  </div>
+                )
               )}
             </div>
           </Col>
@@ -302,10 +357,18 @@ const Breeding = () => {
         </Row>
         <Row>
           <Col lg={12} md={12} sm={12} className='breeding-button'>
-            {maleNfts.length > 0 && femaleNfts.length > 0 ? (
-              <Button className='nft-start-breeding-buttons' onClick={startBreeding}>Start Breeding</Button>
+            {isLoggedIn && breedingStatus?.breeding_status ? (
+              (breedingStatus?.breeding_end_time.toNumber() * 1000) < Date.now() ? (
+                <Button className='nft-start-breeding-buttons' onClick={handleEndBreeding}>Breeding</Button>
+              ) : (
+                <Button className='nft-start-breeding-buttons'>Incubating Now</Button>
+              )
             ) : (
-              <></>
+              maleNfts.length > 0 && femaleNfts.length > 0 ? (
+                <Button className='nft-start-breeding-buttons' onClick={startBreeding}>Start Breeding</Button>
+              ) : (
+                <></>
+              )
             )}
           </Col>
         </Row>
