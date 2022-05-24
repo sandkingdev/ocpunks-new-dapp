@@ -71,7 +71,7 @@ const Breeding = () => {
           <Col lg={1} md={1} sm={12}></Col>
         </Row>
         <Row>
-          <Col lg={12} md={12} sm={12}>
+          <Col lg={12} md={12} sm={12} className='breeding-button'>
             <Button className='nft-start-breeding-buttons'>Start Breeding</Button>
           </Col>
         </Row>

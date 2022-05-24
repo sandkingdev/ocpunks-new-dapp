@@ -63,6 +63,10 @@
     margin-top: 50px;
 }
 
+.breeding-button {
+    text-align: center;
+}
+
 .nft-start-breeding-buttons {
     margin-top: 50px;
     padding: 12px 20px !important;
@@ -75,11 +79,12 @@
     letter-spacing: 1px;
     text-transform: none;
     font-size: 16px !important;
-    width: 240px;
+    width: 200px;
     height: 50px;
     border: 0px solid !important;
-    margin-bottom: 2rem !important;
-    margin-left: 3rem;
+    margin-bottom: 4rem !important;
+    // margin-left: 3rem;
+
 }
 
 .nft-start-breeding-buttons:hover {
