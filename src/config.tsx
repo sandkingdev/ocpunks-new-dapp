@@ -37,7 +37,7 @@ export const BREEDING_PRICE = 5000;
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
 
-export const ENVIRONMENT = 'mainnet';
-export const GATEWAY = 'https://api.elrond.com';
-// export const ENVIRONMENT = 'devnet';
-// export const GATEWAY = 'https://devnet-api.elrond.com';
+// export const ENVIRONMENT = 'mainnet';
+// export const GATEWAY = 'https://api.elrond.com';
+export const ENVIRONMENT = 'devnet';
+export const GATEWAY = 'https://devnet-api.elrond.com';

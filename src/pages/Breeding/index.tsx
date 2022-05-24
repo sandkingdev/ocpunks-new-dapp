@@ -88,6 +88,10 @@ const Breeding = () => {
     setSelectedFemaleNftIndex(parseInt(value.value));
   };
 
+  const startBreeding = () => {
+    //
+  };
+
   interface Props {
     days: number;
     hours: number;
@@ -130,12 +134,12 @@ const Breeding = () => {
   return (
     <>
       <Container className='custom-breeding-container'>
-        <Row>
+        {/* <Row>
           <Col lg={12} md={12} sm={12} style={{textAlign:'center'}}>
             <h1 className='color-white'>COMING SOON !!!</h1>
           </Col>
-        </Row>
-        {/* <Row>
+        </Row> */}
+        <Row>
           <Col lg={1} md={1} sm={12}></Col>
           <Col lg={4} md={4} sm={12}>
             <div className='nft-male-collection'>
@@ -211,7 +215,7 @@ const Breeding = () => {
             <Countdown date={Date.now() + 60000} renderer={renderer} />
           </Col>
           <Col lg={4} md={4} sm={12}></Col>
-        </Row> */}
+        </Row>
       </Container>
     </>
   );
