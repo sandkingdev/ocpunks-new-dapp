@@ -4,39 +4,67 @@
     color: $color-white-1;
 }
 
-.custom-presale-container {
+.custom-breeding-container {
     padding-left: 4rem !important;
     padding-right: 4rem !important;
     padding-top: 4rem !important;
 }
 
-.custom-nft-mint-text-header {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    font-size: 4.5rem;
-    line-height: 1.2;
+.nft-male-collection {
+    text-align: center;
+}
+
+.nft-female-collection {
+    text-align: center;
+}
+
+.nft-type {
     font-weight: 600 !important;
-    letter-spacing: -0.03em;
-    text-align: center;
     color: white;
+    font-family: 'Roboto';
 }
 
-.custom-nft-mint-text-description {
-    margin-top: 2rem;
-    margin-bottom: 0rem;
+.nft-selector {
+    font-family: 'Roboto';
+    width: 250px;
     font-size: 1.5rem;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
+    color: black !important;
+    margin-top: 10px;
+}
+
+.ant-select-arrow {
+    color: black !important;
+}
+
+.ant-select-selection-item {
+    font-family: 'Roboto' !important;
+}
+
+.ant-select-item-option-content {
+    font-family: 'Roboto' !important;
+    color: black !important;
+    font-size: 1.5rem !important;
+}
+
+.nft-image {
+    width: 250px;
+    margin-top: 20px;
+}
+
+.nft-plus {
+    align-self: center;
+}
+
+.nft-breeding-text {
+    font-size: 4rem;
+    font-weight: 600 !important;
     text-align: center;
     color: white;
+    margin-top: 50px;
 }
 
-.custom-nft-mint-button-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.custom-nft-mint-buttons {
+.nft-start-breeding-buttons {
+    margin-top: 50px;
     padding: 12px 20px !important;
     border-radius: 30px !important;
     background-color: #ba16b9 !important;
@@ -47,43 +75,31 @@
     letter-spacing: 1px;
     text-transform: none;
     font-size: 16px !important;
-    width: 140px;
+    width: 240px;
     height: 50px;
     border: 0px solid !important;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem !important;
+    margin-left: 3rem;
 }
 
-.custom-nft-mint-buttons:hover {
+.nft-start-breeding-buttons:hover {
     background-color: hsla(0, 0%, 100%, 0.82) !important;
     font-family: Inter, sans-serif;
     color: #0d0d0d !important;
     font-weight: 600;
 }
 
-.custom-nft-mint-buttons:focus {
+.nft-start-breeding-buttons:focus {
     outline: none !important;
     box-shadow: none !important;
 }
 
-.custom-slider-image {
-    width: 250px;
-    height: 350px;
-}
-
 @media (max-width: 767.98px) {
-    .custom-presale-container {
+    .custom-breeding-container {
         padding-top: 2rem !important;
     }
-
-    .custom-nft-mint-text-header {
-        font-size: 2rem;
+    .nft-breeding-text {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
     }
-
-    .custom-nft-mint-text-description {
-        font-size: 1.3rem;
-    }
-}
-
-textarea:focus, input:focus{
-    outline: none;
 }
