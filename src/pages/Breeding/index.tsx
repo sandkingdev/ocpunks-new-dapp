@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React , { useState, useEffect }  from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -7,13 +7,37 @@ import {
   Button
 } from 'react-bootstrap';
 import { Select } from 'antd';
-
-import { useGetAccountInfo } from '@elrondnetwork/dapp-core';
+import axios from 'axios';
 
 import { routeNames } from 'routes';
 
-import CEOImage from '../../assets/img/team/CEO.png';
+import {
+  useGetAccountInfo,
+  useGetNetworkConfig,
+  refreshAccount,
+  sendTransactions,
+  useGetPendingTransactions
+} from '@elrondnetwork/dapp-core';
 
+import {
+  Address,
+  AddressValue,
+  ContractFunction,
+  ProxyProvider,
+  Query,
+  GasLimit,
+} from '@elrondnetwork/erdjs';
+
+import {
+  MALE_COLLECTION_ID,
+  FEMALE_COLLECTION_ID,
+  PAYMENT_TOKEN_ID,
+  BREEDING_CONTRACT_ADDRESS,
+  GATEWAY,
+  BREEDING_PRICE,
+} from 'config';
+
+import CEOImage from '../../assets/img/team/CEO.png';
 import './index.scss';
 
 const { Option } = Select;
@@ -21,8 +45,20 @@ const { Option } = Select;
 const Breeding = () => {
 
   const navigate = useNavigate();
+
   const { address } = useGetAccountInfo();
+  const { hasPendingTransactions } = useGetPendingTransactions();
   const isLoggedIn = Boolean(address);
+
+  const [maleNfts, setMaleNfts] = useState<any[]>([]);
+
+  useEffect(() => {
+    axios
+      .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=2000&collection=${MALE_COLLECTION_ID}`)
+      .then((res) => {
+        setMaleNfts(res.data);
+      });
+  }, [hasPendingTransactions]);
 
   const handleChange = (value: { value: string; label: React.ReactNode }) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
