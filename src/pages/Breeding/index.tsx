@@ -9,6 +9,7 @@ import {
 import { Select } from 'antd';
 import axios from 'axios';
 import Countdown from 'react-countdown';
+import BigNumber from 'bignumber.js/bignumber.js';
 
 import { routeNames } from 'routes';
 
@@ -26,8 +27,20 @@ import {
   ContractFunction,
   ProxyProvider,
   Query,
-  GasLimit,
 } from '@elrondnetwork/erdjs';
+
+import {
+  GasLimit,
+  BytesValue,
+  BigUIntValue,
+  U64Value,
+  Egld,
+  TypedValue,
+  ArgSerializer,
+  TransactionPayload,
+  Transaction,
+  Balance,
+} from '@elrondnetwork/erdjs/out';
 
 import {
   MALE_COLLECTION_ID,
@@ -88,8 +101,52 @@ const Breeding = () => {
     setSelectedFemaleNftIndex(parseInt(value.value));
   };
 
-  const startBreeding = () => {
-    //
+  const startBreeding = async() => {
+    if (maleNfts.length > 0 && femaleNfts.length > 0) {
+      const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
+      const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
+      console.log(maleNftNonce, femaleNftNonce, PAYMENT_TOKEN_ID);
+
+      const tokenCount: any = 3;
+      const nftAmount: any = 1;
+      const paymentTokenNonce: any = 0;
+      const paymentAmount = (new BigNumber(BREEDING_PRICE)).multipliedBy(1000000);
+
+      const args: TypedValue[] = [
+        new AddressValue(new Address(BREEDING_CONTRACT_ADDRESS)),
+        new BigUIntValue(Balance.fromString(tokenCount.valueOf()).valueOf()),
+        BytesValue.fromUTF8(MALE_COLLECTION_ID),
+        new BigUIntValue(Balance.fromString(maleNftNonce.valueOf()).valueOf()),
+        new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
+        BytesValue.fromUTF8(FEMALE_COLLECTION_ID),
+        new BigUIntValue(Balance.fromString(femaleNftNonce.valueOf()).valueOf()),
+        new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
+        BytesValue.fromUTF8(PAYMENT_TOKEN_ID),
+        new BigUIntValue(Balance.fromString(paymentTokenNonce.valueOf()).valueOf()),
+        new BigUIntValue(Balance.fromString(paymentAmount.valueOf()).valueOf()),
+        BytesValue.fromUTF8('startBreeding')
+      ];
+
+      const { argumentsString } = new ArgSerializer().valuesToString(args);
+      const data = new TransactionPayload(`MultiESDTNFTTransfer@${argumentsString}`);
+
+      const tx = {
+        receiver: address,
+        gasLimit: new GasLimit(10000000),
+        data: data.toString(),
+      };
+      await refreshAccount();
+
+      await sendTransactions({
+        transactions: tx,
+        transactionsDisplayInfo: {
+          processingMessage: 'Processing the StartBreeding transaction',
+          errorMessage: 'An error has occured during the StartBreeding',
+          successMessage: 'StartBreeding transaction successful'
+        },
+        redirectAfterSign: false
+      });
+    }
   };
 
   interface Props {
@@ -203,19 +260,23 @@ const Breeding = () => {
         <Row>
           <Col lg={12} md={12} sm={12} className='breeding-button'>
             {maleNfts.length > 0 && femaleNfts.length > 0 ? (
-              <Button className='nft-start-breeding-buttons'>Start Breeding</Button>
+              <Button className='nft-start-breeding-buttons' onClick={startBreeding}>Start Breeding</Button>
             ) : (
               <></>
             )}
           </Col>
         </Row>
-        <Row>
-          <Col lg={4} md={4} sm={12}></Col>
-          <Col lg={4} md={4} sm={12} className='custom-count-down'>
-            <Countdown date={Date.now() + 60000} renderer={renderer} />
-          </Col>
-          <Col lg={4} md={4} sm={12}></Col>
-        </Row>
+        {isLoggedIn ? (
+          <Row>
+            <Col lg={4} md={4} sm={12}></Col>
+            <Col lg={4} md={4} sm={12} className='custom-count-down'>
+              <Countdown date={Date.now() + 60000} renderer={renderer} />
+            </Col>
+            <Col lg={4} md={4} sm={12}></Col>
+          </Row>
+        ) : (
+          <></>
+        )}
       </Container>
     </>
   );
