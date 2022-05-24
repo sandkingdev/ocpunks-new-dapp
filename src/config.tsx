@@ -26,6 +26,12 @@ export const FLIP_GAS_LIMIT = 6000000;
 
 export const FLIP_LAST_TX_SEARCH_COUNT = 3;
 
+// breeding
+export const MALE_COLLECTION_ID = 'ORC-0427ce';
+export const FEMALE_COLLECTION_ID = 'EAS-da9026';
+export const PAYMENT_TOKEN_ID = 'ZOG-481946';
+export const BREEDING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq2qkmj5f3t4fsxtf3dy0plqk6lxsdhmlz5zvshx7kj0';
+
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
 
