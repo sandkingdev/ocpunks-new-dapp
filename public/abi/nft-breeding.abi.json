@@ -1,0 +1,561 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.62.0-nightly",
+            "commitHash": "8bf93e9b6791acee3a594ed202fdfe45ad9952b5",
+            "commitDate": "2022-04-09",
+            "channel": "Nightly",
+            "short": "rustc 1.62.0-nightly (8bf93e9b6 2022-04-09)"
+        },
+        "contractCrate": {
+            "name": "nft-breeding",
+            "version": "0.0.0",
+            "git_version": "e6c5477"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.31.1"
+        }
+    },
+    "docs": [
+        "One of the simplest smart contracts possible,",
+        "it holds a single variable in storage, which anyone can increment."
+    ],
+    "name": "NftBreeding",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "male_nft_token_identifier",
+                "type": "TokenIdentifier"
+            },
+            {
+                "name": "female_nft_token_identifier",
+                "type": "TokenIdentifier"
+            },
+            {
+                "name": "payment_token_identifier",
+                "type": "TokenIdentifier"
+            },
+            {
+                "name": "breeding_price",
+                "type": "BigUint"
+            },
+            {
+                "name": "breeding_time",
+                "type": "u64"
+            },
+            {
+                "name": "baby_nft_max_supply",
+                "type": "u32"
+            },
+            {
+                "name": "baby_nft_royalties",
+                "type": "u32"
+            },
+            {
+                "name": "baby_nft_collection_tag",
+                "type": "bytes"
+            },
+            {
+                "name": "baby_nft_image_base_uri",
+                "type": "bytes"
+            },
+            {
+                "name": "baby_nft_metadata_base_uri",
+                "type": "bytes"
+            },
+            {
+                "name": "baby_nft_collection_metadata_no_https_uri",
+                "type": "bytes"
+            },
+            {
+                "name": "treasury_address",
+                "type": "Address"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "issueCollection",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [
+                {
+                    "name": "token_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "token_ticker",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setLocalRoles",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "withdrawFunds",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_token_id",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_amount",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "startBreeding",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "endBreeding",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "viewBreedingStatus",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BreedingStatus"
+                }
+            ]
+        },
+        {
+            "name": "setMaleNftTokenIdentifier",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "male_nft_token_identifier",
+                    "type": "TokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setPaymentTokenIdentifier",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "payment_token_identifier",
+                    "type": "TokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setFemaleNftTokenIdentifier",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "female_nft_token_identifier",
+                    "type": "TokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftTotalSupply",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_max_supply",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftRoyalties",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_royalties",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftImageBaseUri",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_image_base_uri",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftMetadataBaseUri",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_metadata_base_uri",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftCollectionTag",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_collection_tag",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBabyNftCollectionMetadataNoHttpsUri",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "baby_nft_collection_metadata_no_https_uri",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBreedingPrice",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "breeding_price",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setBreedingTime",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "breeding_time",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "setTreasuryAddress",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "treasury_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getMaleNftTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getFemaleNftTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getPaymentTokenIdentifier",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftMintedCount",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftTotalSupply",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftTokenName",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftRoyalties",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftImageBaseUri",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftMetadataBaseUri",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftCollectionTag",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getBabyNftCollectionMetadataNoHttpsUri",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bytes"
+                }
+            ]
+        },
+        {
+            "name": "getMintedNftIds",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<u32>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getBreedingPrice",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "getBreedingTime",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getTreasuryAddress",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "getPasued",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getMaleNftNonce",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getFemaleNftNonce",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getBreedingStatus",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "getBreedingStartTime",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        }
+    ],
+    "hasCallback": true,
+    "types": {
+        "BreedingStatus": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "breeding_status",
+                    "type": "bool"
+                },
+                {
+                    "name": "breeding_end_time",
+                    "type": "u64"
+                },
+                {
+                    "name": "male_nft_token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "male_nft_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "female_nft_token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "female_nft_nonce",
+                    "type": "u64"
+                }
+            ]
+        }
+    }
+}

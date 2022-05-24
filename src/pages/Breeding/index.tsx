@@ -24,6 +24,11 @@ import {
 import {
   Address,
   AddressValue,
+  AbiRegistry,
+  SmartContractAbi,
+  SmartContract,
+  Interaction,
+  QueryResponseBundle,
   ContractFunction,
   ProxyProvider,
   Query,
@@ -49,8 +54,12 @@ import {
   BREEDING_CONTRACT_ADDRESS,
   GATEWAY,
   BREEDING_PRICE,
+  BREEDING_CONTRACT_ABI_URL,
+  BREEDING_CONTRACT_NAME,
+  TIMEOUT,
 } from 'config';
 
+import { sendQuery } from '../../utils/transaction';
 import {
   paddingTwoDigits
 } from '../../utils/convert';
@@ -65,7 +74,9 @@ const Breeding = () => {
 
   const { address } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
+  const { network } = useGetNetworkConfig();
   const isLoggedIn = Boolean(address);
+  const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
 
   const [maleNfts, setMaleNfts] = useState<any[]>([]);
   const [femaleNfts, setFemaleNfts] = useState<any[]>([]);
@@ -90,6 +101,38 @@ const Breeding = () => {
         console.log('female: ', res.data);
       });
   }, [hasPendingTransactions]);
+
+  // load smart contract abi and parse it to SmartContract object for tx
+  const [contractInteractor, setContractInteractor] = React.useState<any>(undefined);
+  React.useEffect(() => {
+    (async () => {
+      const nftAbiRegistry = await AbiRegistry.load({
+        urls: [BREEDING_CONTRACT_ABI_URL],
+      });
+      const contract = new SmartContract({
+        address: new Address(BREEDING_CONTRACT_ADDRESS),
+        abi: new SmartContractAbi(nftAbiRegistry, [BREEDING_CONTRACT_NAME]),
+      });
+      setContractInteractor(contract);
+    })();
+  }, []); // [] makes useEffect run once
+
+  const [breedingStatus, setBreedingStatus] = React.useState<any>();
+  React.useEffect(() => {
+    (async () => {
+      if (!contractInteractor) return;
+      const interaction: Interaction = contractInteractor.methods.viewBreedingStatus();
+
+      const res: QueryResponseBundle | undefined = await sendQuery(contractInteractor, proxy, interaction);
+
+      if (!res || !res.returnCode.isSuccess()) return;
+      const items = res.firstValue?.valueOf();
+
+      console.log(items);
+      setBreedingStatus(items);
+
+    })();
+  }, [contractInteractor, address, hasPendingTransactions]);
 
   const handleChangeMaleNft = (value: { value: string; label: React.ReactNode }) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
@@ -266,11 +309,11 @@ const Breeding = () => {
             )}
           </Col>
         </Row>
-        {isLoggedIn ? (
+        {isLoggedIn && breedingStatus?.breeding_status ? (
           <Row>
             <Col lg={4} md={4} sm={12}></Col>
             <Col lg={4} md={4} sm={12} className='custom-count-down'>
-              <Countdown date={Date.now() + 60000} renderer={renderer} />
+              <Countdown date={breedingStatus?.breeding_end_time.toNumber() * 1000} renderer={renderer} />
             </Col>
             <Col lg={4} md={4} sm={12}></Col>
           </Row>

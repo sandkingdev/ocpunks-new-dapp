@@ -31,8 +31,10 @@ export const MALE_COLLECTION_ID = 'ORC-0427ce';
 export const FEMALE_COLLECTION_ID = 'EAS-da9026';
 // export const BABY_COLLECTION_ID = 'EAS-da9026';
 export const PAYMENT_TOKEN_ID = 'ZOG-481946';
-export const BREEDING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq2qkmj5f3t4fsxtf3dy0plqk6lxsdhmlz5zvshx7kj0';
 export const BREEDING_PRICE = 5000;
+export const BREEDING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq2qkmj5f3t4fsxtf3dy0plqk6lxsdhmlz5zvshx7kj0';
+export const BREEDING_CONTRACT_ABI_URL = '/abi/nft-breeding.abi.json';
+export const BREEDING_CONTRACT_NAME = 'NftBreeding';
 
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
