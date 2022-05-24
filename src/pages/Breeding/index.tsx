@@ -92,19 +92,21 @@ const Breeding = () => {
           <Col lg={4} md={4} sm={12}>
             <div className='nft-male-collection'>
               <h3 className='nft-type'>Male ({MALE_COLLECTION_ID})</h3>
-              <Select
-                className='nft-selector'
-                labelInValue
-                // defaultValue={{ value: maleNfts[0]?.identifier, label: maleNfts[0]?.identifier }}
-                onChange={handleChangeMaleNft}
-              >
-                {maleNfts.map((item, key) => {
-                  return <Option value={key} key={key}>{item.identifier}</Option>;
-                })}
-              </Select>
               {maleNfts.length > 0 ? (
-                <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
-              ) :(
+                <>
+                  <Select
+                    className='nft-selector'
+                    labelInValue
+                    defaultValue={{ value: maleNfts[0]?.identifier, label: maleNfts[0]?.identifier }}
+                    onChange={handleChangeMaleNft}
+                  >
+                    {maleNfts.map((item, key) => {
+                      return <Option value={key} key={key}>{item.identifier}</Option>;
+                    })}
+                  </Select>
+                  <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
+                </>
+              ) : (
                 <div>
                   <p className='nft-not-found-text'>No MaleNFTs</p>
                   <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
@@ -120,19 +122,21 @@ const Breeding = () => {
           <Col lg={4} md={4} sm={12}>
             <div className='nft-female-collection'>
               <h3 className='nft-type'>Female ({FEMALE_COLLECTION_ID})</h3>
-              <Select
-                className='nft-selector'
-                labelInValue
-                defaultValue={{ value: femaleNfts[0]?.identifier, label: femaleNfts[0]?.identifier }}
-                onChange={handleChangeFemaleNft}
-              >
-                {femaleNfts.map((item, key) => {
-                  return <Option value={key} key={key}>{item.identifier}</Option>;
-                })}
-              </Select>
               {femaleNfts.length > 0 ? (
-                <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
-              ) :(
+                <>
+                  <Select
+                    className='nft-selector'
+                    labelInValue
+                    defaultValue={{ value: femaleNfts[0]?.identifier, label: femaleNfts[0]?.identifier }}
+                    onChange={handleChangeFemaleNft}
+                  >
+                    {femaleNfts.map((item, key) => {
+                      return <Option value={key} key={key}>{item.identifier}</Option>;
+                    })}
+                  </Select>
+                  <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
+                </>
+              ) : (
                 <div>
                   <p className='nft-not-found-text'>No FemalNFTs</p>
                   <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
