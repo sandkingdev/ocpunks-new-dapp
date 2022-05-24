@@ -82,7 +82,7 @@
     width: 200px;
     height: 50px;
     border: 0px solid !important;
-    margin-bottom: 4rem !important;
+    margin-bottom: 1rem !important;
     // margin-left: 3rem;
 
 }
@@ -136,6 +136,22 @@
     box-shadow: none !important;
 }
 
+.custom-count-down {
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    font-size: 24px !important;
+    font-family: 'Roboto' !important;
+}
+
+.customer-timer-time {
+    font-family: 'Roboto' !important;
+}
+
+.customer-timer-uint {
+    font-family: 'Roboto' !important;
+}
+
 @media (max-width: 767.98px) {
     .custom-breeding-container {
         padding-top: 2rem !important;
@@ -143,5 +159,8 @@
     .nft-breeding-text {
         margin-top: 20px !important;
         margin-bottom: 20px !important;
+    }
+    .customer-timer-block {
+        margin-top: 5px;
     }
 }

@@ -147,7 +147,7 @@ const Home = () => {
           </Col>
           <Col lg={3} md={3} sm={12}>
             <img src={DeveloperImage} width='250px' height='250px' className='team-image'></img>
-            <h3 className='team-text'>James Kato</h3>
+            <h3 className='team-text'>James Chen</h3>
             <h5 className='team-text'>Developer</h5>
           </Col>
         </Row>

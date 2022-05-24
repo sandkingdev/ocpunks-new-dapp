@@ -22,3 +22,10 @@ export const convertEsdtToWei = (v: number, decimals = 18) => {
     const factor = Math.pow(10, decimals);
     return (new BigNumber(v)).multipliedBy(factor);
 };
+
+export const paddingTwoDigits = (num: any) => {
+    return num.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    });
+};

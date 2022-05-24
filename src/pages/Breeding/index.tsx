@@ -8,6 +8,7 @@ import {
 } from 'react-bootstrap';
 import { Select } from 'antd';
 import axios from 'axios';
+import Countdown from 'react-countdown';
 
 import { routeNames } from 'routes';
 
@@ -37,7 +38,10 @@ import {
   BREEDING_PRICE,
 } from 'config';
 
-import CEOImage from '../../assets/img/team/CEO.png';
+import {
+  paddingTwoDigits
+} from '../../utils/convert';
+
 import './index.scss';
 
 const { Option } = Select;
@@ -84,10 +88,54 @@ const Breeding = () => {
     setSelectedFemaleNftIndex(parseInt(value.value));
   };
 
+  interface Props {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    completed: boolean;
+  }
+
+  const renderer: React.FC<Props> = ({
+    days,
+    hours,
+    minutes,
+    seconds,
+    completed
+  }) => {
+    // console.log('>>> in timer: ',days, hours, minutes, seconds, completed);
+
+    return (
+      <Row className='custom-timer color-white'>
+        <Col xs={6} sm={3} className='customer-timer-block'>
+          <div className='customer-timer-time'>{paddingTwoDigits(days)}</div>
+          <div className='customer-timer-uint'>Days</div>
+        </Col>
+        <Col xs={6} sm={3} className='customer-timer-block'>
+          <div className='customer-timer-time'>{paddingTwoDigits(hours)}</div>
+          <div className='customer-timer-uint'>Hours</div>
+        </Col>
+        <Col xs={6} sm={3} className='customer-timer-block'>
+          <div className='customer-timer-time'>{paddingTwoDigits(minutes)}</div>
+          <div className='customer-timer-uint'>Mins</div>
+        </Col>
+        <Col xs={6} sm={3} className='customer-timer-block'>
+          <div className='customer-timer-time'>{paddingTwoDigits(seconds)}</div>
+          <div className='customer-timer-uint'>Secs</div>
+        </Col>
+      </Row>
+    );
+  };
+
   return (
     <>
       <Container className='custom-breeding-container'>
         <Row>
+          <Col lg={12} md={12} sm={12} style={{textAlign:'center'}}>
+            <h1 className='color-white'>COMING SOON !!!</h1>
+          </Col>
+        </Row>
+        {/* <Row>
           <Col lg={1} md={1} sm={12}></Col>
           <Col lg={4} md={4} sm={12}>
             <div className='nft-male-collection'>
@@ -157,6 +205,13 @@ const Breeding = () => {
             )}
           </Col>
         </Row>
+        <Row>
+          <Col lg={4} md={4} sm={12}></Col>
+          <Col lg={4} md={4} sm={12} className='custom-count-down'>
+            <Countdown date={Date.now() + 60000} renderer={renderer} />
+          </Col>
+          <Col lg={4} md={4} sm={12}></Col>
+        </Row> */}
       </Container>
     </>
   );
