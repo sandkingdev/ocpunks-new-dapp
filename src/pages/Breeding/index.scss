@@ -99,6 +99,43 @@
     box-shadow: none !important;
 }
 
+.nft-not-found-text {
+    margin-top: 50px;
+    font-size: 2rem;
+    color: white;
+}
+
+.nft-not-found-mint-button {
+    margin-top: 10px;
+    padding: 12px 20px !important;
+    border-radius: 30px !important;
+    background-color: #ba16b9 !important;
+    transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease !important;
+    color: #fff !important;
+    line-height: 26px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    text-transform: none;
+    font-size: 16px !important;
+    width: 200px;
+    height: 50px;
+    border: 0px solid !important;
+    // margin-left: 3rem;
+
+}
+
+.nft-not-found-mint-button:hover {
+    background-color: hsla(0, 0%, 100%, 0.82) !important;
+    font-family: Inter, sans-serif;
+    color: #0d0d0d !important;
+    font-weight: 600;
+}
+
+.nft-not-found-mint-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 @media (max-width: 767.98px) {
     .custom-breeding-container {
         padding-top: 2rem !important;

@@ -27,7 +27,7 @@ export const FLIP_GAS_LIMIT = 6000000;
 export const FLIP_LAST_TX_SEARCH_COUNT = 3;
 
 // breeding
-export const MALE_COLLECTION_ID = 'ORC-0427ce';
+export const MALE_COLLECTION_ID = 'ORC-0427ce1';
 export const FEMALE_COLLECTION_ID = 'EAS-da9026';
 export const BABY_COLLECTION_ID = 'EAS-da9026';
 export const PAYMENT_TOKEN_ID = 'ZOG-481946';
@@ -37,7 +37,7 @@ export const BREEDING_PRICE = 5000;
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
 
-export const ENVIRONMENT = 'mainnet';
-export const GATEWAY = 'https://api.elrond.com';
-// export const ENVIRONMENT = 'devnet';
-// export const GATEWAY = 'https://devnet-api.elrond.com';
+// export const ENVIRONMENT = 'mainnet';
+// export const GATEWAY = 'https://api.elrond.com';
+export const ENVIRONMENT = 'devnet';
+export const GATEWAY = 'https://devnet-api.elrond.com';
