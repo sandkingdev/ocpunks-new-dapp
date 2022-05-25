@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -61,7 +61,8 @@ import {
 
 import { sendQuery } from '../../utils/transaction';
 import {
-  paddingTwoDigits
+  paddingTwoDigits,
+  formatNumbers
 } from '../../utils/convert';
 
 import './index.scss';
@@ -70,7 +71,7 @@ const { Option } = Select;
 
 const Breeding = () => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { address } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
@@ -290,11 +291,11 @@ const Breeding = () => {
   return (
     <>
       <Container className='custom-breeding-container'>
-        {/* <Row>
+        <Row>
           <Col lg={12} md={12} sm={12} style={{textAlign:'center'}}>
-            <h1 className='color-white'>COMING SOON !!!</h1>
+            <h1 className='nft-breeding-price'>PRICE : 70,000 $ZOG</h1>
           </Col>
-        </Row> */}
+        </Row>
         <Row>
           <Col lg={1} md={1} sm={12}></Col>
           <Col lg={4} md={4} sm={12}>
