@@ -10,7 +10,7 @@
         "contractCrate": {
             "name": "nft-breeding",
             "version": "0.0.0",
-            "git_version": "e6c5477"
+            "git_version": "21aeb86-modified"
         },
         "framework": {
             "name": "elrond-wasm",
@@ -143,7 +143,12 @@
         {
             "name": "viewBreedingStatus",
             "mutability": "readonly",
-            "inputs": [],
+            "inputs": [
+                {
+                    "name": "user_address",
+                    "type": "Address"
+                }
+            ],
             "outputs": [
                 {
                     "type": "BreedingStatus"

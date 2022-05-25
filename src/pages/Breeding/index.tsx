@@ -80,6 +80,7 @@ const Breeding = () => {
 
   const [maleNfts, setMaleNfts] = useState<any[]>([]);
   const [femaleNfts, setFemaleNfts] = useState<any[]>([]);
+  const [endBreeding, setEndBreeding] = useState(true);
 
   const [selectedMaleNftIndex, setSelectedMaleNftIndex] = useState(0);
   const [selectedFemaleNftIndex, setSelectedFemaleNftIndex] = useState(0);
@@ -123,14 +124,18 @@ const Breeding = () => {
   React.useEffect(() => {
     (async () => {
       if (!contractInteractor) return;
-      const interaction: Interaction = contractInteractor.methods.viewBreedingStatus();
+
+      const args = [
+        new AddressValue(new Address(address)),
+      ];
+      const interaction: Interaction = contractInteractor.methods.viewBreedingStatus(args);
 
       const res: QueryResponseBundle | undefined = await sendQuery(contractInteractor, proxy, interaction);
 
       if (!res || !res.returnCode.isSuccess()) return;
       const items = res.firstValue?.valueOf();
 
-      console.log(items);
+      console.log('breeding_status: ', items);
       setBreedingStatus(items);
 
       if (items.breeding_status) {
@@ -154,7 +159,7 @@ const Breeding = () => {
           });
       }
     })();
-  }, [contractInteractor, address, hasPendingTransactions]);
+  }, [contractInteractor, address, hasPendingTransactions, endBreeding]);
 
   const handleChangeMaleNft = (value: { value: string; label: React.ReactNode }) => {
     console.log(value); // { value: "lucy", key: "lucy", label: "Lucy (101)" }
@@ -168,6 +173,9 @@ const Breeding = () => {
 
   const startBreeding = async () => {
     if (maleNfts.length > 0 && femaleNfts.length > 0) {
+
+      setEndBreeding(true);
+
       const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
       const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
       console.log(maleNftNonce, femaleNftNonce, PAYMENT_TOKEN_ID);
@@ -214,10 +222,10 @@ const Breeding = () => {
     }
   };
 
-  const handleEndBreeding = async() => {
+  const handleEndBreeding = async () => {
     const endBreedingTransaction = {
       data: 'endBreeding',
-      gasLimit: new GasLimit(10000000),
+      gasLimit: new GasLimit(60000000),
       receiver: BREEDING_CONTRACT_ADDRESS
     };
 
@@ -249,6 +257,13 @@ const Breeding = () => {
     completed
   }) => {
     // console.log('>>> in timer: ',days, hours, minutes, seconds, completed);
+
+    if (completed && endBreeding) {
+      console.log('days: ', days);
+      if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+        setEndBreeding(false);
+      }
+    }
 
     return (
       <Row className='custom-timer color-white'>
@@ -287,7 +302,7 @@ const Breeding = () => {
               <h3 className='nft-type'>Male ({MALE_COLLECTION_ID})</h3>
               {isLoggedIn && breedingStatus?.breeding_status ? (
                 <>
-                  <h2>{contractMaleNft?.identifier}</h2>
+                  <h2 className='breeding-nft-id'>{contractMaleNft?.identifier}</h2>
                   <img src={contractMaleNft?.url} className='nft-image'></img>
                 </>
               ) : (
@@ -324,7 +339,7 @@ const Breeding = () => {
               <h3 className='nft-type'>Female ({FEMALE_COLLECTION_ID})</h3>
               {isLoggedIn && breedingStatus?.breeding_status ? (
                 <>
-                  <h2>{contractFemaleNft?.identifier}</h2>
+                  <h2 className='breeding-nft-id'>{contractFemaleNft?.identifier}</h2>
                   <img src={contractFemaleNft?.url} className='nft-image'></img>
                 </>
               ) : (
@@ -361,7 +376,7 @@ const Breeding = () => {
               (breedingStatus?.breeding_end_time.toNumber() * 1000) < Date.now() ? (
                 <Button className='nft-start-breeding-buttons' onClick={handleEndBreeding}>Breeding</Button>
               ) : (
-                <Button className='nft-start-breeding-buttons'>Incubating Now</Button>
+                <Button className='nft-start-breeding-buttons' disabled>Incubating Now</Button>
               )
             ) : (
               maleNfts.length > 0 && femaleNfts.length > 0 ? (
