@@ -292,7 +292,12 @@ const Breeding = () => {
     <>
       <Container className='custom-breeding-container'>
         <Row>
-          <Col lg={12} md={12} sm={12} style={{textAlign:'center'}}>
+          <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
+            <h1 className='nft-breeding-price'>COMMING SOON</h1>
+          </Col>
+        </Row>
+        {/* <Row>
+          <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
             <h1 className='nft-breeding-price'>PRICE : {formatNumbers(BREEDING_PRICE)} $ZOG</h1>
           </Col>
         </Row>
@@ -398,7 +403,7 @@ const Breeding = () => {
           </Row>
         ) : (
           <></>
-        )}
+        )} */}
       </Container>
     </>
   );
