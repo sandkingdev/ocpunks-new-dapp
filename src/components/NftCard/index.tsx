@@ -232,7 +232,7 @@ const NftCard = (props: any) => {
             type ? (
               <button className='btn btn-primary btn-action' onClick={handleAction}>Stake</button>
             ) : (
-              <button className='btn btn-primary btn-action' onClick={handleAction}>Untake</button>
+              <button className='btn btn-primary btn-action' onClick={handleAction}>Unstake</button>
             )
           )}
         </Card>
