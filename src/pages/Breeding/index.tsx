@@ -293,7 +293,7 @@ const Breeding = () => {
       <Container className='custom-breeding-container'>
         <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
-            <h1 className='nft-breeding-price'>COMMING SOON</h1>
+            <h1 className='nft-breeding-price'>COMING SOON</h1>
           </Col>
         </Row>
         {/* <Row>
