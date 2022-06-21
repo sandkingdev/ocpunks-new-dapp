@@ -44,6 +44,9 @@ const Navbar = () => {
             <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
               NFT Breeding
             </Link>
+            <Link to={routeNames.bridge} aria-current='page' className='custom-link-button custom-nav-link'>
+              NFT Bridge
+            </Link>
             {isLoggedIn ? (
               <>
 

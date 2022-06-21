@@ -8,6 +8,7 @@ import EasterNft from './pages/EasterNft';
 import BuyNft from './pages/BuyNft';
 import SellNft from './pages/SellNft';
 import Breeding from './pages/Breeding';
+import Bridge from './pages/Bridge';
 
 
 export const routeNames = {
@@ -22,6 +23,7 @@ export const routeNames = {
   buynft: '/buynft',
   sellnft: '/sellnft',
   breeding: '/breeding',
+  bridge: '/bridge',
 };
 
 const routes: Array<any> = [
@@ -64,6 +66,11 @@ const routes: Array<any> = [
     path: routeNames.breeding,
     title: 'NFT Breeding',
     component: Breeding
+  },
+  {
+    path: routeNames.bridge,
+    title: 'NFT Bridge',
+    component: Bridge
   },
 ];
 
