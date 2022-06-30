@@ -60,7 +60,7 @@ const Home = () => {
           </Col>
           <Col lg={12} md={12} sm={12} className='custom-nft-mint-button-container'>
             <Button className='custom-nft-stake-buttons' onClick={handleMint}>Stake NOW</Button>
-            <a href='https://www.trust.market/buy/Orcpunks/Orcpunks' target='blank'>
+            <a href='https://xoxno.com/buy/Orcpunks/Orcpunks' target='blank'>
               <Button className='custom-nft-mint-buttons'>Mint NOW</Button>
             </a>
           </Col>
