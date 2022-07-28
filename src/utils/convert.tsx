@@ -29,3 +29,12 @@ export const paddingTwoDigits = (num: any) => {
         useGrouping: false
     });
 };
+
+export const convertWeiToEsdt = (v: any, decimals = 18, precision = 4) => {
+    // conversion for BigNumber operation
+    if (typeof(v) != typeof(BigNumber)) v = new BigNumber(v);
+
+    const number = v.dividedBy(new BigNumber(Math.pow(10, decimals))).toNumber();
+    const factor = Math.pow(10, precision);
+    return Math.floor(number * factor) / factor;
+};

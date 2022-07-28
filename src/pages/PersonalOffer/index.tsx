@@ -40,7 +40,6 @@ import {
   Transaction,
   GasLimit,
   ContractFunction,
-  DefaultSmartContractController,
 } from '@elrondnetwork/erdjs';
 import {
   refreshAccount,
@@ -68,15 +67,13 @@ import {
 } from '../../data';
 import {
   SECOND_IN_MILLI,
-  IStakingInfo,
-  IContractInteractor,
   convertWeiToEsdt,
   getCurrentTimestamp,
   getEgldPrice,
 } from '../../utils';
 import { routeNames } from '../../routes';
 
-export const OfferContractContext = React.createContext<IContractInteractor | undefined>(undefined);
+export const OfferContractContext = React.createContext(undefined);
 export const TokensContext = React.createContext<any[]>([]);
 export const EgldPriceContext = React.createContext<number>(0);
 
@@ -93,25 +90,32 @@ const PersonalOffer = () => {
   const provider = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
 
   // load smart contract abi and parse it to SmartContract object for tx
-  const [offerContractInteractor, setOfferContractInteractor] = React.useState<IContractInteractor | undefined>();
+  const [offerContractInteractor, setOfferContractInteractor] = React.useState<any>(undefined);
   React.useEffect(() => {
-      (async() => {
-          const registry = await AbiRegistry.load({ urls: [OFFER_CONTRACT_ABI_URL] });
-          const abi = new SmartContractAbi(registry, [OFFER_CONTRACT_NAME]);
-          const contract = new SmartContract({ address: new Address(OFFER_CONTRACT_ADDRESS), abi: abi });
-          const controller = new DefaultSmartContractController(abi, provider);
-
-          // console.log('offerContractInteractor', {
-          //     contract,
-          //     controller,
-          // });
-
-          setOfferContractInteractor({
-              contract,
-              controller,
-          });
-      })();
+    (async () => {
+      const nftAbiRegistry = await AbiRegistry.load({
+        urls: [OFFER_CONTRACT_ABI_URL],
+      });
+      const contract = new SmartContract({
+        address: new Address(OFFER_CONTRACT_ADDRESS),
+        abi: new SmartContractAbi(nftAbiRegistry, [OFFER_CONTRACT_NAME]),
+      });
+      setOfferContractInteractor(contract);
+    })();
   }, []); // [] makes useEffect run once
+  // React.useEffect(() => {
+  //     (async() => {
+  //         const registry = await AbiRegistry.load({ urls: [OFFER_CONTRACT_ABI_URL] });
+  //         const abi = new SmartContractAbi(registry, [OFFER_CONTRACT_NAME]);
+  //         const contract = new SmartContract({ address: new Address(OFFER_CONTRACT_ADDRESS), abi: abi });
+  //         const controller = new DefaultSmartContractController(abi, provider);
+
+  //         setOfferContractInteractor({
+  //             contract,
+  //             controller,
+  //         });
+  //     })();
+  // }, []); // [] makes useEffect run once
 
   const [tokens, setTokens] = React.useState<any[]>([]);
   React.useEffect(() => {
