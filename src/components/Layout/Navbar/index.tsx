@@ -38,6 +38,9 @@ const Navbar = () => {
             <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
               $ZOG
             </Link>
+            <Link to={routeNames.personaloffer} aria-current='page' className='custom-link-button custom-nav-link'>
+              Offer
+            </Link>
             <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
               Zorgflip
             </Link>
