@@ -17,7 +17,6 @@ import {
   FloatingLabel
 } from 'react-bootstrap';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
-import logo from './../../assets/img/logo.png';
 import backslide from './../../assets/img/backslide.png';
 import { FaChartBar , FaComment } from 'react-icons/fa';
 import  { useState } from 'react';
@@ -66,7 +65,7 @@ import {
 } from '../../config';
 import {
   OFFER_TOKEN_LIST
-} from 'data';
+} from '../../data';
 import {
   SECOND_IN_MILLI,
   IStakingInfo,
@@ -75,7 +74,7 @@ import {
   getCurrentTimestamp,
   getEgldPrice,
 } from '../../utils';
-import { routeNames } from 'routes';
+import { routeNames } from '../../routes';
 
 export const OfferContractContext = React.createContext<IContractInteractor | undefined>(undefined);
 export const TokensContext = React.createContext<any[]>([]);

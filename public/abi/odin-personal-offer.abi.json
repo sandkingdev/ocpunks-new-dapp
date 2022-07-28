@@ -1,0 +1,277 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.61.0-nightly",
+            "commitHash": "5f37001055c29982f4c27ee9edd90449c8e07774",
+            "commitDate": "2022-03-22",
+            "channel": "Nightly",
+            "short": "rustc 1.61.0-nightly (5f3700105 2022-03-22)"
+        },
+        "contractCrate": {
+            "name": "odin-personal-offer",
+            "version": "0.0.0"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.30.0"
+        }
+    },
+    "name": "OdinPersonalOffer",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "fee",
+                "type": "u32"
+            },
+            {
+                "name": "lp_wallet_address",
+                "type": "Address"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "docs": [
+                "public endpoint"
+            ],
+            "name": "makeOffer",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "accept_token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "accept_token_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "is_partial_fill_allowed",
+                    "type": "bool"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "cancelOffer",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "offer_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "acceptOffer",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [
+                {
+                    "name": "offer_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getOffers",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "opt_user_address",
+                    "type": "optional<Address>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<Order>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "docs": [
+                "owner-only action"
+            ],
+            "name": "withdrawFunds",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_token_id",
+                    "type": "optional<TokenIdentifier>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_nonce",
+                    "type": "optional<u64>",
+                    "multi_arg": true
+                },
+                {
+                    "name": "opt_token_amount",
+                    "type": "optional<BigUint>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "cancelOffers",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "opt_number_of_offers_to_cancel",
+                    "type": "optional<u32>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getLastOfferId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getOfferIds",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<u32>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "getOffer",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "offer_id",
+                    "type": "u32"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "Order"
+                }
+            ]
+        },
+        {
+            "name": "getFee",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "getLpWalletAddress",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "setLpWalletAddress",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "lp_wallet_address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "getPaused",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        },
+        {
+            "name": "pause",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "unpause",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        }
+    ],
+    "hasCallback": false,
+    "types": {
+        "Order": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "offer_id",
+                    "type": "u32"
+                },
+                {
+                    "name": "offerer_address",
+                    "type": "Address"
+                },
+                {
+                    "name": "offer_token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "offer_token_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "accept_token_id",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "accept_token_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "offer_timestamp",
+                    "type": "u64"
+                },
+                {
+                    "name": "is_partial_fill_allowed",
+                    "type": "bool"
+                }
+            ]
+        }
+    }
+}

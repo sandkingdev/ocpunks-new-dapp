@@ -9,6 +9,7 @@ import BuyNft from './pages/BuyNft';
 import SellNft from './pages/SellNft';
 import Breeding from './pages/Breeding';
 import Bridge from './pages/Bridge';
+import PersonalOffer from './pages/PersonalOffer';
 
 
 export const routeNames = {
@@ -24,6 +25,7 @@ export const routeNames = {
   sellnft: '/sellnft',
   breeding: '/breeding',
   bridge: '/bridge',
+  personaloffer: '/offer'
 };
 
 const routes: Array<any> = [
@@ -71,6 +73,11 @@ const routes: Array<any> = [
     path: routeNames.bridge,
     title: 'NFT Bridge',
     component: Bridge
+  },
+  {
+    path: routeNames.personaloffer,
+    title: 'Offer',
+    component: PersonalOffer
   },
 ];
 
