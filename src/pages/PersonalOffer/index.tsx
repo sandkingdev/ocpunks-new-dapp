@@ -158,7 +158,6 @@ const PersonalOffer = () => {
       <TokensContext.Provider value={tokens}>
         <EgldPriceContext.Provider value={egldPrice}>
           <div className='PersonalOffers'>
-            <div className='gradient13'></div>
             <div className='gap-90' style={{ display: 'flex', alignItems: 'center', fontFamily: 'Chakra Petch' }}>
               <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/list`}>Orders List</NavLink>
               <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/create`}>Create Order</NavLink>

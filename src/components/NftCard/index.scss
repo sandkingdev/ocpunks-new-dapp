@@ -9,10 +9,19 @@
 
 .nft-image {
     border-radius: 10px 10px 0px 0px !important;
+    width: 255px !important;
 }
 
 .ant-card-body {
     padding: 10px !important;
+}
+
+.ant-card-bordered {
+    border: none;
+}
+
+.ant-card-cover {
+    margin: 0 !important;
 }
 
 .ant-card-meta-title{

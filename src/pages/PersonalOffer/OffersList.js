@@ -55,6 +55,7 @@ import {
   sortOffers,
 } from '../../utils/index';
 import { dropdownCall } from 'components/Layout/Navbar/function';
+import { sendQuery } from '../../utils/transaction';
 
 function OffersList () {
   const {account} = useGetAccountInfo();
@@ -78,9 +79,9 @@ function OffersList () {
   React.useEffect(() => {
       (async () => {
           if (!offerContractInteractor || hasPendingTransactions) return;
-          const args = [OptionalValue.newMissing()];
-          const interaction = offerContractInteractor.contract.methods.getOffers(args);
-          const res = await offerContractInteractor.controller.query(interaction);
+          const args = [];
+          const interaction = offerContractInteractor.methods.getOffers(args);
+          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
 
           if (!res || !res.returnCode.isSuccess()) {
@@ -136,8 +137,9 @@ function OffersList () {
     React.useEffect(() => {
       (async () => {
           if (!offerContractInteractor) return;
-          const interaction = offerContractInteractor.contract.methods.getFee();
-          const res = await offerContractInteractor.controller.query(interaction);
+
+          const interaction = offerContractInteractor.methods.getFee();
+          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
           let fee = '-';
           if (res && res.returnCode.isSuccess()) {

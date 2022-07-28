@@ -52,6 +52,7 @@ import {
 import {
   TokensContext
 } from './index';
+import { sendQuery } from '../../utils/transaction';
 
 function CancelItem(props) {
   const offer = props.offer;
@@ -134,8 +135,8 @@ function CancelOffers () {
           } else {
             args = [new OptionalValue(new OptionalType(new AddressType()), new AddressValue(new Address(account.address)))];
           }
-          const interaction = offerContractInteractor.contract.methods.getOffers(args);
-          const res = await offerContractInteractor.controller.query(interaction);
+          const interaction = offerContractInteractor.methods.getOffers(args);
+          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
 
           if (!res || !res.returnCode.isSuccess()) {
