@@ -1,0 +1,210 @@
+.PersonalOffers a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #A7B7DF;
+    padding-bottom: 7px;
+}
+
+.PersonalOffers .active {
+    color: white;
+    border-bottom: 4px solid rgba(85, 25, 203, 1);
+    padding-top: 4px;
+}
+
+.PersonalOffers {
+    padding: 90px 140px;
+}
+
+.read-more-target {
+    opacity: 1;
+    max-height: 25px;
+    transition: .25s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.read-more-state:checked + .read-more-target {
+    opacity: 1;
+    font-size: inherit;
+    max-height: 999em;
+}
+
+.selectdropdown {
+    height: 41px;
+    transition: all 0.5s ease-in-out;
+    border-radius: 10px;
+    background: rgb(33, 33, 60);
+    margin-top: 7px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 6px 17px 7px;
+    width: 100%;
+    font-family: "Chakra Petch";
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position:relative;
+}
+
+.selectdropdown select {
+    background: #E91E63;
+    color: #fff;
+    padding: 10px;
+    width: 250px;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 48px rgb(93, 15, 9);
+    -webkit-appearance: button;
+    outline: none
+}
+
+.selectdropdown:focus {
+    outline: none;
+}
+
+#customRange1 {
+    background-color: linear-gradient(180deg, #2603FB 0%, #DC06FF 100%);
+}
+
+input[type='range'] {
+    -webkit-appearance: none !important;
+    background:#EFEFEF4D !important;
+    height:8px;
+    margin: 10px 0 5px 0;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.customrange > input[type='range'] {
+    -webkit-appearance: none !important;
+    background:linear-gradient(89.76deg, #4d14c7 1.03%, #c567fe 99.79%);
+    height:8px;
+    margin: 10px 0 5px 0;
+    border-radius: 10px;
+    width: 100%;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+    cursor: pointer;
+}
+
+.txt-algn-cent {
+    text-align: center;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.disableColor {
+    background: #EFEFEF4D !important;
+}
+
+.createOfferBalance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > h6 {
+        font-weight: 300;
+        margin-top: 20px;
+        color: #A7B7DF;
+        font-family: "Chakra Petch"
+    }
+}
+
+.dropdownWrapper {
+    position: relative !important;
+    background: #21213c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Chakra Petch';
+    padding: 9px 15px;
+    border-radius: 10px;
+    margin-top: 6px;
+
+    > a {
+        color: white !important;
+        padding-bottom: 0;
+    }
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+    color: white !important;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-disabled {
+    color: white !important;
+}
+
+.css-1v2lvtn-MuiPaginationItem-root {
+    color: white !important;
+}
+
+.css-1oj2twp-MuiPagination-root {
+    margin: 0 auto;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+    border-radius: 100% !important;
+    height: 38px !important;
+    padding: 0 12.5px !important;
+    font-size: 18px !important;
+}
+
+.css-1v2lvtn-MuiPaginationItem-root {
+    font-size: 20px !important;
+}
+
+.css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon {
+    width: 1.1em !important;
+    height: 1.1em !important;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+}
+
+.css-15u8j6q-MuiCircularProgress-root {
+    width: 60px !important;
+    height: 60px !important;
+    margin-top: 30px;
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    width: 40px;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    padding-top: 4px !important;
+}
+
+.offerCardInput {
+    width: 80px;
+    height: 23px;
+    margin-left: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    color: #35ffff;
+    margin-top: 5px;
+    border-radius: 3px;
+    border: none;
+    padding: 4px 5px 5px 5px;
+    background: #585050;
+}
