@@ -1,5 +1,4 @@
-import Odin from '../../assets/Odin.svg';
-import close from '../../assets/close.svg';
+import close from '../../assets/img/close.svg';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import React from 'react';

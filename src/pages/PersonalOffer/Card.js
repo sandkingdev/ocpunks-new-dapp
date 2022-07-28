@@ -30,7 +30,6 @@ useGetPendingTransactions,
 } from '@elrondnetwork/dapp-core';
 import './Card.scss';
 
-import Odin from '../../assets/Odin.svg';
 import {
     convertWeiToEsdt,
     convertEsdtToWei,

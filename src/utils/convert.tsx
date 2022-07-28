@@ -38,3 +38,17 @@ export const convertWeiToEsdt = (v: any, decimals = 18, precision = 4) => {
     const factor = Math.pow(10, precision);
     return Math.floor(number * factor) / factor;
 };
+
+export function getDecimalOfToken(tokens: any[], targetTokenId: string) {
+    for (const [key, value] of Object.entries(tokens)) {
+        if (value.id == targetTokenId) {
+            return value.decimals;
+        }
+    }
+    return 18;
+}
+
+export const precisionRound = (number: number, precision = 4) => {
+    const factor = Math.pow(10, precision);
+    return Math.floor(number * factor) / factor;
+};

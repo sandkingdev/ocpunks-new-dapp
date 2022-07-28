@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
-import downArrow from '../../assets/downArrow.svg';
+import downArrow from '../../assets/img/downArrow.svg';
 import USDT from '../../assets/logos/USDT.svg';
 
 import {

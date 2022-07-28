@@ -1,7 +1,7 @@
 import Card from './Card';
 import Form from 'react-bootstrap/Form';
 import React, { useEffect } from 'react';
-import downArrow from '../../assets/downArrow.svg';
+import downArrow from '../../assets/img/downArrow.svg';
 import USDT from '../../assets/logos/USDT.svg';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -315,11 +315,11 @@ function OffersList () {
               )
             }
           </div>
-          { !OffersLoaded && (<div className='spinner'><CircularProgress color="success" /></div>) }
+          { !OffersLoaded && (<div className='spinner'><CircularProgress color='success' /></div>) }
           { offers.length !== 0 && (<div className='mt-50'>
           <Stack spacing={2}>
-              <Pagination count={Math.ceil((offers.length)/9)} color="primary" onChange={(event, value) => {
-                window.scrollTo({top: 0, behavior: "smooth"});
+              <Pagination count={Math.ceil((offers.length)/9)} color='primary' onChange={(event, value) => {
+                window.scrollTo({top: 0, behavior: 'smooth'});
                 setpage(value);
               }}/>
           </Stack>
