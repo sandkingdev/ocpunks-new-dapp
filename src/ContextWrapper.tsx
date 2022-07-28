@@ -8,6 +8,11 @@ import { routeNames } from 'routes';
 import routes from 'routes';
 import '@elrondnetwork/dapp-core/build/index.css';
 
+import PersonalOffer from 'pages/PersonalOffer';
+import CreateOffers from 'pages/PersonalOffer/CreateOffers';
+import CancelOffers from 'pages/PersonalOffer/CancelOffers';
+import OffersList from 'pages/PersonalOffer/OffersList';
+
 const {
   TransactionsToastList,
   SignTransactionsModals,
@@ -25,6 +30,11 @@ const ContextWrapper = () => {
           path={routeNames.unlock}
           element={<UnlockRoute loginRoute={routeNames.home} />}
         />
+        <Route path={routeNames.personaloffer} element={< PersonalOffer />}>
+          <Route path='create' element={< CreateOffers />} />
+          <Route path='cancel' element={< CancelOffers />} />
+          <Route path='list' element={< OffersList />} />
+        </Route>
         {routes.map((route: any, index: number) => (
           <Route
             path={route.path}

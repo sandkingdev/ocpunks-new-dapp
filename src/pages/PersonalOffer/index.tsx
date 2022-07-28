@@ -18,8 +18,8 @@ import {
 } from 'react-bootstrap';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import backslide from './../../assets/img/backslide.png';
-import { FaChartBar , FaComment } from 'react-icons/fa';
-import  { useState } from 'react';
+import { FaChartBar, FaComment } from 'react-icons/fa';
+import { useState } from 'react';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 
@@ -81,7 +81,7 @@ const PersonalOffer = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`${routeNames.personaloffer}/offersList`);
+    navigate(`${routeNames.personaloffer}/list`);
   }, []);
   const { account } = useGetAccountInfo();
   const { network } = useGetNetworkConfig();
@@ -119,7 +119,7 @@ const PersonalOffer = () => {
 
   const [tokens, setTokens] = React.useState<any[]>([]);
   React.useEffect(() => {
-    (async() => {
+    (async () => {
       let url = `${network.apiAddress}/tokens?identifiers=`;
       for (let i = 0; i < OFFER_TOKEN_LIST.length; i++) {
         const tokenId = OFFER_TOKEN_LIST[i].id;
@@ -137,35 +137,34 @@ const PersonalOffer = () => {
           console.log('tokens', tokens);
           setTokens(tokens);
         }
-      } catch(e: any) {
+      } catch (e: any) {
         console.log(e);
       }
-      
+
     })();
   }, []); // [] makes useEffect run once
 
 
   const [egldPrice, setEgldPrice] = React.useState<number>(0);
   React.useEffect(() => {
-    (async() => {
+    (async () => {
       const egldPrice = await getEgldPrice(network.apiAddress);
       setEgldPrice(egldPrice);
     })();
   }, []); // [] makes useEffect run once
-  
+
   return (
     <OfferContractContext.Provider value={offerContractInteractor}>
       <TokensContext.Provider value={tokens}>
         <EgldPriceContext.Provider value={egldPrice}>
           <div className='PersonalOffers'>
-          <div className='gradient13'></div>
-            <div className='gap-90'  style={{display: 'flex', alignItems: 'center', fontFamily: 'Chakra Petch'}}>
-              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/offersList`}>Orders List</NavLink>
-              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/createOffer`}>Create Order</NavLink>
-              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/cancelOffer`}>Cancel Order</NavLink>
-              {/* <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/history`}>History</NavLink> */}
+            <div className='gradient13'></div>
+            <div className='gap-90' style={{ display: 'flex', alignItems: 'center', fontFamily: 'Chakra Petch' }}>
+              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/list`}>Orders List</NavLink>
+              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/create`}>Create Order</NavLink>
+              <NavLink className='font-18 text-center' to={`${routeNames.personaloffer}/cancel`}>Cancel Order</NavLink>
             </div>
-              <Outlet />
+            <Outlet />
           </div>
         </EgldPriceContext.Provider>
       </TokensContext.Provider>
