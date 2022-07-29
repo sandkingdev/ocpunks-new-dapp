@@ -206,13 +206,6 @@ function OffersList () {
           {(<div className='offerListFilter' style={{marginBottom: '30px', display: 'flex', alignItems: 'flex-end', gap: '30px'}}>
           <div style={{width: '33.33%'}}>
           <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Token to Buy</h6>
-          {/* <Form.Select className='selectdropdown' aria-label='Default select example'
-            value={payableTokenFilter} onChange={(e) => setpayableTokenFilter(e.target.value)}>
-              <option value='ALL'>ALL</option>
-              {OFFER_TOKEN_LIST.map((item, index) => {
-                return <option key={`offer-${index}`} value={item.id}>{`${item.name} (${item.id})`}</option>;
-              })}
-          </Form.Select> */}
           <div id='customDropdown' className='dropdownWrapper onHover'>
             <a id='customDropdown' className='onHover font-16'>{dropdownvalue1}</a>
             <img id='customDropdown' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
@@ -234,15 +227,6 @@ function OffersList () {
           </div>
           <div style={{width: '33.33%'}}>
           <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Token to Pay</h6>
-          {/* <Form.Select className='selectdropdown' aria-label='Default select example'
-            value={acceptTokenFilter} onChange={(e) => setacceptTokenFilter(e.target.value)}>
-              <option value='ALL'>ALL</option>
-              {OFFER_TOKEN_LIST.filter((item) => {
-                return payableTokenFilter !== item.id;
-              }).map((item, index) => {
-                return <option key={`offer-${index}`} value={item.id}>{`${item.name} (${item.id})`}</option>;
-              })}
-          </Form.Select> */}
           <div id='customDropdown2' className='dropdownWrapper onHover'>
             <a id='customDropdown2' className='onHover font-16'>{dropdownvalue2}</a>
             <img id='customDropdown2' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
@@ -252,7 +236,6 @@ function OffersList () {
               </div>
               {
               OFFER_TOKEN_LIST.filter((item) => {
-                // console.log(offerTokenId, item.id);
                 return payableTokenFilter !== item.id;
               }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); setacceptTokenFilter(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
                 <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} />
@@ -264,15 +247,6 @@ function OffersList () {
           </div>
           <div style={{width: '33.33%'}}>
           <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Filter Orders</h6>
-          {/* <Form.Select className='selectdropdown' aria-label='Default select example'
-            value={acceptTokenFilter} onChange={(e) => setacceptTokenFilter(e.target.value)}>
-              <option value='ALL'>ALL</option>
-              {OFFER_TOKEN_LIST.filter((item) => {
-                return payableTokenFilter !== item.id;
-              }).map((item, index) => {
-                return <option key={`offer-${index}`} value={item.id}>{`${item.name} (${item.id})`}</option>;
-              })}
-          </Form.Select> */}
           <div id='customDropdown3' className='dropdownWrapper onHover'>
             <a id='customDropdown3' className='onHover font-16'>{dropdownvalue3}</a>
             <img id='customDropdown3' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
@@ -282,18 +256,6 @@ function OffersList () {
                 <h5 id='customDropdown3' className='font-16 onHover'>{'ALL'}</h5>
               </div>
 
-            {/* <div id='customDropdown3' onClick={() => {setdropdownvalue3('By New Ones');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown3' className='font-16 onHover'>{'By New Ones'}</h5>
-              </div>
-            <div id='customDropdown3' onClick={() => {setdropdownvalue3('By Old Ones');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown3' className='font-16 onHover'>{'By Old Ones'}</h5>
-              </div> */}
-            {/* <div id='customDropdown3' onClick={() => {setdropdownvalue3('By Lowest Price');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown3' className='font-16 onHover'>{'By Lowest Price'}</h5>
-              </div>
-            <div id='customDropdown3' onClick={() => {setdropdownvalue3('By Highest Price');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown3' className='font-16 onHover'>{'By Highest Price'}</h5>
-              </div> */}
             <div id='customDropdown3' onClick={() => {setdropdownvalue3(!partialFill ? 'Exclude Partial Fill' : 'Include Partial Fill'); setpartialFill((prevState) => !prevState);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
               <h5 id='customDropdown3' className='font-16 onHover'>{!partialFill ? 'Exclude Partial Fill' : 'Include Partial Fill'}</h5>
               </div>
