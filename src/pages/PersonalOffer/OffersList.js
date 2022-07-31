@@ -203,8 +203,8 @@ function OffersList () {
           className='modal2'
           style={{marginBottom: '30px'}}
         >
-          <div className='offer-filter d-flex justify-content-center' style={{alignItems: 'flex-end', gap: '30px'}}>
-            <div className='col-lg-6 col-md-6 col-sm-12' style={{width: '90%'}}>
+          <div className='row offer-filter d-flex justify-content-center' style={{alignItems: 'flex-end', gap: '30px'}}>
+            <div className='col-lg-5 col-md-5 col-sm-12' style={{width: '90%'}}>
               <h6 style={{ marginTop: '20px', color: 'white'}}>Token to Buy</h6>
               <div id='customDropdown' className='dropdownWrapper onHover'>
                 <a id='customDropdown' className='onHover'>{dropdownvalue1}</a>
@@ -223,7 +223,7 @@ function OffersList () {
                 </div>
               </div>
             </div>
-            <div className='col-lg-6 col-md-6 col-sm-12' style={{width: '90%'}}>
+            <div className='col-lg-5 col-md-5 col-sm-12' style={{width: '90%'}}>
             <h6 className='font-16' style={{ marginTop: '20px', color: 'white' }}>Token to Pay</h6>
             <div id='customDropdown2' className='dropdownWrapper onHover'>
               <a id='customDropdown2' className='onHover font-16'>{dropdownvalue2}</a>
@@ -252,7 +252,7 @@ function OffersList () {
             }
           </div>
           { offers.length !== 0 && (<div className='mt-5'>
-          <Stack spacing={2}>
+          <Stack spacing={1}>
               <Pagination count={Math.ceil((offers.length)/9)} color='primary' onChange={(event, value) => {
                 // window.scrollTo({top: 0, behavior: 'smooth'});
                 setpage(value);

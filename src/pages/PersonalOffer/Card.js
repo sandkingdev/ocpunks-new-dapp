@@ -268,7 +268,7 @@ function Card(props) {
                         </div>
                 )
             }
-            <div className='offer-card-rate'>
+            {/* <div className='offer-card-rate'>
                 {
                     printRate(offer)
                 }
@@ -277,7 +277,7 @@ function Card(props) {
                 {
                     printPrice(offer, egldPrice)
                 }
-            </div>
+            </div> */}
             {/* {offer.is_partial_fill_allowed && (<h2 className='font-18 mt-5 txt-algn-cent'>{range} {offer.accept_token_id}</h2>)} */}
             <div
                 style={{
