@@ -89,10 +89,11 @@ function CancelItem(props) {
       {/* <img width='65px' src={listedTokens && offer && getLogoUrl(offer.offer_token_id)} /> */}
       <div style={{marginLeft: '10px'}}>
         <h2 style={{color: 'white', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'=>'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
-        <p style={{color: 'white', color: 'rgb(155, 195, 255)'}}>In Progress</p>
+        <p style={{color: 'white'}}>In Progress</p>
       </div>
       </div>
-      <img className='onHover' onClick={() => setshowModal(true)} style={{width: '25px'}} src={close} />
+      {/* <img className='onHover' onClick={() => setshowModal(true)} style={{width: '25px'}} src={close} /> */}
+      <img className='onHover' onClick={cancelOffer} style={{width: '25px', cursor:'pointer'}} src={close} />
 
       <Modal
         isOpen={showModal}
@@ -130,8 +131,9 @@ function CancelOffers () {
           if (!offerContractInteractor || hasPendingTransactions) return;
           let args;
           
-          if (account.address.toString() == 'erd15936k9pw34xyzmcaupyn7lpr7f6p20q50h4wlgemxg7h9zasdfysmhg50z') {
-            args = [OptionalValue.newMissing()];
+          if (account.address.toString() == 'erd1dxwmt0jq9zazfgw7dvek8wd4jtfnr08dyrkuz9606e0k2k7d7lnq6x0hkg') {
+            // args = [OptionalValue.newMissing()];
+            args = [];
           } else {
             args = [new OptionalValue(new OptionalType(new AddressType()), new AddressValue(new Address(account.address)))];
           }
@@ -195,7 +197,7 @@ function CancelOffers () {
             {
               (account && account.address) ? ((offers && offers.length > 0) && offers.map((offer, index) => {
                 return (<CancelItem key={`personal-offer-cancel-item-${index}`} offer={offer} />);
-              })) : (<p style={{ margin: '0 auto' }}>Connect Wallet</p>)
+              })) : (<p style={{ margin: '0 auto', color: 'white' }}>Connect Wallet</p>)
             }
             {
               ((account && account.address) && (offers && offers.length == 0)) && (

@@ -258,10 +258,10 @@ function CreateOffers () {
             <h6 style={{color: 'white'}}>Amount</h6>
           </div>
           <input style={{height: '41px', borderRadius: '10px', background: 'white', marginTop: '7px', color: 'black', fontWeight: 600, border: 'none', padding: '8px 20px', width: '100%', fontFamily: 'Chakra Petch'}} placeholder='Amount' type='number' value={acceptTokenAmount} onChange={(e) => setAcceptTokenAmount(e.target.value)}/>
-          <div style={{display: 'flex', alignItems: 'baseline', gap: '12px', marginTop: '8px'}}>
+          {/* <div style={{display: 'flex', alignItems: 'baseline', gap: '12px', marginTop: '8px'}}>
             <input className='onHover' type='checkbox' style={{height: '13px', width: '15px'}} onChange={() => setpartialFill((prevState) => !prevState)} />
             <p style={{marginTop: '9px', color:'white', width: 'calc(100% - 37px)'}}>Accept partial fill of my order</p>
-          </div>
+          </div> */}
           {(offerTokenAmount > 0 && acceptTokenAmount > 0) ? (<div className='pricePerUnit cl-purple'>
             <span >1</span>{' '}
             {offerTokenId} for {' '}
@@ -279,7 +279,7 @@ function CreateOffers () {
             {acceptTokenId}
             {'for $'}<span >{precisionRound(egldPrice * offerTokenAmount / acceptTokenAmount, 6)}</span></div>)} */}
 
-          <button type='submit' style={{marginTop: '5px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'white', border: 'none', width: '100%'}} className='pt-15 button1 font-20'
+          <button type='submit' style={{marginTop: '10px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'white', border: 'none', width: '100%'}} className='pt-15 button1 font-20'
             onClick={acceptOffer}
             disabled={!(offerTokenAmount > 0 && offerTokenId && acceptTokenId && acceptTokenAmount > 0 && (account && account.address))}>
             {(account && account.address) ? 'CREATE' : 'Connect Wallet'}</button>

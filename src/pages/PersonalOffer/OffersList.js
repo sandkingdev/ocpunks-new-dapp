@@ -204,7 +204,7 @@ function OffersList () {
           style={{marginBottom: '30px'}}
         >
           <div className='offer-filter d-flex justify-content-center' style={{alignItems: 'flex-end', gap: '30px'}}>
-            <div style={{width: '30%'}}>
+            <div className='col-lg-6 col-md-6 col-sm-12' style={{width: '90%'}}>
               <h6 style={{ marginTop: '20px', color: 'white'}}>Token to Buy</h6>
               <div id='customDropdown' className='dropdownWrapper onHover'>
                 <a id='customDropdown' className='onHover'>{dropdownvalue1}</a>
@@ -223,7 +223,7 @@ function OffersList () {
                 </div>
               </div>
             </div>
-            <div style={{width: '30%'}}>
+            <div className='col-lg-6 col-md-6 col-sm-12' style={{width: '90%'}}>
             <h6 className='font-16' style={{ marginTop: '20px', color: 'white' }}>Token to Pay</h6>
             <div id='customDropdown2' className='dropdownWrapper onHover'>
               <a id='customDropdown2' className='onHover font-16'>{dropdownvalue2}</a>
