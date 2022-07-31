@@ -133,18 +133,17 @@ input[type='range']::-webkit-slider-thumb:hover {
 
 .dropdownWrapper {
     position: relative !important;
-    background: #21213c;
+    background: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    font-family: 'Chakra Petch';
     padding: 9px 15px;
     border-radius: 10px;
     margin-top: 6px;
 
     > a {
-        color: white !important;
+        color: black !important;
         padding-bottom: 0;
     }
 }

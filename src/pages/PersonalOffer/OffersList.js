@@ -1,7 +1,7 @@
 import Card from './Card';
 import Form from 'react-bootstrap/Form';
 import React, { useEffect } from 'react';
-import downArrow from '../../assets/img/downArrow.svg';
+import downArrow from '../../assets/img/down.png';
 import USDT from '../../assets/logos/USDT.svg';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -81,7 +81,7 @@ function OffersList () {
           if (!offerContractInteractor || hasPendingTransactions) return;
           const args = [];
           const interaction = offerContractInteractor.methods.getOffers(args);
-          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
+          const res = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
 
           if (!res || !res.returnCode.isSuccess()) {
@@ -139,7 +139,7 @@ function OffersList () {
           if (!offerContractInteractor) return;
 
           const interaction = offerContractInteractor.methods.getFee();
-          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
+          const res = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
           let fee = '-';
           if (res && res.returnCode.isSuccess()) {
@@ -201,73 +201,54 @@ function OffersList () {
     return (
         <div
           className='modal2'
-          style={{marginBottom: '140px', maxWidth: '1025px'}}
+          style={{marginBottom: '30px'}}
         >
-          {(<div className='offerListFilter' style={{marginBottom: '30px', display: 'flex', alignItems: 'flex-end', gap: '30px'}}>
-          <div style={{width: '33.33%'}}>
-          <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Token to Buy</h6>
-          <div id='customDropdown' className='dropdownWrapper onHover'>
-            <a id='customDropdown' className='onHover font-16'>{dropdownvalue1}</a>
-            <img id='customDropdown' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
-            <div id='customDropdownDiv' className='customDropdownDiv d-none'>
-              <div id='customDropdown' onClick={() => {setdropdownvalue1('ALL'); setpayableTokenFilter('ALL');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown' className='font-16 onHover'>{'ALL'}</h5>
-              </div>
-              {
-              OFFER_TOKEN_LIST.filter((item) => {
-                // console.log(offerTokenId, item.id);
-                return acceptTokenFilter !== item.id;
-              }).map((item, index) => (<div id='customDropdown' key={`accept-${index}`} onClick={() => {setdropdownvalue1(`${item.name} (${item.id})`); setpayableTokenFilter(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                <img id='customDropdown' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} />
-              <h5 id='customDropdown' className='font-16 onHover'>{`${item.name} (${item.id})`}</h5>
-              </div>))
-            }
-            </div>
-          </div>
-          </div>
-          <div style={{width: '33.33%'}}>
-          <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Token to Pay</h6>
-          <div id='customDropdown2' className='dropdownWrapper onHover'>
-            <a id='customDropdown2' className='onHover font-16'>{dropdownvalue2}</a>
-            <img id='customDropdown2' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
-            <div id='customDropdown2Div' className='customDropdownDiv d-none'>
-            <div id='customDropdown2' onClick={() => {setdropdownvalue2('ALL'); setacceptTokenFilter('ALL');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown2' className='font-16 onHover'>{'ALL'}</h5>
-              </div>
-              {
-              OFFER_TOKEN_LIST.filter((item) => {
-                return payableTokenFilter !== item.id;
-              }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); setacceptTokenFilter(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} />
-              <h5 id='customDropdown2' className='font-16 onHover'>{`${item.name} (${item.id})`}</h5>
-              </div>))
-            }
-            </div>
-          </div>
-          </div>
-          <div style={{width: '33.33%'}}>
-          <h6 className='font-16' style={{ fontWeight: 300, marginTop: '20px', color: '#A7B7DF',fontFamily: 'Chakra Petch', marginTop: '0' }}>Filter Orders</h6>
-          <div id='customDropdown3' className='dropdownWrapper onHover'>
-            <a id='customDropdown3' className='onHover font-16'>{dropdownvalue3}</a>
-            <img id='customDropdown3' style={{transform: 'rotate(90deg)', width: '15px'}} src={downArrow} />
-            <div id='customDropdown3Div' className='customDropdownDiv d-none'>
-            
-              <div id='customDropdown3' onClick={() => {setdropdownvalue3('ALL');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                <h5 id='customDropdown3' className='font-16 onHover'>{'ALL'}</h5>
-              </div>
-
-            <div id='customDropdown3' onClick={() => {setdropdownvalue3(!partialFill ? 'Exclude Partial Fill' : 'Include Partial Fill'); setpartialFill((prevState) => !prevState);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-              <h5 id='customDropdown3' className='font-16 onHover'>{!partialFill ? 'Exclude Partial Fill' : 'Include Partial Fill'}</h5>
+          <div className='offer-filter d-flex justify-content-center' style={{alignItems: 'flex-end', gap: '30px'}}>
+            <div style={{width: '30%'}}>
+              <h6 style={{ marginTop: '20px', color: 'white'}}>Token to Buy</h6>
+              <div id='customDropdown' className='dropdownWrapper onHover'>
+                <a id='customDropdown' className='onHover'>{dropdownvalue1}</a>
+                <img id='customDropdown' style={{width: '15px'}} src={downArrow} />
+                <div id='customDropdownDiv' className='customDropdownDiv d-none'>
+                  <div id='customDropdown' onClick={() => {setdropdownvalue1('ALL'); setpayableTokenFilter('ALL');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
+                  <h5 id='customDropdown' className='onHover'>{'ALL'}</h5>
+                  </div>
+                  {
+                  OFFER_TOKEN_LIST.filter((item) => {
+                    return acceptTokenFilter !== item.id;
+                  }).map((item, index) => (<div id='customDropdown' key={`accept-${index}`} onClick={() => {setdropdownvalue1(`${item.name} (${item.id})`); setpayableTokenFilter(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
+                  <h5 id='customDropdown' className='onHover'>{`${item.name} (${item.id})`}</h5>
+                  </div>))
+                }
+                </div>
               </div>
             </div>
+            <div style={{width: '30%'}}>
+            <h6 className='font-16' style={{ marginTop: '20px', color: 'white' }}>Token to Pay</h6>
+            <div id='customDropdown2' className='dropdownWrapper onHover'>
+              <a id='customDropdown2' className='onHover font-16'>{dropdownvalue2}</a>
+              <img id='customDropdown2' style={{width: '15px'}} src={downArrow} />
+              <div id='customDropdown2Div' className='customDropdownDiv d-none'>
+              <div id='customDropdown2' onClick={() => {setdropdownvalue2('ALL'); setacceptTokenFilter('ALL');}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
+                <h5 id='customDropdown2' className='onHover'>{'ALL'}</h5>
+                </div>
+                {
+                OFFER_TOKEN_LIST.filter((item) => {
+                  return payableTokenFilter !== item.id;
+                }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); setacceptTokenFilter(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
+                  {/* <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
+                <h5 id='customDropdown2' className='onHover'>{`${item.name} (${item.id})`}</h5>
+                </div>))
+              }
+              </div>
+            </div>
+            </div>
           </div>
-          </div>
-          </div>)}
           {/* <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
             <h3 className='font-24' style={{ fontWeight: 600, fontFamily: 'Chakra Petch' }}>Hey, nice to see you</h3>
           </div>
           <h4 className='font-16' style={{ fontWeight: 400, marginTop: '12px',fontFamily: 'Chakra Petch' }}>Your history is empty</h4> */}
-          <div style={{display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap'}}>
+          {/* <div style={{display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap'}}>
             {
               (offers && offers.length > 0) && paginate(9, page).map((offer, index) => {
                 return (<Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} />);
@@ -287,7 +268,7 @@ function OffersList () {
                 setpage(value);
               }}/>
           </Stack>
-          </div>)}
+          </div>)} */}
         </div>
     );
 }
