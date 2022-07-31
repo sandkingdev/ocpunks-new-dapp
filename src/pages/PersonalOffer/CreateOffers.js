@@ -220,7 +220,7 @@ function CreateOffers () {
                 // console.log(offerTokenId, item.id);
                 return offerTokenId !== item.id;
               }).map((item, index) => (<div id='customDropdown' key={`accept-${index}`} onClick={() => {setdropdownvalue1(`${item.name} (${item.id})`); onOfferTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                <img id='customDropdown' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} />
+                {/* <img id='customDropdown' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
               <h5 id='customDropdown' className='onHover'>{`${item.name} (${item.id})`}</h5>
               </div>))
             }
@@ -248,7 +248,7 @@ function CreateOffers () {
                 // console.log(offerTokenId, item.id);
                 return offerTokenId !== item.id;
               }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); onAcceptTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} />
+                {/* <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
               <h5 id='customDropdown2' className='onHover'>{`${item.name} (${item.id})`}</h5>
               </div>))
             }
