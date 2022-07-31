@@ -244,31 +244,21 @@ function OffersList () {
             </div>
             </div>
           </div>
-          {/* <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <h3 className='font-24' style={{ fontWeight: 600, fontFamily: 'Chakra Petch' }}>Hey, nice to see you</h3>
-          </div>
-          <h4 className='font-16' style={{ fontWeight: 400, marginTop: '12px',fontFamily: 'Chakra Petch' }}>Your history is empty</h4> */}
-          {/* <div style={{display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap'}}>
+          <div className='row d-flex justfiy-content-center mt-5'>
             {
               (offers && offers.length > 0) && paginate(9, page).map((offer, index) => {
-                return (<Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} />);
+                return (<div key={`personal-offer-card-${index}`} className='col-4 d-flex justify-content-center'><Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} /></div>);
               })
             }
-            {
-              OffersLoaded && ((offers && offers.length == 0)) && (
-                <p style={{ fontFamily: 'Chakra Petch', margin: '0 auto' }} className='font-20'>We don&apos;t have offers</p>
-              )
-            }
           </div>
-          { !OffersLoaded && (<div className='spinner'><CircularProgress color='success' /></div>) }
-          { offers.length !== 0 && (<div className='mt-50'>
+          { offers.length !== 0 && (<div className='mt-5'>
           <Stack spacing={2}>
               <Pagination count={Math.ceil((offers.length)/9)} color='primary' onChange={(event, value) => {
-                window.scrollTo({top: 0, behavior: 'smooth'});
+                // window.scrollTo({top: 0, behavior: 'smooth'});
                 setpage(value);
               }}/>
           </Stack>
-          </div>)} */}
+          </div>)}
         </div>
     );
 }
