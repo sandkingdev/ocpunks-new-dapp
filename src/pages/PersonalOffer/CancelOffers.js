@@ -86,10 +86,10 @@ function CancelItem(props) {
   return (
     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%'}}>
       <div style={{display: 'flex', alignItems: 'center'}}>
-      <img width='65px' src={listedTokens && offer && getLogoUrl(offer.offer_token_id)} />
+      {/* <img width='65px' src={listedTokens && offer && getLogoUrl(offer.offer_token_id)} /> */}
       <div style={{marginLeft: '10px'}}>
-        <h2 style={{fontFamily: 'Chakra Petch', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'=>'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
-        <p style={{fontFamily: 'Chakra Petch', color: 'rgb(155, 195, 255)'}}>In Progress</p>
+        <h2 style={{color: 'white', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'=>'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
+        <p style={{color: 'white', color: 'rgb(155, 195, 255)'}}>In Progress</p>
       </div>
       </div>
       <img className='onHover' onClick={() => setshowModal(true)} style={{width: '25px'}} src={close} />
@@ -101,13 +101,13 @@ function CancelItem(props) {
         ariaHideApp={false}
         >
           <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <h3 className='font-24' style={{ fontWeight: 600, fontFamily: 'Chakra Petch', textAlign: 'center' }}>Are you sure you want to cancel this order?</h3>
+            <h3 className='font-24' style={{ fontWeight: 600, color: 'white', textAlign: 'center' }}>Do you want to cancel this order?</h3>
           </div>
           <div style={{ display: 'flex', marginTop: '25px', width: '100%' }}>
-          <div className='button button1 font-20' style={{fontFamily: 'Montserrat', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '0px'}} onClick={cancelOffer}>
+          <div className='button button1 font-20' style={{color: 'white', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '0px'}} onClick={cancelOffer}>
             Yes
           </div>
-          <div className='button button2 onHover font-20' style={{fontFamily: 'Montserrat', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '9px 50px'}}  onClick={() => setshowModal(false)}>
+          <div className='button button2 onHover font-20' style={{color: 'white', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '9px 50px'}}  onClick={() => setshowModal(false)}>
             No
           </div>
         </div>
@@ -136,7 +136,7 @@ function CancelOffers () {
             args = [new OptionalValue(new OptionalType(new AddressType()), new AddressValue(new Address(account.address)))];
           }
           const interaction = offerContractInteractor.methods.getOffers(args);
-          const res: QueryResponseBundle | undefined = await sendQuery(offerContractInteractor, proxyProvider, interaction);
+          const res = await sendQuery(offerContractInteractor, proxyProvider, interaction);
 
 
           if (!res || !res.returnCode.isSuccess()) {
@@ -195,11 +195,11 @@ function CancelOffers () {
             {
               (account && account.address) ? ((offers && offers.length > 0) && offers.map((offer, index) => {
                 return (<CancelItem key={`personal-offer-cancel-item-${index}`} offer={offer} />);
-              })) : (<p style={{ fontFamily: 'Chakra Petch', margin: '0 auto' }} className='font-20'>Connect to see your orders</p>)
+              })) : (<p style={{ margin: '0 auto' }}>Connect Wallet</p>)
             }
             {
               ((account && account.address) && (offers && offers.length == 0)) && (
-                <p style={{ fontFamily: 'Chakra Petch' }} className='font-20'>You don&apos;t have any active order</p>
+                <p style={{ color: 'white'}}>You don&apos;t have any active order</p>
               )
             }
           </div>

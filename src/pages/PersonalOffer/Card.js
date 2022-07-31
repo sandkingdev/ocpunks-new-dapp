@@ -66,9 +66,9 @@ function NumberFormat(v) {
 
     return (
         <>
-            <span style={{ fontWeight: '600', fontSize: '18px', color: '#CCFF00' }}>{integral.toLocaleString()}</span>
+            <span style={{ fontWeight: '600', fontSize: '18px', color: 'white' }}>{integral.toLocaleString()}</span>
             .
-            <span style={{ fontWeight: '300', fontSize: '14px' }}>{fractional}</span>
+            <span style={{ fontWeight: '300', fontSize: '14px', color: 'white' }}>{fractional}</span>
         </>
     );
 }
@@ -217,45 +217,24 @@ function Card(props) {
     // console.log(offer.offerer_address, account.address);
 
     return (
-        <div
-            style={{
-                maxWidth: '80px',
-                minWidth: '300px',
-                position: 'relative'
-            }}
-            className='StakingCard customrange'>
-            <img
-                className='smallOdinImg2'
+        <div className='StakingCard customrange'>
+            <span style={{ color: 'white' }}>You Get: </span>
+                {offer.is_partial_fill_allowed ? (<h4
                 style={{
-                width: '60px',
-                height: '60px',
-                top: '-15px',
-                right: '0',
-                position: 'absolute',
-                alignSelf: 'center',
-                marginBottom: '5px'
-            }}
-                src={listedTokens && offer && getLogoUrl(offer.offer_token_id)}/>
-            
-            <span style={{ color: '#FFDF00' }}>You Get: </span>
-                {offer.is_partial_fill_allowed ? (<h1
-                className='font-18'
-                style={{
-                fontFamily: 'Chakra Petch',
                 marginBottom: '10px',
                 marginTop: '10px',
-                textAlign: 'left'
-            }}>{NumberFormat(range2)} {offer.offer_token_id}</h1>) : (<h1
-                className='font-18'
+                textAlign: 'left',
+                color: 'white'
+            }}>{NumberFormat(range2)} {offer.offer_token_id}</h4>) : (<h4
                 style={{
-                fontFamily: 'Chakra Petch',
                 marginBottom: '10px',
                 marginTop: '10px',
-                textAlign: 'left'
-            }}>{NumberFormat(offer.offer_token_amount)} {offer.offer_token_id}</h1>)}
+                textAlign: 'left',
+                color: 'white'
+            }}>{NumberFormat(offer.offer_token_amount)} {offer.offer_token_id}</h4>)}
             
-            <span style={{ color: '#FF00FF' }}>You Pay: </span>
-            {offer.is_partial_fill_allowed ? (<h2 style={{ fontFamily: 'Chakra Petch', fontWeight: '400' }} className='font-18 mt-5'>{NumberFormat(range)} {offer.accept_token_id}</h2>) : (<h2 style={{ fontFamily: 'Chakra Petch', fontWeight: '400' }} className='font-18'>{NumberFormat(offer.accept_token_amount)} {offer.accept_token_id}</h2>)}
+            <span style={{ color: 'white' }}>You Pay: </span>
+            {offer.is_partial_fill_allowed ? (<h4 style={{color: 'white'}}>{NumberFormat(range)} {offer.accept_token_id}</h4>) : (<h4 style={{fontWeight: '400', color: 'white' }}>{NumberFormat(offer.accept_token_amount)} {offer.accept_token_id}</h4>)}
             
             {
                 offer.is_partial_fill_allowed && (
