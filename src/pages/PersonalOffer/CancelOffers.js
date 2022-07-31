@@ -88,7 +88,7 @@ function CancelItem(props) {
       <div style={{display: 'flex', alignItems: 'center'}}>
       {/* <img width='65px' src={listedTokens && offer && getLogoUrl(offer.offer_token_id)} /> */}
       <div style={{marginLeft: '10px'}}>
-        <h2 style={{color: 'white', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'=>'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
+        <h2 style={{color: 'white', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'->'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
         <p style={{color: 'white'}}>In Progress</p>
       </div>
       </div>

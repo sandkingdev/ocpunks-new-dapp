@@ -163,7 +163,7 @@ const PersonalOffer = () => {
               <NavLink to={`${routeNames.personaloffer}/create`}>Create</NavLink>
               <NavLink to={`${routeNames.personaloffer}/cancel`}>Cancel</NavLink>
             </div>
-            {/* <Outlet /> */}
+            <Outlet />
           </div>
         </EgldPriceContext.Provider>
       </TokensContext.Provider>
