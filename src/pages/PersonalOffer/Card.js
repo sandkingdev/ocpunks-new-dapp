@@ -284,7 +284,6 @@ function Card(props) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                fontFamily: 'Chakra Petch',
                 flexDirection: 'column',
                 zIndex: 1
             }}>
@@ -294,13 +293,11 @@ function Card(props) {
                         padding: '15px',
                         fontWeight: 600,
                         marginRight: 0,
-                        fontFamily: 'Montserrat',
                         borderRadius: '8px',
                         padding: '10px 15px 12px',
                         border: 'none',
-                        color: 'white',
-                         width: '100%',
-                         marginTop: '10px'
+                        width: '100%',
+                        marginTop: '10px'
                     }}
                     className='pt-15 button1 font-18'
                     onClick={acceptOffer}

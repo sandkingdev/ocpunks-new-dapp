@@ -247,7 +247,7 @@ function OffersList () {
           <div className='row d-flex justfiy-content-center mt-5'>
             {
               (offers && offers.length > 0) && paginate(9, page).map((offer, index) => {
-                return (<div key={`personal-offer-card-${index}`} className='col-4 d-flex justify-content-center'><Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} /></div>);
+                return (<div key={`personal-offer-card-${index}`} className='col-lg-4 col-md-t col-sm-12 d-flex justify-content-center mb-3'><Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} /></div>);
               })
             }
           </div>
