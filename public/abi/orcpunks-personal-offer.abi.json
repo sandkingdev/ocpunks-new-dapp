@@ -1,11 +1,11 @@
 {
     "buildInfo": {
         "rustc": {
-            "version": "1.61.0-nightly",
-            "commitHash": "5f37001055c29982f4c27ee9edd90449c8e07774",
-            "commitDate": "2022-03-22",
+            "version": "1.62.0-nightly",
+            "commitHash": "8bf93e9b6791acee3a594ed202fdfe45ad9952b5",
+            "commitDate": "2022-04-09",
             "channel": "Nightly",
-            "short": "rustc 1.61.0-nightly (5f3700105 2022-03-22)"
+            "short": "rustc 1.62.0-nightly (8bf93e9b6 2022-04-09)"
         },
         "contractCrate": {
             "name": "odin-personal-offer",
@@ -16,7 +16,7 @@
             "version": "0.30.0"
         }
     },
-    "name": "OdinPersonalOffer",
+    "name": "OrcpunkPersonalOffer",
     "constructor": {
         "inputs": [
             {

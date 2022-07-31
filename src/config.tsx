@@ -40,15 +40,15 @@ export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
 
 // personal offer
-export const OFFER_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq9uffeh9kvkdknjdul2g5re0crn3mjvavdfysxyqujl';
-export const OFFER_CONTRACT_ABI_URL = '/abi/odin-personal-offer.abi.json';
-export const OFFER_CONTRACT_NAME = 'OdinPersonalOffer';
+export const OFFER_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqt6ctz23h0vl6afvjcjc2hutyvtlsajmr5zvs2wjgwx';
+export const OFFER_CONTRACT_ABI_URL = '/abi/orcpunks-personal-offer.abi.json';
+export const OFFER_CONTRACT_NAME = 'OrcpunkPersonalOffer';
 export const OFFER_PARTIAL_ACCEPT_MIN_LIMIT_PERCENTAGE = 0.2;
 
 export const WEGLD_ID = 'WEGLD-bd4d79';
 export const USDC_ID = 'USDC-c76f1f';
 
-export const ENVIRONMENT = 'mainnet';
-export const GATEWAY = 'https://api.elrond.com';
-// export const ENVIRONMENT = 'devnet';
-// export const GATEWAY = 'https://devnet-api.elrond.com';
+// export const ENVIRONMENT = 'mainnet';
+// export const GATEWAY = 'https://api.elrond.com';
+export const ENVIRONMENT = 'devnet';
+export const GATEWAY = 'https://devnet-api.elrond.com';
