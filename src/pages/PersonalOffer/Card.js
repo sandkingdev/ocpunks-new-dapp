@@ -67,9 +67,9 @@ function NumberFormat(v) {
 
     return (
         <>
-            <span style={{ fontWeight: '600', fontSize: '18px', color: 'white' }}>{integral.toLocaleString()}</span>
+            <span style={{ fontWeight: '600', fontSize: '18px', color: 'white', fontFamily:'Roboto' }}>{integral.toLocaleString()}</span>
             .
-            <span style={{ fontWeight: '300', fontSize: '14px', color: 'white' }}>{fractional}</span>
+            <span style={{ fontWeight: '300', fontSize: '14px', color: 'white', fontFamily:'Roboto' }}>{fractional}</span>
         </>
     );
 }
@@ -219,27 +219,29 @@ function Card(props) {
 
     return (
         <div className='StakingCard customrange'>
-            <span style={{ color: 'white' }}>You Get: </span>
+            <span style={{ color: 'white', fontFamily:'Roboto' }}>You Get: </span>
                 {offer.is_partial_fill_allowed ? (<h4
                 style={{
                 marginBottom: '10px',
                 marginTop: '10px',
                 textAlign: 'left',
-                color: 'white'
+                color: 'white',
+                fontFamily:'Roboto'
             }}>{NumberFormat(range2)} {offer.offer_token_id}</h4>) : (<h4
                 style={{
                 marginBottom: '10px',
                 marginTop: '10px',
                 textAlign: 'left',
-                color: 'white'
+                color: 'white',
+                fontFamily:'Roboto'
             }}>{NumberFormat(offer.offer_token_amount)} {offer.offer_token_id}</h4>)}
             
-            <span style={{ color: 'white' }}>You Pay: </span>
-            {offer.is_partial_fill_allowed ? (<h4 style={{color: 'white'}}>{NumberFormat(range)} {offer.accept_token_id}</h4>) : (<h4 style={{fontWeight: '400', color: 'white' }}>{NumberFormat(offer.accept_token_amount)} {offer.accept_token_id}</h4>)}
+            <span style={{ color: 'white', fontFamily:'Roboto' }}>You Pay: </span>
+            {offer.is_partial_fill_allowed ? (<h4 style={{color: 'white', fontFamily:'Roboto'}}>{NumberFormat(range)} {offer.accept_token_id}</h4>) : (<h4 style={{fontWeight: '400', color: 'white', fontFamily:'Roboto' }}>{NumberFormat(offer.accept_token_amount)} {offer.accept_token_id}</h4>)}
             
             {
                 offer.is_partial_fill_allowed && (
-                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontFamily:'Roboto'}}>
                     <input
                         className={!(account && offer && account.address.toString() != offer.offerer_address) ? 'customrange disableColor' : 'customrange'}
                         type='range'
@@ -286,7 +288,8 @@ function Card(props) {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexDirection: 'column',
-                zIndex: 1
+                zIndex: 1,
+                fontFamily:'Roboto'
             }}>
                 <button
                     style={{
@@ -298,9 +301,10 @@ function Card(props) {
                         padding: '10px 15px 12px',
                         border: 'none',
                         width: '100%',
-                        marginTop: '10px'
+                        marginTop: '10px',
+                        fontFamily:'Roboto'
                     }}
-                    className='pt-15 button1 font-18'
+                    className='pt-15 button1'
                     onClick={acceptOffer}
                     disabled={!(account && offer && account.address.toString() != offer.offerer_address) || acceptButtonDisabled}
                     >

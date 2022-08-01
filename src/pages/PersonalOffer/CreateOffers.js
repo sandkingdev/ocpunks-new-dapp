@@ -206,86 +206,92 @@ function CreateOffers () {
   // }, [toggle, offerTokenId]);
 
     return (
-        <form className='modal2'>
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <h3 style={{ fontWeight: 600, color: 'white' }}>CREATE ORDER</h3>
-          </div>
-          {/* <h4 style={{ fontWeight: 400, marginTop: '12px', color:'white' }}>Set up your order with any price and wait for the price to reach your set price.</h4> */}
-          {/* <div style={{width: '100%', height: '14px', borderBottom: '1px dashed white'}}></div> */}
-          <h6 style={{ fontWeight: 300, marginTop: '20px', color: 'white'}}>Choose token to sell</h6>
-          <div id='customDropdown' className='dropdownWrapper onHover'>
-            <a id='customDropdown' className='onHover font-16'>{dropdownvalue1}</a>
-            <img id='customDropdown' style={{width: '15px'}} src={downArrow} />
-            <div id='customDropdownDiv' className='customDropdownDiv d-none'>
-              {
-              OFFER_TOKEN_LIST.filter((item) => {
-                // console.log(offerTokenId, item.id);
-                return offerTokenId !== item.id;
-              }).map((item, index) => (<div id='customDropdown' key={`accept-${index}`} onClick={() => {setdropdownvalue1(`${item.name} (${item.id})`); onOfferTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                {/* <img id='customDropdown' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
-              <h5 id='customDropdown' className='onHover'>{`${item.name} (${item.id})`}</h5>
-              </div>))
-            }
-            </div>
-          </div>
-          <div className='createOfferBalance'>
-          <h6 style={{color: 'white'}}>Amount of token</h6>
-          <h6 style={{color: 'white'}}>Balance: {offerTokenBalance}</h6>
-          </div>
-          <input style={{height: '41px', borderRadius: '10px', background: 'white', marginTop: '7px', color: 'black', fontWeight: 600, border: 'none', padding: '8px 20px', width: '100%'}} placeholder='Amount' type='number' value={offerTokenAmount} onChange={(e) => {
-            if (e.target.value > (offerTokenBalance)) {
-              setOfferTokenAmount(offerTokenBalance);
-            } else {
-              setOfferTokenAmount(e.target.value);
-            }
-            }} />
-          {/* <input type='range' max={offerTokenBalance} step={0.01} value={offerTokenAmount} onChange={(e) => setOfferTokenAmount(e.target.value)} id='customRange1' /> */}
-          <h6 style={{ fontWeight: 300, marginTop: '20px', color: 'white'}}>Choose payable token</h6>
-          <div id='customDropdown2' className='dropdownWrapper onHover'>
-            <a id='customDropdown2' className='onHover'>{dropdownvalue2}</a>
-            <img id='customDropdown2' style={{width: '15px'}} src={downArrow} />
-            <div id='customDropdown2Div' className='customDropdownDiv d-none'>
-              {
-              OFFER_TOKEN_LIST.filter((item) => {
-                // console.log(offerTokenId, item.id);
-                return offerTokenId !== item.id;
-              }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); onAcceptTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
-                {/* <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
-              <h5 id='customDropdown2' className='onHover'>{`${item.name} (${item.id})`}</h5>
-              </div>))
-            }
-            </div>
-          </div>
-          <div className='createOfferBalance'>
-            <h6 style={{color: 'white'}}>Amount</h6>
-          </div>
-          <input style={{height: '41px', borderRadius: '10px', background: 'white', marginTop: '7px', color: 'black', fontWeight: 600, border: 'none', padding: '8px 20px', width: '100%', fontFamily: 'Chakra Petch'}} placeholder='Amount' type='number' value={acceptTokenAmount} onChange={(e) => setAcceptTokenAmount(e.target.value)}/>
-          {/* <div style={{display: 'flex', alignItems: 'baseline', gap: '12px', marginTop: '8px'}}>
-            <input className='onHover' type='checkbox' style={{height: '13px', width: '15px'}} onChange={() => setpartialFill((prevState) => !prevState)} />
-            <p style={{marginTop: '9px', color:'white', width: 'calc(100% - 37px)'}}>Accept partial fill of my order</p>
-          </div> */}
-          {(offerTokenAmount > 0 && acceptTokenAmount > 0) ? (<div className='pricePerUnit cl-purple'>
-            <span >1</span>{' '}
-            {offerTokenId} for {' '}
-            <span >{precisionRound(acceptTokenAmount / offerTokenAmount, 6)}</span>{' '}
-            {acceptTokenId}</div>) : (<div className='pricePerUnit'></div>)}
+        <div className='row'>
+          <div className='col-lg-3 col-md-3 col-sm-12'></div>
+          <div className='col-lg-6 col-md-6 col-sm-12'>
+            <form className='modal2'>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <h3 style={{ fontWeight: 600, color: 'white', fontFamily:'Roboto' }}>CREATE ORDER</h3>
+              </div>
+              {/* <h4 style={{ fontWeight: 400, marginTop: '12px', color:'white' }}>Set up your order with any price and wait for the price to reach your set price.</h4> */}
+              {/* <div style={{width: '100%', height: '14px', borderBottom: '1px dashed white'}}></div> */}
+              <h6 style={{ fontWeight: 300, marginTop: '20px', color: 'white', fontFamily:'Roboto'}}>Choose token to sell</h6>
+              <div id='customDropdown' className='dropdownWrapper onHover'>
+                <a id='customDropdown' className='onHover font-16' style={{fontFamily:'Roboto'}}>{dropdownvalue1}</a>
+                <img id='customDropdown' style={{width: '15px'}} src={downArrow} />
+                <div id='customDropdownDiv' className='customDropdownDiv d-none'>
+                  {
+                  OFFER_TOKEN_LIST.filter((item) => {
+                    // console.log(offerTokenId, item.id);
+                    return offerTokenId !== item.id;
+                  }).map((item, index) => (<div id='customDropdown' key={`accept-${index}`} onClick={() => {setdropdownvalue1(`${item.name} (${item.id})`); onOfferTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px', fontFamily:'Roboto'}}>
+                    {/* <img id='customDropdown' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
+                  <h5 id='customDropdown' className='onHover' style={{fontFamily:'Roboto'}}>{`${item.name} (${item.id})`}</h5>
+                  </div>))
+                }
+                </div>
+              </div>
+              <div className='createOfferBalance'>
+              <h6 style={{color: 'white', fontFamily:'Roboto'}}>Amount of token</h6>
+              <h6 style={{color: 'white', fontFamily:'Roboto'}}>Balance: {offerTokenBalance}</h6>
+              </div>
+              <input style={{height: '41px', borderRadius: '10px', background: 'white', marginTop: '7px', color: 'black', fontWeight: 600, border: 'none', padding: '8px 20px', width: '100%', fontFamily:'Roboto'}} placeholder='Amount' type='number' value={offerTokenAmount} onChange={(e) => {
+                if (e.target.value > (offerTokenBalance)) {
+                  setOfferTokenAmount(offerTokenBalance);
+                } else {
+                  setOfferTokenAmount(e.target.value);
+                }
+                }} />
+              {/* <input type='range' max={offerTokenBalance} step={0.01} value={offerTokenAmount} onChange={(e) => setOfferTokenAmount(e.target.value)} id='customRange1' /> */}
+              <h6 style={{ fontWeight: 300, marginTop: '20px', color: 'white', fontFamily:'Roboto'}}>Choose payable token</h6>
+              <div id='customDropdown2' className='dropdownWrapper onHover'>
+                <a id='customDropdown2' className='onHover' style={{fontFamily:'Roboto'}}>{dropdownvalue2}</a>
+                <img id='customDropdown2' style={{width: '15px'}} src={downArrow} />
+                <div id='customDropdown2Div' className='customDropdownDiv d-none'>
+                  {
+                  OFFER_TOKEN_LIST.filter((item) => {
+                    // console.log(offerTokenId, item.id);
+                    return offerTokenId !== item.id;
+                  }).map((item, index) => (<div id='customDropdown2' key={`accept-${index}`} onClick={() => {setdropdownvalue2(`${item.name} (${item.id})`); onAcceptTokenIdChange(item.id);}} style={{display: 'flex', alignItems: 'center', padding: '8px', gap: '10px'}}>
+                    {/* <img id='customDropdown2' style={{width: '30px'}} src={listedTokens && getLogoUrl(item.id)} /> */}
+                  <h5 id='customDropdown2' className='onHover' style={{fontFamily:'Roboto'}}>{`${item.name} (${item.id})`}</h5>
+                  </div>))
+                }
+                </div>
+              </div>
+              <div className='createOfferBalance'>
+                <h6 style={{color: 'white', fontFamily:'Roboto'}}>Amount</h6>
+              </div>
+              <input style={{height: '41px', borderRadius: '10px', background: 'white', marginTop: '7px', color: 'black', fontWeight: 600, border: 'none', padding: '8px 20px', width: '100%', fontFamily:'Roboto'}} placeholder='Amount' type='number' value={acceptTokenAmount} onChange={(e) => setAcceptTokenAmount(e.target.value)}/>
+              {/* <div style={{display: 'flex', alignItems: 'baseline', gap: '12px', marginTop: '8px'}}>
+                <input className='onHover' type='checkbox' style={{height: '13px', width: '15px'}} onChange={() => setpartialFill((prevState) => !prevState)} />
+                <p style={{marginTop: '9px', color:'white', width: 'calc(100% - 37px)'}}>Accept partial fill of my order</p>
+              </div> */}
+              {(offerTokenAmount > 0 && acceptTokenAmount > 0) ? (<div className='pricePerUnit cl-purple' style={{fontFamily:'Roboto'}}>
+                <span >1</span>{' '}
+                {offerTokenId} for {' '}
+                <span >{precisionRound(acceptTokenAmount / offerTokenAmount, 6)}</span>{' '}
+                {acceptTokenId}</div>) : (<div className='pricePerUnit'></div>)}
 
-          {/* {egldPrice > 0 && offerTokenAmount > 0 && (acceptTokenId == 'EGLD' || acceptTokenId == WEGLD_ID) && (<div className='pricePerUnit cl-purple'>
-            <span >1</span>
-            {' '}
-            {offerTokenId}
-            {' for $'}<span >{precisionRound(egldPrice * acceptTokenAmount / offerTokenAmount, 6)}</span></div>)}
-          {egldPrice > 0 && acceptTokenAmount > 0 && (offerTokenId == 'EGLD' || offerTokenId == WEGLD_ID) && (<div className='pricePerUnit cl-purple'>
-            <span >1</span>
-            {' '}
-            {acceptTokenId}
-            {'for $'}<span >{precisionRound(egldPrice * offerTokenAmount / acceptTokenAmount, 6)}</span></div>)} */}
+              {/* {egldPrice > 0 && offerTokenAmount > 0 && (acceptTokenId == 'EGLD' || acceptTokenId == WEGLD_ID) && (<div className='pricePerUnit cl-purple'>
+                <span >1</span>
+                {' '}
+                {offerTokenId}
+                {' for $'}<span >{precisionRound(egldPrice * acceptTokenAmount / offerTokenAmount, 6)}</span></div>)}
+              {egldPrice > 0 && acceptTokenAmount > 0 && (offerTokenId == 'EGLD' || offerTokenId == WEGLD_ID) && (<div className='pricePerUnit cl-purple'>
+                <span >1</span>
+                {' '}
+                {acceptTokenId}
+                {'for $'}<span >{precisionRound(egldPrice * offerTokenAmount / acceptTokenAmount, 6)}</span></div>)} */}
 
-          <button type='submit' style={{marginTop: '10px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'black', border: 'none', width: '100%', cursor: 'pointer'}} className='pt-15 button1 font-20'
-            onClick={acceptOffer}
-            disabled={!(offerTokenAmount > 0 && offerTokenId && acceptTokenId && acceptTokenAmount > 0 && (account && account.address))}>
-            {(account && account.address) ? 'CREATE' : 'Connect Wallet'}</button>
-        </form>
+              <button type='submit' style={{marginTop: '10px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'black', border: 'none', width: '100%', cursor: 'pointer', fontFamily:'Roboto'}} className='pt-15 button1 font-20'
+                onClick={acceptOffer}
+                disabled={!(offerTokenAmount > 0 && offerTokenId && acceptTokenId && acceptTokenAmount > 0 && (account && account.address))}>
+                {(account && account.address) ? 'CREATE' : 'Connect Wallet'}</button>
+            </form>
+          </div>
+          <div className='col-lg-3 col-md-3 col-sm-12'></div>
+        </div>
     );
 }
 

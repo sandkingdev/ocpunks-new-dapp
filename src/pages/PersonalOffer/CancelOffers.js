@@ -88,8 +88,8 @@ function CancelItem(props) {
       <div style={{display: 'flex', alignItems: 'center'}}>
       {/* <img width='65px' src={listedTokens && offer && getLogoUrl(offer.offer_token_id)} /> */}
       <div style={{marginLeft: '10px'}}>
-        <h2 style={{color: 'white', marginTop: '0.4rem'}}>{offer.offer_token_amount} {offer.offer_token_id} {'->'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
-        <p style={{color: 'white'}}>In Progress</p>
+        <h2 style={{color: 'white', marginTop: '0.4rem', fontFamily:'Roboto'}}>{offer.offer_token_amount} {offer.offer_token_id} {'->'} {offer.accept_token_amount} {offer.accept_token_id}</h2>
+        <p style={{color: 'white', fontFamily:'Roboto'}}>In Progress</p>
       </div>
       </div>
       {/* <img className='onHover' onClick={() => setshowModal(true)} style={{width: '25px'}} src={close} /> */}
@@ -193,15 +193,15 @@ function CancelOffers () {
             <h3 className='font-24' style={{ fontWeight: 600, fontFamily: 'Chakra Petch' }}>Hey, nice to see you</h3>
           </div>
           <h4 className='font-16' style={{ fontWeight: 400, marginTop: '12px', fontFamily: 'Chakra Petch' }}>You don't have any open offer to cancel</h4> */}
-          <div style={{display: 'flex', alignItems: 'center',flexDirection: 'column', gap: '30px'}}>
+          <div style={{display: 'flex', alignItems: 'center',flexDirection: 'column', gap: '30px', fontFamily:'Roboto'}}>
             {
               (account && account.address) ? ((offers && offers.length > 0) && offers.map((offer, index) => {
                 return (<CancelItem key={`personal-offer-cancel-item-${index}`} offer={offer} />);
-              })) : (<p style={{ margin: '0 auto', color: 'white' }}>Connect Wallet</p>)
+              })) : (<p style={{ margin: '0 auto', color: 'white', fontFamily:'Roboto' }}>Connect Wallet</p>)
             }
             {
               ((account && account.address) && (offers && offers.length == 0)) && (
-                <p style={{ color: 'white'}}>You don&apos;t have any active order</p>
+                <p style={{ color: 'white', fontFamily:'Roboto'}}>You don&apos;t have any active order</p>
               )
             }
           </div>
