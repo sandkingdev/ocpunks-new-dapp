@@ -20,6 +20,7 @@ import {
     GasLimit,
     ContractFunction,
     U32Value,
+    Balance
 } from '@elrondnetwork/erdjs';
 import {
 refreshAccount,
@@ -193,7 +194,7 @@ function Card(props) {
             const acceptAmount = convertEsdtToWei(range, getDecimalOfToken(OFFER_TOKEN_LIST, offer.accept_token_id));
             const args = [
                 BytesValue.fromUTF8(offer.accept_token_id),
-                new BigUIntValue(acceptAmount),
+                new BigUIntValue(Balance.fromString(acceptAmount.valueOf()).valueOf()),
                 BytesValue.fromUTF8('acceptOffer'),
                 new U32Value(offer.offer_id),
             ];

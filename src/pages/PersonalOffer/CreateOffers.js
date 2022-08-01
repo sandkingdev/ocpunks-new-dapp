@@ -25,6 +25,7 @@ import {
   ContractFunction,
   U32Value,
   BooleanValue,
+  Balance
 } from '@elrondnetwork/erdjs';
 import {
   refreshAccount,
@@ -147,7 +148,7 @@ function CreateOffers () {
 
         const args = [
           BytesValue.fromUTF8(acceptTokenId),
-          new BigUIntValue(acceptAmount),
+          new BigUIntValue(Balance.fromString(acceptAmount.valueOf()).valueOf()),
           new BooleanValue(partialFill),
         ];
         const { argumentsString } = new ArgSerializer().valuesToString(args);
@@ -168,10 +169,10 @@ function CreateOffers () {
 
       const args = [
           BytesValue.fromUTF8(offerTokenId),
-          new BigUIntValue(offerAmount),
+          new BigUIntValue(Balance.fromString(offerAmount.valueOf()).valueOf()),
           BytesValue.fromUTF8('makeOffer'),
           BytesValue.fromUTF8(acceptTokenId),
-          new BigUIntValue(acceptAmount),
+          new BigUIntValue(Balance.fromString(acceptAmount.valueOf()).valueOf()),
           new BooleanValue(partialFill),
       ];
       const { argumentsString } = new ArgSerializer().valuesToString(args);
@@ -180,9 +181,10 @@ function CreateOffers () {
       tx = {
           receiver: OFFER_CONTRACT_ADDRESS,
           gasLimit: new GasLimit(10000000),
-          data: data,
+          data: data
       };
     }
+    console.log('click');
     
     await refreshAccount();
     sendTransactions({
@@ -279,7 +281,7 @@ function CreateOffers () {
             {acceptTokenId}
             {'for $'}<span >{precisionRound(egldPrice * offerTokenAmount / acceptTokenAmount, 6)}</span></div>)} */}
 
-          <button type='submit' style={{marginTop: '10px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'white', border: 'none', width: '100%'}} className='pt-15 button1 font-20'
+          <button type='submit' style={{marginTop: '10px', textAlign: 'center', padding: '15px', fontWeight: 600, marginRight: 0, borderRadius: '8px', color: 'black', border: 'none', width: '100%', cursor: 'pointer'}} className='pt-15 button1 font-20'
             onClick={acceptOffer}
             disabled={!(offerTokenAmount > 0 && offerTokenId && acceptTokenId && acceptTokenAmount > 0 && (account && account.address))}>
             {(account && account.address) ? 'CREATE' : 'Connect Wallet'}</button>

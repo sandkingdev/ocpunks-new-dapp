@@ -134,7 +134,7 @@ const PersonalOffer = () => {
         if (res.data.length > 0) {
           const tokens = res.data;
 
-          console.log('tokens', tokens);
+          // console.log('tokens', tokens);
           setTokens(tokens);
         }
       } catch (e: any) {

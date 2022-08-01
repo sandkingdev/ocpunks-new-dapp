@@ -120,7 +120,7 @@ function OffersList () {
               }
 
               offers = sortOffers(offers);
-              console.log('offers', offers);
+              // console.log('offers', offers);
               setoriginalOffers(offers);
 
               setOffers(offers);
@@ -146,7 +146,7 @@ function OffersList () {
             fee = res.firstValue.valueOf().toNumber() / 100;
           }
 
-          console.log('fee', fee);
+          // console.log('fee', fee);
 
           setFee(fee);
       })();
