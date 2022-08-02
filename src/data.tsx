@@ -76,9 +76,9 @@ import EgldLogo from 'assets/img/EGLD.svg';
 // ZOG-c66239
 // LKMEX-aab910
 export const TOKENS: any = {
-    "EGLD": {
-        identifier: "EGLD",
-        ticker: "EGLD",
+    'EGLD': {
+        identifier: 'EGLD',
+        ticker: 'EGLD',
         decimals: 18,
         url: EgldLogo,
         unit_price_in_usd: 130,
