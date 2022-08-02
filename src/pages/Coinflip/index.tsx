@@ -92,16 +92,20 @@ const Coinflip = () => {
 
   const [balance, setBalance] = React.useState<any>();
   useEffect(() => {
-    if (token_id == 'EGLD') {
-      setBalance(convertWeiToEgld(account.balance, 18));
-    } else {
-      axios
-        .get(`${GATEWAY}/accounts/${address}/tokens/${selectedTokenId}`)
-        .then((res) => {
-          const token = res.data;
-          const balance = token['balance'] / Math.pow(10, token['decimals']);
-          setBalance(balance);
-        });
+    try {
+      if (selectedTokenId == 'EGLD') {
+        setBalance(convertWeiToEgld(account.balance, 18));
+      } else {
+        axios
+          .get(`${GATEWAY}/accounts/${address}/tokens/${selectedTokenId}`)
+          .then((res) => {
+            const token = res.data;
+            const balance = token['balance'] / Math.pow(10, token['decimals']);
+            setBalance(balance);
+          });
+      }
+    } catch(e) {
+      console.log('error');
     }
   }, [selectedTokenId, hasPendingTransactions]);
 
