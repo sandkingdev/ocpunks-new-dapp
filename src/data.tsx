@@ -75,7 +75,14 @@ import EgldLogo from 'assets/img/EGLD.svg';
 
 // ZOG-c66239
 // LKMEX-aab910
-export const TOKENS:any = {
+export const TOKENS: any = {
+    "EGLD": {
+        identifier: "EGLD",
+        ticker: "EGLD",
+        decimals: 18,
+        url: EgldLogo,
+        unit_price_in_usd: 130,
+    },
     'ZOG-c66239': {
         identifier: 'ZOG-c66239',
         ticker: 'ZOG',
@@ -171,7 +178,7 @@ export const OFFER_TOKEN_LIST = [
         url: 'https://media.elrond.com/tokens/asset/MEX-455c57/logo.png',
     },
 
-    
+
     // {
     //     name: 'AERO',
     //     id: 'AERO-458bbf',
@@ -221,7 +228,7 @@ export const OFFER_TOKEN_LIST = [
     //     decimals: 18,
     //     url: "https://media.elrond.com/tokens/asset/CRU-a5f4aa/logo.svg",
     // },
-    
+
     // {
     //     name: 'CTP',
     //     id: 'CTP-298075',
@@ -293,7 +300,7 @@ export const OFFER_TOKEN_LIST = [
     //     decimals: 6,
     //     url: "https://media.elrond.com/tokens/asset/GTTS-ac8274/logo.png",
     // },
-    
+
     // {
     //     name: 'HETO',
     //     id: 'HETO-663cf8',
@@ -319,7 +326,7 @@ export const OFFER_TOKEN_LIST = [
     //     decimals: 18,
     //     url: "https://media.elrond.com/tokens/asset/ISETEGLDLP-86715a/logo.svg",
     // },
-    
+
     // {
     //     name: 'ITHEUM',
     //     id: 'ITHEUM-df6f26',
@@ -393,7 +400,7 @@ export const OFFER_TOKEN_LIST = [
     //     decimals: 8,
     //     url: "https://media.elrond.com/tokens/asset/PLATA-9ba6c3/logo.png",
     // },
-    
+
     // {
     //     name: 'QWT',
     //     id: 'QWT-46ac01',
@@ -482,7 +489,7 @@ export const OFFER_TOKEN_LIST = [
     //     url: "https://media.elrond.com/tokens/asset/WATER-9ed400/logo.png",
     // },
 
-    
+
     // {
     //     name: 'XLH',
     //     id: 'XLH-8daa50',
