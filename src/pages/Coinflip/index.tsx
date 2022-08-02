@@ -67,7 +67,7 @@ function printNumber(v: any) {
 
   return (
     <>
-      <span className='text2'>{integral.toLocaleString()}</span>
+      <span className='text2'>{integral.toLocaleString()}.{fractional}</span>
     </>
   );
 }
