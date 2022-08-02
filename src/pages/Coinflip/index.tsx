@@ -128,6 +128,7 @@ const Coinflip = () => {
       const items = res.firstValue?.valueOf();
 
       const flipPacks: any = {};
+      let ids: any = [];
       for (const [_, item] of items) {
         const token_id = item.token_id.toString();
         const lp_fee = item.lp_fee.toNumber();
@@ -145,21 +146,23 @@ const Coinflip = () => {
           fee,
           amounts,
         };
+        ids.push(token_id);
 
         flipPacks[flipPack.token_id] = flipPack;
       }
 
-      // ids = ids.sort();
-      // const newFlipPacks = {};
-      // const EGLD_ID = 'EGLD';
-      // newFlipPacks[EGLD_ID] = flipPacks[EGLD_ID];
-      // for (const id of ids) {
-      //   if (id != EGLD_ID) {
-      //     newFlipPacks[id] = flipPacks[id];
-      //   }
-      // }
+      ids = ids.sort();
+      const newFlipPacks: any = {};
+      const EGLD_ID = 'EGLD';
+      newFlipPacks[EGLD_ID] = flipPacks[EGLD_ID];
+      for (const id of ids) {
+        if (id != EGLD_ID) {
+          newFlipPacks[id] = flipPacks[id];
+        }
+      }
 
-      setFlipPacks(flipPacks);
+      setFlipPacks(newFlipPacks);
+      // setFlipPacks(flipPacks);
       // console.log('Items: ', flipPacks);
 
     })();
@@ -293,20 +296,37 @@ const Coinflip = () => {
     const amount = flipPacks[selectedTokenId].amounts[selectedAmountId];
     const amountInWei: any = convertEsdtToWei(amount, TOKENS[selectedTokenId].decimals);
 
-    const args: TypedValue[] = [
-      BytesValue.fromUTF8(selectedTokenId),
-      new BigUIntValue(Balance.fromString(amountInWei.valueOf()).valueOf()),
-      BytesValue.fromUTF8('flip'),
-      new U32Value(flipType),
-    ];
-    const { argumentsString } = new ArgSerializer().valuesToString(args);
-    const data = `ESDTTransfer@${argumentsString}`;
+    let tx;
+    if (selectedTokenId == 'EGLD') {
+      const args: TypedValue[] = [
+        new U32Value(flipType),
+      ];
+      const { argumentsString } = new ArgSerializer().valuesToString(args);
+      const data = `flip@${argumentsString}`;
 
-    const tx = {
-      receiver: FLIP_CONTRACT_ADDRESS,
-      gasLimit: new GasLimit(FLIP_GAS_LIMIT),
-      data: data,
-    };
+      tx = {
+        receiver: FLIP_CONTRACT_ADDRESS,
+        gasLimit: new GasLimit(FLIP_GAS_LIMIT),
+        data: data,
+        value: amountInWei,
+      };
+    } else {
+      const args: TypedValue[] = [
+        BytesValue.fromUTF8(selectedTokenId),
+        new BigUIntValue(Balance.fromString(amountInWei.valueOf()).valueOf()),
+        BytesValue.fromUTF8('flip'),
+        new U32Value(flipType),
+      ];
+      const { argumentsString } = new ArgSerializer().valuesToString(args);
+      const data = `ESDTTransfer@${argumentsString}`;
+  
+      tx = {
+        receiver: FLIP_CONTRACT_ADDRESS,
+        gasLimit: new GasLimit(FLIP_GAS_LIMIT),
+        data: data,
+      };
+    }
+
 
     await refreshAccount();
     const { sessionId } = await sendTransactions({
