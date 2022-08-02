@@ -79,7 +79,7 @@ function printAddress(v: any, len = 10) {
 
 const Coinflip = () => {
 
-  const { address } = useGetAccountInfo();
+  const { address, account } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const isLoggedIn = Boolean(address);
@@ -92,13 +92,17 @@ const Coinflip = () => {
 
   const [balance, setBalance] = React.useState<any>();
   useEffect(() => {
-    axios
-      .get(`${GATEWAY}/accounts/${address}/tokens/${selectedTokenId}`)
-      .then((res) => {
-        const token = res.data;
-        const balance = token['balance'] / Math.pow(10, token['decimals']);
-        setBalance(balance);
-      });
+    if (token_id == 'EGLD') {
+      setBalance(convertWeiToEgld(account.balance, 18));
+    } else {
+      axios
+        .get(`${GATEWAY}/accounts/${address}/tokens/${selectedTokenId}`)
+        .then((res) => {
+          const token = res.data;
+          const balance = token['balance'] / Math.pow(10, token['decimals']);
+          setBalance(balance);
+        });
+    }
   }, [selectedTokenId, hasPendingTransactions]);
 
   // load smart contract abi and parse it to SmartContract object for tx
@@ -236,6 +240,15 @@ const Coinflip = () => {
     }
   }, [flipPacks]);
 
+  // const [selectedTokenBalance, setSelectedTokenBalance] = React.useState<number | undefined>();
+  // React.useEffect(() => {
+  //   if (account.address && selectedTokenId && !hasPendingTransactions) {
+  //     getBalanceOfToken(network.apiAddress, account, selectedTokenId).then((v) => {
+  //       setSelectedTokenBalance(v);
+  //     });
+  //   }
+  // }, [selectedTokenId, hasPendingTransactions]);
+
   const [selectedAmountId, setSelectedAmountId] = React.useState<number>(0);
   function onAmountButtonClick(e: any) {
     setSelectedAmountId(e.currentTarget.value);
@@ -319,7 +332,7 @@ const Coinflip = () => {
       ];
       const { argumentsString } = new ArgSerializer().valuesToString(args);
       const data = `ESDTTransfer@${argumentsString}`;
-  
+
       tx = {
         receiver: FLIP_CONTRACT_ADDRESS,
         gasLimit: new GasLimit(FLIP_GAS_LIMIT),
