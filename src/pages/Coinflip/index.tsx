@@ -163,7 +163,7 @@ const Coinflip = () => {
 
       setFlipPacks(newFlipPacks);
       // setFlipPacks(flipPacks);
-      // console.log('Items: ', flipPacks);
+      console.log('Items: ', newFlipPacks);
 
     })();
   }, [contractInteractor]);
