@@ -158,6 +158,7 @@ const PersonalOffer = () => {
       <TokensContext.Provider value={tokens}>
         <EgldPriceContext.Provider value={egldPrice}>
           <div className='personal-offer'>
+            <div style={{color: 'white', fontFamily:'Roboto', textAlign:'center', fontSize:'20px'}}>FEE : 0.5%</div>
             <div className='personal-offer-header'>
               <NavLink to={`${routeNames.personaloffer}/list`}>Lists</NavLink>
               <NavLink to={`${routeNames.personaloffer}/create`}>Create</NavLink>
