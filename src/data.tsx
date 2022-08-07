@@ -97,6 +97,13 @@ export const TOKENS: any = {
         url: 'https://media.elrond.com/tokens/asset/BLOOD-fe36ed/logo.svg',
         unit_price_in_usd: 0.00019,
     },
+    'STEPX-23bbca': {
+        identifier: 'STEPX-23bbca',
+        ticker: 'STEPX',
+        decimals: 18,
+        url: 'https://media.elrond.com/tokens/asset/STEPX-23bbca/logo.svg',
+        unit_price_in_usd: 0.00019,
+    },
     // 'LKMEX-aab910': {
     //     identifier: 'LKMEX-aab910',
     //     ticker: 'LKMEX',
@@ -183,6 +190,18 @@ export const OFFER_TOKEN_LIST = [
         id: 'MEX-455c57',
         decimals: 18,
         url: 'https://media.elrond.com/tokens/asset/MEX-455c57/logo.png',
+    },
+    {
+        name: 'BLOOD',
+        id: 'BLOOD-fe36ed',
+        decimals: 0,
+        url: 'https://media.elrond.com/tokens/asset/BLOOD-fe36ed/logo.png',
+    },
+    {
+        name: 'STEPX',
+        id: 'STEPX-23bbca',
+        decimals: 18,
+        url: 'https://media.elrond.com/tokens/asset/STEPX-23bbca/logo.png',
     },
 
 
