@@ -90,6 +90,13 @@ export const TOKENS: any = {
         url: 'https://media.elrond.com/tokens/asset/ZOG-c66239/logo.svg',
         unit_price_in_usd: 0.00019,
     },
+    'BLOOD-fe36ed': {
+        identifier: 'BLOOD-fe36ed',
+        ticker: 'BLOOD',
+        decimals: 0,
+        url: 'https://media.elrond.com/tokens/asset/BLOOD-fe36ed/logo.svg',
+        unit_price_in_usd: 0.00019,
+    },
     // 'LKMEX-aab910': {
     //     identifier: 'LKMEX-aab910',
     //     ticker: 'LKMEX',
