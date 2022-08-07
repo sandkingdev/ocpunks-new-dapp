@@ -460,7 +460,7 @@ const Coinflip = () => {
           </div>
 
           <div className='row justify-content-center mt-3'>
-            <p className='fee-amount'>Fee: 10% for NFTs holders</p>
+            <p className='fee-amount'>Fee : 10% for NFTs holders</p>
           </div>
         </Container>
       </div>
