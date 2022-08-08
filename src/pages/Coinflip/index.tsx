@@ -452,7 +452,7 @@ const Coinflip = () => {
                     {v.success ? ' flipped ' : ' rolled '}
                     {printNumber(v.amount)}
                     {' '}${v.ticker} and
-                    <span className={v.success ? 'win' : 'lose'}>{v.success ? ' doubled' : ' got pwned'}</span>
+                    <span className={v.success ? 'win' : 'lose'}>{v.success ? ' win' : ' got pwned'}</span>
                   </Col>
                 </Row>
               ))
