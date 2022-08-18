@@ -38,7 +38,7 @@ export const BREEDING_CONTRACT_NAME = 'NftBreeding';
 export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq7ykazrzd905zvnlr88dpfw06677lxe9w0n4suz00uh';
 //// MAINNET
 export const MALE_COLLECTION_ID = 'ORC-ef544d';
-export const FEMALE_COLLECTION_ID = 'EAS-da9026';
+export const FEMALE_COLLECTION_ID = 'SHO-e81311';
 // export const PAYMENT_TOKEN_ID = 'WEGLD-bd4d79';
 // export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqhe8t5jewej70zupmh44jurgn29psua5l2jps3ntjj3';
 
