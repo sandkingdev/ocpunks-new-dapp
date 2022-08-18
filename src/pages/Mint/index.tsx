@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Container,
   Row,
@@ -11,6 +11,16 @@ import './index.scss';
 
 const Mint = () => {
 
+  const [amount, setAmount] = useState(1);
+
+  const handleMinus = () => {
+    if(amount <= 1) return;
+    setAmount(amount - 1);
+  };
+
+  const handlePlus = () => {
+    setAmount(amount + 1);
+  };
 
   return (
     <Container className='mint-container'>
@@ -26,9 +36,9 @@ const Mint = () => {
             <div className='mint-container-text-quantity'>0 minted out of 2000</div>
             <div className='mint-container-text-select-quantity'>Select a quantity</div>
             <div className='mint-amount-container'>
-              <button>-</button>
-              <div>2</div>
-              <button>+</button>
+              <button onClick={handleMinus}>-</button>
+              <div>{amount}</div>
+              <button onClick={handlePlus}>+</button>
             </div>
             <div className='mint-container-text-summary'>SUMMARY</div>
             <div className='summary-container'>
