@@ -54,7 +54,7 @@ export const MINT_PRICE = 50000;
 export const MINT_TOKEN_ID = 'ZOG-481946';
 export const MINT_COLLECTION_COUNT = 2000;
 
-export const ENVIRONMENT = 'mainnet';
-export const GATEWAY = 'https://api.elrond.com';
-// export const ENVIRONMENT = 'devnet';
-// export const GATEWAY = 'https://devnet-api.elrond.com';
+// export const ENVIRONMENT = 'mainnet';
+// export const GATEWAY = 'https://api.elrond.com';
+export const ENVIRONMENT = 'devnet';
+export const GATEWAY = 'https://devnet-api.elrond.com';

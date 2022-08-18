@@ -40,6 +40,7 @@ import {
   TransactionPayload,
   Transaction,
   Balance,
+  U32Value,
 } from '@elrondnetwork/erdjs/out';
 
 import Chat from 'assets/img/chat.png';
@@ -97,14 +98,15 @@ const Mint = () => {
     const args: TypedValue[] = [
       BytesValue.fromUTF8(MINT_TOKEN_ID),
       new BigUIntValue(Balance.fromString(value.valueOf()).valueOf()),
-      BytesValue.fromUTF8('mint')
+      BytesValue.fromUTF8('mint'),
+      new U32Value(amount),
     ];
 
     const { argumentsString } = new ArgSerializer().valuesToString(args);
     const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
     const tx = {
       receiver: MINT_CONTRACT_ADDRESS,
-      gasLimit: new GasLimit(10000000),
+      gasLimit: new GasLimit(60000000),
       data: data.toString(),
     };
 
