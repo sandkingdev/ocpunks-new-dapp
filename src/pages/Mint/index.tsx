@@ -4,10 +4,12 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
+import BigNumber from 'bignumber.js/bignumber.js';
 import { 
   MINT_CONTRACT_ADDRESS,
   MINT_PRICE, 
   MINT_TOKEN_ID,
+  MINT_COLLECTION_COUNT,
   GATEWAY,
   TIMEOUT,
 } from 'config';
@@ -51,19 +53,22 @@ const Mint = () => {
   const isLoggedIn = Boolean(address);
 
   const [amount, setAmount] = useState(1);
+  const [payment, setPayment] = useState(MINT_PRICE);
 
   const handleMinus = () => {
     if(amount <= 1) return;
     setAmount(amount - 1);
+    setPayment((amount - 1) * MINT_PRICE);
   };
 
   const handlePlus = () => {
     setAmount(amount + 1);
+    setPayment((amount + 1) * MINT_PRICE);
   };
 
   const handleMint = async () => {
 
-    const value = (new BigNumber(amount * MINT_PRICE)).multipliedBy(1000000);
+    const value = (new BigNumber(payment)).multipliedBy(1000000);
 
     const args: TypedValue[] = [
       BytesValue.fromUTF8(MINT_TOKEN_ID),
@@ -102,7 +107,7 @@ const Mint = () => {
         </Col>
         <Col lg={6} md={6} sm={12} className='nft-mint-container'>
           <div>
-            <div className='mint-container-text-quantity'>0 minted out of 2000</div>
+            <div className='mint-container-text-quantity'>0 minted out of {MINT_COLLECTION_COUNT}</div>
             <div className='mint-container-text-select-quantity'>Select a quantity</div>
             <div className='mint-amount-container'>
               <button onClick={handleMinus}>-</button>
@@ -113,16 +118,16 @@ const Mint = () => {
             <div className='summary-container'>
               <div className='summary-container-item'>
                 <div>Price per SheOrcs</div>
-                <div>50,000 ZOG</div>
+                <div>{payment.toLocaleString()} ZOG</div>
               </div>
               <div className='summary-container-item'>
                 <div>Quantity</div>
-                <div>2</div>
+                <div>{amount}</div>
               </div>
               <hr style={{background: 'white'}}/>
               <div className='summary-container-item'>
                 <div>TOTAL</div>
-                <div>100,000 ZOG</div>
+                <div>{payment.toLocaleString()} ZOG</div>
               </div>
             </div>
             <div className='d-flex justify-content-center'>

@@ -52,6 +52,7 @@ export const USDC_ID = 'USDC-c76f1f';
 export const MINT_CONTRACT_ADDRESS = '';
 export const MINT_PRICE = 50000;
 export const MINT_TOKEN_ID = '';
+export const MINT_COLLECTION_COUNT = 2000;
 
 export const ENVIRONMENT = 'mainnet';
 export const GATEWAY = 'https://api.elrond.com';
