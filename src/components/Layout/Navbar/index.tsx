@@ -35,6 +35,9 @@ const Navbar = () => {
             <Link to={routeNames.home} aria-current='page' className='custom-link-button custom-nav-link'>
               Home
             </Link>
+            <Link to={routeNames.mint} aria-current='page' className='custom-link-button custom-nav-link'>
+              Mint
+            </Link>
             <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
               $ZOG
             </Link>
