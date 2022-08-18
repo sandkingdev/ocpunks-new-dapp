@@ -56,13 +56,15 @@ import {
   BREEDING_PRICE,
   BREEDING_CONTRACT_ABI_URL,
   BREEDING_CONTRACT_NAME,
+  EGLD_WRAP_CONTRACT_ADDRESS,
   TIMEOUT,
 } from 'config';
 
 import { sendQuery } from '../../utils/transaction';
 import {
   paddingTwoDigits,
-  formatNumbers
+  formatNumbers,
+  convertWeiToEgld,
 } from '../../utils/convert';
 
 import './index.scss';
@@ -73,7 +75,7 @@ const Breeding = () => {
 
   // const navigate = useNavigate();
 
-  const { address } = useGetAccountInfo();
+  const { address, account } = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const isLoggedIn = Boolean(address);
@@ -173,53 +175,63 @@ const Breeding = () => {
   };
 
   const startBreeding = async () => {
-    if (maleNfts.length > 0 && femaleNfts.length > 0) {
+    if (convertWeiToEgld(account.balance) >= BREEDING_PRICE) {
+      if (maleNfts.length > 0 && femaleNfts.length > 0) {
 
-      setEndBreeding(true);
+        setEndBreeding(true);
+  
+        const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
+        const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
+        console.log(maleNftNonce, femaleNftNonce, PAYMENT_TOKEN_ID);
+  
+        const tokenCount: any = 3;
+        const nftAmount: any = 1;
+        const paymentTokenNonce: any = 0;
+        const paymentAmount = (new BigNumber(BREEDING_PRICE)).multipliedBy(Math.pow(10, 18));
+  
+        const args: TypedValue[] = [
+          new AddressValue(new Address(BREEDING_CONTRACT_ADDRESS)),
+          new BigUIntValue(Balance.fromString(tokenCount.valueOf()).valueOf()),
+          BytesValue.fromUTF8(MALE_COLLECTION_ID),
+          new BigUIntValue(Balance.fromString(maleNftNonce.valueOf()).valueOf()),
+          new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
+          BytesValue.fromUTF8(FEMALE_COLLECTION_ID),
+          new BigUIntValue(Balance.fromString(femaleNftNonce.valueOf()).valueOf()),
+          new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
+          BytesValue.fromUTF8(PAYMENT_TOKEN_ID),
+          new BigUIntValue(Balance.fromString(paymentTokenNonce.valueOf()).valueOf()),
+          new BigUIntValue(Balance.fromString(paymentAmount.valueOf()).valueOf()),
+          BytesValue.fromUTF8('startBreeding')
+        ];
+  
+        const { argumentsString } = new ArgSerializer().valuesToString(args);
+        const data = new TransactionPayload(`MultiESDTNFTTransfer@${argumentsString}`);
+  
+        const tx = [
+          {
+            receiver: EGLD_WRAP_CONTRACT_ADDRESS,
+            gasLimit: new GasLimit(6000000),
+            value: paymentAmount,
+          },
+          {
+            receiver: address,
+            gasLimit: new GasLimit(10000000),
+            data: data.toString(),
+          }
+        ];
 
-      const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
-      const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
-      console.log(maleNftNonce, femaleNftNonce, PAYMENT_TOKEN_ID);
-
-      const tokenCount: any = 3;
-      const nftAmount: any = 1;
-      const paymentTokenNonce: any = 0;
-      const paymentAmount = (new BigNumber(BREEDING_PRICE)).multipliedBy(1000000);
-
-      const args: TypedValue[] = [
-        new AddressValue(new Address(BREEDING_CONTRACT_ADDRESS)),
-        new BigUIntValue(Balance.fromString(tokenCount.valueOf()).valueOf()),
-        BytesValue.fromUTF8(MALE_COLLECTION_ID),
-        new BigUIntValue(Balance.fromString(maleNftNonce.valueOf()).valueOf()),
-        new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
-        BytesValue.fromUTF8(FEMALE_COLLECTION_ID),
-        new BigUIntValue(Balance.fromString(femaleNftNonce.valueOf()).valueOf()),
-        new BigUIntValue(Balance.fromString(nftAmount.valueOf()).valueOf()),
-        BytesValue.fromUTF8(PAYMENT_TOKEN_ID),
-        new BigUIntValue(Balance.fromString(paymentTokenNonce.valueOf()).valueOf()),
-        new BigUIntValue(Balance.fromString(paymentAmount.valueOf()).valueOf()),
-        BytesValue.fromUTF8('startBreeding')
-      ];
-
-      const { argumentsString } = new ArgSerializer().valuesToString(args);
-      const data = new TransactionPayload(`MultiESDTNFTTransfer@${argumentsString}`);
-
-      const tx = {
-        receiver: address,
-        gasLimit: new GasLimit(10000000),
-        data: data.toString(),
-      };
-      await refreshAccount();
-
-      await sendTransactions({
-        transactions: tx,
-        transactionsDisplayInfo: {
-          processingMessage: 'Processing the StartBreeding transaction',
-          errorMessage: 'An error has occured during the StartBreeding',
-          successMessage: 'StartBreeding transaction successful'
-        },
-        redirectAfterSign: false
-      });
+        await refreshAccount();
+  
+        await sendTransactions({
+          transactions: tx,
+          transactionsDisplayInfo: {
+            processingMessage: 'Processing the StartBreeding transaction',
+            errorMessage: 'An error has occured during the StartBreeding',
+            successMessage: 'StartBreeding transaction successful'
+          },
+          redirectAfterSign: false
+        });
+      }
     }
   };
 
@@ -291,12 +303,12 @@ const Breeding = () => {
   return (
     <>
       <Container className='custom-breeding-container'>
-        <Row>
+        {/* <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
             <h1 className='nft-breeding-price'>COMING SOON</h1>
           </Col>
-        </Row>
-        {/* <Row>
+        </Row> */}
+        <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
             <h1 className='nft-breeding-price'>PRICE : {formatNumbers(BREEDING_PRICE)} $ZOG</h1>
           </Col>
@@ -403,7 +415,7 @@ const Breeding = () => {
           </Row>
         ) : (
           <></>
-        )} */}
+        )}
       </Container>
     </>
   );

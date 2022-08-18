@@ -30,11 +30,17 @@ export const FLIP_LAST_TX_SEARCH_COUNT = 3;
 export const MALE_COLLECTION_ID = 'ORC-0427ce';
 export const FEMALE_COLLECTION_ID = 'EAS-da9026';
 // export const BABY_COLLECTION_ID = 'EAS-da9026';
-export const PAYMENT_TOKEN_ID = 'ZOG-481946';
-export const BREEDING_PRICE = 70000;
+export const PAYMENT_TOKEN_ID = 'WEGLD-d7c6bb';
+export const BREEDING_PRICE = 0.5;
 export const BREEDING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqlrnd42kcapclacdllkchyha8spk22mna5zvs28q78a';
 export const BREEDING_CONTRACT_ABI_URL = '/abi/nft-breeding.abi.json';
 export const BREEDING_CONTRACT_NAME = 'NftBreeding';
+export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq7ykazrzd905zvnlr88dpfw06677lxe9w0n4suz00uh';
+//// MAINNET
+// export const MALE_COLLECTION_ID = 'ORC-0427ce';
+// export const FEMALE_COLLECTION_ID = 'EAS-da9026';
+// export const PAYMENT_TOKEN_ID = 'WEGLD-bd4d79';
+// export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqhe8t5jewej70zupmh44jurgn29psua5l2jps3ntjj3';
 
 export const REWARD_TOKEN_DECIMAL = 6;
 export const TIMEOUT = 6000;
