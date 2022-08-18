@@ -84,6 +84,48 @@
                 line-height: 120%;
             }
         }
+        .mint-container-text-summary {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-family: 'Readex Pro';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 120%;
+            margin-top: 35px;
+        }
+        .summary-container {
+            margin-top: 5px;
+            .summary-container-item {
+                display: flex;
+                justify-content: space-between;
+                color: white;
+                margin-bottom: 17px;
+                div{
+                    font-family: 'Readex Pro';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 120%;
+                }
+            }
+        }
+        .mint-container-mint-button {
+            margin-top: 50px;
+            background: #FFD600;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 100px;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 40px;
+            color: black;
+            font-family: 'Readex Pro';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 120%;
+        }
     }
 }
 

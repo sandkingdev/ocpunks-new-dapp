@@ -30,7 +30,7 @@ const Mint = () => {
               <div>2</div>
               <button>+</button>
             </div>
-            <div>SUMMARY</div>
+            <div className='mint-container-text-summary'>SUMMARY</div>
             <div className='summary-container'>
               <div className='summary-container-item'>
                 <div>Price per SheOrcs</div>
@@ -40,12 +40,15 @@ const Mint = () => {
                 <div>Quantity</div>
                 <div>2</div>
               </div>
+              <hr style={{background: 'white'}}/>
               <div className='summary-container-item'>
                 <div>TOTAL</div>
                 <div>100,000 ZOG</div>
               </div>
             </div>
-            <button>MINT NOW</button>
+            <div className='d-flex justify-content-center'>
+              <button className='mint-container-mint-button'>MINT NOW</button>
+            </div>
           </div>
         </Col>
       </Row>
