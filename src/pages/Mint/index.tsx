@@ -157,7 +157,7 @@ const Mint = () => {
               </div>
             </div>
             <div className='d-flex justify-content-center'>
-              <button className='mint-container-mint-button' onClick={handleMint}>MINT NOW</button>
+              <button className='mint-container-mint-button' onClick={handleMint} disabled>MINT NOW</button>
             </div>
           </div>
         </Col>
