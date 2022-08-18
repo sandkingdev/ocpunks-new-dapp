@@ -310,7 +310,7 @@ const Breeding = () => {
         </Row> */}
         <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
-            <h1 className='nft-breeding-price'>PRICE : {formatNumbers(BREEDING_PRICE)} $ZOG</h1>
+            <h1 className='nft-breeding-price'>PRICE : {BREEDING_PRICE} EGLD</h1>
           </Col>
         </Row>
         <Row>
@@ -378,7 +378,7 @@ const Breeding = () => {
                 ) : (
                   <div>
                     <p className='nft-not-found-text'>No FemaleNFTs</p>
-                    <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
+                    <a href={routeNames.mint}>
                       <button className='nft-not-found-mint-button'>Mint Now</button>
                     </a>
                   </div>
