@@ -27,8 +27,8 @@ export const FLIP_GAS_LIMIT = 6000000;
 export const FLIP_LAST_TX_SEARCH_COUNT = 3;
 
 // breeding
-export const MALE_COLLECTION_ID = 'ORC-0427ce';
-export const FEMALE_COLLECTION_ID = 'EAS-da9026';
+// export const MALE_COLLECTION_ID = 'ORC-0427ce';
+// export const FEMALE_COLLECTION_ID = 'SHO-f48247';
 // export const BABY_COLLECTION_ID = 'EAS-da9026';
 export const PAYMENT_TOKEN_ID = 'WEGLD-d7c6bb';
 export const BREEDING_PRICE = 0.5;
@@ -37,8 +37,8 @@ export const BREEDING_CONTRACT_ABI_URL = '/abi/nft-breeding.abi.json';
 export const BREEDING_CONTRACT_NAME = 'NftBreeding';
 export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq7ykazrzd905zvnlr88dpfw06677lxe9w0n4suz00uh';
 //// MAINNET
-// export const MALE_COLLECTION_ID = 'ORC-0427ce';
-// export const FEMALE_COLLECTION_ID = 'EAS-da9026';
+export const MALE_COLLECTION_ID = 'ORC-ef544d';
+export const FEMALE_COLLECTION_ID = 'EAS-da9026';
 // export const PAYMENT_TOKEN_ID = 'WEGLD-bd4d79';
 // export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqhe8t5jewej70zupmh44jurgn29psua5l2jps3ntjj3';
 
@@ -55,12 +55,12 @@ export const WEGLD_ID = 'WEGLD-bd4d79';
 export const USDC_ID = 'USDC-c76f1f';
 
 // mint
-export const MINT_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq64z4t4kj6q6w658x582f2fahrqk7gk2t5zvs4kml9c';
+export const MINT_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqf5rcxcduzfaamx3sagafttlzkmhlpps07lnqr7frl6';
 export const MINT_PRICE = 50000;
-export const MINT_TOKEN_ID = 'ZOG-481946';
+export const MINT_TOKEN_ID = 'ZOG-c66239';
 export const MINT_COLLECTION_COUNT = 2000;
 
-// export const ENVIRONMENT = 'mainnet';
-// export const GATEWAY = 'https://api.elrond.com';
-export const ENVIRONMENT = 'devnet';
-export const GATEWAY = 'https://devnet-api.elrond.com';
+export const ENVIRONMENT = 'mainnet';
+export const GATEWAY = 'https://api.elrond.com';
+// export const ENVIRONMENT = 'devnet';
+// export const GATEWAY = 'https://devnet-api.elrond.com';

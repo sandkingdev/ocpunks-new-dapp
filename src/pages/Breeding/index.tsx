@@ -212,6 +212,7 @@ const Breeding = () => {
             receiver: EGLD_WRAP_CONTRACT_ADDRESS,
             gasLimit: new GasLimit(6000000),
             value: paymentAmount,
+            data: 'wrapEgld',
           },
           {
             receiver: address,
@@ -303,16 +304,16 @@ const Breeding = () => {
   return (
     <>
       <Container className='custom-breeding-container'>
-        {/* <Row>
+        <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
             <h1 className='nft-breeding-price'>COMING SOON</h1>
           </Col>
-        </Row> */}
-        <Row>
+        </Row>
+        {/* <Row>
           <Col lg={12} md={12} sm={12} style={{ textAlign: 'center' }}>
             <h1 className='nft-breeding-price'>PRICE : {BREEDING_PRICE} EGLD</h1>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col lg={1} md={1} sm={12}></Col>
           <Col lg={4} md={4} sm={12}>
@@ -388,7 +389,8 @@ const Breeding = () => {
           </Col>
           <Col lg={1} md={1} sm={12}></Col>
         </Row>
-        <Row>
+        <Row className='mt-5'></Row>
+        {/* <Row>
           <Col lg={12} md={12} sm={12} className='breeding-button'>
             {isLoggedIn && breedingStatus?.breeding_status ? (
               (breedingStatus?.breeding_end_time.toNumber() * 1000) < Date.now() ? (
@@ -415,7 +417,7 @@ const Breeding = () => {
           </Row>
         ) : (
           <></>
-        )}
+        )} */}
       </Container>
     </>
   );
