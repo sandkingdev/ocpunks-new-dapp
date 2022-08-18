@@ -48,6 +48,11 @@ export const OFFER_PARTIAL_ACCEPT_MIN_LIMIT_PERCENTAGE = 0.2;
 export const WEGLD_ID = 'WEGLD-bd4d79';
 export const USDC_ID = 'USDC-c76f1f';
 
+// mint
+export const MINT_CONTRACT_ADDRESS = '';
+export const MINT_PRICE = 50000;
+export const MINT_TOKEN_ID = '';
+
 export const ENVIRONMENT = 'mainnet';
 export const GATEWAY = 'https://api.elrond.com';
 // export const ENVIRONMENT = 'devnet';

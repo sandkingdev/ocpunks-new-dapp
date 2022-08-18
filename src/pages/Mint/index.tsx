@@ -4,12 +4,51 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
+import { 
+  MINT_CONTRACT_ADDRESS,
+  MINT_PRICE, 
+  MINT_TOKEN_ID,
+  GATEWAY,
+  TIMEOUT,
+} from 'config';
+
+import {
+  useGetAccountInfo,
+  useGetNetworkConfig,
+  refreshAccount,
+  sendTransactions,
+  useGetPendingTransactions
+} from '@elrondnetwork/dapp-core';
+
+import {
+  Address,
+  AddressValue,
+  ContractFunction,
+  ProxyProvider,
+  Query
+} from '@elrondnetwork/erdjs';
+
+import {
+  GasLimit,
+  BytesValue,
+  BigUIntValue,
+  Egld,
+  TypedValue,
+  ArgSerializer,
+  TransactionPayload,
+  Transaction,
+  Balance,
+} from '@elrondnetwork/erdjs/out';
 
 import Chat from 'assets/img/chat.png';
 
 import './index.scss';
 
 const Mint = () => {
+  const { address } = useGetAccountInfo();
+  const { hasPendingTransactions } = useGetPendingTransactions();
+  const { network } = useGetNetworkConfig();
+  const isLoggedIn = Boolean(address);
 
   const [amount, setAmount] = useState(1);
 
@@ -20,6 +59,36 @@ const Mint = () => {
 
   const handlePlus = () => {
     setAmount(amount + 1);
+  };
+
+  const handleMint = async () => {
+
+    const value = (new BigNumber(amount * MINT_PRICE)).multipliedBy(1000000);
+
+    const args: TypedValue[] = [
+      BytesValue.fromUTF8(MINT_TOKEN_ID),
+      new BigUIntValue(Balance.fromString(value.valueOf()).valueOf()),
+      BytesValue.fromUTF8('mint')
+    ];
+
+    const { argumentsString } = new ArgSerializer().valuesToString(args);
+    const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
+    const tx = {
+      receiver: MINT_CONTRACT_ADDRESS,
+      gasLimit: new GasLimit(10000000),
+      data: data.toString(),
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: tx,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Mint transaction',
+        errorMessage: 'An error has occured during mint',
+        successMessage: 'Mint transaction successful'
+      },
+      redirectAfterSign: false
+    });
   };
 
   return (
