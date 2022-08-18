@@ -9,6 +9,7 @@ import BuyNft from './pages/BuyNft';
 import SellNft from './pages/SellNft';
 import Breeding from './pages/Breeding';
 import Bridge from './pages/Bridge';
+import Mint from './pages/Mint';
 import PersonalOffer from './pages/PersonalOffer';
 
 
@@ -25,7 +26,8 @@ export const routeNames = {
   sellnft: '/sellnft',
   breeding: '/breeding',
   bridge: '/bridge',
-  personaloffer: '/offer'
+  personaloffer: '/offer',
+  mint: '/mint',
 };
 
 const routes: Array<any> = [
@@ -78,6 +80,11 @@ const routes: Array<any> = [
     path: routeNames.personaloffer,
     title: 'Offer',
     component: PersonalOffer
+  },
+  {
+    path: routeNames.mint,
+    title: 'Mint',
+    component: Mint
   },
 ];
 
