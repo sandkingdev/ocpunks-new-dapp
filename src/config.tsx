@@ -49,9 +49,9 @@ export const WEGLD_ID = 'WEGLD-bd4d79';
 export const USDC_ID = 'USDC-c76f1f';
 
 // mint
-export const MINT_CONTRACT_ADDRESS = '';
+export const MINT_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq64z4t4kj6q6w658x582f2fahrqk7gk2t5zvs4kml9c';
 export const MINT_PRICE = 50000;
-export const MINT_TOKEN_ID = '';
+export const MINT_TOKEN_ID = 'ZOG-481946';
 export const MINT_COLLECTION_COUNT = 2000;
 
 export const ENVIRONMENT = 'mainnet';

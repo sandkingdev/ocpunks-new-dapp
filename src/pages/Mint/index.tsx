@@ -66,6 +66,30 @@ const Mint = () => {
     setPayment((amount + 1) * MINT_PRICE);
   };
 
+  const [mintedAmount, setMintedAmount] = useState(0);
+  useEffect(() => {
+    const query = new Query({
+      address: new Address(MINT_CONTRACT_ADDRESS),
+      func: new ContractFunction('getNftMintedCount'),
+    });
+    const proxy = new ProxyProvider(network.apiAddress, { timeout: TIMEOUT });
+    proxy
+      .queryContract(query)
+      .then(({ returnData }) => {
+        const [encoded] = returnData;
+        if (encoded == undefined || encoded == '') {
+          setMintedAmount(0);
+        } else {
+          const decoded = Buffer.from(encoded, 'base64').toString('hex');
+          const value = parseInt(decoded, 16);
+          setMintedAmount(value);
+        }
+      })
+      .catch((err) => {
+        console.error('Unable to call VM query', err);
+      });
+  }, [hasPendingTransactions]);
+
   const handleMint = async () => {
 
     const value = (new BigNumber(payment)).multipliedBy(1000000);
@@ -107,7 +131,7 @@ const Mint = () => {
         </Col>
         <Col lg={6} md={6} sm={12} className='nft-mint-container'>
           <div>
-            <div className='mint-container-text-quantity'>0 minted out of {MINT_COLLECTION_COUNT}</div>
+            <div className='mint-container-text-quantity'>{mintedAmount} minted out of {MINT_COLLECTION_COUNT}</div>
             <div className='mint-container-text-select-quantity'>Select a quantity</div>
             <div className='mint-amount-container'>
               <button onClick={handleMinus}>-</button>
@@ -131,7 +155,7 @@ const Mint = () => {
               </div>
             </div>
             <div className='d-flex justify-content-center'>
-              <button className='mint-container-mint-button'>MINT NOW</button>
+              <button className='mint-container-mint-button' onClick={handleMint}>MINT NOW</button>
             </div>
           </div>
         </Col>
