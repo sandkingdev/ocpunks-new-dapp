@@ -118,7 +118,7 @@ const Mint = () => {
             <div className='summary-container'>
               <div className='summary-container-item'>
                 <div>Price per SheOrcs</div>
-                <div>{payment.toLocaleString()} ZOG</div>
+                <div>{MINT_PRICE.toLocaleString()} ZOG</div>
               </div>
               <div className='summary-container-item'>
                 <div>Quantity</div>
