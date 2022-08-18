@@ -25,7 +25,11 @@ const Mint = () => {
           <div>
             <div className='mint-container-text-quantity'>0 minted out of 2000</div>
             <div className='mint-container-text-select-quantity'>Select a quantity</div>
-            <div className='mint-amount-container'></div>
+            <div className='mint-amount-container'>
+              <button>-</button>
+              <div>2</div>
+              <button>+</button>
+            </div>
             <div>SUMMARY</div>
             <div className='summary-container'>
               <div className='summary-container-item'>

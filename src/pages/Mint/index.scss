@@ -56,6 +56,34 @@
             line-height: 120%;
             margin-top: 10px;
         }
+        .mint-amount-container{
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            button {
+                background: #FFD600;
+                border-radius: 26px;
+                padding: 12px 36px;
+                color: black;
+                font-family: 'Readex Pro';
+                font-style: normal;
+                font-weight: 900;
+                font-size: 18px;
+                line-height: 120%;
+                border: none;
+            }
+            div {
+                display: flex;
+                align-items: center;
+                color: white;
+                margin: 0px 30px;
+                font-family: 'Readex Pro';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 120%;
+            }
+        }
     }
 }
 
