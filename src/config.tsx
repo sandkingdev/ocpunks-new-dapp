@@ -56,7 +56,7 @@ export const USDC_ID = 'USDC-c76f1f';
 
 // mint
 export const MINT_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqf5rcxcduzfaamx3sagafttlzkmhlpps07lnqr7frl6';
-export const MINT_PRICE = 50000;
+export const MINT_PRICE = 25000;
 export const MINT_TOKEN_ID = 'ZOG-c66239';
 export const MINT_COLLECTION_COUNT = 2000;
 
