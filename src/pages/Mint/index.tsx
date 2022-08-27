@@ -106,7 +106,7 @@ const Mint = () => {
     const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
     const tx = {
       receiver: MINT_CONTRACT_ADDRESS,
-      gasLimit: new GasLimit(400000000),
+      gasLimit: new GasLimit(600000000),
       data: data.toString(),
     };
 
