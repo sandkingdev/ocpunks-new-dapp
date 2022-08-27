@@ -156,7 +156,7 @@ const Mint = () => {
                 <div>{payment.toLocaleString()} ZOG</div>
               </div>
             </div>
-            <div className='d-flex justify-content-center'>
+            <div className='d-flex justify-content-center'> 
               <button className='mint-container-mint-button' onClick={handleMint} disabled>MINT NOW</button>
             </div>
           </div>
