@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const isLoggedIn = Boolean(address);
 
+
   return (
     <BsNavbar collapseOnSelect className='' expand='lg' variant='light'>
       <Container className='custome-navbar-container' fluid>
@@ -33,36 +34,45 @@ const Navbar = () => {
         <BsNavbar.Collapse id='responsive-navbar-nav' className='nav-menu-wrap'>
           <Nav role='navigation' className='ml-auto'>
             <Link to={routeNames.home} aria-current='page' className='custom-link-button custom-nav-link'>
-              Home
+              HOME
             </Link>
             <Link to={routeNames.mint} aria-current='page' className='custom-link-button custom-nav-link'>
-              Mint
+              MINT
             </Link>
             <Link to={routeNames.stake} aria-current='page' className='custom-link-button custom-nav-link'>
-              $ZOG
+              ZOG Staking
             </Link>
             <Link to={routeNames.personaloffer} aria-current='page' className='custom-link-button custom-nav-link'>
-              Offer
-            </Link>
-            <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
-              Zorgflip
-            </Link>
-            <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
-              NFT Breeding
-            </Link>
-            <Link to={routeNames.bridge} aria-current='page' className='custom-link-button custom-nav-link'>
-              NFT Bridge
+              OFFER
             </Link>
             {isLoggedIn ? (
               <>
-
                 <NavDropdown
-                  title="NFTs"
+                  title="NFTs Staking"
                   className="nft-nav-dropdown"
                 >
                   <NavDropdown.Item><Link to={routeNames.orcnft}>Orcpunks NFT</Link></NavDropdown.Item>
                   <NavDropdown.Item><Link to={routeNames.easternft}>EasterOrc NFT</Link></NavDropdown.Item>
+                </NavDropdown>  
+                <NavDropdown
+                  title="GAME"
+                  className="nft-nav-dropdown"
+                >
+                  <NavDropdown.Item><Link to={routeNames.orcnft}>ZorgFlip</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.easternft}>OrcRoullete</Link></NavDropdown.Item>
                 </NavDropdown>
+              </>
+            ) : (
+              <></>
+            )}
+            <Link to={routeNames.bridge} aria-current='page' className='custom-link-button custom-nav-link'>
+              BRIDGE
+            </Link>
+            <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
+              BREEDING
+            </Link>
+            {isLoggedIn ? (
+              <>
                 <NavDropdown
                   title="SWAP"
                   className="nft-nav-dropdown"
@@ -75,7 +85,7 @@ const Navbar = () => {
               <></>
             )}
             <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link'>
-              Whitepaper
+              WHITEPAPER
             </a>
             {/* {isLoggedIn ? (
               <>

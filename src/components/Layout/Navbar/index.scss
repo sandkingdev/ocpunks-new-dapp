@@ -1,5 +1,7 @@
 @import '../../../assets/sass/custom.scss';
 
+$color-dropdown-menu: rgba(217, 217, 217, 0.15);
+
 .custom-logo {
     font-size: $font-title-size-1;
     color: $color-black-2;
@@ -16,14 +18,26 @@
     color: $color-white-1;
 
     &:hover, &:focus {
-        color: $color-black-1;
+        color: $color-yellow;
     }
 }
 
+.dropdown-toggle {
+    color: $color-white-1;
+
+    &:hover, &:focus {
+        color: $color-yellow !important;
+    }
+}
+
+.dropdown-menu {
+    background-color: $color-dropdown-menu !important;
+}
+
 .custom-nav-auth-button {
-    color: $color-black-1;
-    background-color: $color-white-1;
-    border: 1px solid #FFFFFF;
+    color: $color-black-0;
+
+    background: linear-gradient(180deg, #FFD600 0%, rgba(241, 220, 220, 0.956793) 0.01%, rgba(255, 214, 0, 0.901042) 73.96%);
 
     &:hover, &:focus {
         color: $color-white-1;
@@ -75,9 +89,16 @@
 }
 
 .dropdown-item {
-    color: black !important;
+    color: $color-white-1 !important;
     font-size: 1.3rem !important;
     font-weight: 600 !important;
+
+    &:hover, &:focus {
+        background-color: rgba(217, 217, 217, 0) !important;
+        & > a {
+            color: $color-yellow !important;
+        }
+    }
 }
 
 // @media screen and (max-width: 768px) {
@@ -97,6 +118,13 @@
     }
 }
 
+@media screen and (min-width: 991px) {
+    .nft-nav-dropdown.nav-item.dropdown {
+        display: flex;
+        align-items: center;
+    }
+}
+
 a {
     text-decoration: none !important;
 }
@@ -105,6 +133,6 @@ a {
     color: black;
 }
 
-.dropdown-item.active, .dropdown-item:active {
-    background-color: white !important;
-}
+// .dropdown-item.active, .dropdown-item:active {
+//     background-color: white !important;
+// }
