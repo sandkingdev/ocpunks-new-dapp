@@ -9,7 +9,7 @@ import telegramLogo from '../../../assets/img/telegram.png';
 
 const Footer = () => {
   return (
-    <footer className='text-center mt-2 mb-3'>
+    <footer className='text-center mb-3'>
       <div>
         <a
           {...{
@@ -22,14 +22,14 @@ const Footer = () => {
         </a>
       </div>
       <br />
-      <div>
-        <a href='https://twitter.com/OrcPunks' className='mr-2'>
+      <div className='social-urls'>
+        <a href='https://twitter.com/OrcPunks' className='mr-5'>
           <img src={twitterLogo} width='40px'></img>
         </a>
-        <a href='https://discord.gg/yaQzNzere7' className='mr-2'>
+        <a href='https://discord.gg/yaQzNzere7' className='mr-5'>
           <img src={discordLogo} width='40px'></img>
         </a>
-        <a href='https://www.instagram.com/OrcPunks/' className='mr-2'>
+        <a href='https://www.instagram.com/OrcPunks/' className='mr-5'>
           <img src={instagramLogo} width='40px'></img>
         </a>
         <a href='https://t.me/orcpunks'>

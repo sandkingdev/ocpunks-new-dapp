@@ -1,8 +1,12 @@
 @import '../../../assets/sass/custom.scss';
 
+.text-center {
+    margin-top: 50px !important;
+}
+
 .custom-footer-link {
     color: $color-white-1 !important;
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
