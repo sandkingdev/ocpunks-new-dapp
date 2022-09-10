@@ -127,6 +127,14 @@
             line-height: 120%;
         }
     }
+    
+    .online-gif-tools {
+        position: fixed;
+        float: right;
+        right: -148px;
+        bottom: -281px;
+        z-index: -1;
+    }
 }
 
 @media (max-width: 767.98px) {

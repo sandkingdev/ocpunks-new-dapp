@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Row,
   Col
 } from 'react-bootstrap';
 import BigNumber from 'bignumber.js/bignumber.js';
-import { 
+import {
   MINT_CONTRACT_ADDRESS,
-  MINT_PRICE, 
+  MINT_PRICE,
   MINT_TOKEN_ID,
   MINT_COLLECTION_COUNT,
   GATEWAY,
@@ -57,7 +57,7 @@ const Mint = () => {
   const [payment, setPayment] = useState(MINT_PRICE);
 
   const handleMinus = () => {
-    if(amount <= 1) return;
+    if (amount <= 1) return;
     setAmount(amount - 1);
     setPayment((amount - 1) * MINT_PRICE);
   };
@@ -150,7 +150,7 @@ const Mint = () => {
                 <div>Quantity</div>
                 <div>{amount}</div>
               </div>
-              <hr style={{background: 'white'}}/>
+              <hr style={{ background: 'white' }} />
               <div className='summary-container-item'>
                 <div>TOTAL</div>
                 <div>{payment.toLocaleString()} ZOG</div>
@@ -162,6 +162,9 @@ const Mint = () => {
           </div>
         </Col>
       </Row>
+      <div className='online-gif-tools'>
+        <img src={Chat} className='mint-container-chat-image'></img>
+      </div>
     </Container>
   );
 };
