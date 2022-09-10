@@ -43,6 +43,7 @@ import {
   U32Value,
 } from '@elrondnetwork/erdjs/out';
 
+import MintSiteGif from 'assets/img/mint-site.gif';
 import Chat from 'assets/img/chat.png';
 
 import './index.scss';
@@ -163,7 +164,7 @@ const Mint = () => {
         </Col>
       </Row>
       <div className='online-gif-tools'>
-        <img src={Chat} className='mint-container-chat-image'></img>
+        <img src={MintSiteGif}></img>
       </div>
     </Container>
   );

@@ -149,8 +149,12 @@
         position: fixed;
         float: right;
         right: -148px;
-        bottom: -281px;
+        bottom: -178px;
         z-index: -1;
+
+        @media (max-width: 1000px) {
+            display: none;
+        }
     }
 }
 
