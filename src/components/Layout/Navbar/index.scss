@@ -36,12 +36,10 @@ $color-dropdown-menu: rgba(217, 217, 217, 0.15);
 
 .custom-nav-auth-button {
     color: $color-black-0;
-
-    background: linear-gradient(180deg, #FFD600 0%, rgba(241, 220, 220, 0.956793) 0.01%, rgba(255, 214, 0, 0.901042) 73.96%);
+    background: $color-yellow-gradient;
 
     &:hover, &:focus {
         color: $color-white-1;
-        background: none;
         box-shadow: 0 0 16px #acd2f1;
     }
 }

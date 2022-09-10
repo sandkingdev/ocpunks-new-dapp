@@ -8,6 +8,61 @@
     padding-left: 4rem !important;
     padding-right: 4rem !important;
     padding-top: 4rem !important;
+
+    .nft-collections {
+        margin: 0px -200px;
+        display: flex;
+
+        .nft-image {
+            border-radius: 50px !important;
+        }
+
+        .orcpunks-nft {
+            width: 22.5%;
+            margin-top: 80px;
+        }
+
+        .she-orcs {
+            width: 22.5%;
+        }
+
+        .nft-text-wrap {
+            padding: 0px;
+            width: 10%;
+            margin-top: 320px;
+        }
+
+        .easter-orc {
+            width: 22.5%;
+        }
+
+        .olymp-orc {
+            width: 22.5%;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 1650px) {
+            .nft-image-container {
+                width: 50% !important;
+                margin-top: 0px;
+            }
+
+            .nft-text-wrap {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .nft-image-container {
+                width: 100% !important;
+                margin-top: 0px;
+            }
+
+            .nft-text-wrap {
+                display: none;
+            }
+        }
+    }
 }
 
 .custom-nft-mint-text-header {
@@ -34,64 +89,33 @@
 .custom-nft-mint-button-container {
     text-align: center;
     margin-top: 3rem;
-}
-.custom-nft-stake-buttons {
-    padding: 12px 20px !important;
-    border-radius: 30px !important;
-    background-color: #ba16b9 !important;
-    transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease !important;
-    color: #fff !important;
-    line-height: 26px !important;
-    font-weight: 600 !important;
-    letter-spacing: 1px;
-    text-transform: none;
-    font-size: 16px !important;
-    // width: 140px;
-    // height: 50px;
-    border: 0px solid !important;
-    margin-bottom: 2rem;
-}
 
-.custom-nft-stake-buttons:hover {
-    background-color: hsla(0, 0%, 100%, 0.82) !important;
-    font-family: Inter, sans-serif;
-    color: #0d0d0d !important;
-    font-weight: 600;
-}
+    button {
+        padding: 12px 20px !important;
+        border-radius: 30px !important;
+        background: $color-yellow-gradient !important;
+        transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease !important;
+        color: $color-black-0;
+        line-height: 26px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1px;
+        text-transform: none;
+        font-size: 16px !important;
+        width: 140px;
+        height: 50px;
+        border: 0px solid !important;
+        margin-bottom: 2rem !important;
+        margin-left: 3rem;
+    
+        &:hover, &:focus {
+            color: $color-white-1;
+            box-shadow: 0 0 16px #acd2f1;
+        }
+    }
 
-.custom-nft-stake-buttons:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.custom-nft-mint-buttons {
-    padding: 12px 20px !important;
-    border-radius: 30px !important;
-    background-color: #ba16b9 !important;
-    transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease !important;
-    color: #fff !important;
-    line-height: 26px !important;
-    font-weight: 600 !important;
-    letter-spacing: 1px;
-    text-transform: none;
-    font-size: 16px !important;
-    width: 140px;
-    height: 50px;
-    border: 0px solid !important;
-    margin-bottom: 2rem !important;
-    margin-left: 3rem;
-}
-
-.custom-nft-mint-buttons:hover {
-    background-color: hsla(0, 0%, 100%, 0.82) !important;
-    font-family: Inter, sans-serif;
-    color: #0d0d0d !important;
-    font-weight: 600;
-}
-
-.custom-nft-mint-buttons:focus {
-    outline: none !important;
-    box-shadow: none !important;
+    .custom-nft-stake-buttons {
+        margin-left: 0rem !important;
+    }
 }
 
 .custom-slider-image {
@@ -102,11 +126,24 @@
 .nft-image-container {
     text-align: center;
     margin-top: 30px;
+    // padding: 0px -15px !important;
+}
+
+.red-logo {
+    text-align: center;
+    margin-top: -70px;
+    margin-bottom: -20px;
 }
 
 .export-logo {
     text-align: center;
 }
+
+.mint-and-earn-logo {
+    text-align: center;
+    margin-top: -20px;
+}
+
 
 .market-logo {
     text-align: center;
@@ -153,7 +190,7 @@
         padding-top: 2rem !important;
     }
 
-    .custom-nft-mint-text-header {
+    .text-header {
         font-size: 2rem;
     }
 
@@ -165,6 +202,10 @@
         margin-left: 0rem !important;
     }
 
+    .custom-nft-stake-buttons {
+        margin-left: 0rem !important;
+    }
+
     .export-logo-image{
         width: 250px !important;
     }
@@ -172,4 +213,118 @@
 
 textarea:focus, input:focus{
     outline: none;
+}
+
+.team-title {
+    justify-content: center;
+    display: flex;
+
+    .team-uppercase-text {
+        align-self: center;
+        color: $color-white-3;
+        margin-right: 15px;
+        font-size: 36px;
+    }
+
+    .team-logo {
+        width: 93px;
+        height: 75px;
+    }
+}
+
+.team-members-wrapper {
+    justify-content: center;
+
+    .team-members {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+
+        .team-member-wrapper {
+            margin-top: 40px;
+    
+            .first-border {
+                background: #FFD600;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 41px;
+                justify-content: center;
+                display: flex;
+                text-align: center;
+                height: 100%;
+        
+                .second-border {
+                    background: linear-gradient(180deg, #E0E0E0 0%, rgba(128, 128, 128, 0) 100%);
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    border-radius: 41px;
+                    width: 95%;
+                    margin: 2px 0px;
+        
+                    img {
+                        border: 1px solid #000000;
+                        border-radius: 45px;
+                        width: 90%;
+                        aspect-ratio: 1;
+                        margin: 10px 0px;
+                    }
+    
+                    .team-member-name {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 24px;
+                        line-height: 113.48%;
+                        text-align: center;
+                        letter-spacing: -0.005em;    
+                        color: #000000;    
+                        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    }
+    
+                    .team-member-position {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        line-height: 113.48%;
+                        text-align: center;
+                        letter-spacing: -0.005em;    
+                        color: #000000;    
+                        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+
+        }
+        
+    }
+}
+
+.partners-title {
+    justify-content: center;
+    display: flex;
+
+    .partners-uppercase-text {
+        align-self: center;
+        color: $color-white-3;
+        margin-right: 15px;
+        font-size: 36px;
+    }
+
+    .partners-logo {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.partners {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: -100px !important;
+    margin-right: -150px !important;
+    align-items: flex-end;
+
+    .partner {
+        margin: 20px;
+    }
+
+    @media (max-width: 1320px) {
+        margin: 0px !important;
+    }
 }
