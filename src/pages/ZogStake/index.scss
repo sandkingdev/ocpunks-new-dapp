@@ -37,37 +37,150 @@
     text-align: center !important;
     display: grid;
 }
-  
-.staking-status-body{
-    background-color: #ECECEC;
-    margin-top: 15px;
-    text-align: center;
-    padding: 10px 0px;
-    border-radius: 10px;
-    border: 1px solid #DCDCDC;
+
+.staking-status-body-wrap {
+    background-color: $color-yellow;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 41px;
+    padding: 0px !important;
+    position: relative;
+
+    .stake-stat-left {
+        position: absolute;
+        left: -15px;
+        bottom: -40px;
+    }
+
+    .staking-status-body{
+        background: linear-gradient(180deg, #E0E0E0 0%, rgba(128, 128, 128, 0) 100%);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 41px;
+        margin: 2px 12px 6px !important;
+        text-align: center;
+        color: $color-black-3;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        .staking-status-body-text{
+            margin: 20px 10px;
+
+            &.key {
+                float: right;
+                
+                .reward-apr {
+                    float: right;
+                }
+            }
+
+            &.value {
+                float: left;
+
+                .staking-status-body-amount{
+                    overflow-wrap: anywhere;
+                    float: left;
+                }
+            }  
+        }
+    }
+
+    .stake-stat-right {
+        position: absolute;
+        right: -50px;
+        top: -50px;
+    }
 }
-  
-.staking-status-body-text{
-    margin: 20px 10px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    color: black;
+
+.my-staking-status-body-wrap {
+    background-color: $color-yellow;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 41px;
+    padding: 0px !important;
+    position: relative;
+
+    .my-staking-status-body{
+        background: linear-gradient(180deg, #E0E0E0 0%, rgba(128, 128, 128, 0) 100%);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 41px;
+        margin: 2px 12px !important;
+        text-align: center;
+        color: $color-black-3;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        .zog-coin-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .my-staking-status-body-1 {
+            padding: 0px !important;
+
+            .my-zog-staking {
+                display: flex;
+                align-items: center;
+                padding: 10px 0px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .my-staking-status-body-2 {
+            padding: 0px !important;
+
+            .my-zog-rewards {
+                display: flex;
+                align-items: center;
+                padding: 10px 0px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .buttons-wrap {
+            display: flex;
+            justify-content: center;
+
+            .buttons {
+                align-items: center;
+                padding: 10px;
+
+                button {
+                    background: #332A3F;
+                    border-radius: 30px;
+                    color: white;
+                    padding: 0px 10px;
+                    margin: 5px;
+                    min-width: 150px;
+                    font-size: 15px;
+
+                    @media (max-width: 450px) {
+                        min-width: 120px;
+                    }
+                }
+            }
+
+            .stake-handle-button-wrap {
+                display: flex;
+                align-items: center;
+                margin: 10px 0px;
+
+                button {
+                    min-width: 200px;
+                    align-items: center;
+                    margin: 0px !important;
+                    background: #332A3F;
+                    border-radius: 30px;
+                }
+            }
+        }
+    }
 }
-  
-.staking-status-body-splite{
-    border-right: solid 1px #DCDCDC;
-}
-  
-.staking-status-body-amount{
-    color: #51698D;
-    overflow-wrap: anywhere;
-    font-size: 1.5em;
-    line-height: 1.5em;
-    font-family: 'Roboto';
-}
+
 
 .zog-header{
     margin-top: 5%;
@@ -124,6 +237,10 @@
     background: #021025;
     border: 0 solid;
     color: white;
+}
+
+.beautiful-shape {
+    text-align: center;
 }
 
 @media (max-width: 767.98px) {

@@ -40,7 +40,10 @@ import {
 } from '../../utils/convert';
 
 import StakingModal from 'components/Modal';
-
+import StakeStatLeft from 'assets/img/stake-stat-left.png';
+import StakeStatRight from 'assets/img/stake-stat-right.png';
+import BeautifulShape from 'assets/img/beautiful-shape.png';
+import ZogCoinLogo from 'assets/logos/zog-coin-logo.png';
 import './index.scss';
 
 const ZogStake = () => {
@@ -84,7 +87,7 @@ const ZogStake = () => {
       .queryContract(query)
       .then(({ returnData }) => {
         const [encoded] = returnData;
-        let stakeAmount:any;
+        let stakeAmount: any;
         if (encoded == undefined || encoded == '') {
           stakeAmount = 0;
         } else {
@@ -230,113 +233,97 @@ const ZogStake = () => {
       <div className='d-flex flex-fill container justify-content-center'>
         <div className='row staking-status w-100'>
           <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
-          <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+          <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12 staking-status-body-wrap'>
+            <img src={StakeStatLeft} className='stake-stat-left'></img>
             <div className='row staking-status-body'>
               <div className='col-6 staking-status-body-splite'>
-                <div className='staking-status-body-text'>
-                  <span>Total $ZOG Staked :</span>
+                <div className='staking-status-body-text key'>
+                  <span className='total-zog-staked'>Total $ZOG Staked :</span>
                   <br />
-                  <span className='staking-status-body-amount'>{formatNumbers(stakedTotalAmount)}</span>
+                  <br />
+                  <span className='reward-apr'>Reward APR :</span>
                 </div>
               </div>
               <div className='col-6'>
-                <div className='staking-status-body-text'>
-                  <span>Reward APR :</span>
+                <div className='staking-status-body-text value'>
+                  <span className='staking-status-body-amount'>{formatNumbers(stakedTotalAmount)}</span>
+                  <br />
                   <br />
                   <span className='staking-status-body-amount'>{apy}%</span>
                 </div>
               </div>
             </div>
+            <img src={StakeStatRight} className='stake-stat-right'></img>
           </div>
           <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
         </div>
       </div>
-      <div className='container'>
-        <div className='row zog-header'>
-          <div className='col-12'>
-            <span className='zog-balance'>Balance : {balance} $ZOG</span>
-          </div>
-        </div>
-      </div>
-      <div className='container justify-content-center ml-3'>
-        <div className='row staking-container w-100'>
-          <div className='col-12'>
-            <div className='row staking-status-body'>
-              <div className='col-lg-3 col-md-3 col-sm-12'>
-                <div className='row'>
-                  <div className='col-lg-2 col-md-2 col-sm-12'></div>
-                  <div className='col-lg-10 col-md-10 col-sm-12'>
-                    <div className='staking-card-token'>
-                      <span className='staking-card-token-name'>Staked $ZOG</span>
-                      <span className='staking-card-token-amount'>{formatNumbers(stakedAmount)}</span>
-                    </div>
-                  </div>
+
+
+      <div className='d-flex flex-fill container justify-content-center'>
+        <div className='row staking-status w-100'>
+          <div className='col-lg-1 col-md-1 col-sm-0 col-xs-0'></div>
+          <div className='col-lg-10 col-md-10 col-sm-12 col-xs-12 my-staking-status-body-wrap'>
+            <div className='row my-staking-status-body'>
+              <div className='col-xl-1 col-lg-4 zog-coin-logo'>
+                <img src={ZogCoinLogo}></img>
+              </div>
+
+              <div className='col-xl-3 col-lg-4 my-staking-status-body-1'>
+                <div className='my-zog-staking'>
+                  <div className='my-zog-staking-title'>My Staked ZOG</div>
+                  <br />
+                  <div className='my-zog-staking-value'>{formatNumbers(stakedAmount)}</div>
                 </div>
               </div>
-              <div className='col-lg-3 col-md-3 col-sm-12'>
-                <div className='row'>
-                  <div className='col-lg-2 col-md-2 col-sm-12'></div>
-                  <div className='col-lg-10 col-md-10 col-sm-12'>
-                    <div className='staking-card-token'>
-                      <span className='staking-card-token-name'>Earned $ZOG</span>
-                      <span className='staking-card-token-amount'>{formatNumbers(earnedAmount)}</span>
-                    </div>
-                  </div>
+              <div className='col-xl-2 col-lg-4 my-staking-status-body-2'>
+                <div className='my-zog-rewards'>
+                  <div className='my-staking-rewards-title'>My Rewards</div>
+                  <br />
+                  <div className='my-staking-rewards-value'>{earnedAmount}</div>
                 </div>
               </div>
-              <div className='col-lg-6 col-md-6 col-sm-12' style={{ alignSelf: 'center' }}>
-                {isLoggedIn ? (
-                  stakedAmount > 0 || earnedAmount > 0 ? (
-                    <div className='row'>
-                      <div className='col-lg-2 col-md-2 col-sm-12'></div>
-                      <div className='col-lg-4 col-md-4 col-sm-12'>
-                        <div className='row'>
-                          <div className='col-12'>
-                            <button className='stake-handle-button' onClick={handleStake}>Stake</button>
-                          </div>
+              <div className='col-xl-6 col-lg-12 buttons-wrap'>
+                {
+                  isLoggedIn ? (
+                    stakedAmount > 0 || earnedAmount > 0 ? (
+                      <div className='row buttons'>
+                        <div className='col-6 stake-unstake-button'>
+                          <button className='stake-button' onClick={handleStake}>Stake</button>
+                          <button className='unstake-button' onClick={handleUnstake}>Unstake</button>
                         </div>
-                        <div className='row'>
-                          <div className='col-12'>
-                            <button className='stake-handle-button' onClick={handleUnstake}>UnStake</button>
-                          </div>
+                        <div className='col-6 claim-reinvest-button'>
+                          <button className='stake-button' onClick={handleClaim}>Claim</button>
+                          <button className='reinvest-button' onClick={handleReinvest}>ReInvest</button>
                         </div>
                       </div>
-                      <div className='col-lg-4 col-md-4 col-sm-12'>
-                        <div className='row'>
-                          <div className='col-12'>
-                            <button className='stake-handle-button' onClick={handleClaim}>Claim</button>
-                          </div>
+                    ) : (
+                      <div className='row'>
+                        <div className='col-lg-3 col-md-3 col-sm-12'></div>
+                        <div className='col-12 stake-handle-button-wrap'>
+                          <button className='stake-handle-button' onClick={handleStake}>Stake</button>
                         </div>
-                        <div className='row'>
-                          <div className='col-12'>
-                            <button className='stake-handle-button' onClick={handleReinvest}>Reinvest</button>
-                          </div>
-                        </div>
+                        <div className='col-lg-3 col-md-3 col-sm-12'></div>
                       </div>
-                      <div className='col-lg-2 col-md-2 col-sm-12'></div>
-                    </div>
+                    )
                   ) : (
                     <div className='row'>
                       <div className='col-lg-3 col-md-3 col-sm-12'></div>
-                      <div className='col-lg-6 col-md-6 col-sm-12'>
-                        <button className='stake-handle-button' onClick={handleStake}>Stake</button>
+                      <div className='col-12 stake-handle-button-wrap'>
+                        <button className='stake-handle-button' onClick={goToLogin}>Connect</button>
                       </div>
                       <div className='col-lg-3 col-md-3 col-sm-12'></div>
                     </div>
                   )
-                ) : (
-                  <div className='row'>
-                    <div className='col-lg-3 col-md-3 col-sm-12'></div>
-                    <div className='col-lg-6 col-md-6 col-sm-12'>
-                      <button className='stake-handle-button' onClick={goToLogin}>Connect</button>
-                    </div>
-                    <div className='col-lg-3 col-md-3 col-sm-12'></div>
-                  </div>
-                )}
+                }
               </div>
             </div>
           </div>
+          <div className='col-lg-1 col-md-1 col-sm-0 col-xs-0'></div>
         </div>
+      </div>
+      <div className='beautiful-shape'>
+        <img src={BeautifulShape}></img>
       </div>
       <StakingModal
         show={modalShow}
