@@ -106,6 +106,7 @@
         border: 0px solid !important;
         margin-bottom: 2rem !important;
         margin-left: 3rem;
+        min-width: 150px;
     
         &:hover, &:focus {
             color: $color-white-1;

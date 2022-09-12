@@ -12,7 +12,6 @@ import Bridge from './pages/Bridge';
 import Mint from './pages/Mint';
 import PersonalOffer from './pages/PersonalOffer';
 
-
 export const routeNames = {
   unlock: '/unlock',
   ledger: '/ledger',
