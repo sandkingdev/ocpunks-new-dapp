@@ -6,6 +6,7 @@ import USDT from '../../../assets/logos/USDT.svg';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
+import Decoration from '../../../assets/img/decoration.png';
 
 import {
   Address,
@@ -252,16 +253,24 @@ function OffersList() {
         </div>
       </div>
 
-      <div className='row d-flex justfiy-content-center mt-5'>
-        {
-          (offers && offers.length > 0) && paginate(9, page).map((offer, index) => {
-            return (
-              <div key={`personal-offer-card-${index}`} className='col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-3'>
-                <Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} />
-              </div>
-            );
-          })
-        }
+      <div className='row card-container'>
+        <div className='col-1' style={{ alignItems: 'flex-end', display: 'flex'}}>
+          <img src={Decoration}></img>
+        </div>
+        <div className='row col-10 d-flex justfiy-content-center mt-5 card-wrap'>
+          {
+            (offers && offers.length > 0) && paginate(9, page).map((offer, index) => {
+              return (
+                <div key={`personal-offer-card-${index}`} className='col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-3'>
+                  <Card key={`personal-offer-card-${index}`} offer={offer} fee={fee} />
+                </div>
+              );
+            })
+          }
+        </div>
+        <div className='col-1'>
+          <img src={Decoration}></img>
+        </div>
       </div>
       {
         offers.length !== 0 && (
