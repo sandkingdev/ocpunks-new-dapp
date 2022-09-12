@@ -23,6 +23,21 @@
 .personal-offer-header {
     border-bottom: solid 1px white;
     margin-bottom: 20px;
+    display: flex;
+
+    div {
+        background: rgba(217, 217, 217, 0.15);
+        border: 1px solid #FBDADA;
+        border-radius: 45px;
+        min-width: 100px;
+        justify-content: center;
+        text-align: center;
+        margin: 5px;
+
+        a {
+            margin: 0px;
+        }
+    }
 }
 
 .read-more-target {

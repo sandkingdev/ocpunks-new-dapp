@@ -1,0 +1,36 @@
+.offer-card-rate, .offer-card-price {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    color: #35ffff;
+    margin-top: .4rem;
+}
+
+.StakingCard {
+    padding: 23px 37px 18px !important;
+    font-family: 'Readex Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 113.48%;
+    letter-spacing: -0.005em;
+    color: white;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0.15) 40.1%, rgba(217, 217, 217, 0) 100%);
+    border: 1px solid #FBDADA;
+    border-radius: 45px;
+    margin: 10px 0px !important;
+
+    button {
+        background: linear-gradient(180deg, #FFD600 0%, rgba(241, 220, 220, 0.956793) 0.01%, rgba(255, 214, 0, 0.901042) 73.96%);
+        border-radius: 26px;
+        color: black;
+        text-align: center;
+        padding: 15px;
+        font-weight: 600;
+        margin-right: 0;
+        padding: '10px 15px 12px';
+        width: 80%;
+        margin-top: '10px';
+        font-family:'Roboto';
+    }
+}

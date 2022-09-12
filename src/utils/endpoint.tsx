@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { convertWeiToEsdt } from './index';
 import {
     WEGLD_ID,
     USDC_ID,
 } from 'config';
+import { convertWeiToEsdt } from './index';
+
 
 export const getTokenBalance = async (apiAddress: string, walletAddress: string, tokenIdentifier: string) => {
     const res = await axios.get(`${apiAddress}/accounts/${walletAddress}/tokens?identifier=${tokenIdentifier}`);

@@ -118,6 +118,7 @@ const PersonalOffer = () => {
   // }, []); // [] makes useEffect run once
 
   const [tokens, setTokens] = React.useState<any[]>([]);
+
   React.useEffect(() => {
     (async () => {
       let url = `${network.apiAddress}/tokens?identifiers=`;
@@ -144,7 +145,6 @@ const PersonalOffer = () => {
     })();
   }, []); // [] makes useEffect run once
 
-
   const [egldPrice, setEgldPrice] = React.useState<number>(0);
   React.useEffect(() => {
     (async () => {
@@ -158,11 +158,17 @@ const PersonalOffer = () => {
       <TokensContext.Provider value={tokens}>
         <EgldPriceContext.Provider value={egldPrice}>
           <div className='personal-offer'>
-            <div style={{color: 'white', fontFamily:'Roboto', textAlign:'center', fontSize:'20px'}}>FEE : 0.5%</div>
+            <div style={{ color: 'white', fontFamily: 'Roboto', textAlign: 'center', fontSize: '20px' }}>FEE : 0.5%</div>
             <div className='personal-offer-header'>
-              <NavLink to={`${routeNames.personaloffer}/list`}>Lists</NavLink>
-              <NavLink to={`${routeNames.personaloffer}/create`}>Create</NavLink>
-              <NavLink to={`${routeNames.personaloffer}/cancel`}>Cancel</NavLink>
+              <div>
+                <NavLink to={`${routeNames.personaloffer}/list`}>LIST</NavLink>
+              </div>
+              <div>
+                <NavLink to={`${routeNames.personaloffer}/create`}>CREATE</NavLink>
+              </div>
+              <div>
+                <NavLink to={`${routeNames.personaloffer}/cancel`}>CANCEL</NavLink>
+              </div>
             </div>
             <Outlet />
           </div>

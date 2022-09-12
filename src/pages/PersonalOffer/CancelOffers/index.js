@@ -1,4 +1,4 @@
-import close from '../../assets/img/close.svg';
+import close from '../../../assets/img/close.svg';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import React from 'react';
@@ -38,10 +38,10 @@ import {
   convertWeiToEsdt,
   getDecimalOfToken,
   getLogoUrl,
-} from '../../utils/index';
+} from '../../../utils/index';
 import {
   OfferContractContext
-} from './index';
+} from '../index';
 import {
   TIMEOUT,
   OFFER_CONTRACT_ADDRESS,
@@ -51,8 +51,8 @@ import {
 } from 'data';
 import {
   TokensContext
-} from './index';
-import { sendQuery } from '../../utils/transaction';
+} from '../index';
+import { sendQuery } from '../../../utils/transaction';
 
 function CancelItem(props) {
   const offer = props.offer;

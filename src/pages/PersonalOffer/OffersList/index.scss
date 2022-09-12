@@ -1,0 +1,103 @@
+nav.MuiPagination-root {
+    margin: 0 auto !important;
+
+    li button {
+        color: white !important;
+    }
+}
+
+.modal2 {
+    margin-bottom: 30px;
+
+    .offer-filter {
+        justify-content: center;
+        align-items: flex-end;
+        gap: 30px;
+
+        .token-to-buy-wrap {
+            width: 90%;
+
+            .token-to-buy-title {
+                margin-top: 20px;
+                color: white;
+                font-size: 20px !important;
+            }
+
+            .dropdownWrapper{
+                background: rgba(217, 217, 217, 0.15);
+                border: 1px solid #FBDADA;
+                border-radius: 45px;
+
+                a {
+                    font-family: 'Roboto';
+                    color: #FBDADA !important;
+                }
+
+                img {
+                    width: 15px;
+                }
+
+                .customDropdownDiv {
+                    div {
+                        display: flex;
+                        align-items: center;
+                        padding: 8px;
+                        gap: 10px;
+                        font-family: 'Roboto';
+
+                        h5 {
+                            font-family: 'Roboto';
+                        }
+                    }
+                }
+            }
+        }
+
+        .token-to-pay-wrap {
+            width: 90%;
+
+            .token-to-pay-title {
+                margin-top: 20px;
+                color: white;
+                font-size: 20px !important;
+            }
+
+            .dropdownWrapper{
+                background: rgba(217, 217, 217, 0.15);
+                border: 1px solid #FBDADA;
+                border-radius: 45px;
+
+                a {
+                    font-family: 'Roboto';
+                    color: #FBDADA !important;
+                }
+
+                img {
+                    width: 15px;
+                }
+
+                .customDropdownDiv {
+                    div {
+                        display: flex;
+                        align-items: center;
+                        padding: 8px;
+                        gap: 10px;
+                        font-family: 'Roboto';
+
+                        h5 {
+                            font-family: 'Roboto';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+nav > ul > li > button.MuiButtonBase-root {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F4D118 78.65%);
+    border-radius: 20px !important;
+    color: black !important;
+    margin: 0px 5px !important;
+    aspect-ratio: 1;
+}

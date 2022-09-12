@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Countdown from 'react-countdown';
-import './Time.scss';
+import './index.scss';
 import {
   Container,
   Row,
@@ -8,7 +8,7 @@ import {
   ProgressBar
 } from 'react-bootstrap';
 
-import { paddingTwoDigits } from '../../utils/convert';
+import { paddingTwoDigits } from '../../../utils/convert';
 
 const Time = () => {
 

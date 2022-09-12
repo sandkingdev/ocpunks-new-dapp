@@ -29,7 +29,7 @@ useGetAccountInfo,
 useGetNetworkConfig,
 useGetPendingTransactions,
 } from '@elrondnetwork/dapp-core';
-import './Card.scss';
+import './index.scss';
 
 import {
     convertWeiToEsdt,
@@ -50,7 +50,7 @@ import {
 import {
     TokensContext,
     EgldPriceContext,
-} from './index';
+} from '../index';
 import { relative } from 'path';
 
 function NumberFormat(v) {
@@ -292,18 +292,6 @@ function Card(props) {
                 fontFamily:'Roboto'
             }}>
                 <button
-                    style={{
-                        textAlign: 'center',
-                        padding: '15px',
-                        fontWeight: 600,
-                        marginRight: 0,
-                        borderRadius: '8px',
-                        padding: '10px 15px 12px',
-                        border: 'none',
-                        width: '100%',
-                        marginTop: '10px',
-                        fontFamily:'Roboto'
-                    }}
                     className='pt-15 button1'
                     onClick={acceptOffer}
                     disabled={!(account && offer && account.address.toString() != offer.offerer_address) || acceptButtonDisabled}
