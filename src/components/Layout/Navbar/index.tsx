@@ -15,7 +15,8 @@ const Navbar = () => {
     logout(`${window.location.origin}/unlock`);
   };
 
-  const isLoggedIn = Boolean(address);
+  // const isLoggedIn = Boolean(address);
+  const isLoggedIn = true;
 
 
   return (
@@ -53,13 +54,13 @@ const Navbar = () => {
                 >
                   <NavDropdown.Item><Link to={routeNames.orcnft}>Orcpunks NFT</Link></NavDropdown.Item>
                   <NavDropdown.Item><Link to={routeNames.easternft}>EasterOrc NFT</Link></NavDropdown.Item>
-                </NavDropdown>  
+                </NavDropdown>
                 <NavDropdown
                   title="GAME"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item><Link to={routeNames.orcnft}>ZorgFlip</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.easternft}>OrcRoullete</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.coinflip}>ZorgFlip</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.coinflip}>OrcRoullete</Link></NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (

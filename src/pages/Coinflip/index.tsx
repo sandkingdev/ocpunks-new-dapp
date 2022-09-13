@@ -56,7 +56,8 @@ import {
 import WinLogo from '../../assets/img/win.webp';
 import LoseLogo from '../../assets/img/lose.webp';
 import CoinLogo from '../../assets/img/coin.gif';
-
+import BetLogo from '../../assets/img/bet-logo.png';
+import BetFeeLogo from '../../assets/img/bet-fee-logo.png';
 import './index.scss';
 
 function printNumber(v: any) {
@@ -357,7 +358,7 @@ const Coinflip = () => {
 
 
   return (
-    <div className='container'>
+    <div className='coinflip-container'>
       {/* <div className='row justify-content-center'>
         <video loop autoPlay>
           <source
@@ -375,7 +376,7 @@ const Coinflip = () => {
         )} */}
       </div>
       <div className='row justify-content-center mt-3'>
-        <p className='flip-type'>I choose</p>
+        <p className='flip-type'>I CHOOSE</p>
       </div>
       <div className='row'>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
@@ -387,8 +388,9 @@ const Coinflip = () => {
         </div>
         <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'></div>
       </div>
-      <div className='row justify-content-center mt-3'>
-        <p className='bet-type'>and I bet the</p>
+      <div className='row justify-content-center mt-3 bet-type-wrap'>
+        <img src={BetLogo}></img>
+        <p className='bet-type'>And I BET the</p>
         <Dropdown onSelect={onTokenIdMenuSelect} drop='end'>
           <Dropdown.Toggle className='token-id-toggle' id="token-id">
             {selectedTokenId && TOKENS[selectedTokenId] && (
@@ -428,8 +430,8 @@ const Coinflip = () => {
               ))
             }
           </Row>
-
-          <div className='row justify-content-center mt-3'>
+          
+          <div className='row justify-content-center mt-3 flip-button-wrapper'>
             <button
               className='flip-button'
               onClick={flip}
@@ -437,6 +439,11 @@ const Coinflip = () => {
             >
               {flipButtonText}
             </button>
+            <img src={BetFeeLogo}></img>
+          </div>
+
+          <div className='row justify-content-center mt-3'>
+            <p className='fee-amount'>Fee : 10% for NFTs holders</p>
           </div>
 
           <div className='history-container'>
@@ -457,10 +464,6 @@ const Coinflip = () => {
                 </Row>
               ))
             }
-          </div>
-
-          <div className='row justify-content-center mt-3'>
-            <p className='fee-amount'>Fee : 10% for NFTs holders</p>
           </div>
         </Container>
       </div>
