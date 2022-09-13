@@ -179,16 +179,13 @@ const Breeding = () => {
       if (maleNfts.length > 0 && femaleNfts.length > 0) {
 
         setEndBreeding(true);
-  
         const maleNftNonce = maleNfts[selectedMaleNftIndex]?.nonce;
         const femaleNftNonce = femaleNfts[selectedFemaleNftIndex]?.nonce;
         console.log(maleNftNonce, femaleNftNonce, PAYMENT_TOKEN_ID);
-  
         const tokenCount: any = 3;
         const nftAmount: any = 1;
         const paymentTokenNonce: any = 0;
         const paymentAmount = (new BigNumber(BREEDING_PRICE)).multipliedBy(Math.pow(10, 18));
-  
         const args: TypedValue[] = [
           new AddressValue(new Address(BREEDING_CONTRACT_ADDRESS)),
           new BigUIntValue(Balance.fromString(tokenCount.valueOf()).valueOf()),
@@ -203,10 +200,10 @@ const Breeding = () => {
           new BigUIntValue(Balance.fromString(paymentAmount.valueOf()).valueOf()),
           BytesValue.fromUTF8('startBreeding')
         ];
-  
+
         const { argumentsString } = new ArgSerializer().valuesToString(args);
         const data = new TransactionPayload(`MultiESDTNFTTransfer@${argumentsString}`);
-  
+
         const tx = [
           {
             receiver: EGLD_WRAP_CONTRACT_ADDRESS,
@@ -222,7 +219,7 @@ const Breeding = () => {
         ];
 
         await refreshAccount();
-  
+
         await sendTransactions({
           transactions: tx,
           transactionsDisplayInfo: {
@@ -337,7 +334,13 @@ const Breeding = () => {
                         return <Option value={key} key={key}>{item.identifier}</Option>;
                       })}
                     </Select>
-                    <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
+                    <div className='male-nft-wrapper'>
+                      <div className='first-border'>
+                        <div className='second-border'>
+                          <img src={maleNfts[selectedMaleNftIndex]?.url} className='nft-image'></img>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <div>
@@ -374,7 +377,13 @@ const Breeding = () => {
                         return <Option value={key} key={key}>{item.identifier}</Option>;
                       })}
                     </Select>
-                    <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
+                    <div className='female-nft-wrapper'>
+                      <div className='first-border'>
+                        <div className='second-border'>
+                          <img src={femaleNfts[selectedFemaleNftIndex]?.url} className='nft-image'></img>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <div>
@@ -390,24 +399,24 @@ const Breeding = () => {
           <Col lg={1} md={1} sm={12}></Col>
         </Row>
         <Row className='mt-5'></Row>
-        {/* <Row>
+        <Row>
           <Col lg={12} md={12} sm={12} className='breeding-button'>
             {isLoggedIn && breedingStatus?.breeding_status ? (
               (breedingStatus?.breeding_end_time.toNumber() * 1000) < Date.now() ? (
-                <Button className='nft-start-breeding-buttons' onClick={handleEndBreeding}>Breeding</Button>
+                <Button className='nft-start-breeding-buttons' onClick={handleEndBreeding}>BREEDING</Button>
               ) : (
                 <Button className='nft-start-breeding-buttons' disabled>Incubating Now</Button>
               )
             ) : (
               maleNfts.length > 0 && femaleNfts.length > 0 ? (
-                <Button className='nft-start-breeding-buttons' onClick={startBreeding}>Start Breeding</Button>
+                <Button className='nft-start-breeding-buttons' onClick={startBreeding}>START BREEDING</Button>
               ) : (
                 <></>
               )
             )}
           </Col>
         </Row>
-        {isLoggedIn && breedingStatus?.breeding_status ? (
+        {/*{isLoggedIn && breedingStatus?.breeding_status ? (
           <Row>
             <Col lg={4} md={4} sm={12}></Col>
             <Col lg={4} md={4} sm={12} className='custom-count-down'>

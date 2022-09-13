@@ -8,48 +8,148 @@
     padding-left: 4rem !important;
     padding-right: 4rem !important;
     padding-top: 4rem !important;
+    font-family: $font-main;
+
+    .nft-male-collection {
+        text-align: center;
+    
+        .nft-selector {
+            background: rgba(217, 217, 217, 0.15);
+            border: 1px solid #FBDADA;
+            border-radius: 10px;
+            width: 250px;
+            font-size: 1.5rem;
+            color: black !important;
+            margin-top: 10px;
+
+            .ant-select-selector {
+                background: rgba(217, 217, 217, 0.15);
+                border: 1px solid #FBDADA;
+                border-radius: 10px;
+                color: white;
+            }
+
+            span {
+                color: white;
+            }
+        }
+
+        .male-nft-wrapper {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+
+            .first-border {
+                background: #FFD600;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 41px;
+                width: 255px;
+                display: flex;
+                justify-content: center;
+    
+                .second-border {
+                    background: linear-gradient(180deg, #E0E0E0 0%, rgba(128, 128, 128, 0) 100%);
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    border-radius: 41px;
+                    margin: 5px;
+                    width: 90%;
+    
+                    img {                        
+                        margin: 5px;
+                        width: 90% !important;
+                        border-radius: 45px !important;
+                        align-items: center !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .nft-female-collection {
+        text-align: center;
+
+        .nft-selector {
+            background: rgba(217, 217, 217, 0.15);
+            border: 1px solid #FBDADA;
+            border-radius: 10px;
+            width: 250px;
+            font-size: 1.5rem;
+            color: black !important;
+            margin-top: 10px;
+
+            .ant-select-selector {
+                background: rgba(217, 217, 217, 0.15);
+                border: 1px solid #FBDADA;
+                border-radius: 10px;
+                color: white;
+            }
+
+            span {
+                color: white;
+            }
+        }
+
+        .female-nft-wrapper {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+
+            .first-border {
+                background: #AB0787;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 41px;
+                width: 255px;
+                display: flex;
+                justify-content: center;
+
+                .second-border {
+                    background: linear-gradient(180deg, #E0E0E0 0%, rgba(128, 128, 128, 0) 100%);
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    border-radius: 41px;
+                    margin: 5px;
+                    width: 90%;
+
+                    img {                        
+                        margin: 5px;
+                        width: 90% !important;
+                        border-radius: 45px !important;
+                        align-items: center !important;
+                    }
+                }
+            }        
+        }  
+    }
+
+    .breeding-button {
+        button {
+            background: linear-gradient(180deg, #FF007A 0%, rgba(241, 220, 220, 0.956793) 0.01%, rgba(255, 0, 0, 0.901042) 73.96%);
+            border-radius: 26px;
+        }
+    }
+
+    .nft-not-found-mint-button {
+        background: linear-gradient(180deg, #FF007A 0%, rgba(241, 220, 220, 0.956793) 0.01%, rgba(255, 0, 0, 0.901042) 73.96%);
+        border-radius: 26px;
+    }
 }
 
 .nft-breeding-price {
     color: white;
     text-align: center;
-    font-family: 'Roboto';
     font-weight: 600;
     margin-bottom: 3rem;
-}
-
-.nft-male-collection {
-    text-align: center;
-}
-
-.nft-female-collection {
-    text-align: center;
 }
 
 .nft-type {
     font-weight: 600 !important;
     color: white;
-    font-family: 'Roboto';
-}
-
-.nft-selector {
-    font-family: 'Roboto';
-    width: 250px;
-    font-size: 1.5rem;
-    color: black !important;
-    margin-top: 10px;
 }
 
 .ant-select-arrow {
     color: black !important;
 }
 
-.ant-select-selection-item {
-    font-family: 'Roboto' !important;
-}
-
 .ant-select-item-option-content {
-    font-family: 'Roboto' !important;
     color: black !important;
     font-size: 1.5rem !important;
 }
@@ -97,7 +197,6 @@
 
 .nft-start-breeding-buttons:hover {
     background-color: hsla(0, 0%, 100%, 0.82) !important;
-    font-family: Inter, sans-serif;
     color: #0d0d0d !important;
     font-weight: 600;
 }
@@ -134,7 +233,6 @@
 
 .nft-not-found-mint-button:hover {
     background-color: hsla(0, 0%, 100%, 0.82) !important;
-    font-family: Inter, sans-serif;
     color: #0d0d0d !important;
     font-weight: 600;
 }
@@ -149,20 +247,10 @@
     // margin-top: 3rem;
     margin-bottom: 3rem;
     font-size: 24px !important;
-    font-family: 'Roboto' !important;
-}
-
-.customer-timer-time {
-    font-family: 'Roboto' !important;
-}
-
-.customer-timer-uint {
-    font-family: 'Roboto' !important;
 }
 
 .breeding-nft-id {
     color: white;
-    font-family: 'Roboto' !important;
     margin-top: 1rem;
 }
 
