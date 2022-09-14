@@ -29,6 +29,12 @@ import {
 } from '../../utils/convert';
 
 import './index.scss';
+import NftRightDecoration from '../../assets/img/nft-right-decoration.png';
+import NftLeftDecoration from '../../assets/img/nft-left-decoration.png';
+import NftTopDecoration from '../../assets/img/nft-top-decoration.png';
+import SecurityToken from '../../assets/img/security-token.png';
+import NftStakeLeftDecoration from '../../assets/img/nft-stake-left-decoration.png';
+import Hand from '../../assets/img/hand.png';
 
 const OrcNft = () => {
 
@@ -196,43 +202,67 @@ const OrcNft = () => {
   };
 
   return (
-    <div className='container mb-5'>
-      <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-        <Tab eventKey={1} title="My Orcpunks" onClick={() => setStatus(!status)}>
-          <div className='nft-tab'>
-            <div className='row text-center'>
-              <div className='col-lg-12 col-md-12 col-sm-12'>
-                <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
-                <p className='staking-pool-info'>APR : {apy}%</p>
+    <div className='row'>
+      <div className='col-12 container mb-5'>
+        <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+          <Tab eventKey={1} title="My Orcpunks" onClick={() => setStatus(!status)}>
+            <div className='row tab-1'>
+              <div className='col-1 left-sidebar'>
+                <img src={NftLeftDecoration}></img>
+              </div>
+              <div className='col-10 nft-tab'>
+                <div className='row text-center'>
+                  <div className='col-lg-12 col-md-12 col-sm-12 staking-pool-info-wrap'>
+                    <p className='staking-pool-info'>All staked NFTs : {stakedAmount}</p>
+                    <p className='staking-pool-info nft-apr-info'>NFT APR : {apy}%</p>
+                    <img src={NftTopDecoration}></img>
+                  </div>
+                </div>
+                <div className='row mt-3'>
+                  {nftDatas.map((item, key) => {
+                    return <div className='col-xl-3 col-lg-4 col-md-4 col-sm-12' key={key}>
+                      <NftCard item={item} type={true} id={1} />
+                    </div>;
+                  })}
+                </div>
+              </div>
+              <div className='col-1 right-sidebar'>
+                <img src={NftRightDecoration}></img>
               </div>
             </div>
-            <div className='row mt-3'>
-              {nftDatas.map((item, key) => {
-                return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={true} id={1} />
-                </div>;
-              })}
-            </div>
-          </div>
-        </Tab>
-        <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab' onClick={() => setStatus(!status)}>
-          <div className='nft-tab'>
-            <div className='row text-center mt-5'>
-              <div className='col-lg-6 col-md-6 col-sm-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(rewards)}</div>
-              <div className='col-lg-6 col-md-6 col-sm-12'>
-                <button className='btn btn-primary btn-claim' onClick={handleClaim}>Claim</button>
+          </Tab>
+          <Tab eventKey={2} title="Staked Orcpunks" className='nft-tab' onClick={() => setStatus(!status)}>
+            <div className='row tab-2'>
+              <div className='col-1 left-sidebar'>
+                <img src={NftStakeLeftDecoration}></img>
+              </div>
+              <div className='col-10 nft-tab'>
+                <div className='row text-center reward-widget-wrap'>
+                  <div className='text-center reward-widget-wrap-left'>
+                    <div className='col-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(rewards)}</div>
+                    <img src={SecurityToken}></img>
+                  </div>
+                  <div className='btn-claim-wrap'>
+                    <div className='btn-claim-wrap-2'>
+                      <button className='btn btn-primary btn-claim' onClick={handleClaim}>Claim</button>
+                      <img src={Hand}></img>
+                    </div>
+                  </div>
+                </div>
+                <div className='row mt-5'>
+                  {contractNftDatas.map((item, key) => {
+                    return <div className='col-xl-3 col-lg-4 col-md-4 col-sm-12' key={key}>
+                      <NftCard item={item} type={false} id={1} />
+                    </div>;
+                  })}
+                </div>
+              </div>
+              <div className='col-1'>
               </div>
             </div>
-            <div className='row mt-5'>
-              {contractNftDatas.map((item, key) => {
-                return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-                  <NftCard item={item} type={false} id={1}/>
-                </div>;
-              })}
-            </div>
-          </div>
-        </Tab>
-      </Tabs>
+          </Tab>
+        </Tabs>
+      </div>
     </div>
   );
 };

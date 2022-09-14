@@ -216,26 +216,29 @@ const NftCard = (props: any) => {
   return (
     <div className='row'>
       <div className='col-12 nft-card mt-3'>
-        <Card
-          hoverable
-          style={{ width: '100%', height: '100%' }}
-          cover={<img alt="example" src={props.item.url} className='nft-image' />}
-        >
-          <Meta title={props.item.name} description={props.item.identifier} />
-          {id == 3 ? (
-            type ? (
-              <button className='btn btn-primary btn-action' onClick={handleSell}>SELL</button>
-            ) : (
-              <button className='btn btn-primary btn-action' onClick={handleBuy}>BUY</button>
-            )
-          ) : (
-            type ? (
-              <button className='btn btn-primary btn-action' onClick={handleAction}>Stake</button>
-            ) : (
-              <button className='btn btn-primary btn-action' onClick={handleAction}>Unstake</button>
-            )
-          )}
-        </Card>
+        <div className='first-border'>
+            <Card
+              hoverable
+              style={{ width: '100%', height: '100%' }}
+              cover={<img alt="example" src={props.item.url} className='nft-image' />}
+              className='second-border'
+            >
+              <Meta title={props.item.name} description={props.item.identifier} />
+              {id == 3 ? (
+                type ? (
+                  <button className='btn btn-primary btn-action' onClick={handleSell}>SELL</button>
+                ) : (
+                  <button className='btn btn-primary btn-action' onClick={handleBuy}>BUY</button>
+                )
+              ) : (
+                type ? (
+                  <button className='btn btn-primary btn-action' onClick={handleAction}>STAKE</button>
+                ) : (
+                  <button className='btn btn-primary btn-action' onClick={handleAction}>UNSTAKE</button>
+                )
+              )}
+            </Card>
+        </div>
       </div>
     </div>
   );
