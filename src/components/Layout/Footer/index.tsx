@@ -9,7 +9,7 @@ import telegramLogo from '../../../assets/img/telegram.png';
 
 const Footer = () => {
   return (
-    <footer className='text-center mb-3'>
+    <footer className='text-center mb-3 footer-wrap'>
       <div>
         <a
           {...{
