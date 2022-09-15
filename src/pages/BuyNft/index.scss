@@ -1,44 +1,79 @@
 @import '../../assets/sass/custom.scss';
 
-.rewards-amount {
-    color: white !important;
-    font-size: 24px;
-    font-weight: 500;
-    font-family:'Roboto', sans-serif !important;
-    text-align: center !important;
-}
+.buynft-container {
+    font-family: $font-main;
 
-.btn-claim {
-    border-radius: 8px !important;
-    background-color: #ba16b9 !important;
-    border-color: #ba16b9 !important;
-    width: 100px !important;
-    height: 40px;
-}
+    .rewards-amount-wrap {
+        display: flex;
+        justify-content: center;
+        position: relative;
 
-.ant-pagination-item-ellipsis {
-    color: white !important;
-}
+        .rewards-amount {
+            color: white !important;
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center !important;
+            background: rgba(217, 217, 217, 0.15);
+            border: 1px solid #FBDADA;
+            border-radius: 45px;
+            margin: 0px 5px;
+        }
 
-.ant-pagination-item-active {
-    color: #ba16b9 !important;
-}
+        img {
+            position: absolute;
+            top: -50px;
+            right: 6px;
 
-.ant-pagination-options {
-    visibility: hidden;
-}
-
-.ant-pagination{
-    margin-left: 110px;
-}
-
-@media (max-width: 767.98px) {
-    .btn-claim {
-        width: 80% !important;
-        margin-top: 20px;
+            @media (max-width: 768px) {
+                visibility: hidden !important;
+            }
+        }
     }
 
-    .ant-pagination{
-        margin-left: 0px;
+    .nft-card-container {
+        justify-content: center;
+    }
+
+    .ant-pagination > li {
+        background: linear-gradient(180deg, #FFFFFF 0%, #FAD40B 78.65%);
+        border-radius: 10px;
+    }
+
+    .ant-pagination {
+        button {
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAD40B 78.65%);
+            border-radius: 10px;
+        }
+    }
+    
+    .btn-claim {
+        border-radius: 8px !important;
+        background-color: #ba16b9 !important;
+        border-color: #ba16b9 !important;
+        width: 100px !important;
+        height: 40px;
+    }
+    
+    .ant-pagination-item-ellipsis {
+        color: white !important;
+    }
+    
+    .ant-pagination-item-active {
+        color: #ba16b9 !important;
+    }
+    
+    .ant-pagination-options {
+        visibility: hidden;
+    }   
+    
+    @media (max-width: 767.98px) {
+        .btn-claim {
+            width: 80% !important;
+            margin-top: 20px;
+        }
+    
+        .ant-pagination{
+            margin-left: 0px;
+        }
     }
 }

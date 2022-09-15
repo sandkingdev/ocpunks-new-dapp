@@ -20,10 +20,15 @@ import {
 } from '@elrondnetwork/erdjs';
 
 import './index.scss';
+import BuyNftDecoration from '../../assets/img/buy-nft-decoration.png';
+import SellNftDecoration from '../../assets/img/sell-nft-decoration.png';
+
 
 const SellNft = () => {
 
-  const { address } = useGetAccountInfo();
+  // const { address } = useGetAccountInfo();
+  const address = 'erd1qqqqqqqqqqqqqpgqlr8jdck0lyelwu66wgq2ttc9fs7gqw5f7lnq90fv53';
+
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
 
@@ -38,18 +43,25 @@ const SellNft = () => {
   }, [hasPendingTransactions]);
 
   return (
-    <div className='container mb-5'>
-      <div className='row text-center'>
-        <div className='col-lg-12 col-md-12 col-sm-12'>
-          <p className='staking-pool-info'>NFT PRICE : 50,000 $ZOG</p>
-        </div>
+    <div className='container mb-5 sellnft-container'>
+      <div className='row text-center staking-pool-info-wrap'>
+        <p className='col-md-6 col-12 staking-pool-info'>NFT PRICE : 50,000 $ZOG</p>
+        <img src={SellNftDecoration}></img>
       </div>
-      <div className='row mt-3'>
-        {nftDatas.map((item, key) => {
-          return <div className='col-lg-3 col-md-3 col-sm-12' key={key}>
-            <NftCard item={item} type={true} id={3}/>
-          </div>;
-        })}
+      <div className='row nft-card-container'>
+        <div className='col-1 left-sidebar'>
+          <img src={BuyNftDecoration}></img>
+        </div>
+        <div className='col-10'>
+          <div className='row mt-3'>
+            {nftDatas.map((item, key) => {
+              return <div className='col-xl-3 col-lg-6 col-md-6 col-sm-12' key={key}>
+                <NftCard item={item} type={true} id={3} />
+              </div>;
+            })}
+          </div>
+        </div>
+        <div className='col-1'></div>
       </div>
     </div>
   );
