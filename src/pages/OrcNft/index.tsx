@@ -203,7 +203,7 @@ const OrcNft = () => {
 
   return (
     <div className='row'>
-      <div className='col-12 container mb-5'>
+      <div className='col-12 container mb-5 orcnft-container'>
         <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
           <Tab eventKey={1} title="My Orcpunks" onClick={() => setStatus(!status)}>
             <div className='row tab-1'>
