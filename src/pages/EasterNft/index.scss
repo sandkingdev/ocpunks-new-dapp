@@ -1,55 +1,203 @@
 @import '../../assets/sass/custom.scss';
 
-.staking-pool-info{
-    color: white !important;
-    font-size: 24px;
-    font-weight: 500;
-    font-family:'Roboto', sans-serif !important;
-}
+.easternft-container {
+    font-family: $font-main !important;
 
-.nav-tabs {
-    border-bottom: 0px solid transparent !important;
-}
+    .nav-tabs {
+        border-bottom: 0px solid transparent !important;
+        position: relative;
+        left: 9%;
 
-.nav-link {
-    background: transparent;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-}
+        .nav-link {
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
 
-.nav-tabs .nav-link.active {
-    color: black !important;
-}
+            &.active {
+                color: black !important;
+                background: linear-gradient(180deg, #FFFFFE 0%, #EFCD1B 83.85%);
+            }
 
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-    border-color: transparent !important;
-    border-bottom: 1px solid #e9ecef !important;
-}
+            &:hover, &:focus {
+                border-color: transparent !important;
+                border-bottom: 1px solid #e9ecef !important;
+            }
+        }
+    }
 
-.nft-tab {
-    margin-top: 30px;
-}
+    .tab-1 {
+        .left-sidebar {
+            img {
+                position: fixed;
+                left: 2%;
+                top: 60%;
+                visibility: visible;
 
-.rewards-amount-staking {
-    color: white !important;
-    font-size: 24px;
-    font-weight: 500;
-    font-family:'Roboto', sans-serif !important;
-    text-align: right;
-}
+                @media (max-width: 1400px) {
+                    left: 1%;
+                }
 
-.btn-claim {
-    border-radius: 8px !important;
-    background-color: #ba16b9 !important;
-    border-color: #ba16b9 !important;
-    width: 100px !important;
-    height: 40px;
-    text-align: center;
-}
+                @media (max-width: 996px) {
+                    left: 0%;
+                }
 
-@media (max-width: 767.98px) {
-    .rewards-amount-staking{
-        text-align: center !important;
+                @media (max-width: 768px) {
+                    left: 5%;
+                }
+
+                @media (max-width: 576px) {
+                    left: 1%;
+                }
+            }
+        }
+
+        .right-sidebar {
+            img {
+                position: fixed;
+                right: 2%;
+                top: 70%;
+                visibility: visible !important;
+                z-index: -1;
+
+                @media (max-width: 1400px) {
+                    right: 1%;
+                }
+
+                @media (max-width: 996px) {
+                    right: 0%;
+                }
+
+                @media (max-width: 768px) {
+                    right: 5%;
+                }
+
+                @media (max-width: 576px) {
+                    right: 1%;
+                }
+            }
+        }
+    }
+
+    .tab-2 {
+        .left-sidebar {
+            img {
+                position: fixed;
+                left: 2%;
+                top: 60%;
+                visibility: visible;
+
+                @media (max-width: 1400px) {
+                    left: 1%;
+                }
+
+                @media (max-width: 996px) {
+                    left: 0%;
+                }
+
+                @media (max-width: 768px) {
+                    left: 5%;
+                }
+
+                @media (max-width: 576px) {
+                    left: 1%;
+                }
+            }
+        }
+
+        .reward-widget-wrap {
+            position: relative;
+
+            .reward-widget-wrap-left {
+                .rewards-amount-staking {
+                    background: rgba(217, 217, 217, 0.15);
+                    border: 1px solid #FBDADA;
+                    border-radius: 45px;
+                    display: flex;
+                    max-width: 320px;
+                    left: 50px;
+                    color: white !important;
+                    font-size: 24px;
+                    font-weight: 500;
+
+                    @media (max-width: 767.98px) {
+                        text-align: center !important;
+                    }
+                }
+
+                img {
+                    display: flex;
+                    margin-left: 50px;
+                }
+            }
+
+            .btn-claim-wrap {
+                position:absolute;
+                right: 50px;
+                top: 30px;
+
+                .btn-claim-wrap-2 {
+                    position: relative;
+    
+                    .btn-claim {
+                        border-radius: 26px !important;
+                        color: black !important;
+                        background: linear-gradient(180deg, #FFFFFE 0%, #EFCD1B 83.85%);
+                        border: none;
+                        font-weight: 600;
+                        min-width: 100px;                        
+                        height: 40px;
+                        text-align: center;
+                    }
+    
+                    img {
+                        position: absolute;
+                        right: -38px;
+                        top: 14px;
+
+                        @media (max-width: 768px) {
+                            top: 30px;
+                        }
+                    }
+                }
+            }            
+        }
+    }
+
+    .nft-tab {
+        margin-top: 20px;
+
+        .staking-pool-info-wrap {
+            position: relative;
+
+            .staking-pool-info{
+                color: white !important;
+                font-size: 24px;
+                font-weight: 500;
+                display: flex;
+                background: rgba(217, 217, 217, 0.15);
+                border: 1px solid #FBDADA;
+                border-radius: 45px;
+                max-width: 280px;
+                padding: 0px 10px;
+                justify-content: center;
+                font-family: $font-main !important;
+            
+                &.nft-apr-info {
+                    margin-left: 70px;
+                }
+            }
+
+            img {
+                position: absolute;
+                top: 10px;
+                right: 8%;
+
+                @media (max-width: 600px) {
+                    visibility: hidden !important;
+                }
+            }
+        }
     }
 }
