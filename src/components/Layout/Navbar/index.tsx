@@ -55,23 +55,10 @@ const Navbar = () => {
                   <NavDropdown.Item><Link to={routeNames.orcnft}>Orcpunks NFT</Link></NavDropdown.Item>
                   <NavDropdown.Item><Link to={routeNames.easternft}>EasterOrc NFT</Link></NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown
-                  title="GAME"
-                  className="nft-nav-dropdown"
-                >
-                  <NavDropdown.Item><Link to={routeNames.coinflip}>ZorgFlip</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.coinflip}>OrcRoullete</Link></NavDropdown.Item>
-                </NavDropdown>
               </>
             ) : (
               <></>
             )}
-            <Link to={routeNames.bridge} aria-current='page' className='custom-link-button custom-nav-link'>
-              BRIDGE
-            </Link>
-            <Link to={routeNames.breeding} aria-current='page' className='custom-link-button custom-nav-link'>
-              BREEDING
-            </Link>
             {isLoggedIn ? (
               <>
                 <NavDropdown
@@ -85,21 +72,39 @@ const Navbar = () => {
             ) : (
               <></>
             )}
-            <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link'>
-              WHITEPAPER
-            </a>
-            {/* {isLoggedIn ? (
+            {isLoggedIn ? (
               <>
-                <Link to={routeNames.mynft} aria-current='page' className='custom-link-button custom-nav-link'>
-                  My NFT
-                </Link>
-                <Link to={routeNames.stakednft} aria-current='page' className='custom-link-button custom-nav-link'>
-                  Staked NFT
-                </Link>
+                <NavDropdown
+                  title="OTHER"
+                  className="nft-nav-dropdown"
+                >
+                  <NavDropdown.Item><Link to={routeNames.bridge}>BRIDGE</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.breeding}>BREEDING</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.coinflip}>ZorgFlip</Link></NavDropdown.Item>
+                  {/* <NavDropdown.Item><Link to={routeNames.coinflip}>OrcRoullete</Link></NavDropdown.Item> */}
+                  <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link whitepaper'>
+                    WHITEPAPER
+                  </a>
+                </NavDropdown>
               </>
             ) : (
-              <></>
-            )} */}
+              <>
+                <NavDropdown
+                  title="OTHER"
+                  className="nft-nav-dropdown"
+                >
+                  <NavDropdown.Item><Link to={routeNames.bridge}>BRIDGE</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.breeding}>BREEDING</Link></NavDropdown.Item>
+                  {/* <NavDropdown.Item> */}
+                  <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link whitepaper'>
+                    WHITEPAPER
+                  </a>
+                </NavDropdown>
+              </>
+            )}
+            {/* <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link'>
+              WHITEPAPER
+            </a> */}
             <div style={{ width: '2rem' }}></div>
             {isLoggedIn ? (
               <NavItem onClick={handleLogout} className='custom-link-button custom-nav-auth-button'>
