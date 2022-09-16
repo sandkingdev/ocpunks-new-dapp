@@ -23,10 +23,12 @@ import DeadrareLogo from '../../assets/img/icon/deadrare.png';
 import OrcpunksNFT from '../../assets/img/nfts/1.gif';
 import OlympNFT from '../../assets/img/nfts/2.gif';
 import EasterNFT from '../../assets/img/nfts/3.gif';
+import SheOrcsNFT from '../../assets/img/nfts/she-orcs.gif';
 import CEOImage from '../../assets/img/team/CEO.png';
 import ManagerImage from '../../assets/img/team/Discord Manager.png';
 import GraphicsImage from '../../assets/img/team/Graphics.png';
-import DeveloperImage from '../../assets/img/team/Developer.png';
+import Web3DeveloperImage from '../../assets/img/team/Web3Developer.jpg';
+import LeadDeveloperImage from '../../assets/img/team/LeadDeveloper.png';
 import TeamLogo from '../../assets/img/team-logo.png';
 import PartnersLogo from '../../assets/img/partners-logo.png';
 
@@ -65,7 +67,10 @@ const Home = () => {
       img: ManagerImage, name: 'Tomáš Fedorko', position: 'Discord Manager'
     },
     {
-      img: DeveloperImage, name: 'James Chen', position: 'Developer'
+      img: LeadDeveloperImage, name: 'James Chen', position: 'Lead Developer'
+    },
+    {
+      img: Web3DeveloperImage, name: 'Lucas Iwai', position: 'Web3 Developer'
     },
   ];
 
@@ -126,7 +131,7 @@ const Home = () => {
           <div className='nft-image-container she-orcs'>
             <div>
               <a href='https://trust.market/buy/Orcpunks/EasterOrc' target='blank'>
-                <img src={EasterNFT} width='250px' className='nft-image'></img>
+                <img src={SheOrcsNFT} width='250px' className='nft-image'></img>
               </a>
               <h3 className='nft-text'>SheOrcs</h3>
             </div>
@@ -194,7 +199,7 @@ const Home = () => {
           <Row className='team-members'>
             {
               teamMembers.map((member, index) =>
-                <Col lg={3} md={6} sm={12} key={index} className='team-member-wrapper'>
+                <Col lg={4} md={6} sm={12} key={index} className='team-member-wrapper'>
                   <div className='first-border'>
                     <div className='second-border'>
                       <img src={member.img} className='team-image'></img>
