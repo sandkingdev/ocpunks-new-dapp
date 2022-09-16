@@ -103,6 +103,7 @@ const Mint = () => {
       new U32Value(amount),
     ];
 
+    //
     const { argumentsString } = new ArgSerializer().valuesToString(args);
     const data = new TransactionPayload(`ESDTTransfer@${argumentsString}`);
     const tx = {
