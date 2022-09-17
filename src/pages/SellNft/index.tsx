@@ -26,8 +26,7 @@ import SellNftDecoration from '../../assets/img/sell-nft-decoration.png';
 
 const SellNft = () => {
 
-  // const { address } = useGetAccountInfo();
-  const address = 'erd1qqqqqqqqqqqqqpgqlr8jdck0lyelwu66wgq2ttc9fs7gqw5f7lnq90fv53';
+  const { address } = useGetAccountInfo();
 
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
