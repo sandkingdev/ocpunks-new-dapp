@@ -15,9 +15,8 @@ const Navbar = () => {
     logout(`${window.location.origin}/unlock`);
   };
 
-  // const isLoggedIn = Boolean(address);
-  const isLoggedIn = true;
-
+  const isLoggedIn = Boolean(address);
+  // const isLoggedIn = true;
 
   return (
     <BsNavbar collapseOnSelect className='' expand='lg' variant='light'>
