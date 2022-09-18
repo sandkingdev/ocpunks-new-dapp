@@ -25,6 +25,10 @@
                 border-bottom: 1px solid #e9ecef !important;
             }
         }
+
+        @media (max-width: 380px) {
+            display: block;
+        }
     }
 
     .tab-1 {
@@ -49,6 +53,10 @@
 
                 @media (max-width: 576px) {
                     left: 1%;
+                }
+
+                @media (max-width: 450px) {
+                    visibility: hidden;
                 }
             }
         }
@@ -75,6 +83,10 @@
 
                 @media (max-width: 576px) {
                     right: 1%;
+                }
+
+                @media (max-width: 450px) {
+                    visibility: hidden !important;
                 }
             }
         }
@@ -103,6 +115,10 @@
                 @media (max-width: 576px) {
                     left: 1%;
                 }
+
+                @media (max-width: 450px) {
+                    visibility: hidden;
+                }
             }
         }
 
@@ -124,6 +140,19 @@
                     @media (max-width: 767.98px) {
                         text-align: center !important;
                     }
+
+                    @media (max-width: 480px) {
+                        max-width: 300px;
+                    }
+
+                    @media (max-width: 440px) {
+                        max-width: 280px;
+                    }
+
+                    @media (max-width: 410px) {
+                        max-width: 210px;
+                    }
+                    
                 }
 
                 img {
@@ -135,7 +164,7 @@
             .btn-claim-wrap {
                 position:absolute;
                 right: 50px;
-                top: 30px;
+                top: 85px;
 
                 .btn-claim-wrap-2 {
                     position: relative;

@@ -39,6 +39,8 @@ import Hand from '../../assets/img/hand.png';
 const OrcNft = () => {
 
   const { address } = useGetAccountInfo();
+  // const address = 'erd1t8yms6ayt2uaneyg5zstdsk4eu5ymqzf78tmjf3g4u5g4cql0zdsezdhg3';
+
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
 
