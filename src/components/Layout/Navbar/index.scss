@@ -48,7 +48,7 @@ $color-dropdown-menu: rgba(217, 217, 217, 0.15);
     font-weight: 600;
     font-size: 1.2rem;
 
-    padding: .5rem 1.4rem;
+    padding: .5rem 0.6rem;
     border-radius: 50px;
     margin-top: .4rem;
     margin-bottom: .4rem;
@@ -71,7 +71,7 @@ $color-dropdown-menu: rgba(217, 217, 217, 0.15);
 }
 
 .nft-nav-dropdown {
-    margin-left: 1rem;
+    margin-left: 0.2rem;
 }
 
 .dropdown-toggle {
@@ -139,6 +139,7 @@ a {
 
         .whitepaper {
             margin: 0px;
+            padding: 0.25rem 1.5rem;
         }
     }
 }

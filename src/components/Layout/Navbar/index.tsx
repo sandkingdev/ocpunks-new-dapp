@@ -15,8 +15,8 @@ const Navbar = () => {
     logout(`${window.location.origin}/unlock`);
   };
 
-  const isLoggedIn = Boolean(address);
-  // const isLoggedIn = true;
+  // const isLoggedIn = Boolean(address);
+  const isLoggedIn = true;
 
 
   return (
@@ -46,6 +46,10 @@ const Navbar = () => {
             <Link to={routeNames.personaloffer} aria-current='page' className='custom-link-button custom-nav-link'>
               OFFER
             </Link>
+            <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
+              ZorgFlip
+            </Link>
+
             {isLoggedIn ? (
               <>
                 <NavDropdown
@@ -69,7 +73,7 @@ const Navbar = () => {
                   <NavDropdown.Item><Link to={routeNames.sellnft}>Sell NFTs</Link></NavDropdown.Item>
                 </NavDropdown>
               </>
-            ) : (
+            ) : (            
               <></>
             )}
             {isLoggedIn ? (
@@ -77,11 +81,9 @@ const Navbar = () => {
                 <NavDropdown
                   title="OTHER"
                   className="nft-nav-dropdown"
-                >
+                > 
                   <NavDropdown.Item><Link to={routeNames.bridge}>BRIDGE</Link></NavDropdown.Item>
                   <NavDropdown.Item><Link to={routeNames.breeding}>BREEDING</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.coinflip}>ZorgFlip</Link></NavDropdown.Item>
-                  {/* <NavDropdown.Item><Link to={routeNames.coinflip}>OrcRoullete</Link></NavDropdown.Item> */}
                   <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link whitepaper'>
                     WHITEPAPER
                   </a>
