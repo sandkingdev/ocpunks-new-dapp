@@ -92,6 +92,20 @@ nav.MuiPagination-root {
             }
         }
     }
+
+    .card-container {
+        .left-decoration-wrap {
+            @media (max-width: 600px) {
+                visibility: hidden !important;
+            }
+        }
+
+        .right-decoration-wrap {
+            @media (max-width: 600px) {
+                visibility: hidden !important;
+            }
+        }
+    }
 }
 
 nav > ul > li > button.MuiButtonBase-root {

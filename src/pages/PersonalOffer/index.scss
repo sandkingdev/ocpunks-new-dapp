@@ -38,6 +38,10 @@
             margin: 0px;
         }
     }
+
+    @media (max-width: 430px) {
+        display: block;
+    }
 }
 
 .read-more-target {

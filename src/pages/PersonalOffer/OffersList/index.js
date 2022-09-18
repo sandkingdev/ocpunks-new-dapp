@@ -254,7 +254,7 @@ function OffersList() {
       </div>
 
       <div className='row card-container'>
-        <div className='col-1' style={{ alignItems: 'flex-end', display: 'flex'}}>
+        <div className='col-1 left-decoration-wrap' style={{ alignItems: 'flex-end', display: 'flex'}}>
           <img src={Decoration}></img>
         </div>
         <div className='row col-10 d-flex justfiy-content-center mt-5 card-wrap'>
@@ -268,7 +268,7 @@ function OffersList() {
             })
           }
         </div>
-        <div className='col-1'>
+        <div className='col-1 right-decoration-wrap'>
           <img src={Decoration}></img>
         </div>
       </div>
