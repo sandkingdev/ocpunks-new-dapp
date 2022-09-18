@@ -51,6 +51,8 @@ const ZogStake = () => {
   const navigate = useNavigate();
 
   const { address } = useGetAccountInfo();
+  // const address = 'erd1dxwmt0jq9zazfgw7dvek8wd4jtfnr08dyrkuz9606e0k2k7d7lnq6x0hkg';
+
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const isLoggedIn = Boolean(address);
@@ -229,7 +231,7 @@ const ZogStake = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container coinflip-container'>
       <div className='d-flex flex-fill container justify-content-center'>
         <div className='row staking-status w-100'>
           <div className='col-lg-3 col-md-3 col-sm-0 col-xs-0'></div>
@@ -259,6 +261,13 @@ const ZogStake = () => {
         </div>
       </div>
 
+      <div className='row balance-of-zog-wrap'>
+        <div className='col-1'></div>
+        <div className='col-10 d-flex balance-of-zog'>
+          Balance: {balance} $ZOG
+        </div>
+        <div className='col-1'></div>
+      </div>
 
       <div className='d-flex flex-fill container justify-content-center'>
         <div className='row staking-status w-100'>
