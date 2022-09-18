@@ -9,6 +9,10 @@
     padding-right: 4rem !important;
     padding-top: 4rem !important;
 
+    .export-logo-image {
+        width: 100%;
+    }
+
     .nft-collections {
         margin: 0px -200px;
         display: flex;
@@ -74,6 +78,10 @@
     letter-spacing: -0.03em;
     text-align: center;
     color: white;
+
+    @media (max-width: 450px) {
+        font-size: 3rem;
+    }
 }
 
 .custom-nft-mint-text-description {
@@ -205,10 +213,6 @@
 
     .custom-nft-stake-buttons {
         margin-left: 0rem !important;
-    }
-
-    .export-logo-image{
-        width: 250px !important;
     }
 }
 
