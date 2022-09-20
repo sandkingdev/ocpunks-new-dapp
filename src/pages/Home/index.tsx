@@ -70,7 +70,7 @@ const Home = () => {
       img: LeadDeveloperImage, name: 'James Chen', position: 'Lead Developer'
     },
     {
-      img: Web3DeveloperImage, name: 'Lucas Iwai', position: 'Web3 Developer'
+      img: Web3DeveloperImage, name: 'Lucas Iwai', position: 'Frontend & Web3 Developer'
     },
   ];
 
