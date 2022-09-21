@@ -345,7 +345,7 @@ const Breeding = () => {
                 ) : (
                   <div>
                     <p className='nft-not-found-text'>No MaleNFTs</p>
-                    <a href='https://www.trust.market/buy/Orcpunks/Orcpunks'>
+                    <a href='https://xoxno.com/buy/Orcpunks/Orcpunks'>
                       <button className='nft-not-found-mint-button'>Mint Now</button>
                     </a>
                   </div>
