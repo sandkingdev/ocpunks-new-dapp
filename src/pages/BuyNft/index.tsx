@@ -85,7 +85,7 @@ const BuyNft = () => {
         </div>
       </div>
       <div className='mt-5 text-center'>
-        <Pagination defaultPageSize={8} defaultCurrent={1} total={size} onChange={changeHandle} />;
+        <Pagination defaultPageSize={8} defaultCurrent={1} total={size} onChange={changeHandle} />
       </div>
     </div>
   );

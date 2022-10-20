@@ -36,6 +36,7 @@ export const BREEDING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqlrnd42kcapclacdllk
 export const BREEDING_CONTRACT_ABI_URL = '/abi/nft-breeding.abi.json';
 export const BREEDING_CONTRACT_NAME = 'NftBreeding';
 export const EGLD_WRAP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq7ykazrzd905zvnlr88dpfw06677lxe9w0n4suz00uh';
+
 //// MAINNET
 export const MALE_COLLECTION_ID = 'ORC-ef544d';
 export const FEMALE_COLLECTION_ID = 'SHO-e81311';
@@ -60,7 +61,15 @@ export const MINT_PRICE = 25000;
 export const MINT_TOKEN_ID = 'ZOG-c66239';
 export const MINT_COLLECTION_COUNT = 2000;
 
-export const ENVIRONMENT = 'mainnet';
-export const GATEWAY = 'https://api.elrond.com';
-// export const ENVIRONMENT = 'devnet';
-// export const GATEWAY = 'https://devnet-api.elrond.com';
+// nfts staking
+export const NFTS_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq8vtgrc7cd4f7arl9cr5d0wdtguedaqtm5zvsj85tyk';
+export const NFTS_STAKING_CONTRACT_ABI_URL = '/abi/nft-staking.abi.json';
+export const NFTS_STAKING_CONTRACT_NAME = 'OrcpunkNftStaking';
+export const ORC_NFT_ID = 'GRDF-dfbc67';
+export const SHEORC_NFT_ID = 'SHO-1786db';
+export const EASTARORC_NFT_ID = 'BABYORC-2ce93a';
+
+// export const ENVIRONMENT = 'mainnet';
+// export const GATEWAY = 'https://api.elrond.com';
+export const ENVIRONMENT = 'devnet';
+export const GATEWAY = 'https://devnet-api.elrond.com';

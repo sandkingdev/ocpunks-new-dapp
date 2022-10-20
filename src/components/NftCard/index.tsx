@@ -5,6 +5,7 @@ import BigNumber from 'bignumber.js/bignumber.js';
 import {
   ORC_NFT_STAKING_CONTRACT_ADDRESS,
   EASTER_NFT_STAKING_CONTRACT_ADDRESS,
+  NFTS_STAKING_CONTRACT_ADDRESS,
   GATEWAY,
   ORC_NFT_TOKEN_ID,
   EASTER_NFT_TOKEN_ID,
@@ -65,8 +66,10 @@ const NftCard = (props: any) => {
       let contractAddress;
       let nftTokenId = '';
       if (id == 1) {
-        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
-        nftTokenId = ORC_NFT_TOKEN_ID;
+        // contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        // nftTokenId = ORC_NFT_TOKEN_ID;
+        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = props.item.collection;
       } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
@@ -87,7 +90,7 @@ const NftCard = (props: any) => {
 
       const tx = {
         receiver: address,
-        gasLimit: new GasLimit(6000000),
+        gasLimit: new GasLimit(10000000),
         data: data.toString(),
       };
       await refreshAccount();
@@ -107,8 +110,10 @@ const NftCard = (props: any) => {
       let contractAddress;
       let nftTokenId = '';
       if (id == 1) {
-        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
-        nftTokenId = ORC_NFT_TOKEN_ID;
+        // contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        // nftTokenId = ORC_NFT_TOKEN_ID;
+        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = props.item.collection;
       } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
@@ -128,7 +133,7 @@ const NftCard = (props: any) => {
 
       const unstakeTransaction = {
         data: data.toString(),
-        gasLimit: new GasLimit(6000000),
+        gasLimit: new GasLimit(10000000),
         receiver: contractAddress
       };
 

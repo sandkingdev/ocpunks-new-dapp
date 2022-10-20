@@ -11,6 +11,7 @@ import Breeding from './pages/Breeding';
 import Bridge from './pages/Bridge';
 import Mint from './pages/Mint';
 import PersonalOffer from './pages/PersonalOffer';
+import NftStake from './pages/NftStake';
 
 export const routeNames = {
   unlock: '/unlock',
@@ -27,6 +28,7 @@ export const routeNames = {
   bridge: '/bridge',
   personaloffer: '/offer',
   mint: '/mint',
+  stakenft: '/nftstaking',
 };
 
 const routes: Array<any> = [
@@ -84,6 +86,11 @@ const routes: Array<any> = [
     path: routeNames.mint,
     title: 'Mint',
     component: Mint
+  },
+  {
+    path: routeNames.stakenft,
+    title: 'NftStake',
+    component: NftStake
   },
 ];
 

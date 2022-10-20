@@ -48,6 +48,9 @@ const Navbar = () => {
             <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
               ZorgFlip
             </Link>
+            <Link to={routeNames.stakenft} aria-current='page' className='custom-link-button custom-nav-link'>
+              NFTs Staking
+            </Link>
 
             {isLoggedIn ? (
               <>

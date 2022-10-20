@@ -130,7 +130,7 @@ const Home = () => {
           </div>
           <div className='nft-image-container she-orcs'>
             <div>
-              <a href='https://trust.market/buy/Orcpunks/EasterOrc' target='blank'>
+              <a href='/mint'>
                 <img src={SheOrcsNFT} width='250px' className='nft-image'></img>
               </a>
               <h3 className='nft-text'>SheOrcs</h3>
