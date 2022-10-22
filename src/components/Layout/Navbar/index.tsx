@@ -48,25 +48,19 @@ const Navbar = () => {
             <Link to={routeNames.coinflip} aria-current='page' className='custom-link-button custom-nav-link'>
               ZorgFlip
             </Link>
-            <Link to={routeNames.stakenft} aria-current='page' className='custom-link-button custom-nav-link'>
-              NFTs Staking
-            </Link>
 
             {isLoggedIn ? (
               <>
                 <NavDropdown
-                  title="NFTs Staking"
+                  title="New"
                   className="nft-nav-dropdown"
                 >
-                  <NavDropdown.Item><Link to={routeNames.orcnft}>Orcpunks NFT</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.easternft}>EasterOrc NFT</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.stakenft}>NFTs Staking</Link></NavDropdown.Item>
+                  <a href='https://superciety.com/fellowships/orcpunks-dao' target='blank' className='custom-link-button custom-nav-link whitepaper'>
+                    DAO
+                  </a>
+                  <NavDropdown.Item><Link to='#'>Farming</Link></NavDropdown.Item>
                 </NavDropdown>
-              </>
-            ) : (
-              <></>
-            )}
-            {isLoggedIn ? (
-              <>
                 <NavDropdown
                   title="SWAP"
                   className="nft-nav-dropdown"
@@ -75,7 +69,7 @@ const Navbar = () => {
                   <NavDropdown.Item><Link to={routeNames.sellnft}>Sell NFTs</Link></NavDropdown.Item>
                 </NavDropdown>
               </>
-            ) : (            
+            ) : (
               <></>
             )}
             {isLoggedIn ? (
@@ -86,6 +80,8 @@ const Navbar = () => {
                 > 
                   <NavDropdown.Item><Link to={routeNames.bridge}>BRIDGE</Link></NavDropdown.Item>
                   <NavDropdown.Item><Link to={routeNames.breeding}>BREEDING</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.orcnft}>Orcpunks NFT</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.easternft}>EasterOrc NFT</Link></NavDropdown.Item>
                   <a href='https://orcpunks-1.gitbook.io/orcverse/orcverse-and-zorgcoin/whitepaper' target='blank' className='custom-link-button custom-nav-link whitepaper'>
                     WHITEPAPER
                   </a>

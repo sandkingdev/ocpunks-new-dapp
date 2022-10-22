@@ -62,14 +62,19 @@ export const MINT_TOKEN_ID = 'ZOG-c66239';
 export const MINT_COLLECTION_COUNT = 2000;
 
 // nfts staking
-export const NFTS_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq8vtgrc7cd4f7arl9cr5d0wdtguedaqtm5zvsj85tyk';
+export const NFTS_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqjf8pgthkctxgghz89fhx9g97ha02qq8g7lnq7e3wuy';
+// export const NFTS_STAKING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgq8vtgrc7cd4f7arl9cr5d0wdtguedaqtm5zvsj85tyk';
 export const NFTS_STAKING_CONTRACT_ABI_URL = '/abi/nft-staking.abi.json';
 export const NFTS_STAKING_CONTRACT_NAME = 'OrcpunkNftStaking';
-export const ORC_NFT_ID = 'GRDF-dfbc67';
-export const SHEORC_NFT_ID = 'SHO-1786db';
-export const EASTARORC_NFT_ID = 'BABYORC-2ce93a';
 
-// export const ENVIRONMENT = 'mainnet';
-// export const GATEWAY = 'https://api.elrond.com';
-export const ENVIRONMENT = 'devnet';
-export const GATEWAY = 'https://devnet-api.elrond.com';
+export const ORC_NFT_ID = 'ORC-ef544d';
+export const SHEORC_NFT_ID = 'SHO-e81311';
+export const EASTARORC_NFT_ID = 'ESTO-662d61';
+// export const ORC_NFT_ID = 'GRDF-dfbc67';
+// export const SHEORC_NFT_ID = 'SHO-1786db';
+// export const EASTARORC_NFT_ID = 'BABYORC-2ce93a';
+
+export const ENVIRONMENT = 'mainnet';
+export const GATEWAY = 'https://api.elrond.com';
+// export const ENVIRONMENT = 'devnet';
+// export const GATEWAY = 'https://devnet-api.elrond.com';

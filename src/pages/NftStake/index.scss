@@ -190,7 +190,10 @@
                         }
                     }
                 }
-            }            
+                @media (max-width: 600px) {
+                    top: 200px !important;
+                }
+            }     
         }
     }
 

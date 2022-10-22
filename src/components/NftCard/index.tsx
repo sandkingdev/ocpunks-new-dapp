@@ -66,13 +66,14 @@ const NftCard = (props: any) => {
       let contractAddress;
       let nftTokenId = '';
       if (id == 1) {
-        // contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
-        // nftTokenId = ORC_NFT_TOKEN_ID;
-        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
-        nftTokenId = props.item.collection;
+        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = ORC_NFT_TOKEN_ID;
       } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
+      } else if (id == 4) {
+        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = props.item.collection;
       }
 
       const amount: any = 1;
@@ -110,13 +111,14 @@ const NftCard = (props: any) => {
       let contractAddress;
       let nftTokenId = '';
       if (id == 1) {
-        // contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
-        // nftTokenId = ORC_NFT_TOKEN_ID;
-        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
-        nftTokenId = props.item.collection;
+        contractAddress = ORC_NFT_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = ORC_NFT_TOKEN_ID;
       } else if (id == 2) {
         contractAddress = EASTER_NFT_STAKING_CONTRACT_ADDRESS;
         nftTokenId = EASTER_NFT_TOKEN_ID;
+      } else if (id == 4) {
+        contractAddress = NFTS_STAKING_CONTRACT_ADDRESS;
+        nftTokenId = props.item.collection;
       }
 
       const amount: any = 1;
@@ -237,7 +239,7 @@ const NftCard = (props: any) => {
                 )
               ) : (
                 type ? (
-                  <button className='btn btn-primary btn-action' onClick={handleAction}>STAKE</button>
+                  <button className='btn btn-primary btn-action' onClick={handleAction} disabled={id == 1 ? true : false}>STAKE</button>
                 ) : (
                   <button className='btn btn-primary btn-action' onClick={handleAction}>UNSTAKE</button>
                 )

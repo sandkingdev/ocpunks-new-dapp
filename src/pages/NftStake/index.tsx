@@ -164,7 +164,7 @@ const NftStake = () => {
 
     const reinvestTransaction = {
       data: 'claim',
-      gasLimit: new GasLimit(6000000),
+      gasLimit: new GasLimit(100000000),
       receiver: NFTS_STAKING_CONTRACT_ADDRESS
     };
 
@@ -199,7 +199,7 @@ const NftStake = () => {
                 <div className='row mt-3'>
                   {nftDatas.map((item, key) => {
                     return <div className='col-xl-3 col-lg-4 col-md-4 col-sm-12' key={key}>
-                      <NftCard item={item} type={true} id={1} />
+                      <NftCard item={item} type={true} id={4} />
                     </div>;
                   })}
                 </div>
@@ -231,7 +231,7 @@ const NftStake = () => {
                 <div className='row mt-5'>
                   {contractNftDatas.map((item, key) => {
                     return <div className='col-xl-3 col-lg-4 col-md-4 col-sm-12' key={key}>
-                      <NftCard item={item} type={false} id={1} />
+                      <NftCard item={item} type={false} id={4} />
                     </div>;
                   })}
                 </div>
