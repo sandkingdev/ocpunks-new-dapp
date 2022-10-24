@@ -126,13 +126,13 @@ function Card(props) {
     const [acceptButtonText, setAcceptButtonText] = React.useState('Accept Offer');
     React.useEffect(() => {
         (async() => {
-            if (account.address && offer.accept_token_id) {
+            if (account?.address && offer.accept_token_id) {
                 if (offer.accept_token_id == 'EGLD') {
                     const balance = convertWeiToEsdt(account.balance);
                     
                     setAcceptTokenBalance(balance);
                 } else {
-                    const balance = await getTokenBalance(network.apiAddress, account.address, offer.accept_token_id);
+                    const balance = await getTokenBalance(network.apiAddress, account?.address, offer.accept_token_id);
                     setAcceptTokenBalance(balance);
                 }
             }
@@ -149,8 +149,8 @@ function Card(props) {
 
     React.useEffect(() => {
         let text = 'Accept Offer';
-        if (account.address && offer) {
-            if (account.address.toString() == offer.offerer_address) {
+        if (account?.address && offer) {
+            if (account?.address.toString() == offer.offerer_address) {
                 text = 'Cannot Accept Your Offer';
             } else if (acceptTokenBalance < range) {
                 text = 'Not Enough Balance';
@@ -215,7 +215,7 @@ function Card(props) {
 		});
     }
 
-    // console.log(offer.offerer_address, account.address);
+    // console.log(offer.offerer_address, account?.address);
 
     return (
         <div className='StakingCard customrange'>
@@ -243,12 +243,12 @@ function Card(props) {
                 offer.is_partial_fill_allowed && (
                     <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontFamily:'Roboto'}}>
                     <input
-                        className={!(account && offer && account.address.toString() != offer.offerer_address) ? 'customrange disableColor' : 'customrange'}
+                        className={!(account && offer && account?.address.toString() != offer.offerer_address) ? 'customrange disableColor' : 'customrange'}
                         type='range'
                         min='0'
                         max={offer ? offer.accept_token_amount : 0}
                         step={offer ? offer.accept_token_amount/100 : 0}
-                        disabled={!(account && offer && account.address.toString() != offer.offerer_address)}
+                        disabled={!(account && offer && account?.address.toString() != offer.offerer_address)}
                         value={range}
                         onChange={(e) => {
                             setrange(e.target.value);
@@ -294,7 +294,7 @@ function Card(props) {
                 <button
                     className='pt-15 button1'
                     onClick={acceptOffer}
-                    disabled={!(account && offer && account.address.toString() != offer.offerer_address) || acceptButtonDisabled}
+                    disabled={!(account && offer && account?.address.toString() != offer.offerer_address) || acceptButtonDisabled}
                     >
                     {acceptButtonText}
                 </button>

@@ -126,7 +126,7 @@ const NftStake = () => {
             };
 
             for (let j = 0; j < res.data.length; j++) {
-              if (data.stake_nft_token_nonce == res.data[j].nonce) {
+              if (data.stake_nft_token_nonce == res.data[j].nonce && data.stake_nft_token_id == res.data[j].collection) {
                 nftData.push(res.data[j]);
                 break;
               }
