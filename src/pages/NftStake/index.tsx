@@ -20,6 +20,7 @@ import {
   EASTARORC_NFT_ID,
   REWARD_TOKEN_DECIMAL,
   TIMEOUT,
+  HORC_NFT_ID,
 } from 'config';
 
 import NftCard from 'components/NftCard';
@@ -97,14 +98,14 @@ const NftStake = () => {
   React.useEffect(() => {
     (async () => {
       await axios
-        .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID}`)
+        .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
         .then((res) => {
           setNftDatas(res.data);
         });
     })();
     (async () => {
       await axios
-        .get(`${GATEWAY}/accounts/${NFTS_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID}`)
+        .get(`${GATEWAY}/accounts/${NFTS_STAKING_CONTRACT_ADDRESS}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
         .then(async (res: any) => {
           if (!stakingContractInteractor || res.data.length === 0 || !isLoggedIn) return;
 

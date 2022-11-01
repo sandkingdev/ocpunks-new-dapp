@@ -70,6 +70,7 @@ export const NFTS_STAKING_CONTRACT_NAME = 'OrcpunkNftStaking';
 export const ORC_NFT_ID = 'ORC-ef544d';
 export const SHEORC_NFT_ID = 'SHO-e81311';
 export const EASTARORC_NFT_ID = 'ESTO-662d61';
+export const HORC_NFT_ID = 'ORH-d29882';
 // export const ORC_NFT_ID = 'GRDF-dfbc67';
 // export const SHEORC_NFT_ID = 'SHO-1786db';
 // export const EASTARORC_NFT_ID = 'BABYORC-2ce93a';
