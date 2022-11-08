@@ -16,7 +16,7 @@ export const EASTER_NFT_TOKEN_ID = 'ESTO-662d61';
 
 export const SWAP_CONTRACT_ADDRESS =
   'erd1qqqqqqqqqqqqqpgqkq9wkkzykg9qxt5y0uncrf7lfhx5ta2y7lnqcukq0l';
-export const NFT_PRICE = 50000;
+export const NFT_PRICE = 25000;
 
 // CoinFlip
 export const FLIP_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqa0e7xkaa8rzek3n9fx02xp5572uuj9tt7lnqpspz8x';

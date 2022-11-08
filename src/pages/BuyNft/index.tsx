@@ -79,7 +79,7 @@ const BuyNft = () => {
   return (
     <div className='container mb-3 buynft-container'>
       <div className='row text-center rewards-amount-wrap'>
-        <div className='col-md-6 col-12 rewards-amount'>NFT PRICE : 50,000 $ZOG</div>
+        <div className='col-md-6 col-12 rewards-amount'>NFT PRICE : 25,000 $ZOG</div>
         <img src={BuyNftDecoration}></img>
       </div>
       <div className='row nft-card-container'>
