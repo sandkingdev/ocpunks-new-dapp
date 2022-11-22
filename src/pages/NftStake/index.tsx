@@ -76,7 +76,7 @@ const NftStake = () => {
 
   const [contractNftDatas, setContractNftDatas] = React.useState<any[]>([]);
   const [zogRewards, setZogRewards] = useState(0);
-  const [lkmexRewards, setLkmexRewards] = useState(0);
+  const [egldRewards, setEgldRewards] = useState(0);
 
   const [status, setStatus] = useState(true);
 
@@ -152,11 +152,12 @@ const NftStake = () => {
       const data = {
         total_supply: items.total_supply.toNumber(),
         zog_reward_amount: convertWeiToEgld(items.zog_reward_amount.toNumber(), REWARD_TOKEN_DECIMAL),
-        lkmex_reward_amount: convertWeiToEgld(items.lkmex_reward_amount.toNumber(), 18),
+        egld_reward_amount: convertWeiToEgld(items.lkmex_reward_amount.toNumber(), 18, 10),
       };
+      console.log(items.lkmex_reward_amount.toNumber());
       setStakedAmount(data.total_supply);
       setZogRewards(data.zog_reward_amount);
-      setLkmexRewards(data.lkmex_reward_amount);
+      setEgldRewards(data.egld_reward_amount);
 
     })();
   }, [stakingContractInteractor, hasPendingTransactions, status]);
@@ -219,7 +220,7 @@ const NftStake = () => {
                 <div className='row text-center reward-widget-wrap'>
                   <div className='text-center reward-widget-wrap-left'>
                     <div className='col-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(zogRewards)}</div>
-                    <p className='col-12 rewards-amount-staking mt-2 ml-5'>Reward LKMEX : {formatNumbers(lkmexRewards)}</p>
+                    <p className='col-12 rewards-amount-staking mt-2 ml-5'>Reward EGLD : {egldRewards}</p>
                     <img src={SecurityToken}></img>
                   </div>
                   <div className='btn-claim-wrap'>
