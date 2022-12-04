@@ -52,7 +52,7 @@ const BuyNft = () => {
   useEffect(() => {
     // get NFT datas
     axios
-      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts?from=0&size=8&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
+      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts?from=0&size=8&collections=${ORC_NFT_ID},${SHEORC_NFT_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
@@ -61,7 +61,7 @@ const BuyNft = () => {
   useEffect(() => {
     // get NFT datas
     axios
-      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts/count?collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
+      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts/count?collections=${ORC_NFT_ID},${SHEORC_NFT_ID}`)
       .then((res) => {
         setSize(res.data);
       });
@@ -70,7 +70,7 @@ const BuyNft = () => {
   function changeHandle(page: any, pageSize: any) {
     const start = (page - 1) * pageSize;
     axios
-      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts?from=${start}&size=${pageSize}&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
+      .get(`${GATEWAY}/accounts/${SWAP_CONTRACT_ADDRESS}/nfts?from=${start}&size=${pageSize}&collections=${ORC_NFT_ID},${SHEORC_NFT_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
@@ -96,7 +96,11 @@ const BuyNft = () => {
         </div>
       </div>
       <div className='mt-5 text-center'>
-        <Pagination defaultPageSize={8} defaultCurrent={1} total={size} onChange={changeHandle} />
+        {size > 0 ? (
+          <Pagination defaultPageSize={8} defaultCurrent={1} total={size} onChange={changeHandle} />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

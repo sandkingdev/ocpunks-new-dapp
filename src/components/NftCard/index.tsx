@@ -157,8 +157,8 @@ const NftCard = (props: any) => {
     const nonce: any = props.item.nonce;
 
     const args: TypedValue[] = [
-      BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
-      new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
+      BytesValue.fromUTF8(props.item.collection),
+      new BigUIntValue(Balance.fromString(props.item.nonce.valueOf()).valueOf()),
       new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
       new AddressValue(new Address(SWAP_CONTRACT_ADDRESS)),
       BytesValue.fromUTF8('sellNft')
@@ -194,8 +194,8 @@ const NftCard = (props: any) => {
       BytesValue.fromUTF8(STAKE_TOKEN_ID),
       new BigUIntValue(Balance.fromString(value.valueOf()).valueOf()),
       BytesValue.fromUTF8('buyNft'),
-      BytesValue.fromUTF8(ORC_NFT_TOKEN_ID),
-      new BigUIntValue(Balance.fromString(nonce.valueOf()).valueOf()),
+      BytesValue.fromUTF8(props.item.collection),
+      new BigUIntValue(Balance.fromString(props.item.nonce.valueOf()).valueOf()),
       new BigUIntValue(Balance.fromString(amount.valueOf()).valueOf()),
     ];
 

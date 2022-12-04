@@ -45,7 +45,7 @@ const SellNft = () => {
 
   useEffect(() => {
     axios
-      .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID},${EASTARORC_NFT_ID},${HORC_NFT_ID}`)
+      .get(`${GATEWAY}/accounts/${address}/nfts?from=0&size=10000&collections=${ORC_NFT_ID},${SHEORC_NFT_ID}`)
       .then((res) => {
         setNftDatas(res.data);
       });
@@ -54,7 +54,7 @@ const SellNft = () => {
   return (
     <div className='container mb-5 sellnft-container'>
       <div className='row text-center staking-pool-info-wrap'>
-        <p className='col-md-6 col-12 staking-pool-info'>NFT PRICE : 50,000 $ZOG</p>
+        <p className='col-md-6 col-12 staking-pool-info'>NFT PRICE : 25,000 $ZOG</p>
         <img src={SellNftDecoration}></img>
       </div>
       <div className='row nft-card-container'>

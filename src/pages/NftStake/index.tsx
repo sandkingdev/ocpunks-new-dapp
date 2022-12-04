@@ -74,14 +74,15 @@ const NftStake = () => {
   const [apy, setApy] = useState(0);
   const [stakedAmount, setStakedAmount] = useState(0);
 
-  const [contractNftDatas, setContractNftDatas] = React.useState<any[]>([]);
+  const [contractNftDatas, setContractNftDatas] = useState<any[]>([]);
+  const [totalStakedAmount, setTotalStakedAmount] = useState(0);
   const [zogRewards, setZogRewards] = useState(0);
   const [egldRewards, setEgldRewards] = useState(0);
 
   const [status, setStatus] = useState(true);
 
   // load smart contract abi and parse it to SmartContract object for tx
-  const [stakingContractInteractor, setStakingContractInteractor] = React.useState<any>(undefined);
+  const [stakingContractInteractor, setStakingContractInteractor] = useState<any>(undefined);
   React.useEffect(() => {
     (async () => {
       const nftAbiRegistry = await AbiRegistry.load({
@@ -134,6 +135,7 @@ const NftStake = () => {
             }
           }
           setContractNftDatas(nftData);
+          setTotalStakedAmount(nftData.length);
         });
     })();
     (async () => {
@@ -152,9 +154,9 @@ const NftStake = () => {
       const data = {
         total_supply: items.total_supply.toNumber(),
         zog_reward_amount: convertWeiToEgld(items.zog_reward_amount.toNumber(), REWARD_TOKEN_DECIMAL),
-        egld_reward_amount: convertWeiToEgld(items.lkmex_reward_amount.toNumber(), 18, 10),
+        egld_reward_amount: convertWeiToEgld(items.egld_reward_amount.toNumber(), 18, 10),
       };
-      console.log(items.lkmex_reward_amount.toNumber());
+      // console.log(items.egld_reward_amount.toNumber());
       setStakedAmount(data.total_supply);
       setZogRewards(data.zog_reward_amount);
       setEgldRewards(data.egld_reward_amount);
@@ -166,6 +168,46 @@ const NftStake = () => {
 
     const reinvestTransaction = {
       data: 'claim',
+      gasLimit: new GasLimit(100000000),
+      receiver: NFTS_STAKING_CONTRACT_ADDRESS
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: reinvestTransaction,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Claim transaction',
+        errorMessage: 'An error has occured during Claim',
+        successMessage: 'Claim transaction successful'
+      },
+      redirectAfterSign: false
+    });
+  };
+
+  const handleZogClaim = async () => {
+
+    const reinvestTransaction = {
+      data: 'claimZog',
+      gasLimit: new GasLimit(10000000),
+      receiver: NFTS_STAKING_CONTRACT_ADDRESS
+    };
+
+    await refreshAccount();
+    await sendTransactions({
+      transactions: reinvestTransaction,
+      transactionsDisplayInfo: {
+        processingMessage: 'Processing Claim transaction',
+        errorMessage: 'An error has occured during Claim',
+        successMessage: 'Claim transaction successful'
+      },
+      redirectAfterSign: false
+    });
+  };
+
+  const handleEgldClaim = async () => {
+
+    const reinvestTransaction = {
+      data: 'claimEgld',
       gasLimit: new GasLimit(100000000),
       receiver: NFTS_STAKING_CONTRACT_ADDRESS
     };
@@ -219,15 +261,24 @@ const NftStake = () => {
               <div className='col-10 nft-tab'>
                 <div className='row text-center reward-widget-wrap'>
                   <div className='text-center reward-widget-wrap-left'>
-                    <div className='col-12 rewards-amount-staking'>Reward $ZOG : {formatNumbers(zogRewards)}</div>
-                    <p className='col-12 rewards-amount-staking mt-2 ml-5'>Reward EGLD : {egldRewards}</p>
-                    <img src={SecurityToken}></img>
-                  </div>
-                  <div className='btn-claim-wrap'>
-                    <div className='btn-claim-wrap-2'>
-                      <button className='btn btn-primary btn-claim' onClick={handleClaim}>Claim</button>
-                      <img src={Hand}></img>
+                    <div className='col-12 rewards-amount-staking'>Staked NFT : {totalStakedAmount}</div>
+                    <div className='d-flex'>
+                      <div className='col-12 rewards-amount-staking mt-2'>Reward $ZOG : {formatNumbers(zogRewards)}</div>
+                      <div className='btn-claim-wrap'>
+                        <div className='btn-claim-wrap-2'>
+                          <button className='btn btn-primary btn-claim' onClick={handleZogClaim}>Claim</button>
+                        </div>
+                      </div>
                     </div>
+                    <div className='d-flex'>
+                      <p className='col-12 rewards-amount-staking mt-2'>Reward EGLD : {egldRewards}</p>
+                      <div className='btn-claim-wrap'>
+                        <div className='btn-claim-wrap-2'>
+                          <button className='btn btn-primary btn-claim' onClick={handleEgldClaim}>Claim</button>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <img src={SecurityToken}></img> */}
                   </div>
                 </div>
                 <div className='row mt-5'>

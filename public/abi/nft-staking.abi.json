@@ -24,43 +24,11 @@
     "constructor": {
         "inputs": [
             {
-                "name": "stake_nft_token_id_1",
+                "name": "reward_egld_token_id",
                 "type": "TokenIdentifier"
             },
             {
-                "name": "stake_nft_token_id_2",
-                "type": "TokenIdentifier"
-            },
-            {
-                "name": "stake_nft_token_id_3",
-                "type": "TokenIdentifier"
-            },
-            {
-                "name": "reward_zog_token_id",
-                "type": "TokenIdentifier"
-            },
-            {
-                "name": "reward_lkmex_token_id",
-                "type": "TokenIdentifier"
-            },
-            {
-                "name": "zog_reward_per_nft",
-                "type": "BigUint"
-            },
-            {
-                "name": "lkmex_reward_per_nft_1",
-                "type": "BigUint"
-            },
-            {
-                "name": "lkmex_reward_per_nft_2",
-                "type": "BigUint"
-            },
-            {
-                "name": "zog_reward_apr",
-                "type": "u64"
-            },
-            {
-                "name": "lkmex_reward_apr",
+                "name": "egld_reward_apr",
                 "type": "u64"
             }
         ],
@@ -97,6 +65,18 @@
         },
         {
             "name": "claim",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "claimZog",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "claimEgld",
             "mutability": "mutable",
             "inputs": [],
             "outputs": []
@@ -439,6 +419,36 @@
                     "type": "u64"
                 }
             ]
+        },
+        {
+            "name": "getEgldRewardApr",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "getRewardEgldTokenId",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "TokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "getRewardEgldStartTime",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
         }
     ],
     "hasCallback": false,
@@ -455,7 +465,7 @@
                     "type": "BigUint"
                 },
                 {
-                    "name": "lkmex_reward_amount",
+                    "name": "egld_reward_amount",
                     "type": "BigUint"
                 }
             ]
