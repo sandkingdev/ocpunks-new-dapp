@@ -135,8 +135,9 @@ const Mint = () => {
         </Col>
         <Col lg={6} md={6} sm={12} className='nft-mint-container'>
           <div>
+            <div className='mint-container-text-quantity mb-5'>SOLD OUT</div>
             <div className='mint-container-text-quantity'>{mintedAmount} minted out of {MINT_COLLECTION_COUNT}</div>
-            <div className='mint-container-text-select-quantity'>Select a quantity</div>
+            {/* <div className='mint-container-text-select-quantity'>Select a quantity</div>
             <div className='mint-amount-container'>
               <button onClick={handleMinus}>-</button>
               <div>{amount}</div>
@@ -160,7 +161,7 @@ const Mint = () => {
             </div>
             <div className='d-flex justify-content-center'> 
               <button className='mint-container-mint-button' onClick={handleMint}>MINT NOW</button>
-            </div>
+            </div> */}
           </div>
         </Col>
       </Row>

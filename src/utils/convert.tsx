@@ -12,6 +12,13 @@ export const convertWeiToEgld = (v: any, decimal = 18, precision = 2) => {
     return Math.floor(number * factor) / factor;
 };
 
+export const convertWeiToEsdtWithDecimal = (v: any) => {
+    // conversion for BigNumber operation
+    if (typeof (v) != typeof (BigNumber)) v = new BigNumber(v);
+    const number = new BigNumber(v).dividedBy(new BigNumber(Math.pow(10, 18)));
+    return number.toFixed(18).replace(/\.?0+$/, '');
+};
+
 export const formatNumbers = (v:any, precision = 2) => {
     const factor = Math.pow(10, precision);
     const number = Math.floor(v * factor) / factor;

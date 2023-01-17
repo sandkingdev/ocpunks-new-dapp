@@ -12,6 +12,7 @@ import Bridge from './pages/Bridge';
 import Mint from './pages/Mint';
 import PersonalOffer from './pages/PersonalOffer';
 import NftStake from './pages/NftStake';
+import ZogFarm from 'pages/ZogFarm';
 
 export const routeNames = {
   unlock: '/unlock',
@@ -29,6 +30,7 @@ export const routeNames = {
   personaloffer: '/offer',
   mint: '/mint',
   stakenft: '/nftstaking',
+  farm: '/farm',
 };
 
 const routes: Array<any> = [
@@ -91,6 +93,11 @@ const routes: Array<any> = [
     path: routeNames.stakenft,
     title: 'NftStake',
     component: NftStake
+  },
+  {
+    path: routeNames.farm,
+    title: 'ZogFarm',
+    component: ZogFarm
   },
 ];
 

@@ -59,7 +59,7 @@ const Navbar = () => {
                   <a href='https://superciety.com/fellowships/orcpunks-dao' target='blank' className='custom-link-button custom-nav-link whitepaper'>
                     DAO
                   </a>
-                  <NavDropdown.Item><Link to='#'>Farming</Link></NavDropdown.Item>
+                  <NavDropdown.Item><Link to={routeNames.farm}>Farming</Link></NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
                   title="SWAP"

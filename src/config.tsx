@@ -75,6 +75,17 @@ export const HORC_NFT_ID = 'ORH-d29882';
 // export const SHEORC_NFT_ID = 'SHO-1786db';
 // export const EASTARORC_NFT_ID = 'BABYORC-2ce93a';
 
+// farming
+export const FARMING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgql73sjmpjllhgeej2ffa7upmq46cjn3dj7lnqpz70gu';
+export const FARMING_STAKE_TOKEN_ID = 'ZOGUSDC-e298b3';
+export const FARMING_STAKE_TOKEN_DECIMAL = 18;
+export const FARMING_REWARD_TOKEN_ID = 'ZOG-c66239';
+
+// export const FARMING_CONTRACT_ADDRESS = 'erd1qqqqqqqqqqqqqpgqcd3m4pywp8dwxupps9895nhfg007rg6x5zvsl5qry5';
+// export const FARMING_STAKE_TOKEN_ID = 'AXE-34ff62';
+// export const FARMING_STAKE_TOKEN_DECIMAL = 18;
+// export const FARMING_REWARD_TOKEN_ID = 'ZOG-481946';
+
 export const ENVIRONMENT = 'mainnet';
 export const GATEWAY = 'https://api.elrond.com';
 // export const ENVIRONMENT = 'devnet';
