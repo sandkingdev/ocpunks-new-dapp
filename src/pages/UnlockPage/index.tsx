@@ -19,7 +19,7 @@ export const UnlockRoute: ({ loginRoute }: { loginRoute: string }) => JSX.Elemen
 
   React.useEffect(() => {
     if (isLoggedIn) {
-      navigate(routeNames.mint, { replace: true });
+      navigate(routeNames.home, { replace: true });
     }
   }, [isLoggedIn]);
 
