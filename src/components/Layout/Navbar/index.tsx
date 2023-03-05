@@ -55,27 +55,17 @@ const Navbar = () => {
               ZorgFlip
             </Link>
 
-            {/* {isLoggedIn ? (
-              <>
-                <NavDropdown
-                  title="New"
-                  className="nft-nav-dropdown"
-                >
-                  <NavDropdown.Item><Link to={routeNames.stakenft}>NFTs Staking</Link></NavDropdown.Item>
-
-                  <NavDropdown.Item><Link to={routeNames.farm}>Farming</Link></NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown
-                  title="SWAP"
-                  className="nft-nav-dropdown"
-                >
-                  <NavDropdown.Item><Link to={routeNames.buynft}>Buy NFTs</Link></NavDropdown.Item>
-                  <NavDropdown.Item><Link to={routeNames.sellnft}>Sell NFTs</Link></NavDropdown.Item>
-                </NavDropdown>
-              </>
+            {isLoggedIn ? (
+              <NavDropdown
+                title="SWAP"
+                className="nft-nav-dropdown"
+              >
+                <NavDropdown.Item><Link to={routeNames.buynft}>Buy NFTs</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to={routeNames.sellnft}>Sell NFTs</Link></NavDropdown.Item>
+              </NavDropdown>
             ) : (
               <></>
-            )} */}
+            )}
             {isLoggedIn ? (
               <>
                 <NavDropdown
